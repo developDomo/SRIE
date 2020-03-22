@@ -6,6 +6,11 @@
 - Next.js
 - PostgreSQL
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
 ## Project Structure
 
 ```
@@ -42,7 +47,13 @@ srie/
 
 ## Getting Started
 
-First, run the development server:
+First, get the database environment up and running, by running the following command
+
+```bash
+docker-compose up
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev

@@ -1,0 +1,17 @@
+version: "2"
+services:
+  postgres:
+    container_name: srie-db
+    image: postgres:12.2-alpine
+    environment:
+      POSTGRES_USER: srie
+      POSTGRES_PASSWORD: srie
+      POSTGRES_DB: srie
+    ports:
+      - "5432:5432"
+    volumes:
+      - srie_data:/var/lib/postgresql/data
+
+volumes:
+  srie_data:
+    driver: local

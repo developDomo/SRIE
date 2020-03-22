@@ -14,7 +14,7 @@ const Home = props => (
 );
 
 Home.getInitialProps = async function() {
-  const res = await fetch("http://localhost:3000/api/countries");
+  const res = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await res.json();
 
   return {

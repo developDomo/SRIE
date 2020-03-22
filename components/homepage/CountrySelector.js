@@ -4,7 +4,7 @@ import CountryItem from "./CountryItem";
 const CountrySelector = props => (
   <div className="country-selector">
     {props.countries.map(country => (
-      <CountryItem country={country} />
+      <CountryItem key={country.code} country={country} />
     ))}
     <style jsx>{`
       .country-selector {

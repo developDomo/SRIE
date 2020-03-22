@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const CountryItem = props => (
   <div className="country-item">
-    <Link href="/country/[id]" as={`country/${props.country.id}`}>
-      <a title={props.country.title}>
-        <img src={props.country.img} />
+    <Link href="/country/[id]" as={`country/${props.country.code}`}>
+      <a title={props.country.name}>
+        <img src={`/img/home/${props.country.flag}`} />
         <style jsx>{`
           img {
             height: 75px;
