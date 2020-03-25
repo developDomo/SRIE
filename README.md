@@ -63,6 +63,14 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
+## Database migrations
+
+Any change to the database should be made using the `db-migrate` cli. To do it, use the following commands:
+
+- `db-migrate create <name>`: creates a new migration. This will create 3 files, the migration itself, and 2 SQL scripts one for the up command and one for the down command. The migration changes should be placed on the up file, and the rollback commands on the down file. Migrations are located at `db/migrations` and sql scripts at `db/migrations/sqls`
+- `db-migrate up`: Run pending migrations. if you specify the count parameter it would run only the specified number of migrations `--count 1`
+- `db-migrate down`: Roolback the last migration.
+
 ## Deploy on ZEIT Now
 
 The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
