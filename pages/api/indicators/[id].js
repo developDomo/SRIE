@@ -4,13 +4,16 @@ import IndicatorService from "../../../services/Indicator.service";
 const handler = nextConnect();
 
 handler.get(async (req, res) => {
-  const { pec_goal, topic, educative_level } = req.query;
-  const indicators = await IndicatorService.search(
-    pec_goal,
-    topic,
-    educative_level
+  let indicator = await IndicatorService.findById(
+    req.query.id,
+    req.query.country
   );
-  res.status(200).json(indicators);
+
+  if (indicator) {
+    res.status(200).json(indicator);
+  } else {
+    res.status(404).json({ error: true, message: "Indicator not found" });
+  }
 });
 
 export default (req, res) => handler.apply(req, res);

@@ -1,10 +1,10 @@
 import nextConnect from "next-connect";
-import TopicService from "../../../services/Topic.service";
+import EducativeLevelService from "../../../services/EducativeLevel.service";
 
 const handler = nextConnect();
 
 handler.get(async (req, res) => {
-  TopicService.getAll().then((results) => {
+  EducativeLevelService.findAll().then((results) => {
     res.status(200).json(results);
   });
 });

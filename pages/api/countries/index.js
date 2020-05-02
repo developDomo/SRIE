@@ -4,7 +4,7 @@ import CountryService from "../../../services/Country.service";
 const handler = nextConnect();
 
 handler.get(async (req, res) => {
-  const countries = await CountryService.getCountries();
+  const countries = await CountryService.findAll();
   res.status(200).json(countries);
 });
 

@@ -14,6 +14,7 @@
     "express": "^4.17.1",
     "express-http-context": "^1.2.3",
     "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.15",
     "massive": "^6.2.0",
     "next": "^9.3.4",
     "next-connect": "^0.6.0",
