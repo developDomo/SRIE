@@ -19,21 +19,53 @@ export default {
    */
   search: async (pec_goal, topic, educational_level) => {
     const where = getSearchWhere(pec_goal, topic, educational_level);
-    const sql = `SELECT i.*, 
-                     string_agg(DISTINCT pg.code, '/') as pec_goals, 
-                     string_agg(DISTINCT t.translation_key, '/') as topics,
-                     string_agg(DISTINCT el.code, '/') as educational_levels 
+    const sql = `SELECT i.id as indicator_id, i.translation_key as indicator_translation_key, i.code as indicator_code,
+                     pg.id as pec_goal_id,
+                     pg.code as pec_goal,
+                     t.id as topic_id,
+                     t.translation_key as topic,
+                     el.id as educational_level_id,
+                     el.code as educational_level,
+                     os.id as ods4_scale_id,
+                     os.code as ods4_scale
                  FROM indicators i 
                  LEFT JOIN indicator_pec_goals ipg ON i.id = ipg.indicator_id
                  LEFT JOIN indicator_topics it ON i.id = it.indicator_id
                  LEFT JOIN indicator_educational_levels iel ON i.id = iel.indicator_id
+                 LEFT JOIN indicator_ods4_scales ios ON i.id = ios.indicator_id
                  LEFT JOIN pec_goals pg ON pg.id = ipg.pec_goal_id
                  LEFT JOIN topics t ON t.id = it.topic_id
                  LEFT JOIN educational_levels el ON el.id = iel.educational_level_id
+                 LEFT JOIN ods4_scales os ON os.id = ios.ods4_scale_id
                  ${where}
-                 GROUP BY i.id`;
+                 ORDER BY i.code, pg.goal_order, os.scale_order, el.code`;
 
-    return await db.query(sql);
+    return await db.query(sql, [], {
+      decompose: {
+        pk: "indicator_id",
+        columns: {
+          indicator_id: "id",
+          indicator_translation_key: "translation_key",
+          indicator_code: "code",
+        },
+        pec_goals: {
+          pk: "pec_goal_id",
+          columns: { pec_goal: "code" },
+        },
+        topics: {
+          pk: "topic_id",
+          columns: { topic: "translation_key" },
+        },
+        educational_levels: {
+          pk: "educational_level_id",
+          columns: { educational_level: "translation_key" },
+        },
+        ods4_scales: {
+          pk: "ods4_scale_id",
+          columns: { ods4_scale: "code" },
+        },
+      },
+    });
   },
   /**
    * Finds related indicators
