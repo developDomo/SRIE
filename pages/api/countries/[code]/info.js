@@ -7,31 +7,54 @@ handler.get(async (req, res) => {
   const country = req.query.code.toUpperCase();
   const response = {};
 
-  response.free_edu = await IndicatorDataService.getFreeEducationYearsByCountry(
+  const free_edu_promise = IndicatorDataService.getFreeEducationYearsByCountry(
     country
   );
 
-  response.comp_edu = await IndicatorDataService.getCompulsoryEducationYearsByCountry(
+  const comp_edu_promise = IndicatorDataService.getCompulsoryEducationYearsByCountry(
     country
   );
 
-  response.literacy_rate = await IndicatorDataService.getLiteracyRateByCountry(
+  const literacy_rate_promise = await IndicatorDataService.getLiteracyRateByCountry(
     country
   );
 
-  response.net_enrollment_rate = await IndicatorDataService.getNetEnrollmentRateByCountry(
+  const net_enrollment_rate_promise = await IndicatorDataService.getNetEnrollmentRateByCountry(
     country
   );
 
-  response.completion_rate = await IndicatorDataService.getCompletionRateByCountry(
+  const completion_rate_promise = await IndicatorDataService.getCompletionRateByCountry(
     country
   );
 
-  response.out_of_school_rate = await IndicatorDataService.getOutOfSchoolRateByCountry(
+  const out_of_school_rate_promise = await IndicatorDataService.getOutOfSchoolRateByCountry(
     country
   );
 
-  res.status(200).json(response);
+  const [
+    free_edu,
+    comp_edu,
+    literacy_rate,
+    net_enrollment_rate,
+    completion_rate,
+    out_of_school_rate,
+  ] = await Promise.all([
+    free_edu_promise,
+    comp_edu_promise,
+    literacy_rate_promise,
+    net_enrollment_rate_promise,
+    completion_rate_promise,
+    out_of_school_rate_promise,
+  ]);
+
+  res.status(200).json({
+    free_edu,
+    comp_edu,
+    literacy_rate,
+    net_enrollment_rate,
+    completion_rate,
+    out_of_school_rate,
+  });
 });
 
 export default (req, res) => handler.apply(req, res);

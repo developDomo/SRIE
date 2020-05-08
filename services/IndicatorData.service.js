@@ -28,13 +28,7 @@ export default {
       { stat_unit: "FREE_EDU", ref_area: country },
       {
         fields,
-        order: [
-          {
-            field: "time_period",
-            direction: "desc",
-            nulls: "last",
-          },
-        ],
+        order,
       }
     );
 
@@ -45,13 +39,7 @@ export default {
       { stat_unit: "COMP_EDU", ref_area: country },
       {
         fields,
-        order: [
-          {
-            field: "time_period",
-            direction: "desc",
-            nulls: "last",
-          },
-        ],
+        order,
       }
     );
 
@@ -62,13 +50,7 @@ export default {
       { stat_unit: "LR", ref_area: country, age: "Y_GE15" },
       {
         fields,
-        order: [
-          {
-            field: "time_period",
-            direction: "desc",
-            nulls: "last",
-          },
-        ],
+        order,
       }
     );
 
@@ -89,13 +71,7 @@ export default {
       },
       {
         fields: _.union(["edu_level"], fields),
-        order: [
-          {
-            field: "time_period",
-            direction: "desc",
-            nulls: "last",
-          },
-        ],
+        order,
       }
     );
 
@@ -158,19 +134,24 @@ export default {
       },
       {
         fields,
-        order: [
-          {
-            field: "time_period",
-            direction: "desc",
-            nulls: "last",
-          },
-        ],
+        order,
       }
     );
 
     return data || {};
   },
 };
+
+/**
+ * Default order
+ */
+const order = [
+  {
+    field: "time_period",
+    direction: "desc",
+    nulls: "last",
+  },
+];
 
 /**
  * Default fields to be retrieved
