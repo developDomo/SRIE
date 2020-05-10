@@ -91,13 +91,13 @@ In order to support multiple languages on the site, we are using [next-i18next](
 
 To add translation supprt to a page, import the required components:
 
-```
+```javascript
 import { i18n, Link, withTranslation } from "../i18n";
 ```
 
 As part of the getInitialProps return json include the namespacesRequired property indicating the array of namespaces needed.
 
-```
+```javascript
 return {
   namespacesRequired: ["common", "..."],
   ...
@@ -106,7 +106,7 @@ return {
 
 And, set the propTypes for the t function
 
-```
+```javascript
 Component.propTypes = {
   t: PropTypes.func.isRequired
 };
@@ -114,14 +114,32 @@ Component.propTypes = {
 
 To use a translated string, just use the follwing syntax:
 
-```
+```javascript
 {t("key")}
 ```
 
 And to change the language, you can use:
 
-```
+```javascript
 onClick={() => i18n.changeLanguage("en")}
+```
+
+## Code Style
+
+Code styling validations are automatically made by eslint before every commit on stashed files. If the issues are fixable by the tool, it will be fixed, re-added to the stashed files and procced with the commit.
+
+If there are issues that require manual editing, the commit will fail until they are corrected.
+
+To maually run the eslint, just run:
+
+```bash
+./node_modules/.bin/eslint <filename>
+```
+
+Or to run it over all the project:
+
+```bash
+./node_modules/.bin/eslint .
 ```
 
 ## Deploy on ZEIT Now
