@@ -41,6 +41,6 @@
     }
   },
   "lint-staged": {
-    "*.js": [ "node_modules/.bin/eslint --fix" ]
+    "*.js": [ "node_modules/.bin/eslint" ]
   }
 }
