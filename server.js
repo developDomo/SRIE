@@ -1,32 +1,77 @@
-const express = require("express");
-var httpContext = require("express-http-context");
+const path = require('path');
+const express = require('express');
+const httpContext = require('express-http-context');
+const bodyParser = require('body-parser');
 
-const next = require("next");
-const nextI18NextMiddleware = require("next-i18next/middleware").default;
+const nextjs = require('next');
+const nextI18NextMiddleware = require('next-i18next/middleware').default;
 
-const nextI18next = require("./i18n");
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+const nextI18next = require('./i18n');
+
+const dev = process.env.NODE_ENV !== 'production';
 
 const port = process.env.PORT || 3000;
-const app = next({ dev: process.env.NODE_ENV !== "production" });
-const handle = app.getRequestHandler();
-const massive = require("./db");
+const massive = require('./db');
+
 
 (async () => {
-  await app.prepare();
-  const server = express();
-  const db = await massive();
+  if (!dev && cluster.isMaster) {
+    console.log(`Node cluster master ${process.pid} is running`);
 
-  server.use(httpContext.middleware);
-  server.use((req, res, next) => {
-    httpContext.set("db", db);
-    next();
-  });
+    // Fork workers.
+    for (let i = 0; i < numCPUs; i += 1) {
+      cluster.fork();
+    }
 
-  await nextI18next.initPromise;
-  server.use(nextI18NextMiddleware(nextI18next));
+    cluster.on('exit', (worker, code, signal) => {
+      console.error(`Node cluster worker ${worker.process.pid} exited: code ${code}, signal ${signal}`);
+    });
+  } else {
+    const app = nextjs({ dir: '.', dev });
+    const handle = app.getRequestHandler();
 
-  server.get("*", (req, res) => handle(req, res));
+    await app.prepare();
+    const server = express();
+    const db = await massive();
 
-  await server.listen(port);
-  console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
+    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(bodyParser.json());
+
+    server.use(httpContext.middleware);
+    server.use((req, res, next) => {
+      httpContext.set('db', db);
+      next();
+    });
+
+    await nextI18next.initPromise;
+    server.use(nextI18NextMiddleware(nextI18next));
+
+    if (!dev) {
+    // Enforce SSL & HSTS in production
+      server.use((req, res, next) => {
+        const proto = req.headers['x-forwarded-proto'];
+        if (proto === 'https') {
+          res.set({
+            'Strict-Transport-Security': 'max-age=31557600', // one-year
+          });
+          return next();
+        }
+        res.redirect(`https://${req.headers.host}${req.url}`);
+        return next();
+      });
+    }
+
+    // Static files
+    // https://github.com/zeit/next.js/tree/4.2.3#user-content-static-file-serving-eg-images
+    server.use('/static', express.static(path.join(__dirname, 'static'), {
+      maxAge: dev ? '0' : '365d',
+    }));
+
+    server.get('*', (req, res) => handle(req, res));
+
+    await server.listen(port);
+    console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
+  }
 })();

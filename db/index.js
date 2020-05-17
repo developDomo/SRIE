@@ -1,21 +1,19 @@
-const massive = require("massive");
+const massive = require('massive');
 
 let db;
 
-exports = module.exports = function () {
+module.exports = async () => {
   if (db) {
     return db;
   }
 
-  return massive({
+  db = await massive({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-  }).then((instance) => {
-    db = instance;
-
-    return Promise.resolve(db);
   });
+
+  return db;
 };
