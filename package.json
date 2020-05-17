@@ -1,14 +1,20 @@
 {
   "name": "srie",
   "version": "0.1.0",
+  "engines": {
+    "node": "13.9.0",
+    "yarn": "1.x"
+  },
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
-    "start": "next start",
+    "build": "db-migrate up && next build",
+    "start": "cross-env NODE_ENV=production node server.js -p $PORT",
     "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
+    "cross-env": "^7.0.2",
+    "body-parser": "^1.19.0",
     "db-migrate": "^0.11.6",
     "db-migrate-pg": "^1.0.0",
     "dotenv": "^8.2.0",
@@ -42,6 +48,11 @@
     }
   },
   "lint-staged": {
-    "*.js": [ "node_modules/.bin/eslint" ]
-  }
+    "*.js": [
+      "node_modules/.bin/eslint"
+    ]
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
