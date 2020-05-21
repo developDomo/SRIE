@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Layout from "../components/layout/Layout";
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { appWithTranslation } from "../i18n";
 
 import globalStyles from "../styles/global.js";
