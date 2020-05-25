@@ -1,16 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Row, Col, Container, Image, CardImg } from "react-bootstrap";
+import React from 'react';
 import {
-  Box,
-  BoxIndicador,
-  BoxPreescolar,
-  BoxPrimaria,
-  BoxSecundaria,
-} from "../../components/layout/Box";
+  Row, Col,
+} from 'react-bootstrap';
+import styled from 'styled-components';
 
-import Banner from "../../components/layout/Banner";
-import styled from "styled-components";
+import {
+  orange2,
+  yellowRoll,
+  blue42,
+  brown2,
+} from '../../styles/colors';
 
 const Title = styled.h3`
   width: 100%;
@@ -26,22 +25,21 @@ const ContainerEducationStyled = styled.div`
   text-align: center;
   font-family: "Roboto", sans-serif;
   flex-basis: auto;
-  background-color: ${(props) =>
-    props.color === "azul"
-      ? "#cce3f2"
-      : props.color === "verde"
-      ? " #caf0b0"
-      : props.color === "amarillo"
-      ? amarillo_roll
-      : props.color === "celeste"
-      ? azul4_2
-      : props.color === "cafe"
-      ? cafe_2
-      : props.color === "naranja"
-      ? naranja_2
-      : props.color === "rosa"
-      ? "#fdcccc"
-      : "black"};
+  background-color: ${(props) => (props.color === 'azul'
+    ? '#cce3f2'
+    : props.color === 'verde'
+      ? ' #caf0b0'
+      : props.color === 'amarillo'
+        ? yellowRoll
+        : props.color === 'celeste'
+          ? blue42
+          : props.color === 'cafe'
+            ? brown2
+            : props.color === 'naranja'
+              ? orange2
+              : props.color === 'rosa'
+                ? '#fdcccc'
+                : 'black')};
   padding: 0;
   width: 100%;
   min-height: 120px;
@@ -74,24 +72,6 @@ const SectionContainer = styled.div`
     font-weight: 400;
   }
 `;
-import {
-  gris1,
-  amarillo,
-  azul,
-  azull_roll,
-  naranja_2,
-  naranja,
-  amarillo_roll,
-  verde,
-  verde_roll,
-  azul4,
-  azul4_2,
-  cafe,
-  cafe_2,
-  rosa,
-  rosa_2,
-  azul5_2,
-} from "../../styles/colors";
 const LineContainer = styled.div`
   font-weight: 400;
   display: flex;
@@ -121,9 +101,8 @@ const LineTitle = styled.div`
   font-size: 0.9em;
 `;
 
-const Boxes = (props) => {
-  const { countryId } = props;
-  if (countryId == "bh") {
+const Boxes = ({ countryId }) => {
+  if (countryId === 'bh') {
     return (
       <>
         <Row>
@@ -140,7 +119,7 @@ const Boxes = (props) => {
               </SectionContainer>
             </ContainerEducationStyled>
             <LineContainer>
-              <Line color="#fb8080" width="100%"></Line>
+              <Line color="#fb8080" width="100%" />
               {/* <Line color='#bc6060' width='10.6%'></Line>
                 <Line color='#7ab239' width='50%'></Line>
                 <Line color='#0071bc' width='15.1%'></Line> */}
@@ -190,7 +169,7 @@ const Boxes = (props) => {
             </ContainerEducationStyled>
             <LineContainer>
               {/* <Line color='#fb8080' width='100%'></Line> */}
-              <Line color="#324914" width="100%"></Line>
+              <Line color="#324914" width="100%" />
               {/* <Line color='#7ab239' width='50%'></Line>
                 <Line color='#0071bc' width='15.1%'></Line> */}
             </LineContainer>
@@ -212,8 +191,8 @@ const Boxes = (props) => {
               </SectionContainer>
             </ContainerEducationStyled>
             <LineContainer>
-              {/* <Line color='#fb8080' width='100%'></Line>*/}
-              <Line color="#0071bc" width="100%"></Line>
+              {/* <Line color='#fb8080' width='100%'></Line> */}
+              <Line color="#0071bc" width="100%" />
               {/* <Line color='#7ab239' width='100%'></Line> */}
               {/* <Line color='#0071bc' width='15.1%'></Line> */}
             </LineContainer>
@@ -222,27 +201,28 @@ const Boxes = (props) => {
       </>
     );
   }
-  if (countryId == "cr") {
+  if (countryId === 'cr') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "es") {
+  if (countryId === 'su') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "gt") {
+  if (countryId === 'gt') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "ho") {
+  if (countryId === 'ho') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "nu") {
+  if (countryId === 'nu') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "pm") {
+  if (countryId === 'pm') {
     return <div>{countryId}</div>;
   }
-  if (countryId == "dr") {
+  if (countryId === 'dr') {
     return <div>{countryId}</div>;
   }
+  return <div />;
 };
 
 export default Boxes;

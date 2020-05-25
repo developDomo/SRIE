@@ -1,5 +1,5 @@
-import nextConnect from "next-connect";
-import EducativeLevelService from "../../../services/EducativeLevel.service";
+import nextConnect from 'next-connect';
+import EducativeLevelService from '../../../services/EducativeLevel.service';
 
 const handler = nextConnect();
 

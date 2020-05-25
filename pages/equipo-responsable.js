@@ -1,19 +1,8 @@
-import Link from 'next/link'
-import Header from '../components/layout/Header'
-import { Container, Row } from 'react-bootstrap'
-
-import {
-  ButtonNav,
-  ButtonNavWithIcon,
-  ButtonNavIndicadores,
-} from '../components/layout/Button'
-import CrFlag from '../public/img/home/bandera-costa_rica.png'
-import FlagNameComponent from '../components/layout/FlagNameComponent'
-import IndicadorComponent from '../components/layout/IndicadorComponent'
-import NavSecundaryCountries from '../components/layout/NavSecundaryCountries'
-import Title from '../components/layout/Title'
-import styled from 'styled-components'
-import { txt, bordes, azul4 } from '../styles/colors'
+import { Container, Row } from 'react-bootstrap';
+import styled from 'styled-components';
+import Header from '../components/layout/Header';
+import Title from '../components/layout/Title';
+import { txt, bordes, blue4 } from '../styles/colors';
 
 const DirectoryContainer = styled.div`
   display: flex;
@@ -26,21 +15,21 @@ const DirectoryContainer = styled.div`
   &:last-child {
     padding-bottom: 10px;
   } */
-`
+`;
 const TitlePais = styled.div`
   border-right: 0.5px solid ${txt};
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100px;
-  & h3  {
+  & h3 {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 1.1em;
   }
-`
+`;
 const InfoDirectoryContainer = styled.div`
-  & h3  {
+  & h3 {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 1.1em;
@@ -56,36 +45,37 @@ const InfoDirectoryContainer = styled.div`
     font-family: 'Raleway', sans-serif;
     font-style: italic;
     font-size: 1.1em;
-    color: ${azul4};
+    color: ${blue4};
     margin-left: 5px;
   }
-`
+`;
 export default class extends React.Component {
   static async getInitialProps({ pathname }) {
-    let pa = pathname
-    return { pa }
+    const pa = pathname;
+    return { pa };
   }
+
   render() {
-    const { pa } = this.props
-    const array = [1, 2, 3, 4, 5]
+    const { pa } = this.props;
+    const array = [1, 2, 3, 4, 5];
     return (
       <>
         <Header path={pa} />
         {/* Header nav */}
         <Container>
           <Row>
-            <div className='col-lg-12 pr-0 text-center p-2'>
-              <Title color='azul' type='title'>
+            <div className="col-lg-12 pr-0 text-center p-2">
+              <Title color="azul" type="title">
                 EQUIPO RESPONSABLE
               </Title>
             </div>
           </Row>
         </Container>
-        <Container fluid className='bg-light mt-4 pb-5'>
+        <Container fluid className="bg-light mt-4 pb-5">
           <Row>
             <Container>
-              <Row className='d-flex justify-content-betweent mt-5 mb-5 '>
-                <div className='col-lg-12 font'>
+              <Row className="d-flex justify-content-betweent mt-5 mb-5 ">
+                <div className="col-lg-12 font">
                   <p>
                     El desarrollo de la Serie Regional de Indicadores Educativos
                     se inició en 2009 con la conducción institucional y política
@@ -109,20 +99,20 @@ export default class extends React.Component {
                     que participan de este proceso son las siguientes:
                   </p>
                 </div>
-                <div className='col-lg-12 bg-white mb-4 mt-3 pt-3 pb-3'>
+                <div className="col-lg-12 bg-white mb-4 mt-3 pt-3 pb-3">
                   {array.map((item) => (
                     <DirectoryContainer>
-                      <TitlePais className='col-lg-3 '>
+                      <TitlePais className="col-lg-3 ">
                         <h3>Costa Rica</h3>
                       </TitlePais>
-                      <InfoDirectoryContainer className='col-lg-9 '>
+                      <InfoDirectoryContainer className="col-lg-9 ">
                         <h3>
                           Dirección de Planificación Institucional -
                           Departamento de Análisis Estadístico
                         </h3>
                         <p>
                           correo electrónico:
-                          <a href='mail:lore_ipsu@dolorsit.com'>
+                          <a href="mail:lore_ipsu@dolorsit.com">
                             lore_ipsu@dolorsit.com
                           </a>
                         </p>
@@ -130,7 +120,7 @@ export default class extends React.Component {
                     </DirectoryContainer>
                   ))}
                 </div>
-                <div className='font'>
+                <div className="font">
                   <p>
                     El apoyo del equipo de gestión de la CECC/SICA ha sido un
                     soporte a lo largo del proceso, en particular con las tareas
@@ -159,13 +149,15 @@ export default class extends React.Component {
             </Container>
           </Row>
         </Container>
-        <style jsx>{`
+        <style jsx>
+          {`
           .font {
             font-family: 'Raleway', sans-serif;
             font-size: 1.1em;
           }
-        `}</style>
+        `}
+        </style>
       </>
-    )
+    );
   }
 }

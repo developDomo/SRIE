@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import {
-  gris1,
+  gray1,
   txt,
-  verde1,
-  azul,
-  rojo,
+  green1,
+  blue,
+  red,
   bordes,
-  bck_banderas,
-} from '../../styles/colors'
-import arrow from '../../public/img/home/arrow_indicadores.svg'
+  bckBanderas,
+} from '../../styles/colors';
+import arrow from '../../public/img/home/arrow_indicadores.svg';
 
 const Container = styled.div`
   display: flex;
@@ -17,16 +17,16 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 130px;
-  background-color: ${gris1};
-`
+  background-color: ${gray1};
+`;
 const Title = styled.h3`
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   font-size: 1.1em;
   color: ${txt};
-`
+`;
 export const Tag = styled.h4`
-  background-color: ${verde1};
+  background-color: ${green1};
   font-family: 'Raleway', sans-serif;
   padding: 5px;
   color: white;
@@ -34,7 +34,7 @@ export const Tag = styled.h4`
   text-align: center;
   width: 100px;
   margin-top: 15px;
-`
+`;
 const Pec = styled.h4`
   display: flex;
   justify-content: center;
@@ -45,8 +45,8 @@ const Pec = styled.h4`
   font-weight: 400;
   height: 100px;
   width: 20%;
-  color: ${azul};
-`
+  color: ${blue};
+`;
 const Ods = styled.h4`
   display: flex;
   justify-content: center;
@@ -58,8 +58,8 @@ const Ods = styled.h4`
   font-weight: 400;
   width: 16.5%;
   height: 100px;
-  color: ${rojo};
-`
+  color: ${red};
+`;
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -82,21 +82,21 @@ const IconContainer = styled.div`
     height: 15px;
   }
 
-  & img  {
+  & img {
     width: 15px;
   }
 
   &:hover {
-    background-color: ${azul};
+    background-color: ${blue};
     & > div {
-      background-color: ${bck_banderas};
+      background-color: ${bckBanderas};
     }
   }
-`
+`;
 
 const IndicadorComponent = ({ children, icon }) => (
-  <Container className='d-flex  justify-content-between p-0'>
-    <div className='col-lg-7 m-0 py-0 pl-4 pr-2'>
+  <Container className="d-flex  justify-content-between p-0">
+    <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
       <Title>
         Tasa de participación en la enseñanza organizada un año antes de la edad
         oficial de ingreso en la educación primaria, desglosada por sexo
@@ -108,10 +108,10 @@ const IndicadorComponent = ({ children, icon }) => (
 
     <Ods>4.2</Ods>
 
-    <IconContainer className=' '>
-      <div></div>
+    <IconContainer className=" ">
+      <div />
     </IconContainer>
   </Container>
-)
+);
 
-export default IndicadorComponent
+export default IndicadorComponent;

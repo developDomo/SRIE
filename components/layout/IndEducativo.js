@@ -1,19 +1,18 @@
-import React from 'react'
-import { Row, Col, Container } from 'react-bootstrap'
-import styled from 'styled-components'
-import { verde } from '../../theme/colors'
+import React from 'react';
+import styled from 'styled-components';
+import { green } from '../../theme/colors';
 // import BannerIcon from './public/img/home/icon_cumplimiento_metas.svg'
-import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg'
+import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg';
 
 const ContainerStyled = styled.div`
   display: flex;
-  background-color: ${verde};
+  background-color: ${green};
   color: white;
   padding: 25px 60px;
   & h3 {
     font-size: 1.4em;
   }
-`
+`;
 const TextContainer = styled.div`
   display: flex;
   align-items: center;
@@ -27,7 +26,7 @@ const TextContainer = styled.div`
       display: block;
     }
   }
-`
+`;
 
 const IconContainer = styled.div`
   display: flex;
@@ -37,14 +36,15 @@ const IconContainer = styled.div`
   & img {
     width: 150px;
   }
-`
+`;
 export default class IndEducativo extends React.Component {
   render() {
     return (
       <ContainerStyled>
         <TextContainer>
           <h3>
-            Conozca el avance en el{' '}
+            Conozca el avance en el
+            {' '}
             <span>
               Cumplimiento de Metas Política Educativa Centroamericana
             </span>
@@ -52,9 +52,9 @@ export default class IndEducativo extends React.Component {
         </TextContainer>
 
         <IconContainer>
-          <img src={BannerIcon} alt='icon' />
+          <img src={BannerIcon} alt="icon" />
         </IconContainer>
       </ContainerStyled>
-    )
+    );
   }
 }

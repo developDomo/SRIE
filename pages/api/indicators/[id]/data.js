@@ -5,8 +5,10 @@ import InputValidatorUtils from '../../../../utils/InputValidator.utils';
 const handler = nextConnect();
 
 const schema = {
-  id: { type: "number", positive: true, integer: true, convert: true },
-  country: { type: "string", min: 2, max: 2 }
+  id: {
+    type: 'number', positive: true, integer: true, convert: true,
+  },
+  country: { type: 'string', min: 2, max: 2 },
 };
 
 const inputValidator = InputValidatorUtils.getInputValidator(schema);

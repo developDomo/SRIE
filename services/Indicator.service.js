@@ -1,82 +1,8 @@
-const db = require("express-http-context").get("db");
+import _ from 'lodash';
 
-import _ from "lodash";
+import IndicatorVariationService from './IndicatorVariation.service';
 
-import IndicatorVariationService from "./IndicatorVariation.service";
-
-export default {
-  /**
-   * Returns a list of matching indicatos, based on the specified criteria
-   *
-   * @param {number} [pec_goal] PEC Goal id
-   * @param {number} [topic] Topic id
-   * @param {number} [educational_level] Educational Level id
-   */
-  search: async (pec_goal, topic, educational_level) => {
-    const where = getSearchWhere(pec_goal, topic, educational_level);
-    const orderBy = "ORDER BY i.code, pg.goal_order, os.scale_order, el.code";
-
-    const sql = `${INDICATOR_SELECT}
-      ${INDICATOR_FROM}
-      ${where}
-      ${orderBy}`;
-
-    return await db.query(sql, [], {
-      decompose: INDICATOR_DECOMPOSE,
-    });
-  },
-  findById: async (id) => {
-    return db.indicators.findOne({ id });
-  },
-  /**
-   * Finds related indicators
-   *
-   * @param {number} id Indicator id
-   */
-  findRelated: async (id) => {
-    const sql = `SELECT i.id, i.code, i.translation_key FROM (
-                 SELECT related_id as id 
-                 FROM related_indicators 
-                 WHERE indicator_id = ${id} 
-                 UNION 
-                 SELECT indicator_id as id 
-                 FROM related_indicators 
-                 WHERE related_id = ${id}
-               ) r 
-               LEFT JOIN indicators i ON r.id = i.id;`;
-
-    return await db.query(sql);
-  },
-  /**
-   * Return all indicator information and data needed for the indicator page
-   *
-   * @param {number} id Indicator id
-   * @param {string} country Country code
-   */
-  findFullDetailsById: async (id) => {
-    const where = `WHERE i.id = ${id}`;
-    const sql = `${INDICATOR_SELECT}
-      ${INDICATOR_FROM}
-      ${where}`;
-
-    const indicator = await db.query(sql, [], {
-      decompose: INDICATOR_DECOMPOSE,
-    });
-
-    if (!indicator || indicator.length == 0) {
-      return null;
-    }
-
-    delete indicator.query;
-
-    const variations = await IndicatorVariationService.findByIndicatorId(id);
-    indicator.variations = _.map(variations, (v) =>
-      _.omit(v, "indicator_id", "query")
-    );
-
-    return indicator;
-  },
-};
+const db = require('express-http-context').get('db');
 
 const INDICATOR_SELECT = `SELECT i.id as indicator_id, i.translation_key as indicator_translation_key, i.code as indicator_code,
       pg.id as pec_goal_id,
@@ -99,27 +25,27 @@ const INDICATOR_FROM = `FROM indicators i
    LEFT JOIN ods4_scales os ON os.id = ios.ods4_scale_id`;
 
 const INDICATOR_DECOMPOSE = {
-  pk: "indicator_id",
+  pk: 'indicator_id',
   columns: {
-    indicator_id: "id",
-    indicator_translation_key: "translation_key",
-    indicator_code: "code",
+    indicator_id: 'id',
+    indicator_translation_key: 'translation_key',
+    indicator_code: 'code',
   },
   pec_goals: {
-    pk: "pec_goal_id",
-    columns: { pec_goal: "code" },
+    pk: 'pec_goal_id',
+    columns: { pec_goal: 'code' },
   },
   topics: {
-    pk: "topic_id",
-    columns: { topic: "translation_key" },
+    pk: 'topic_id',
+    columns: { topic: 'translation_key' },
   },
   educational_levels: {
-    pk: "educational_level_id",
-    columns: { educational_level: "translation_key" },
+    pk: 'educational_level_id',
+    columns: { educational_level: 'translation_key' },
   },
   ods4_scales: {
-    pk: "ods4_scale_id",
-    columns: { ods4_scale: "code" },
+    pk: 'ods4_scale_id',
+    columns: { ods4_scale: 'code' },
   },
 };
 
@@ -133,7 +59,7 @@ const INDICATOR_DECOMPOSE = {
  * @returns String containg the whole search indicator where clause, based on the provided parameters
  */
 const getSearchWhere = (pecGoal, topic, educationalLevel) => {
-  let whereClauses = [];
+  const whereClauses = [];
 
   if (pecGoal) {
     whereClauses.push(`ipg.pec_goal_id = ${pecGoal}`);
@@ -147,5 +73,75 @@ const getSearchWhere = (pecGoal, topic, educationalLevel) => {
     whereClauses.push(`iel.educational_level_id = ${educationalLevel}`);
   }
 
-  return whereClauses.length > 0 ? `WHERE ${whereClauses.join(" AND ")}` : "";
+  return whereClauses.length > 0 ? `WHERE ${whereClauses.join(' AND ')}` : '';
+};
+
+export default {
+  /**
+   * Returns a list of matching indicatos, based on the specified criteria
+   *
+   * @param {number} [pecGoal] PEC Goal id
+   * @param {number} [topic] Topic id
+   * @param {number} [educationaLevel] Educational Level id
+   */
+  search: async (pecGoal, topic, educationaLevel) => {
+    const where = getSearchWhere(pecGoal, topic, educationaLevel);
+    const orderBy = 'ORDER BY i.code, pg.goal_order, os.scale_order, el.code';
+
+    const sql = `${INDICATOR_SELECT}
+      ${INDICATOR_FROM}
+      ${where}
+      ${orderBy}`;
+
+    return db.query(sql, [], {
+      decompose: INDICATOR_DECOMPOSE,
+    });
+  },
+  findById: async (id) => db.indicators.findOne({ id }),
+  /**
+   * Finds related indicators
+   *
+   * @param {number} id Indicator id
+   */
+  findRelated: async (id) => {
+    const sql = `SELECT i.id, i.code, i.translation_key FROM (
+                 SELECT related_id as id 
+                 FROM related_indicators 
+                 WHERE indicator_id = ${id} 
+                 UNION 
+                 SELECT indicator_id as id 
+                 FROM related_indicators 
+                 WHERE related_id = ${id}
+               ) r 
+               LEFT JOIN indicators i ON r.id = i.id;`;
+
+    return db.query(sql);
+  },
+  /**
+   * Return all indicator information and data needed for the indicator page
+   *
+   * @param {number} id Indicator id
+   * @param {string} country Country code
+   */
+  findFullDetailsById: async (id) => {
+    const where = `WHERE i.id = ${id}`;
+    const sql = `${INDICATOR_SELECT}
+      ${INDICATOR_FROM}
+      ${where}`;
+
+    const indicator = await db.query(sql, [], {
+      decompose: INDICATOR_DECOMPOSE,
+    });
+
+    if (!indicator || indicator.length === 0) {
+      return null;
+    }
+
+    delete indicator.query;
+
+    const variations = await IndicatorVariationService.findByIndicatorId(id);
+    indicator.variations = _.map(variations, (v) => _.omit(v, 'indicator_id', 'query'));
+
+    return indicator;
+  },
 };

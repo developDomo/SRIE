@@ -1,5 +1,5 @@
-import nextConnect from "next-connect";
-import IndicatorDataService from "../../../../services/IndicatorData.service";
+import nextConnect from 'next-connect';
+import IndicatorDataService from '../../../../services/IndicatorData.service';
 
 const handler = nextConnect();
 
@@ -8,27 +8,27 @@ handler.get(async (req, res) => {
   const response = {};
 
   const free_edu_promise = IndicatorDataService.getFreeEducationYearsByCountry(
-    country
+    country,
   );
 
   const comp_edu_promise = IndicatorDataService.getCompulsoryEducationYearsByCountry(
-    country
+    country,
   );
 
   const literacy_rate_promise = await IndicatorDataService.getLiteracyRateByCountry(
-    country
+    country,
   );
 
   const net_enrollment_rate_promise = await IndicatorDataService.getNetEnrollmentRateByCountry(
-    country
+    country,
   );
 
   const completion_rate_promise = await IndicatorDataService.getCompletionRateByCountry(
-    country
+    country,
   );
 
   const out_of_school_rate_promise = await IndicatorDataService.getOutOfSchoolRateByCountry(
-    country
+    country,
   );
 
   const [

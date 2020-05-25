@@ -1,21 +1,21 @@
-import React from 'react'
-import { Row, Col, Container } from 'react-bootstrap'
-import styled from 'styled-components'
-import { verde_roll, gris1 } from '../../styles/colors'
-import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg'
-import ArrowIcon from '../../public/img/home/arrow_indicadores.svg'
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import styled from 'styled-components';
+import { greenRoll, gray1 } from '../../styles/colors';
+import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg';
+import ArrowIcon from '../../public/img/home/arrow_indicadores.svg';
 
 const ContainerStyled = styled.div`
   display: flex;
   justify-content: center;
-  background-color: ${verde_roll};
+  background-color: ${greenRoll};
   color: white;
   height: 200px;
   padding: 25px 0;
   & h3 {
     font-size: 1.4em;
   }
-`
+`;
 const TextContainer = styled.div`
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@ const TextContainer = styled.div`
       display: block;
     }
   }
-`
+`;
 
 const IconContainer = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const IconContainer = styled.div`
   & img {
     width: 150px;
   }
-`
+`;
 const Arrow = styled.div`
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@ const Arrow = styled.div`
     display: block;
     -webkit-mask-image: url(${ArrowIcon});
     mask-image: url(${ArrowIcon});
-    background-color: ${gris1};
+    background-color: ${gray1};
     background-size: 20px;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -60,8 +60,8 @@ const Arrow = styled.div`
     height: 15px;
     margin-left: 10px;
   }
-`
-export default class Banner extends React.Component {
+`;
+export default class extends React.Component {
   render() {
     return (
       <Container>
@@ -76,11 +76,11 @@ export default class Banner extends React.Component {
           </TextContainer>
 
           <IconContainer>
-            <img src={BannerIcon} alt='icon' />
+            <img src={BannerIcon} alt="icon" />
           </IconContainer>
           <Arrow />
         </ContainerStyled>
       </Container>
-    )
+    );
   }
 }

@@ -1,74 +1,74 @@
-import Link from 'next/link'
-import { nav } from './../../pages/api/navbar'
-import { Navbar, Nav, NavDropdown,Col,Row } from 'react-bootstrap'
-import LinkChild from '../layout/LinkChild'
-import LanguageSelector from "./LanguageSelector";
+
+import {
+  Navbar, Nav, NavDropdown, Col, Row,
+} from 'react-bootstrap';
+import { nav } from '../../pages/api/navbar';
+import LinkChild from './LinkChild';
+import LanguageSelector from './LanguageSelector';
 
 export default class NavBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       condition: false,
       iconActive: 'fas fa-times',
       icon: 'fas fa-bars',
-    }
+    };
   }
 
   updateCount() {
-    this.setState((prevState, props) => {
-      return { condition: !this.state.condition }
-    })
+    const { condition } = !this.state;
+    this.setState((prevState, props) => ({ condition }));
   }
 
   render() {
-    const { path } = this.props
-
+    const { path } = this.props;
+    const { iconActive, icon, condition } = this.state;
     return (
       <>
         <Row>
-        <Col>
-        <Navbar expand='md'>
-          <Navbar.Toggle
-            aria-hidden='true'
-            aria-controls='basic-navbar-nav'
-            className={
-              this.state.condition ? this.state.iconActive : this.state.icon
+          <Col>
+            <Navbar expand="md">
+              <Navbar.Toggle
+                aria-hidden="true"
+                aria-controls="basic-navbar-nav"
+                className={
+              condition ? iconActive : icon
             }
-            onClick={() => this.updateCount()}
-          />
+                onClick={() => this.updateCount()}
+              />
 
-          <Navbar.Collapse
-            id='basic-navbar-nav'
-            className={path == '/' ? 'CName' : ''}
-          >
-            <Nav className='mr-auto'>
-              {nav.map((item, indexDrop) => {
-                return (
-                  <NavDropdown
-                    title={item.label}
-                    id='basic-nav-dropdown'
-                    key={`nav-drop-${indexDrop}`}
-                  >
-                    {item.items.map((item2, index) => (
-                      <LinkChild
-                        id={item2.id}
-                        href={item2.href}
-                        label={item2.label}
-                        key={`linkChild-${index}`}
-                      />
-                    ))}
-                  </NavDropdown>
-                )
-              })}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        </Col>
-        <Col>
-          <LanguageSelector/>
-        </Col>
+              <Navbar.Collapse
+                id="basic-navbar-nav"
+                className={path === '/' ? 'CName' : ''}
+              >
+                <Nav className="mr-auto">
+                  {nav.map((item, indexDrop) => (
+                    <NavDropdown
+                      title={item.label}
+                      id="basic-nav-dropdown"
+                      key={`nav-drop-${indexDrop}`}
+                    >
+                      {item.items.map((item2, index) => (
+                        <LinkChild
+                          id={item2.id}
+                          href={item2.href}
+                          label={item2.label}
+                          key={`linkChild-${index}`}
+                        />
+                      ))}
+                    </NavDropdown>
+                  ))}
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+          </Col>
+          <Col>
+            <LanguageSelector />
+          </Col>
         </Row>
-        <style type='text/css'>{`
+        <style type="text/css">
+          {`
             
             .nav-link{
                 font-family: 'Raleway', sans-serif;
@@ -126,8 +126,9 @@ export default class NavBar extends React.Component {
           }
           
 
-        `}</style>
+        `}
+        </style>
       </>
-    )
+    );
   }
 }

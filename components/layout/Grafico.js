@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 import {
   ComposedChart,
   Line,
-  Area,
   Bar,
   XAxis,
   YAxis,
@@ -10,16 +9,14 @@ import {
   Tooltip,
   Legend,
   BarChart,
-  Cell,
-} from 'recharts'
+} from 'recharts';
 import {
-  verde,
-  azul3,
+  green,
+  blue3,
   txt,
-  naranja,
-  amarillo,
+  yellow,
   bordes,
-} from '../../theme/colors'
+} from '../../theme/colors';
 
 const data = [
   {
@@ -42,7 +39,7 @@ const data = [
     name: '2019',
     uv: 25400,
   },
-]
+];
 
 const dataBarras = [
   {
@@ -50,19 +47,21 @@ const dataBarras = [
     Mujeres: 4000,
     Hombres: 3000,
   },
-]
-export const GraficoBarrasComponent = ({ children, onClick, icon, color }) => (
+];
+export const GraficoBarrasComponent = ({
+  children, onClick, icon, color,
+}) => (
   <BarChart width={500} height={300} data={dataBarras}>
-    <CartesianGrid strokeDasharray='3 3' />
+    <CartesianGrid strokeDasharray="3 3" />
     <XAxis />
     <YAxis />
     <Tooltip />
     <Legend />
-    <Bar dataKey='Hombres' fill={verde} minPointSize={10} />
-    <Bar dataKey='Mujeres' fill={azul3} minPointSize={10} />
+    <Bar dataKey="Hombres" fill={green} minPointSize={10} />
+    <Bar dataKey="Mujeres" fill={blue3} minPointSize={10} />
   </BarChart>
-)
-const dotStyle = { fill: amarillo, stroke: amarillo, r: 6 }
+);
+const dotStyle = { fill: yellow, stroke: yellow, r: 6 };
 export const GraficoCompuestoComponent = ({
   children,
   onClick,
@@ -81,19 +80,19 @@ export const GraficoCompuestoComponent = ({
     }}
   >
     <CartesianGrid stroke={txt} vertical={false} />
-    <XAxis dataKey='name' />
+    <XAxis dataKey="name" />
     <YAxis />
     {/* <Tooltip /> */}
 
-    <Bar dataKey='uv' barSize={100} fill={verde} />
+    <Bar dataKey="uv" barSize={100} fill={green} />
     <Line
-      type='linear'
-      dataKey='uv'
+      type="linear"
+      dataKey="uv"
       dot={dotStyle}
       activeDot={{ r: 8 }}
       stroke={bordes}
     />
   </ComposedChart>
-)
+);
 
-export default GraficoBarrasComponent
+export default GraficoBarrasComponent;

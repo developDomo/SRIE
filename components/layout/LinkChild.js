@@ -1,32 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link'
+import Link from 'next/link';
 
-const LinkChild = (props) => {
-    if(props.id !== null){
-        return (
-            <>
-            <Link 
-            href="/country/[countryId]"
-            as={`${props.href}`}
-            >
-            <a className="nav-item-drop">
-                {props.label}
-            </a>
-            </Link>
-            </>
-        )
-    }else{
-        return (
-            <>
-            <Link href={props.href} >
-            <a className="nav-item-drop">
-                {props.label}
-            </a>
-            </Link>
-            </>
-        )
-    }
+const LinkChild = ({ label, id, href }) => {
+  if (id !== null) {
+    return (
+      <>
+        <Link
+          href="/country/[countryId]"
+          as={`${href}`}
+        >
+          <a className="nav-item-drop" href="#0">
+            {label}
+          </a>
+        </Link>
+      </>
+    );
+  }
+  return (
+    <>
+      <Link href={href}>
+        <a className="nav-item-drop" href="#0">
+          {label}
+        </a>
+      </Link>
+    </>
+  );
 };
 
 

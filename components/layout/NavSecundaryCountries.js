@@ -1,56 +1,45 @@
-import Link from 'next/link'
-import { Row, Col, Container } from 'react-bootstrap'
-import styled from 'styled-components'
-import { countries } from './../../pages/api/countries-data'
-import CountryItem from '../homepage/CountryItem'
+import Link from 'next/link';
+import { Row, Col, Container } from 'react-bootstrap';
+import countries from '../../pages/api/countries-data';
 
-// console.log(countries);
-
-export default class NavSecundaryCountries extends React.Component {
+export default class extends React.Component {
   render() {
-    const { path, idCountry } = this.props
-
-    const mystyle = {
-      color: 'white',
-      backgroundColor: 'DodgerBlue',
-      padding: '10px',
-      fontFamily: 'Arial',
-    }
+    const { path, idCountry } = this.props;
 
     return (
       <>
-        <div className='box_linkC'>
+        <div className="box_linkC">
           <Container>
             <Row>
               <Col sm={5}>
-                <p className='p-select text-right'>
+                <p className="p-select text-right">
                   Seleccione otro país que desee consultar:
                 </p>
               </Col>
-              <Col sm={7} className='d-flex'>
-                {countries.map((country) => {
-                  return (
-                    <Link
-                      href='/country/[countryId]'
-                      as={`/country/${country.countryId}`}
-                      key={country.countryId}
+              <Col sm={7} className="d-flex">
+                {countries.map((country) => (
+                  <Link
+                    href="/country/[code]"
+                    as={`/country/${country.code}`}
+                    key={country.code}
+                  >
+                    <a
+                      href="#0"
+                      title={country.title}
+                      id={`link_${country.code}`}
+                      className={`linkCountry active_${idCountry}`}
                     >
-                      <a
-                        title={country.title}
-                        id={`link_${country.countryId}`}
-                        className={`linkCountry active_${idCountry}`}
-                      >
-                        {/* backgroundimage: url(); */}
-                        {/* <img src={country.img} /> */}
-                        <span className='cy-link'>{country.title}</span>
-                      </a>
-                    </Link>
-                  )
-                })}
+                      {/* backgroundimage: url(); */}
+                      {/* <img src={country.img} /> */}
+                      <span className="cy-link">{country.title}</span>
+                    </a>
+                  </Link>
+                ))}
               </Col>
             </Row>
           </Container>
-          <style type='text/css'>{`
+          <style type="text/css">
+            {`
         .p-select {
             color: #1D2D49;
             line-height: 46px;
@@ -88,7 +77,7 @@ export default class NavSecundaryCountries extends React.Component {
                 a#link_cr {
                     background-image: url(/img/home/bandera-costa_rica-BN.png);
                 }
-                a#link_es {
+                a#link_su {
                     background-image: url(/img/home/bandera-el_salvador-BN.png);
                 }
                 a#link_gt {
@@ -112,7 +101,7 @@ export default class NavSecundaryCountries extends React.Component {
                 a#link_cr:hover, a#link_cr.active_cr {
                     background-image: url(/img/home/bandera-costa_rica.png);
                 }
-                a#link_es:hover, a#link_es.active_es {
+                a#link_es:hover, a#link_su.active_su {
                     background-image: url(/img/home/bandera-el_salvador.png);
                 }
                 a#link_gt:hover, a#link_gt.active_gt {
@@ -130,11 +119,10 @@ export default class NavSecundaryCountries extends React.Component {
                 a#link_dr:hover, a#link_dr.active_dr {
                     background-image: url(/img/home/bandera-rep_dominicana.png);
                 }
-                
-            `}</style>
+            `}
+          </style>
         </div>
       </>
-    )
+    );
   }
 }
-// xs={12} sm={2}

@@ -1,4 +1,4 @@
-export const timeLineEducationProps = [
+const timeLineEducationProps = [
   {
     title: 'Materno infantil',
     color: '#fb8080',
@@ -19,4 +19,5 @@ export const timeLineEducationProps = [
     color: '#0071bc',
     width: '15.1%',
   },
-]
+];
+export default timeLineEducationProps;

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-const NavItem = props => {
+const NavItem = ({ path, disabled, name }) => {
   const pageURI = window.location.pathname + window.location.search;
-  const liClassName = props.path === pageURI ? "nav-item active" : "nav-item";
-  const aClassName = props.disabled ? "nav-link disabled" : "nav-link";
+  const liClassName = path === pageURI ? 'nav-item active' : 'nav-item';
+  const aClassName = disabled ? 'nav-link disabled' : 'nav-link';
   return (
     <li className={liClassName}>
-      <a href={props.path} className={aClassName}>
-        {props.name}
-        {props.path === pageURI ? (
+      <a href={path} className={aClassName}>
+        {name}
+        {path === pageURI ? (
           <span className="sr-only">(current)</span>
         ) : (
-          ""
+          ''
         )}
       </a>
     </li>
@@ -22,18 +22,21 @@ class NavDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggleOn: false
+      isToggleOn: false,
     };
   }
+
   showDropdown(e) {
     e.preventDefault();
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
+    this.setState((prevState) => ({
+      isToggleOn: !prevState.isToggleOn,
     }));
   }
+
   render() {
-    const classDropdownMenu =
-      "dropdown-menu" + (this.state.isToggleOn ? " show" : "");
+    const { isToggleOn } = this.state;
+    const { name, children } = this.props;
+    const classDropdownMenu = `dropdown-menu${isToggleOn ? ' show' : ''}`;
     return (
       <li className="nav-item dropdown">
         <a
@@ -44,14 +47,14 @@ class NavDropdown extends React.Component {
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
-          onClick={e => {
+          onClick={(e) => {
             this.showDropdown(e);
           }}
         >
-          {this.props.name}
+          {name}
         </a>
         <div className={classDropdownMenu} aria-labelledby="navbarDropdown">
-          {this.props.children}
+          {children}
         </div>
       </li>
     );
@@ -71,36 +74,36 @@ class Navigation extends React.Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <NavDropdown name="Sobre el SRIE">
               <a className="dropdown-item" href="/">
-              ¿Que es el SRIE?
+                ¿Que es el SRIE?
               </a>
               <a className="dropdown-item" href="/">
-              Socios implementadores
+                Socios implementadores
               </a>
               <a className="dropdown-item" href="/">
-              ¿Cómo usar el sistema?
+                ¿Cómo usar el sistema?
               </a>
               <a className="dropdown-item" href="/">
-              Glosario
+                Glosario
               </a>
               <a className="dropdown-item" href="/">
-              Preguntas frecuentes
+                Preguntas frecuentes
               </a>
               <a className="dropdown-item" href="/">
-              Equipo responsable
+                Equipo responsable
               </a>
             </NavDropdown>
             <NavDropdown name="Indicadores educativos">
               <a className="dropdown-item" href="/">
                 Nivel
               </a>
-              
+
             </NavDropdown>
           </ul>
         </div>

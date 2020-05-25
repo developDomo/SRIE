@@ -5,14 +5,15 @@ export const blueRoll = '#00558D';
 export const blue = '#0071BC';
 export const blue1 = '#044A95';
 export const blue2 = '#006A9B';
-export const bordes = '#5E7C8B';
-export const bckBanderas = '#E6E6E6';
+export const borders = '#5E7C8B';
+export const bckFlags = '#E6E6E6';
 export const gray1 = '#EAEEF2';
 export const greenRoll = '#008471';
 export const green = '#009B8A';
 export const blue3 = '#0865BA';
 export const txt = '#1D2D49';
 export const green1 = '#34A53E';
+export const bordes = '#5E7C8B';
 
 // Paleta Secundaria
 export const blue4 = '#22BAD3';

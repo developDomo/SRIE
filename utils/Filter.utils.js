@@ -10,7 +10,7 @@ export default {
 
         if (Array.isArray(filterValue) && !filterValue.includes(dataValue)) {
           return false;
-        } else if (!Array.isArray(filterValue) && filterValue != dataValue) {
+        } if (!Array.isArray(filterValue) && filterValue !== dataValue) {
           return false;
         }
       }

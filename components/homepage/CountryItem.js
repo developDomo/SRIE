@@ -1,22 +1,22 @@
-import theme from '../../styles/theme'
-import Link from 'next/link'
-import { Col } from 'react-bootstrap'
+import Link from 'next/link';
+import { Col } from 'react-bootstrap';
 
-export default function CountryItem(props) {
+export default function CountryItem({ country }) {
   return (
     <>
       <Col xs={6} sm={3}>
         <Link
-          href='/country/[countryId]'
-          as={`country/${props.country.countryId}`}
+          href="/country/[countryId]"
+          as={`country/${country.countryId}`}
         >
-          <a title={props.country.title}>
-            <img src={props.country.img} alt='country img' />
-            <span className='cy-link'>{props.country.title}</span>
+          <a title={country.title} href="#0">
+            <img src={country.img} alt={country.title} />
+            <span className="cy-link">{country.title}</span>
           </a>
         </Link>
       </Col>
-      <style jsx>{`
+      <style jsx>
+        {`
         a {
           display: block;
           text-align: center;
@@ -51,7 +51,8 @@ export default function CountryItem(props) {
           background-position: 90%;
           background-size: 15px;
         }
-      `}</style>
+      `}
+      </style>
     </>
-  )
+  );
 }
