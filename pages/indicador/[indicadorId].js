@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Container, Row, Breadcrumb } from 'react-bootstrap';
 import styled from 'styled-components';
+import IndicadorComponent from '../../components/layout/IndicadorComponent';
 import Header from '../../components/layout/Header';
 
 import {
@@ -12,6 +14,7 @@ import NavSecundaryCountries from '../../components/layout/NavSecundaryCountries
 import Title from '../../components/layout/Title';
 import PecIcon from '../../public/img/home/icon_pec_indicadores.svg';
 import { txt } from '../../styles/colors';
+
 
 const IconImg = styled.img`
   width: 18px;
@@ -33,6 +36,7 @@ export default function Indicador() {
   // render() {
   const router = useRouter();
   const id = router.query.indicadorId;
+  const array = [1, 2, 3, 4, 5];
 
   return (
     <>
@@ -168,13 +172,13 @@ export default function Indicador() {
               </div>
             </Row>
           </div>
-          {/* {array.map((item, index) => (
+          {array.map((item, index) => (
             <Link href="/equipo-responsable" as="equipo-responsable">
               <div className="col-lg-12 mb-3 p-0" key={`indicador-${index}`}>
                 <IndicadorComponent>asd</IndicadorComponent>
               </div>
             </Link>
-          ))} */}
+          ))}
         </Row>
       </Container>
       <style type="text/css">
