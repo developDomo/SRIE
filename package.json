@@ -10,7 +10,8 @@
     "dev": "node server.js",
     "build": "db-migrate up && next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "yarn run lint"
   },
   "dependencies": {
     "cross-env": "^7.0.2",
