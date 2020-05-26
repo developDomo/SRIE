@@ -48,7 +48,29 @@ import Title from '../../components/layout/Title';
 import {
   txt, blue1, blue2, green,
 } from '../../styles/colors';
-import timeLineEducationProps from './data';
+
+const timeLineEducationProps = [
+  {
+    title: 'Materno infantil',
+    color: '#fb8080',
+    width: '21.5%',
+  },
+  {
+    title: 'Preescolar',
+    color: '#bc6060',
+    width: '10.6%',
+  },
+  {
+    title: ' Educación general básica',
+    color: '#7ab239',
+    width: '50%',
+  },
+  {
+    title: 'Educación diversificada',
+    color: '#0071bc',
+    width: '15.1%',
+  },
+];
 
 const Divider = styled.span`
   display: block;
