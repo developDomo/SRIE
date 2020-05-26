@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import { Container } from 'react-bootstrap';
 import Header from '../components/layout/Header';
 // import IndEducativo from "../components/layout/IndEducativo";
@@ -18,7 +18,6 @@ export default class extends React.Component {
           <h2>Glosario</h2>
           <p>Pronto disponible.</p>
         </Container>
-        <style jsx />
       </>
     );
   }
