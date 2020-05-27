@@ -1,5 +1,5 @@
-import nextConnect from "next-connect";
-import TopicService from "../../../services/Topic.service";
+import nextConnect from 'next-connect';
+import TopicService from '../../../services/Topic.service';
 
 const handler = nextConnect();
 

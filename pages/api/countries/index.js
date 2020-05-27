@@ -1,5 +1,5 @@
-import nextConnect from "next-connect";
-import CountryService from "../../../services/Country.service";
+import nextConnect from 'next-connect';
+import CountryService from '../../../services/Country.service';
 
 const handler = nextConnect();
 

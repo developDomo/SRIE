@@ -1,13 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-import { withTranslation } from "../i18n";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Error = ({ statusCode, t }) => (
   <p>
     {statusCode
-      ? t("error.with-status", { statusCode })
-      : t("error.without-status")}
+      ? t('error.with-status', { statusCode })
+      : t('error.without-status')}
   </p>
 );
 
@@ -19,18 +17,16 @@ Error.getInitialProps = async ({ res, err }) => {
     ({ statusCode } = err);
   }
   return {
-    namespacesRequired: ["common"],
-    statusCode
+    namespacesRequired: ['common'],
+    statusCode,
   };
 };
 
 Error.defaultProps = {
-  statusCode: null
+  statusCode: null,
 };
 
 Error.propTypes = {
   statusCode: PropTypes.number,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
 };
-
-export default withTranslation("common")(Error);

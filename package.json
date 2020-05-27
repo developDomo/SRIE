@@ -10,13 +10,18 @@
     "dev": "node server.js",
     "build": "db-migrate up && next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "cross-env": "^7.0.2",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
     "body-parser": "^1.19.0",
-    "db-migrate": "^0.11.6",
-    "db-migrate-pg": "^1.0.0",
+    "bootstrap": "^4.4.1",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-http-context": "^1.2.3",
@@ -27,12 +32,23 @@
     "next": "^9.3.4",
     "next-connect": "^0.6.0",
     "next-i18next": "^4.2.1",
+    "next-images": "^1.4.0",
+    "pg": "^7.18.2",
+    "prop-types": "^15.7.2",
     "react": "16.13.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "16.13.0",
+    "recharts": "^1.8.5",
+    "styled-components": "^5.0.1",
+    "styled-jsx": "^3.3.0",
     "swr": "^0.1.18"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "db-migrate": "^0.11.6",
+    "db-migrate-pg": "^1.0.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
@@ -40,7 +56,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.2"
+    "lint-staged": "^10.2.2",
+    "url-loader": "^4.1.0"
   },
   "husky": {
     "hooks": {

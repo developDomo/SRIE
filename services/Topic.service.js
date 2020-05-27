@@ -1,7 +1,5 @@
-const db = require("express-http-context").get("db");
+const db = require('express-http-context').get('db');
 
 export default {
-  getAll: async () => {
-    return await db.topics.find({});
-  },
+  getAll: async () => db.topics.find({}),
 };
