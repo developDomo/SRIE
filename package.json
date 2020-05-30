@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "db-migrate up && node server.js",
     "build": "db-migrate up && next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
     "lint": "./node_modules/.bin/eslint .",
