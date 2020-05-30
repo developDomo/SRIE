@@ -6,7 +6,7 @@ import Header from '../components/layout/Header';
 import {
   ButtonNav,
 } from '../components/layout/Button';
-import CrFlag from '../public/img/home/bandera-costa_rica.png';
+import CrFlag from '../public/img/home/cr-flag.png';
 import FlagNameComponent from '../components/layout/FlagNameComponent';
 import NavSecundaryCountries from '../components/layout/NavSecundaryCountries';
 import Title from '../components/layout/Title';
