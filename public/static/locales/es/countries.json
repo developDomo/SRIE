@@ -1,0 +1,12 @@
+{
+    "countries": {
+        "bz": "Belice",
+        "cr": "Costa Rica",
+        "sv": "El Salvador",
+        "gt": "Guatemala",
+        "hn": "Honduras",
+        "ni": "Nicaragua",
+        "pa": "Panamá",
+        "do": "República Dominicana"
+    }
+}

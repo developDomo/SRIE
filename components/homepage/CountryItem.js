@@ -1,22 +1,20 @@
 import Link from 'next/link';
 import { Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { withTranslation } from '../../i18n';
 
-export default function CountryItem({ country }) {
-  return (
-    <>
-      <Col xs={6} sm={3}>
-        <Link
-          href="/country/[countryId]"
-          as={`country/${country.countryId}`}
-        >
-          <a title={country.title} href="#0">
-            <img src={country.img} alt={country.title} />
-            <span className="cy-link">{country.title}</span>
-          </a>
-        </Link>
-      </Col>
-      <style jsx>
-        {`
+const CountryItem = ({ t, country }) => (
+  <>
+    <Col xs={6} sm={3}>
+      <Link href="/[id]" as={`/${country.short_name}`}>
+        <a title={country.title}>
+          <img src={`/img/home/${country.code}-flag.png`} alt={country.short_name} />
+          <span className="country-link">{t(`countries.${country.code}`)}</span>
+        </a>
+      </Link>
+    </Col>
+    <style jsx>
+      {`
         a {
           display: block;
           text-align: center;
@@ -30,7 +28,7 @@ export default function CountryItem({ country }) {
           border-radius: 50%;
           border: 2px solid;
         }
-        span.cy-link {
+        span.country-link {
           background: #1d2d49;
           background-image: url(/img/home/arrow-more-white.svg);
           background-repeat: no-repeat;
@@ -43,7 +41,7 @@ export default function CountryItem({ country }) {
           font-weight: bold;
           white-space: nowrap;
         }
-        a:hover span.cy-link {
+        a:hover span.country-link {
           background: #0071bc;
           background-image: url(/img/home/arrow-more-rollover.svg);
           cursor: pointer;
@@ -52,7 +50,12 @@ export default function CountryItem({ country }) {
           background-size: 15px;
         }
       `}
-      </style>
-    </>
-  );
-}
+    </style>
+  </>
+);
+
+CountryItem.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation('countries')(CountryItem);

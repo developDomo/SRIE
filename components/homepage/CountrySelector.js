@@ -10,13 +10,6 @@ export default function CountrySelector({ countries }) {
           <CountryItem country={country} />
         ))}
       </Row>
-      <style jsx>
-        {`
-    .country-selector {
-    {/* background-color: #044A95; */}
-    }
-    `}
-      </style>
     </div>
   );
 }
