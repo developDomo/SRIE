@@ -1,5 +1,6 @@
 {
-  "language": { "english": "Inglés", "spanish": "Español" },
+  "language": { "english": "EN", "spanish": "ES" },
+  "lanLabel": "Idioma:",
   "error": {
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
