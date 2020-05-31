@@ -54,6 +54,10 @@ const CountryItem = ({ t, country }) => (
   </>
 );
 
+CountryItem.getInitialProps = async () => ({
+  namespacesRequired: ['countries'],
+});
+
 CountryItem.propTypes = {
   t: PropTypes.func.isRequired,
 };
