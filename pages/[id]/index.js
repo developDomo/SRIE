@@ -18,6 +18,7 @@ import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
 import {
   green, blue2, blue1, txt,
 } from '../../styles/colors';
+import { withTranslation } from '../../i18n';
 
 import EducacionIcon from '../../public/img/home/icon_datos_educ.svg';
 import AlfabetizacionIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
@@ -61,11 +62,11 @@ const Divider = styled.span`
   margin-top: 20px;
 `;
 
-const Country = ({ country }) => (
+const Country = ({ t, countries, country }) => (
   <div>
     <Header />
     <Col className="d-none d-sm-block p-0">
-      <NavSecundaryCountries idCountry={country.code} />
+      <NavSecundaryCountries countries={countries} countryCode={country.code} />
     </Col>
     <Container className="p-0">
       <Breadcrumb className="bg-white-ol">
@@ -73,7 +74,7 @@ const Country = ({ country }) => (
           Inicio
         </Breadcrumb.Item>
         <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-          {country.name}
+          {t(`countries.${country.code}`)}
         </Breadcrumb.Item>
         <Breadcrumb.Item active>Dato Pais</Breadcrumb.Item>
       </Breadcrumb>
@@ -88,7 +89,7 @@ const Country = ({ country }) => (
               <img src={`/img/country/${country.code}-flag-title.svg`} alt="" />
             </Col>
             <Col className="titleC psm-0">
-              <h2>{country.name}</h2>
+              <h2>{t(`countries.${country.code}`)}</h2>
             </Col>
           </Row>
         </div>
@@ -295,12 +296,16 @@ const Country = ({ country }) => (
 );
 
 Country.getInitialProps = async ({ query }) => {
-  const res = await fetch(`${process.env.API_URL}/api/countries/${query.id}`);
-  const country = await res.json();
+  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
+  const countries = await countriesResponse.json();
+
+  const countryResponse = await fetch(`${process.env.API_URL}/api/countries/${query.id}`);
+  const country = await countryResponse.json();
 
   return {
+    countries,
     country,
   };
 };
 
-export default Country;
+export default withTranslation('countries')(Country);
