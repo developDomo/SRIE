@@ -114,6 +114,7 @@ export default class NavBar extends React.Component {
                  width: 0;
             }
             .navbar-light .navbar-toggler {
+                color: white;
                 border: none;
                 margin: 9px auto 0 auto;
             }
@@ -125,6 +126,18 @@ export default class NavBar extends React.Component {
             color: white;
           }
 
+          .navbar-light:hover .navbar-nav:hover .nav-link:hover {
+            color: white;
+          }
+
+          .navbar-light .navbar-nav .nav-link {
+            color: white;
+          }
+          .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav 
+          .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light 
+          .navbar-nav .show>.nav-link {
+            color: white
+          }
         `}
         </style>
       </>
