@@ -47,6 +47,7 @@ export default class NavBar extends React.Component {
                     <NavDropdown
                       title={item.label}
                       id="basic-nav-dropdown"
+                      alignRight
                       key={`nav-drop-${indexDrop}`}
                     >
                       {item.items.map((item2, index) => (
@@ -74,8 +75,7 @@ export default class NavBar extends React.Component {
                 font-family: 'Raleway', sans-serif;
                 text-transform: uppercase;
                 font-weight: bold;
-                color: #1D2D49 !important;
-                
+                color: white !important;
             }
             .CName .nav-link{
                 color: white !important;
