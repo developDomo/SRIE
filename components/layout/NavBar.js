@@ -70,16 +70,13 @@ export default class NavBar extends React.Component {
         </Row>
         <style type="text/css">
           {`
-            
             .nav-link{
                 font-family: 'Raleway', sans-serif;
                 text-transform: uppercase;
                 font-weight: bold;
-                color: white !important;
             }
             .CName .nav-link{
                 color: white !important;
-                
             }
             a.nav-item-drop {
               color: white !important;
@@ -116,7 +113,7 @@ export default class NavBar extends React.Component {
                  width: 0;
             }
             .navbar-light .navbar-toggler {
-                color: rgba(0,0,0,.5);
+                color: white;
                 border: none;
                 margin: 9px auto 0 auto;
             }
@@ -124,7 +121,9 @@ export default class NavBar extends React.Component {
               /*color: white;*/
               font-size: 1.5em;
           }
-          
+          .navbar-light .navbar-nav .nav-link {
+            color: white;
+          }
 
         `}
         </style>
