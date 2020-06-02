@@ -10,7 +10,7 @@ import { LineTime } from '../components/layout/TimeLineEducation';
 import EducacionIcon from '../public/img/home/icon_datos_educ.svg';
 import AlfabetizacionIcon from '../public/img/home/icon_datos_alfabetizacion.svg';
 import CentroseducIcon from '../public/img/home/icon_datos_centroseduc.svg';
-import DatoNinoIcon from '../public/img/home/icono_datos_niños.svg';
+import DatoNinoIcon from '../public/img/home/icono_datos_ninos.svg';
 import IndEducativo from '../components/layout/IndEducativo';
 
 export default {

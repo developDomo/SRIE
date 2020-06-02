@@ -23,7 +23,7 @@ import { withTranslation } from '../../i18n';
 import EducacionIcon from '../../public/img/home/icon_datos_educ.svg';
 import AlfabetizacionIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
 import CentroseducIcon from '../../public/img/home/icon_datos_centroseduc.svg';
-import DatoNinoIcon from '../../public/img/home/icono_datos_niños.svg';
+import DatoNinoIcon from '../../public/img/home/icono_datos_ninos.svg';
 import ParticipacionIcon from '../../public/img/home/icon_participacion_indicador.svg';
 import OfertaIcon from '../../public/img/home/icon_oferta_indicador.svg';
 import AprendizajeIcon from '../../public/img/home/icon_aprendizaje_indicador.svg';
@@ -76,12 +76,10 @@ const Country = ({ t, countries, country }) => (
         <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
           {t(`countries.${country.code}`)}
         </Breadcrumb.Item>
-        <Breadcrumb.Item active>Dato Pais</Breadcrumb.Item>
+        <Breadcrumb.Item active>Dato País</Breadcrumb.Item>
       </Breadcrumb>
     </Container>
     <Container className="mt-4">
-      <Boxes countryId={country.code} />
-      <hr />
       <Row className="d-flex justify-content-between">
         <div className="col-lg-4">
           <Row>
@@ -113,7 +111,7 @@ const Country = ({ t, countries, country }) => (
       <Row className="mt-4">
         <div className="col-lg-12 mb-3 text-center">
           <Title color="amarillo" type="title">
-            Datos pais
+            Datos país
           </Title>
         </div>
         <div className="col-lg-12 mb-4 p-0 text-center">
@@ -121,20 +119,8 @@ const Country = ({ t, countries, country }) => (
             Estructura del sistema educativo del país
           </Title>
         </div>
-        <div className="col-lg-4 m-0 p-0">
-          <BoxPreescolar title="PREESCOLAR" />
-        </div>
-        <div className="col-lg-4 m-0 p-0">
-          <BoxPrimaria title="PRIMARIA" />
-        </div>
-        <div className="col-lg-4 m-0 p-0">
-          <BoxSecundaria title="SECUNDARIA" />
-        </div>
-        <div className="col-lg-12 m-0 p-0">
-          <LineTime timeLineEducationProps={timeLineEducationProps} />
-        </div>
-        <div className="col-lg-12 m-0 p-0">
-          <TitleLineTime timeLineEducationProps={timeLineEducationProps} />
+        <div className="col-lg-12 mb-4 p-0 text-center">
+          <Boxes countryId={country.code} />
         </div>
       </Row>
       <Row className="mt-4 mb-5">
