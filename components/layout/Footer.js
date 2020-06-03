@@ -1,23 +1,27 @@
 import {
   Container, Row, Col,
 } from 'react-bootstrap';
+import { withTranslation } from '../../i18n';
 
-const Footer = () => (
+const Footer = ({ t }) => (
   <>
     <Col className="footer">
       <Container>
         <Row>
           <Col xs={12} sm={7} className="d-none d-sm-block">
-            <p className="pslab">Con el apoyo de:</p>
+            <p className="p-text-fontslab">
+              {t('footer.support')}
+              :
+            </p>
             <Col className="imgfooter">
               <a href="#0" target="_blank">
-                <img src="/img/home/logo-UNESCO_UIS.png" alt="UNESCO" />
+                <img src="/img/home/logo-unesco-uis.png" alt="UNESCO" />
               </a>
               <a href="#0" target="_blank">
-                <img src="/img/home/UNICEF_logo_n.png" alt="UNICEF" />
+                <img src="/img/home/logo-unicef.png" alt="UNICEF" />
               </a>
               <a href="#0" target="_blank">
-                <img src="/img/home/logo-CEPAL.png" alt="CEPAL" />
+                <img src="/img/home/logo-cepal.png" alt="CEPAL" />
               </a>
             </Col>
           </Col>
@@ -27,12 +31,21 @@ const Footer = () => (
               <img src="/img/home/CECC-SICA.png" alt="CECC-SICA" />
             </a>
             <p className="small mb-2">
-              <strong>Oficinas centrales:</strong>
-              San José, Costa Rica, 25 m sur del Parque Francia en Barrio Escalante, casa 341.
+              <strong>
+                {t('footer.address-label')}
+              </strong>
+              {t('footer.address')}
             </p>
             <p className="small mb-2">
-              <strong>Teléfono:</strong>
+              <strong>
+                {t('footer.tel')}
+              </strong>
               {' (506) 2248-0542.'}
+            </p>
+            <p className="small mb-2">
+              <strong>
+                {t('footer.email')}
+              </strong>
             </p>
             <a href="https://www.facebook.com/CECCSG" target="_blank" rel="noreferrer" className="ico-fb">
               Facebook
@@ -46,7 +59,11 @@ const Footer = () => (
       </Container>
     </Col>
     <Col className="copyright p-0">
-      <p className="text-white text-center w-100 font-italic"><small> Derechos reservados</small></p>
+      <p className="text-white text-center w-100 font-italic">
+        <small>
+          {t('footer.copy')}
+        </small>
+      </p>
     </Col>
     <style type="text/css">
       {`
@@ -70,7 +87,7 @@ const Footer = () => (
       .copyright p{
         background-color: #006A9B;
       }
-      .pslab{
+      .p-text-fontslab{
         font-family: 'Roboto Slab', serif;
         margin-bottom: 15px;
       }
@@ -120,4 +137,4 @@ const Footer = () => (
   </>
 );
 
-export default Footer;
+export default withTranslation('common')(Footer);
