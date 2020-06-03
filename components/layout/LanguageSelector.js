@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import { i18n, withTranslation } from '../../i18n';
 
 const Button = styled.button`
+  &:hover {
+    background-color: orange;
+  }
   border-radius: 50%;
   color: white;
-  background-color: orange;
+  background-color: blue;
   border: none;
 `;
 
