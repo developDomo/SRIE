@@ -42,6 +42,9 @@ export default css.global`
   /* fin576 */
 
   @media (min-width: 768px) {
+    .imgfooter a {
+      margin-right: 3em;
+    }
     .carousel-control-prev {
         left: -25%;
       }

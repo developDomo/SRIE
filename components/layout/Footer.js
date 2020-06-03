@@ -7,33 +7,37 @@ const Footer = () => (
     <Col className="footer">
       <Container>
         <Row>
-          <Col xs={12} sm={6} className="d-none d-sm-block">
-            <p>Con el apoyo de:</p>
+          <Col xs={12} sm={7} className="d-none d-sm-block">
+            <p className="pslab">Con el apoyo de:</p>
             <Col className="imgfooter">
               <a href="#0" target="_blank">
                 <img src="/img/home/logo-UNESCO_UIS.png" alt="UNESCO" />
               </a>
               <a href="#0" target="_blank">
-                <img src="/img/home/logo-unicef.png" alt="UNICEF" />
+                <img src="/img/home/UNICEF_logo_n.png" alt="UNICEF" />
               </a>
               <a href="#0" target="_blank">
                 <img src="/img/home/logo-CEPAL.png" alt="CEPAL" />
               </a>
             </Col>
           </Col>
-          <Col xs={12} sm={2} />
+          <Col xs={12} sm={1} />
           <Col xs={12} sm={4}>
             <a href="#0" target="_blank" className="d-block pb-2">
               <img src="/img/home/CECC-SICA.png" alt="CECC-SICA" />
             </a>
-
             <p className="small mb-2">
-              Adipiscing elit, sed diam nonummy nibh euismod Tincidunt ut laoreet Dolore magna aliquam erat volutpat Sed diam nonummy nibh
+              <strong>Oficinas centrales:</strong>
+              San José, Costa Rica, 25 m sur del Parque Francia en Barrio Escalante, casa 341.
             </p>
-            <a href="#0" target="_blank" className="ico-fb">
+            <p className="small mb-2">
+              <strong>Teléfono:</strong>
+              {' (506) 2248-0542.'}
+            </p>
+            <a href="https://www.facebook.com/CECCSG" target="_blank" rel="noreferrer" className="ico-fb">
               Facebook
             </a>
-            <a href="#0" target="_blank" className="ico-tw">
+            <a href="https://twitter.com/CECCSICA" target="_blank" rel="noreferrer" className="ico-tw">
               Twitter
             </a>
           </Col>
@@ -52,10 +56,23 @@ const Footer = () => (
       }
       .imgfooter{
         display: flex;
-        justify-content: space-between;
+        
+      }
+      .imgfooter a{
+        display: block;
+        
+      }
+      .imgfooter img{
+        width: 90%;
+        margin: auto;
+        display: block;
       }
       .copyright p{
         background-color: #006A9B;
+      }
+      .pslab{
+        font-family: 'Roboto Slab', serif;
+        margin-bottom: 15px;
       }
      
     `}
