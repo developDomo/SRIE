@@ -1,7 +1,7 @@
 import {
   Container, Row, Col,
 } from 'react-bootstrap';
-import { withTranslation } from '../../i18n';
+import { i18n, withTranslation } from '../../i18n';
 
 const Footer = ({ t }) => (
   <>
@@ -11,16 +11,15 @@ const Footer = ({ t }) => (
           <Col xs={12} sm={7} className="d-none d-sm-block">
             <p className="p-text-fontslab">
               {t('footer.support')}
-              :
             </p>
             <Col className="imgfooter">
-              <a href="#0" target="_blank">
+              <a href="http://uis.unesco.org/" target="_blank" rel="noreferrer">
                 <img src="/img/home/logo-unesco-uis.png" alt="UNESCO" />
               </a>
-              <a href="#0" target="_blank">
+              <a href="https://www.unicef.org/" target="_blank" rel="noreferrer">
                 <img src="/img/home/logo-unicef.png" alt="UNICEF" />
               </a>
-              <a href="#0" target="_blank">
+              <a href={`https://www.cepal.org/${i18n.language}`} target="_blank" rel="noreferrer">
                 <img src="/img/home/logo-cepal.png" alt="CEPAL" />
               </a>
             </Col>
@@ -137,4 +136,8 @@ const Footer = ({ t }) => (
   </>
 );
 
-export default withTranslation('common')(Footer);
+Footer.getInitialProps = async () => ({
+  namespacesRequired: ['footer'],
+});
+
+export default withTranslation('footer')(Footer);

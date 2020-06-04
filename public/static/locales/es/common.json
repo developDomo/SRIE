@@ -4,13 +4,5 @@
   "error": {
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
-  },
-  "footer": {
-    "tel": "Teléfono: ",
-    "email": "Correo: " ,
-    "address-label": "Oficinas centrales: ",
-    "address": "San José, Costa Rica, 25 m sur del Parque Francia en Barrio Escalante, casa 341.",
-    "copy": "Derechos reservados",
-    "support": "Con el apoyo de: "
   }
 }
