@@ -1,47 +1,44 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Container, Row, Breadcrumb } from 'react-bootstrap';
+
 import styled from 'styled-components';
 import IndicadorComponent from '../../components/layout/IndicadorComponent';
 import Header from '../../components/layout/Header';
 
-import {
-  ButtonNav,
-} from '../../components/layout/Button';
+import { ButtonNav } from '../../components/layout/Button';
 import CrFlag from '../../public/img/home/cr-flag.png';
 import FlagNameComponent from '../../components/layout/FlagNameComponent';
+
 import NavSecundaryCountries from '../../components/layout/NavSecundaryCountries';
 import Title from '../../components/layout/Title';
 import PecIcon from '../../public/img/home/icon_pec_indicadores.svg';
-import { txt } from '../../styles/colors';
 
+import { txt } from '../../styles/colors';
+import { withTranslation } from '../../i18n';
+import FilterResult from '../../components/indicadors/FilterResult';
 
 const IconImg = styled.img`
   width: 18px;
   height: 18px;
 `;
+
 const Divider = styled.span`
   display: block;
   width: 100%;
   border-bottom: 1px solid ${txt};
   margin-top: 20px;
 `;
-export default function Indicador() {
-  // static async getInitialProps({ pathname }) {
-  //   let pa = pathname
-  //   return { pa }
-  // }
 
-
-  // render() {
+const Indicadores = ({ t, countries, country }) => {
   const router = useRouter();
-  const id = router.query.indicadorId;
+  const { id } = router.query;
   const array = [1, 2, 3, 4, 5];
 
   return (
     <>
       <Header />
-      <NavSecundaryCountries />
+      <NavSecundaryCountries countries={countries} countryCode={country.code} />
       <Container className="p-0">
         <Breadcrumb className="bg-white-ol">
           <Breadcrumb.Item className="bg-white" href="#">
@@ -91,30 +88,27 @@ export default function Indicador() {
             <form>
               <Row>
                 <div className="form-group col-lg-4">
-                  <select className="form-control" id="exampleFormControlSelect1">
+                  <select
+                    className="form-control"
+                    id="form-indicadors-pec"
+                  >
                     <option selected>Meta PEC</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
-                  <select className="form-control" id="exampleFormControlSelect1">
+                  <select
+                    className="form-control"
+                    id="form-indicadors-topic"
+                  >
                     <option selected>Tema</option>
-                    <option>2 </option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
-                  <select className="form-control" id="exampleFormControlSelect1">
+                  <select
+                    className="form-control"
+                    id="form-indicadors-level"
+                  >
                     <option selected>Nivel educativo</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
               </Row>
@@ -126,17 +120,7 @@ export default function Indicador() {
         <Row className="mt-5 mb-5 bg-light pt-2 pb-0">
           <Container>
             <Row>
-              <div className="col-lg-12 mb-1">
-                Resultados de la búsqueda por:
-              </div>
-              <div className="col-lg-12 mb-3">
-                Meta Pec:
-                {' '}
-                <strong>Participación</strong>
-                {' '}
-                / Nivel:
-                <strong> Primaria</strong>
-              </div>
+              <FilterResult pec="2.2" level="Participación" topic="Primaria" />
             </Row>
           </Container>
         </Row>
@@ -196,5 +180,21 @@ export default function Indicador() {
       </style>
     </>
   );
-}
-// }
+};
+
+Indicadores.getInitialProps = async ({ query }) => {
+  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
+  const countries = await countriesResponse.json();
+
+  const countryResponse = await fetch(
+    `${process.env.API_URL}/api/countries/${query.id}`,
+  );
+  const country = await countryResponse.json();
+
+  return {
+    countries,
+    country,
+  };
+};
+
+export default withTranslation('countries')(Indicadores);

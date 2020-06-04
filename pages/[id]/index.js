@@ -63,6 +63,7 @@ const Divider = styled.span`
 `;
 
 const Country = ({ t, countries, country }) => (
+
   <div>
     <Header />
     <Col className="d-none d-sm-block p-0">
@@ -98,7 +99,7 @@ const Country = ({ t, countries, country }) => (
             </ButtonNav>
           </div>
           <div className="col-lg-3 pr-0">
-            <Link href="/indicador/[indicadorId]" as={`/indicador/${country.code}`}>
+            <Link href={`/${country.short_name}/indicadores`} as={`/${country.short_name}/indicadores`}>
               <ButtonNav azul>INDICADORES EDUCATIVOS</ButtonNav>
             </Link>
           </div>
