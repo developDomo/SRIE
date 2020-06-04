@@ -4,13 +4,5 @@
   "error": {
     "with-status": "A {{statusCode}} error occurred on server",
     "without-status": "An error occurred on the server"
-  },
-  "footer": {
-    "tel": "Phone: " ,
-    "email": "E-mail: " ,
-    "address-label": "Headquarters: ",
-    "address": "San José, Costa Rica, 25 m south of Parque Francia in Barrio Escalante, house 341.",
-    "copy": "All rights reserved",
-    "support": "With the support of: "
   }
 }

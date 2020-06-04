@@ -26,9 +26,9 @@ const Footer = ({ t }) => (
           </Col>
           <Col xs={12} sm={1} />
           <Col xs={12} sm={4}>
-            <p className="d-block pb-2">
+            <a href="#0" target="_blank" className="d-block pb-2">
               <img src="/img/home/CECC-SICA.png" alt="CECC-SICA" />
-            </p>
+            </a>
             <p className="small mb-2">
               <strong>
                 {t('footer.address-label')}
