@@ -17,7 +17,6 @@ export default class BannerOds extends React.Component {
                 <p>
                   Educación
                   <br />
-                  {' '}
                   de calidad
                 </p>
               </Row>
@@ -30,7 +29,6 @@ export default class BannerOds extends React.Component {
 
         <style type="text/css">
           {`
-            
             .BannerOds {
                 background-image: url(/img/home/bannerODS4.jpg);
                 background-size: cover;
@@ -39,7 +37,9 @@ export default class BannerOds extends React.Component {
                 padding: 15px;
             }
             h3 {
-                font-size: 1.4em;
+                font-size: 1.5em;
+                text-align: left;
+                font-family: 'Roboto', sans-serif;
             }
             .txt-nun{
                 font-size: 4em;
@@ -47,8 +47,9 @@ export default class BannerOds extends React.Component {
             p{
                 margin-bottom: 0;
             }
-            .txt-descrip p{
-                font-size: 1.8em;
+            .txt-descrip p {
+                font-size: 1.5em;
+                font-weight: bold;
                 line-height: 32px;
                 text-transform: uppercase;
             }
