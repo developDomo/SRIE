@@ -90,7 +90,7 @@ const Indicadores = ({ t, countries, country }) => {
                 <div className="form-group col-lg-4">
                   <select
                     className="form-control"
-                    id="exampleFormControlSelect1"
+                    id="form-indicadors-pec"
                   >
                     <option selected>Meta PEC</option>
                   </select>
@@ -98,7 +98,7 @@ const Indicadores = ({ t, countries, country }) => {
                 <div className="form-group col-lg-4">
                   <select
                     className="form-control"
-                    id="exampleFormControlSelect1"
+                    id="form-indicadors-topic"
                   >
                     <option selected>Tema</option>
                   </select>
@@ -106,7 +106,7 @@ const Indicadores = ({ t, countries, country }) => {
                 <div className="form-group col-lg-4">
                   <select
                     className="form-control"
-                    id="exampleFormControlSelect1"
+                    id="form-indicadors-level"
                   >
                     <option selected>Nivel educativo</option>
                   </select>
