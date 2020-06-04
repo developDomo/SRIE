@@ -4,12 +4,15 @@ import { i18n, withTranslation } from '../../i18n';
 
 const Button = styled.button`
   &:hover {
-    background-color: orange;
+    background-color: #E59E2C;
   }
+  height: 2em;
+  width: 2em;
   border-radius: 50%;
   color: white;
-  background-color: blue;
+  background-color: #0865BA;
   border: none;
+  font-size: 0.93em;
 `;
 
 const Span = styled.span`
