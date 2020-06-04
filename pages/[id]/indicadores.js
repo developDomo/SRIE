@@ -16,7 +16,7 @@ import PecIcon from '../../public/img/home/icon_pec_indicadores.svg';
 
 import { txt } from '../../styles/colors';
 import { withTranslation } from '../../i18n';
-import FilterResult from '../../components/layout/FilterResult';
+import FilterResult from '../../components/indicadors/FilterResult';
 
 const IconImg = styled.img`
   width: 18px;
