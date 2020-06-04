@@ -13,6 +13,8 @@ const Button = styled.button`
   background-color: #0865BA;
   border: none;
   font-size: 0.93em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 `;
 
 const Span = styled.span`
@@ -21,7 +23,7 @@ const Span = styled.span`
 `;
 
 const Container = styled.div`
-  margin: 1em;
+  margin: 0.8em;
 `;
 
 const LanguageSelector = ({ t }) => (

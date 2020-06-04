@@ -9,10 +9,10 @@ const Header = ({ path }) => (
   <div className="header">
     <Container>
       <Row className="justify-content-md-between">
-        <Col xs={{ order: 1 }} sm={3}>
+        <Col xs={{ order: 1, span: 3 }} sm={3}>
           <Logo path={path} />
         </Col>
-        <Col xs={3} sm={{ order: 1, span: 9 }} className="navbox">
+        <Col xs={3} sm={{ order: 1, span: 7 }} className="navbox">
           <NavBar path={path} />
         </Col>
       </Row>
