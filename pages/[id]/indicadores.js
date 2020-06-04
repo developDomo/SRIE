@@ -30,9 +30,9 @@ const Divider = styled.span`
   margin-top: 20px;
 `;
 
-const Indicador = ({ t, countries, country }) => {
+const Indicadores = ({ t, countries, country }) => {
   const router = useRouter();
-  const id = router.query.indicadorId;
+  const { id } = router.query;
   const array = [1, 2, 3, 4, 5];
 
   return (
@@ -93,10 +93,6 @@ const Indicador = ({ t, countries, country }) => {
                     id="exampleFormControlSelect1"
                   >
                     <option selected>Meta PEC</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
@@ -105,10 +101,6 @@ const Indicador = ({ t, countries, country }) => {
                     id="exampleFormControlSelect1"
                   >
                     <option selected>Tema</option>
-                    <option>2 </option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
@@ -117,10 +109,6 @@ const Indicador = ({ t, countries, country }) => {
                     id="exampleFormControlSelect1"
                   >
                     <option selected>Nivel educativo</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                   </select>
                 </div>
               </Row>
@@ -194,12 +182,12 @@ const Indicador = ({ t, countries, country }) => {
   );
 };
 
-Indicador.getInitialProps = async ({ query }) => {
+Indicadores.getInitialProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
   const countryResponse = await fetch(
-    `${process.env.API_URL}/api/countries/${query.indicadorId}`,
+    `${process.env.API_URL}/api/countries/${query.id}`,
   );
   const country = await countryResponse.json();
 
@@ -209,4 +197,4 @@ Indicador.getInitialProps = async ({ query }) => {
   };
 };
 
-export default withTranslation('countries')(Indicador);
+export default withTranslation('countries')(Indicadores);
