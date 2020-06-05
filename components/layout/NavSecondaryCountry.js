@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { withTranslation } from '../../i18n';
 
 const NavSecondaryCountry = ({ t, country, selected }) => (
-  <>
+  <div>
     <Link href="/[code]" as={`/${country.short_name}`} key={country.short_name}>
       <a
         title={t(`countries.${country.code}`)}
@@ -42,7 +42,7 @@ const NavSecondaryCountry = ({ t, country, selected }) => (
             `}
 
     </style>
-  </>
+  </div>
 );
 
 export default withTranslation('countries')(NavSecondaryCountry);

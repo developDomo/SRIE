@@ -1,79 +1,34 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Container, Row, Breadcrumb } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 import styled from 'styled-components';
 import IndicadorComponent from '../../components/layout/IndicadorComponent';
 import Header from '../../components/layout/Header';
 
-import { ButtonNav } from '../../components/layout/Button';
-import CrFlag from '../../public/img/home/cr-flag.png';
-import FlagNameComponent from '../../components/layout/FlagNameComponent';
-
-import NavSecundaryCountries from '../../components/layout/NavSecundaryCountries';
 import Title from '../../components/layout/Title';
 import PecIcon from '../../public/img/home/icon_pec_indicadores.svg';
 
-import { txt } from '../../styles/colors';
 import { withTranslation } from '../../i18n';
 import FilterResult from '../../components/indicadors/FilterResult';
+import CountryHeader from '../../components/countries/CountryHeader';
 
 const IconImg = styled.img`
   width: 18px;
   height: 18px;
 `;
 
-const Divider = styled.span`
-  display: block;
-  width: 100%;
-  border-bottom: 1px solid ${txt};
-  margin-top: 20px;
-`;
-
 const Indicadores = ({ t, countries, country }) => {
-  const router = useRouter();
-  const { id } = router.query;
   const array = [1, 2, 3, 4, 5];
+  const navigation = [
+    { key: 'indicators' },
+  ];
 
   return (
     <>
       <Header />
-      <NavSecundaryCountries countries={countries} countryCode={country.code} />
-      <Container className="p-0">
-        <Breadcrumb className="bg-white-ol">
-          <Breadcrumb.Item className="bg-white" href="#">
-            Inicio
-          </Breadcrumb.Item>
-          <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-            Costa Rica
-          </Breadcrumb.Item>
-          <Breadcrumb.Item active>Indicadores Educativos</Breadcrumb.Item>
-        </Breadcrumb>
-      </Container>
+      <CountryHeader countries={countries} country={country} navigation={navigation} />
       <Container>
-        <Row className="d-flex justify-content-betweent mt-5 mb-5">
-          <div className="col-lg-4 ">
-            {id}
-            <FlagNameComponent icon={CrFlag}>Costa Rica</FlagNameComponent>
-          </div>
-          <Row className="col-lg-8 d-flex justify-content-end p-0">
-            <div className="col-lg-2 pr-0">
-              <ButtonNav amarillo>Dato Pais</ButtonNav>
-            </div>
-
-            <div className="col-lg-3 pr-0">
-              <ButtonNav azul active>
-                INDICADORES EDUCATIVOS
-              </ButtonNav>
-            </div>
-            <div className="col-lg-2 pr-0">
-              <ButtonNav verde>AVANCE 2021</ButtonNav>
-            </div>
-          </Row>
-          <Divider />
-        </Row>
-
-        <Row>
+        <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
             <Title color="azul" type="title">
               INDICADORES EDUCATIVOS
@@ -165,19 +120,6 @@ const Indicadores = ({ t, countries, country }) => {
           ))}
         </Row>
       </Container>
-      <style type="text/css">
-        {`
-      .imgUrlCountry img{
-        width: 50px;
-        height: 30px;
-        margin-top: 7px;
-      }
-      .bg-white-ol > ol {
-        background:white;
-        padding:0;
-      }
-    `}
-      </style>
     </>
   );
 };
@@ -192,9 +134,10 @@ Indicadores.getInitialProps = async ({ query }) => {
   const country = await countryResponse.json();
 
   return {
+    namespacesRequired: ['common'],
     countries,
     country,
   };
 };
 
-export default withTranslation('countries')(Indicadores);
+export default withTranslation('common')(Indicadores);

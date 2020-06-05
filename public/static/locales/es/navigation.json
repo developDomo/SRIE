@@ -1,0 +1,21 @@
+{
+    "navigation": {
+        "main": {
+            "about": "Sobre el SRIE",
+            "what-is": "¿Qué es el SRIE?",
+            "partners": "Socios implementadores",
+            "how-to-use": "¿Cómo usar el sistema?",
+            "glossary": "Glosario",
+            "faq": "Preguntas frecuentes",
+            "responsible-team": "Equipo responsable",
+            "indicators": "Indicadores educativos"
+        },
+        "pages": {
+            "home": "Inicio",
+            "country-data": "Datos país",
+            "indicators": "Indicadores educativos",
+            "progress2021": "Avance 2021"
+        },
+        "language": "Idioma"
+    }
+}

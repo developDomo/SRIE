@@ -1,9 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import theme from '../../styles/theme';
 import NavBar from './NavBar';
-import Navigation from './Navigation';
 import Logo from './Logo';
-import LanguageSelector from './LanguageSelector';
 
 const Header = ({ path }) => (
   <div className="header">
@@ -18,12 +15,6 @@ const Header = ({ path }) => (
       </Row>
     </Container>
 
-    <style jsx>
-      {`
-      
-    `}
-    </style>
-
     <style type="text/css">
       {`
     @media (max-width: 575.98px) { 
@@ -31,6 +22,11 @@ const Header = ({ path }) => (
       .navbar {
         padding: 0;
       }
+    }
+
+    .header {
+      border-bottom: 2px solid #cecece;
+      padding-top: 10px;
     }
     `}
     </style>
