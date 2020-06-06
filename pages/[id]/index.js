@@ -57,13 +57,13 @@ const timeLineEducationProps = [
 
 const Country = ({ t, countries, country }) => {
   const navigation = [
-    { key: 'country-data' },
+    { key: 'navigation.pages.country-data' },
   ];
 
   return (
     <div>
       <Header />
-      <CountryHeader countries={countries} country={country} navigation={navigation} />
+      <CountryHeader countries={countries} country={country} navigation={navigation} active="country-data" />
       <Container className="mt-4">
         <Row className="mt-4">
           <div className="col-lg-12 mb-3 text-center">

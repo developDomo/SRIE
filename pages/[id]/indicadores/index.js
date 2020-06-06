@@ -2,15 +2,15 @@ import Link from 'next/link';
 import { Container, Row } from 'react-bootstrap';
 
 import styled from 'styled-components';
-import IndicadorComponent from '../../components/layout/IndicadorComponent';
-import Header from '../../components/layout/Header';
+import IndicadorComponent from '../../../components/layout/IndicadorComponent';
+import Header from '../../../components/layout/Header';
 
-import Title from '../../components/layout/Title';
-import PecIcon from '../../public/img/home/icon_pec_indicadores.svg';
+import Title from '../../../components/layout/Title';
+import PecIcon from '../../../public/img/home/icon_pec_indicadores.svg';
 
-import { withTranslation } from '../../i18n';
-import FilterResult from '../../components/indicadors/FilterResult';
-import CountryHeader from '../../components/countries/CountryHeader';
+import { withTranslation } from '../../../i18n';
+import FilterResult from '../../../components/indicadors/FilterResult';
+import CountryHeader from '../../../components/countries/CountryHeader';
 
 const IconImg = styled.img`
   width: 18px;
@@ -20,13 +20,13 @@ const IconImg = styled.img`
 const Indicadores = ({ t, countries, country }) => {
   const array = [1, 2, 3, 4, 5];
   const navigation = [
-    { key: 'indicators' },
+    { key: 'navigation.pages.indicators' },
   ];
 
   return (
     <>
       <Header />
-      <CountryHeader countries={countries} country={country} navigation={navigation} />
+      <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container>
         <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
@@ -112,9 +112,9 @@ const Indicadores = ({ t, countries, country }) => {
             </Row>
           </div>
           {array.map((item, index) => (
-            <Link href="/equipo-responsable" as="equipo-responsable">
-              <div className="col-lg-12 mb-3 p-0" key={`indicador-${index}`}>
-                <IndicadorComponent>asd</IndicadorComponent>
+            <Link key={`indicador-${index}`} href={`/${country.short_name}/indicadores/1`} as={`/${country.short_name}/indicadores/1`}>
+              <div className="col-lg-12 mb-3 p-0">
+                <IndicadorComponent />
               </div>
             </Link>
           ))}

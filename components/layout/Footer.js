@@ -19,7 +19,7 @@ const Footer = ({ t }) => (
               <a href="https://www.unicef.org/" target="_blank" rel="noreferrer">
                 <img src="/img/home/logo-unicef.png" alt="UNICEF" />
               </a>
-              <a href={`https://www.cepal.org/${i18n.language}`} target="_blank" rel="noreferrer">
+              <a href={`https://www.cepal.org/${i18n.language || 'es'}`} target="_blank" rel="noreferrer">
                 <img src="/img/home/logo-cepal.png" alt="CEPAL" />
               </a>
             </Col>

@@ -4,10 +4,10 @@ import { withTranslation } from '../../i18n';
 const BreadcrumbBar = ({ t, country, navigation }) => (
   <Container className="p-0">
     <Breadcrumb className="bg-white-ol">
-      <Breadcrumb.Item className="bg-white" href="/">
+      <Breadcrumb.Item key="home" className="bg-white" href="/">
         {t('navigation.pages.home')}
       </Breadcrumb.Item>
-      <Breadcrumb.Item href={`/${country.short_name}`}>
+      <Breadcrumb.Item key="country" href={`/${country.short_name}`}>
         {t(`countries:countries.${country.code}`)}
       </Breadcrumb.Item>
       {navigation.map((navItem) => {
@@ -18,8 +18,8 @@ const BreadcrumbBar = ({ t, country, navigation }) => (
           breadcrumbAttributes.active = true;
         }
         return (
-          <Breadcrumb.Item {...breadcrumbAttributes}>
-            {t(`navigation.pages.${navItem.key}`)}
+          <Breadcrumb.Item key={navItem.key} className="truncate" {...breadcrumbAttributes}>
+            {t(`${navItem.key}`)}
           </Breadcrumb.Item>
         );
       })}
@@ -27,12 +27,22 @@ const BreadcrumbBar = ({ t, country, navigation }) => (
 
     <style type="text/css">
       {`
-      .bg-white-ol > ol {
-        background:white;
-        padding:0;
-      }
-    `}
+        .truncate {
+          display: inline-block;
+          max-width: 50%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .bg-white-ol > ol {
+          background:white;
+          padding:0;
+        }
+      `}
+
     </style>
+
   </Container>
 );
 
@@ -40,4 +50,4 @@ BreadcrumbBar.getInitialProps = async () => ({
   namespacesRequired: ['navigation', 'countries'],
 });
 
-export default withTranslation(['navigation', 'countries'])(BreadcrumbBar);
+export default withTranslation(['navigation', 'countries', 'indicators'])(BreadcrumbBar);
