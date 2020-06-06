@@ -1,10 +1,30 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { txt, blue1 } from '../../styles/colors';
 import { ButtonNav } from '../layout/Button';
 import { withTranslation } from '../../i18n';
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+`;
+const IconContainer = styled.div`
+  width: 12%;
+  margin-right: 10px;
+  & img {
+    width: 100%;
+  }
+`;
+const TextContainer = styled.div`
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: ${blue1};
+`;
 const Divider = styled.span`
   display: block;
   width: 100%;
@@ -12,35 +32,33 @@ const Divider = styled.span`
   margin-top: 20px;
 `;
 
-const CountryTitle = ({ t, country }) => (
-  <Container className="mt-4">
+const CountryTitle = ({ t, country, active }) => (
+  <Container className="p-0">
     <Row className="d-flex justify-content-between">
-      <div className="col-lg-4">
-        <Row>
-          <Col sm={2} className="d-none d-sm-block title-flag p-0">
-            <img src={`/img/country/${country.code}-flag-title.svg`} alt="" />
-          </Col>
-          <Col className="title-text psm-0">
-            <h2>{t(`countries:countries.${country.code}`)}</h2>
-          </Col>
-        </Row>
+      <div className="col-lg-6 p-0">
+        <TitleContainer>
+          <IconContainer>
+            <img src={`/img/country/${country.code}-flag-title.svg`} alt="icon" />
+          </IconContainer>
+          <TextContainer>{t(`countries:countries.${country.code}`)}</TextContainer>
+        </TitleContainer>
       </div>
-      <Row className="col-lg-8 d-flex justify-content-end p-0">
-        <div className="col-lg-2 pr-0">
+      <Row className="col-lg-6 d-flex justify-content-end p-0">
+        <div className="col-lg-3 pr-0">
           <Link href={`/${country.short_name}`} as={`/${country.short_name}`}>
-            <ButtonNav amarillo active>
+            <ButtonNav amarillo active={active === 'country-data'}>
               {t('navigation.pages.country-data')}
             </ButtonNav>
           </Link>
         </div>
-        <div className="col-lg-3 pr-0">
+        <div className="col-lg-5 pr-0">
           <Link href={`/${country.short_name}/indicadores`} as={`/${country.short_name}/indicadores`}>
-            <ButtonNav azul>{t('navigation.pages.indicators')}</ButtonNav>
+            <ButtonNav azul active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
           </Link>
         </div>
-        <div className="col-lg-2 pr-0">
+        <div className="col-lg-3 pr-0">
           <Link href={`/${country.short_name}/avance-2021`} as={`/${country.short_name}/avance-2021`}>
-            <ButtonNav verde>{t('navigation.pages.progress2021')}</ButtonNav>
+            <ButtonNav verde active={active === 'progress-2021'}>{t('navigation.pages.progress2021')}</ButtonNav>
           </Link>
         </div>
       </Row>
@@ -54,7 +72,7 @@ const CountryTitle = ({ t, country }) => (
       }
     
       .title-text h2 {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto Slab', serif;
         font-weight: bold;
         font-size: 2.5em;
         text-transform: uppercase;

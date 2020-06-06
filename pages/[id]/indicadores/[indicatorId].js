@@ -1,17 +1,20 @@
 import { Container } from 'react-bootstrap';
-import { withTranslation } from '../../i18n';
-import Header from '../../components/layout/Header';
-import CountryHeader from '../../components/countries/CountryHeader';
+import { withTranslation } from '../../../i18n';
+import Header from '../../../components/layout/Header';
+import CountryHeader from '../../../components/countries/CountryHeader';
 
-const Progress2021 = ({ t, countries, country }) => {
+const Progress2021 = ({
+  t, countries, country, indicator,
+}) => {
   const navigation = [
-    { key: 'navigation.pages.progress2021' },
+    { key: 'navigation.pages.indicators', url: `/${country.short_name}/indicadores` },
+    { key: `indicators:indicators.${indicator.id}.name` },
   ];
 
   return (
     <>
       <Header />
-      <CountryHeader countries={countries} country={country} navigation={navigation} active="progress-2021" />
+      <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container />
     </>
   );
@@ -30,6 +33,7 @@ Progress2021.getInitialProps = async ({ query }) => {
     namespacesRequired: ['common'],
     countries,
     country,
+    indicator: { id: query.indicatorId },
   };
 };
 

@@ -7,8 +7,6 @@ import {
   ButtonNav,
 } from '../components/layout/Button';
 import CrFlag from '../public/img/home/cr-flag.png';
-import FlagNameComponent from '../components/layout/FlagNameComponent';
-import NavSecondaryCountries from '../components/layout/NavSecondaryCountries';
 import Title from '../components/layout/Title';
 import { txt } from '../theme/colors';
 import { GraficoCompuestoComponent } from '../components/layout/Grafico';
@@ -31,7 +29,7 @@ export default class extends React.Component {
     return (
       <>
         <Header path={pa} />
-        <NavSecondaryCountries />
+        {/* <NavSecondaryCountries /> */}
         <Container className="p-0">
           <Breadcrumb className="bg-white-ol">
             <Breadcrumb.Item className="bg-white" href="#">
@@ -52,7 +50,7 @@ export default class extends React.Component {
         <Container>
           <Row className="d-flex justify-content-betweent mt-5 mb-5">
             <div className="col-lg-4 ">
-              <FlagNameComponent icon={CrFlag}>Costa Rica</FlagNameComponent>
+              Costa Rica
             </div>
             <Row className="col-lg-8 d-flex justify-content-end p-0">
               <div className="col-lg-2 pr-0">

@@ -10,6 +10,11 @@ export default css.global`
   img{
     max-width: 100%;
   }
+
+  button:focus {
+    outline: none;
+  }
+
   .home{
     background: rgba(0, 113, 188, .7);
   }
