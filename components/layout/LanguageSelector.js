@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { i18n, withTranslation } from '../../i18n';
+import { theme } from '../../styles/theme';
 
 const Button = styled.button`
   &:hover {
@@ -25,7 +26,8 @@ const Container = styled.div`
 const LanguageSelector = ({ t, path }) => {
   const Span = styled.span`
   padding: 2px;
-  color: ${path !== '/' ? '#1D2D49' : 'white'};
+  font-weight: bold;
+  color: ${path === '/' ? `${theme.navbar.primaryFontColor}` : `${theme.navbar.secondaryFontColor}`};
   `;
   return (
     <Container>

@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  Navbar, Nav, Form, NavDropdown, FormControl, Button,
+  Navbar, Nav, NavDropdown,
 } from 'react-bootstrap';
 import Router, { withRouter } from 'next/router';
-import theme from '../../styles/theme';
-// import NavBar from './NavBar';
-import Navigation from './Navigation';
+import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 import LinkChild from './LinkChild';
-import { nav } from '../../pages/api/navbar';
-
+import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
   border: 1px solid white;
@@ -44,7 +41,7 @@ const Header = ({ router: { pathname } }) => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              {nav.map((item) => (
+              {navData.map((item) => (
                 <NavDropdown
                   title={item.label}
                   id="basic-nav-dropdown"
@@ -73,74 +70,74 @@ const Header = ({ router: { pathname } }) => {
       <style type="text/css">
         {`
 
-      ${path !== '/' ? 'body {background-image: none;}' : 'body {background-image: url(/img/home/bck.jpg); }'}
+      ${path === '/'
+          ? `body { background-image: ${getThemeProperty('navbar.home.body.background-image')}}`
+          : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')}}`}
 
       .navbar-light .navbar-nav .nav-link {
-        color: white;
+        color: ${theme.navbar.primaryFontColor};
       }
 
       .navbar-light .navbar-nav .nav-link:hover {
-        color: white;
+        color: ${theme.navbar.primaryFontColor};
       }
 
       .navbar-light .navbar-nav .show>.nav-link {
-        color: white;
+        color: ${theme.navbar.primaryFontColor};
       }
 
       .nav-link{
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
         font-weight: bold;
-        color: white ;
+        color: ${theme.navbar.primaryFontColor};
       }
       .navbar {
         background-color: transparent;
       }
 
       .blue-navbar-item a {
-        color: #1D2D49 !important;
+        color: ${theme.navbar.dropdownMenuColor} !important;
       }
       .white-navbar {
-        background-color: white !important;
+        background-color: ${theme.navbar.primaryFontColor} !important;
       }
 
       .dropdown-menu{
-        background-color: #1D2D49;
+        background-color: ${theme.navbar.dropdownMenuColor};
       }
 
       .dropdown-item{
-        color: white;
+        color: ${theme.navbar.primaryFontColor};
       }
 
       a.nav-item-drop {
-        color: white !important;
+        color: ${theme.navbar.primaryFontColor} !important;
         display: block;
         padding: 5px 10px;
         width: 210px;
         }
 
       .show.dropdown.nav-item > a {
-        border-bottom: 2px solid #FBB03B;
+        border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
       }
 
       a.nav-item-drop:hover {
         color: #16181b;
         text-decoration: none;
-        background-color: #0071BC;
-        color: white;
+        background-color: ${theme.navbar.menuHoverColor};
+        color: ${theme.navbar.primaryFontColor};
         width: 100%;
     }
 
     light .navbar-nav .nav-link:hover {
-      color: white !important;
+      color: ${theme.navbar.primaryFontColor} !important;
     }
-
   `}
       </style>
       <WhiteLine />
     </>
   );
 };
-
 
 export default withRouter(Header);
