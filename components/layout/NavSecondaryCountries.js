@@ -17,7 +17,7 @@ export default class extends React.Component {
               </Col>
               <Col sm={7} className="d-flex">
                 {countries.map((country) => (
-                  <NavSecondaryCountry country={country} selected={countryCode} key={country.id} />
+                  <NavSecondaryCountry key={country.code} country={country} selected={countryCode} />
                 ))}
               </Col>
             </Row>

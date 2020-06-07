@@ -7,7 +7,7 @@ export default function CountrySelector({ countries }) {
     <div className="country-selector">
       <Row className="py-2">
         {countries?.map((country) => (
-          <CountryItem country={country} key={country.id} />
+          <CountryItem key={country.code} country={country} />
         ))}
       </Row>
     </div>

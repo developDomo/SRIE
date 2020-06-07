@@ -1,0 +1,21 @@
+{
+    "navigation": {
+        "main": {
+            "about": "About SRIE",
+            "what-is": "What is the SRIE?",
+            "partners": "Partners",
+            "how-to-use": "How to use the system?",
+            "glossary": "Glossary",
+            "faq": "Frequently asked questions",
+            "responsible-team": "Responsible team",
+            "indicators": "Educational indicators"
+        },
+        "pages": {
+            "home": "Home",
+            "country-data": "Country data",
+            "indicators": "Educational indicators",
+            "progress2021": "Progress 2021"
+        },
+        "language": "Language"
+    }
+}

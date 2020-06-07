@@ -65,7 +65,7 @@ export default class NavBar extends React.Component {
               </Navbar.Collapse>
             </Navbar>
           </Col>
-          <Col>
+          <Col xs={{ span: 2 }} sm={4}>
             <LanguageSelector />
           </Col>
         </Row>

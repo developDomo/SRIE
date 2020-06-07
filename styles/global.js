@@ -10,9 +10,11 @@ export default css.global`
   img{
     max-width: 100%;
   }
-  body {
-    background: rgba(0, 113, 188, .7);
+
+  button:focus {
+    outline: none;
   }
+  
   .info-slider > .row {
     height: 435px;
   }
@@ -37,7 +39,15 @@ export default css.global`
     }
   }
   @media (min-width: 576px) { 
-    
+    body {
+      background-size: 100% 64%;
+      background-repeat: no-repeat;
+      background: transparent;
+      background-image: url(/img/home/bck.jpg);
+      margin: 0;
+      color: ${theme.colors.font};
+      font-family: 'Roboto', sans-serif; 
+    }
   }
   /* fin576 */
 
