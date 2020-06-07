@@ -3,22 +3,13 @@ import Link from 'next/link';
 export default class Logo extends React.Component {
   render() {
     const { path } = this.props;
+    const logoImg = path === '/'
+      ? '/img/home/SRIE-header-white.svg'
+      : '/img/home/SRIE-header-color.svg';
     return (
-      <div>
-        <h1>
-          <Link href="/">
-            <a href="#0">
-              {path === '/'
-                ? <img src="/img/home/SRIE-header-white.svg" alt="Plataforma SRIE" />
-                : <img src="/img/home/SRIE-header-color.svg" alt="Plataforma SRIE" />}
-            </a>
-          </Link>
-        </h1>
-        <style jsx>
-          {`
-            `}
-        </style>
-      </div>
+      <Link href="/">
+        <img src={logoImg} alt="Plataforma SRIE" width="100%" />
+      </Link>
     );
   }
 }

@@ -23,6 +23,7 @@ export default class NavBar extends React.Component {
 
   render() {
     const { path } = this.props;
+    console.log('este es :D ', path);
     const { iconActive, icon, condition } = this.state;
     return (
       <>
@@ -48,7 +49,7 @@ export default class NavBar extends React.Component {
                       title={item.label}
                       id="basic-nav-dropdown"
                       alignRight
-                      key={`nav-drop-${indexDrop}`}
+                      key={item.label}
                     >
                       {item.items.map((item2, index) => (
                         <LinkChild

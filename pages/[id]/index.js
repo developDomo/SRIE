@@ -62,9 +62,10 @@ const Divider = styled.span`
   margin-top: 20px;
 `;
 
-const Country = ({ t, countries, country }) => (
+const Country = ({
+  t, countries, country, path,
+}) => (
   <div>
-    <Header />
     <Col className="d-none d-sm-block p-0">
       <NavSecundaryCountries countries={countries} countryCode={country.code} />
     </Col>
@@ -281,16 +282,17 @@ const Country = ({ t, countries, country }) => (
   </div>
 );
 
-Country.getInitialProps = async ({ query }) => {
+Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
   const countryResponse = await fetch(`${process.env.API_URL}/api/countries/${query.id}`);
   const country = await countryResponse.json();
-
+  console.log(path);
   return {
     countries,
     country,
+    path,
   };
 };
 

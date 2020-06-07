@@ -15,35 +15,38 @@ const Button = styled.button`
   font-size: 0.93em;
 `;
 
-const Span = styled.span`
-  padding: 2px;
-  color: white;
-`;
 
 const Container = styled.div`
   margin: 1em;
 `;
 
-const LanguageSelector = ({ t }) => (
-  <Container>
-    <Span>
-      {t('lanLabel')}
-    </Span>
-    <Span>
-      <Button type="button" onClick={() => i18n.changeLanguage('en')}>
-        {t('language.english')}
-      </Button>
-    </Span>
-    <Span>
-      <Button type="button" onClick={() => i18n.changeLanguage('es')}>
-        {t('language.spanish')}
-      </Button>
-    </Span>
-  </Container>
-);
+const LanguageSelector = ({ t, path }) => {
+  const Span = styled.span`
+  padding: 2px;
+  color: ${path !== '/' ? '#1D2D49' : 'white'};
+  `;
+  return (
+    <Container>
+      <Span>
+        {t('lanLabel')}
+      </Span>
+      <Span>
+        <Button type="button" onClick={() => i18n.changeLanguage('en')}>
+          {t('language.english')}
+        </Button>
+      </Span>
+      <Span>
+        <Button type="button" onClick={() => i18n.changeLanguage('es')}>
+          {t('language.spanish')}
+        </Button>
+      </Span>
+    </Container>
+  );
+};
 
 LanguageSelector.propTypes = {
   t: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default withTranslation('common')(LanguageSelector);

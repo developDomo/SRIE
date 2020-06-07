@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from '../i18n';
 
 const Error = ({ statusCode, t }) => (
   <p>
@@ -30,3 +31,5 @@ Error.propTypes = {
   statusCode: PropTypes.number,
   t: PropTypes.func.isRequired,
 };
+
+export default withTranslation('common')(Error);
