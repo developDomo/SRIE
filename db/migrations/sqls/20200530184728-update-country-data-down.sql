@@ -1,6 +1,6 @@
 ALTER TABLE countries DROP COLUMN short_name;
-ALTER TABLE countries DROP COLUMN flag VARCHAR(64);
-ALTER TABLE countries DROP COLUMN name VARCHAR(64);
+ALTER TABLE countries ADD COLUMN flag VARCHAR(64);
+ALTER TABLE countries ADD COLUMN name VARCHAR(64);
 
 UPDATE countries SET name = 'Belice', flag = 'bandera-belice.png' where code = 'BZ';
 UPDATE countries SET name = 'Costa Rica', flag = 'bandera-costa_rica.png' where code = 'CR';

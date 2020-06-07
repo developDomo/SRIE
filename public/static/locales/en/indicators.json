@@ -8,6 +8,15 @@
             "interpretation": "",
             "source": "",
             "limitations": ""
+        },
+        "2": {
+            "name": "Adjusted net attendance rate, one year before the official primary entry age",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
         }
     }
 }

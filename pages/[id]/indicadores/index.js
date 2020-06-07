@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import { Container, Row } from 'react-bootstrap';
+import _ from 'lodash';
 
 import styled from 'styled-components';
-import IndicadorComponent from '../../../components/layout/IndicadorComponent';
+import IndicatorListItem from '../../../components/indicators/IndicatorListItem';
 import Header from '../../../components/layout/Header';
 
 import Title from '../../../components/layout/Title';
@@ -11,14 +11,16 @@ import PecIcon from '../../../public/img/home/icon_pec_indicadores.svg';
 import { withTranslation } from '../../../i18n';
 import FilterResult from '../../../components/indicadors/FilterResult';
 import CountryHeader from '../../../components/countries/CountryHeader';
+import FetchUtils from '../../../utils/Fetch.utils';
 
 const IconImg = styled.img`
   width: 18px;
   height: 18px;
 `;
 
-const Indicadores = ({ t, countries, country }) => {
-  const array = [1, 2, 3, 4, 5];
+const IndicatorListPage = ({
+  t, countries, country, pecGoals, topics, educationLevels, indicators,
+}) => {
   const navigation = [
     { key: 'navigation.pages.indicators' },
   ];
@@ -47,15 +49,16 @@ const Indicadores = ({ t, countries, country }) => {
                     className="form-control"
                     id="form-indicadors-pec"
                   >
-                    <option selected>Meta PEC</option>
+                    {pecGoals.map((goal) => (
+                      <option key={`goal-${goal.id}`} value={goal.id}>{goal.code}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
-                  <select
-                    className="form-control"
-                    id="form-indicadors-topic"
-                  >
-                    <option selected>Tema</option>
+                  <select id="topic-select" className="form-control">
+                    {topics.map((topic) => (
+                      <option key={`topic-${topic.id}`} value={topic.id}>{t(`topics.${topic.code}`)}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
@@ -63,7 +66,9 @@ const Indicadores = ({ t, countries, country }) => {
                     className="form-control"
                     id="form-indicadors-level"
                   >
-                    <option selected>Nivel educativo</option>
+                    {educationLevels.map((level) => (
+                      <option key={`education-level-${level.id}`} value={level.id}>{t(`education-levels:${level.code}`)}</option>
+                    ))}
                   </select>
                 </div>
               </Row>
@@ -111,12 +116,8 @@ const Indicadores = ({ t, countries, country }) => {
               </div>
             </Row>
           </div>
-          {array.map((item, index) => (
-            <Link key={`indicador-${index}`} href={`/${country.short_name}/indicadores/1`} as={`/${country.short_name}/indicadores/1`}>
-              <div className="col-lg-12 mb-3 p-0">
-                <IndicadorComponent />
-              </div>
-            </Link>
+          {indicators.map((indicator) => (
+            <IndicatorListItem indicator={indicator} countryName={country.short_name} />
           ))}
         </Row>
       </Container>
@@ -124,20 +125,26 @@ const Indicadores = ({ t, countries, country }) => {
   );
 };
 
-Indicadores.getInitialProps = async ({ query }) => {
-  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await countriesResponse.json();
+IndicatorListPage.getInitialProps = async ({ query }) => {
+  const [countries, pecGoals, topics, educationLevels, indicators] = await FetchUtils.multipleFetch([
+    `${process.env.API_URL}/api/countries`,
+    `${process.env.API_URL}/api/pec-goals`,
+    `${process.env.API_URL}/api/topics`,
+    `${process.env.API_URL}/api/education-levels`,
+    `${process.env.API_URL}/api/indicators`,
+  ]);
 
-  const countryResponse = await fetch(
-    `${process.env.API_URL}/api/countries/${query.id}`,
-  );
-  const country = await countryResponse.json();
+  const country = _.find(countries, (c) => c.short_name === query.id);
 
   return {
-    namespacesRequired: ['common'],
+    namespacesRequired: ['topics', 'education-levels'],
     countries,
     country,
+    pecGoals,
+    topics,
+    educationLevels,
+    indicators,
   };
 };
 
-export default withTranslation('common')(Indicadores);
+export default withTranslation('topics', 'education-levels')(IndicatorListPage);

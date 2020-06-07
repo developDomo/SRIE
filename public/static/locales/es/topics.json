@@ -1,12 +1,10 @@
 {
   "topics": {
-    "learning": "Aprendizaje y competencias",
     "participation": "Participación",
     "offering": "Oferta",
-    "conclusion": "Conclusión",
-    "equity-goals": "Metas Transversales de Equidad",
-    "politics": "Política",
-    "teachers": "Docentes",
-    "resources": "Recursos"
+    "learning-and-skills": "Aprendizaje y competencias",
+    "completion": "Conclusión",
+    "educational-environment": "Entorno educativo",
+    "cross-cutting-goals": "Metas transversales"
   }
 }
