@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Footer from './Footer';
+import Header from './Header';
 
-const Layout = ({ children }) => (
-  <div className="layout">
+const Layout = ({ children, path }) => (
+  <div className={`layout ${path !== '/' ? 'body' : ''}`}>
     <Head>
       <meta
         name="viewport"
@@ -12,7 +13,7 @@ const Layout = ({ children }) => (
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700;900&display=swap" rel="stylesheet" />
       <script src="https://kit.fontawesome.com/93f079ed62.js" rel="external" />
     </Head>
-    {/* <Header /> */}
+    <Header path={path} />
     <div className="content">{children}</div>
     <Footer />
     <style jsx>
@@ -32,5 +33,10 @@ const Layout = ({ children }) => (
     </style>
   </div>
 );
+
+Layout.getInitialProps = ({ pathname: path }) => ({
+  path,
+});
+
 
 export default Layout;

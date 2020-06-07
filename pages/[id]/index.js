@@ -62,7 +62,6 @@ const Country = ({ t, countries, country }) => {
 
   return (
     <div>
-      <Header />
       <CountryHeader countries={countries} country={country} navigation={navigation} active="country-data" />
       <Container className="mt-4">
         <Row className="mt-4">
@@ -214,7 +213,7 @@ const Country = ({ t, countries, country }) => {
   );
 };
 
-Country.getInitialProps = async ({ query }) => {
+Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -225,6 +224,7 @@ Country.getInitialProps = async ({ query }) => {
     namespacesRequired: ['common'],
     countries,
     country,
+    path,
   };
 };
 

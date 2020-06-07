@@ -7,10 +7,9 @@ import Header from '../components/layout/Header';
 import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';
 
-const Home = ({ countries, t, pa }) => (
+const Home = ({ countries, t, path }) => (
   <>
     <div className="home">
-      <Header path={pa} />
       <Row className="justify-content-md-center mxs-0">
         <div className="col-sm-8 px-0">
           <InfoSlider />
@@ -47,13 +46,14 @@ const Home = ({ countries, t, pa }) => (
   </>
 );
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async ({ pathname: path }) => {
   const res = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await res.json();
 
   return {
     namespacesRequired: ['homepage'],
     countries,
+    path,
   };
 };
 

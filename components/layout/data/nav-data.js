@@ -1,4 +1,4 @@
-export const nav = [
+const navData = [
   {
     label: 'Sobre el SRIE',
     href: '#',
@@ -100,4 +100,4 @@ export const nav = [
 
 ];
 
-export default nav;
+export default navData;

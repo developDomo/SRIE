@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css';
-import theme from './theme';
+import { theme } from './theme';
 
 export default css.global`
   body {
@@ -14,10 +14,7 @@ export default css.global`
   button:focus {
     outline: none;
   }
-
-  .home{
-    background: rgba(0, 113, 188, .7);
-  }
+  
   .info-slider > .row {
     height: 435px;
   }
@@ -42,7 +39,15 @@ export default css.global`
     }
   }
   @media (min-width: 576px) { 
-    
+    body {
+      background-size: 100% 64%;
+      background-repeat: no-repeat;
+      background: transparent;
+      background-image: url(/img/home/bck.jpg);
+      margin: 0;
+      color: ${theme.colors.font};
+      font-family: 'Roboto', sans-serif; 
+    }
   }
   /* fin576 */
 
@@ -60,10 +65,14 @@ export default css.global`
         min-height: 150px;
         padding: 0 25px;
       }
-      .home{
+      body{
         background: transparent;
         background-image: url(/img/home/bck.jpg);
         background-repeat: no-repeat;
+        background-size: 100% 60%;
+        margin: 0;
+        color: ${theme.colors.font};
+        font-family: 'Roboto', sans-serif; 
       }
       .carousel-indicators {
         bottom: 30px;
