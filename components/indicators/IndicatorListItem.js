@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import {
   gray1,
   txt,
@@ -10,6 +11,7 @@ import {
   bckBanderas,
 } from '../../styles/colors';
 import arrow from '../../public/img/home/arrow_indicadores.svg';
+import { withTranslation } from '../../i18n';
 
 const Container = styled.div`
   display: flex;
@@ -94,24 +96,30 @@ const IconContainer = styled.div`
   }
 `;
 
-const IndicadorComponent = ({ children, icon }) => (
-  <Container className="d-flex  justify-content-between p-0">
-    <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
-      <Title>
-        Tasa de participación en la enseñanza organizada un año antes de la edad
-        oficial de ingreso en la educación primaria, desglosada por sexo
-      </Title>
-      <Tag>Participación</Tag>
+const IndicatorListItem = ({ t, indicator, countryName }) => (
+  <Link key={`indicador-${indicator.code}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
+    <div className="col-lg-12 mb-3 p-0">
+      <Container className="d-flex  justify-content-between p-0">
+        <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
+          <Title>
+            {t(`indicators.${indicator.code}.name`)}
+          </Title>
+          {indicator.topics.map((topic) => (
+            <Tag>{t(`topics:topics.${topic.code}`)}</Tag>
+          ))}
+        </div>
+        <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
+        <Ods>4.2</Ods>
+        <IconContainer className=" ">
+          <div />
+        </IconContainer>
+      </Container>
     </div>
-
-    <Pec>2.2/3.1</Pec>
-
-    <Ods>4.2</Ods>
-
-    <IconContainer className=" ">
-      <div />
-    </IconContainer>
-  </Container>
+  </Link>
 );
 
-export default IndicadorComponent;
+IndicatorListItem.getInitialProps = async () => ({
+  namespacesRequired: ['indicators', 'topics'],
+});
+
+export default withTranslation(['indicators', 'topics'])(IndicatorListItem);

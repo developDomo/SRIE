@@ -4,11 +4,11 @@ import IndicatorService from '../../../services/Indicator.service';
 const handler = nextConnect();
 
 handler.get(async (req, res) => {
-  const { pecGoal, topic, educativeLevel } = req.query;
+  const { pecGoal, topic, educationLevel } = req.query;
   const indicators = await IndicatorService.search(
     pecGoal,
     topic,
-    educativeLevel,
+    educationLevel,
   );
   res.status(200).json(indicators);
 });

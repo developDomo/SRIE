@@ -1,5 +1,5 @@
 import nextConnect from 'next-connect';
-import IndicatorService from '../../../services/Indicator.service';
+import IndicatorService from '../../../../services/Indicator.service';
 
 const handler = nextConnect();
 

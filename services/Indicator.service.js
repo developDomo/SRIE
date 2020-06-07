@@ -8,20 +8,20 @@ const INDICATOR_SELECT = `SELECT i.id as indicator_id, i.translation_key as indi
       pg.id as pec_goal_id,
       pg.code as pec_goal,
       t.id as topic_id,
-      t.translation_key as topic,
-      el.id as educational_level_id,
-      el.code as educational_level,
+      t.code as topic,
+      el.id as education_level_id,
+      el.code as education_level,
       os.id as ods4_scale_id,
       os.code as ods4_scale`;
 
 const INDICATOR_FROM = `FROM indicators i
    LEFT JOIN indicator_pec_goals ipg ON i.id = ipg.indicator_id
    LEFT JOIN indicator_topics it ON i.id = it.indicator_id
-   LEFT JOIN indicator_educational_levels iel ON i.id = iel.indicator_id
+   LEFT JOIN indicator_education_levels iel ON i.id = iel.indicator_id
    LEFT JOIN indicator_ods4_scales ios ON i.id = ios.indicator_id
    LEFT JOIN pec_goals pg ON pg.id = ipg.pec_goal_id
    LEFT JOIN topics t ON t.id = it.topic_id
-   LEFT JOIN educational_levels el ON el.id = iel.educational_level_id
+   LEFT JOIN education_levels el ON el.id = iel.education_level_id
    LEFT JOIN ods4_scales os ON os.id = ios.ods4_scale_id`;
 
 const INDICATOR_DECOMPOSE = {
@@ -37,11 +37,11 @@ const INDICATOR_DECOMPOSE = {
   },
   topics: {
     pk: 'topic_id',
-    columns: { topic: 'translation_key' },
+    columns: { topic: 'code' },
   },
-  educational_levels: {
-    pk: 'educational_level_id',
-    columns: { educational_level: 'translation_key' },
+  education_levels: {
+    pk: 'education_level_id',
+    columns: { education_level: 'translation_key' },
   },
   ods4_scales: {
     pk: 'ods4_scale_id',
@@ -54,11 +54,11 @@ const INDICATOR_DECOMPOSE = {
  *
  * @param {string} pecGoal PEC Goal id to filter
  * @param {string} topic Topic id to filter
- * @param {string} educationalLevel Educational level id to filter
+ * @param {string} educationLevel Education level id to filter
  *
  * @returns String containg the whole search indicator where clause, based on the provided parameters
  */
-const getSearchWhere = (pecGoal, topic, educationalLevel) => {
+const getSearchWhere = (pecGoal, topic, educationLevel) => {
   const whereClauses = [];
 
   if (pecGoal) {
@@ -69,8 +69,8 @@ const getSearchWhere = (pecGoal, topic, educationalLevel) => {
     whereClauses.push(`it.topic_id = ${topic}`);
   }
 
-  if (educationalLevel) {
-    whereClauses.push(`iel.educational_level_id = ${educationalLevel}`);
+  if (educationLevel) {
+    whereClauses.push(`iel.education_level_id = ${educationLevel}`);
   }
 
   return whereClauses.length > 0 ? `WHERE ${whereClauses.join(' AND ')}` : '';
@@ -82,10 +82,10 @@ export default {
    *
    * @param {number} [pecGoal] PEC Goal id
    * @param {number} [topic] Topic id
-   * @param {number} [educationaLevel] Educational Level id
+   * @param {number} [educationLevel] Educational Level id
    */
-  search: async (pecGoal, topic, educationaLevel) => {
-    const where = getSearchWhere(pecGoal, topic, educationaLevel);
+  search: async (pecGoal, topic, educationLevel) => {
+    const where = getSearchWhere(pecGoal, topic, educationLevel);
     const orderBy = 'ORDER BY i.code, pg.goal_order, os.scale_order, el.code';
 
     const sql = `${INDICATOR_SELECT}
@@ -129,7 +129,7 @@ export default {
       ${INDICATOR_FROM}
       ${where}`;
 
-    const indicator = await db.query(sql, [], {
+    let indicator = await db.query(sql, [], {
       decompose: INDICATOR_DECOMPOSE,
     });
 
@@ -137,7 +137,7 @@ export default {
       return null;
     }
 
-    delete indicator.query;
+    [indicator] = indicator;
 
     const variations = await IndicatorVariationService.findByIndicatorId(id);
     indicator.variations = _.map(variations, (v) => _.omit(v, 'indicator_id', 'query'));

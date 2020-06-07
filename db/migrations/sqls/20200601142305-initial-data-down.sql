@@ -1,0 +1,16 @@
+DELETE FROM indicator_topics;
+DELETE FROM indicator_education_levels;
+DELETE FROM indicator_pec_goals;
+DELETE FROM indicator_visualizations;
+DELETE FROM indicators;
+DELETE FROM visualizations;
+DELETE FROM indexes;
+DELETE FROM pec_goals;
+DELETE FROM education_levels;
+DELETE FROM topics;
+ALTER TABLE topics RENAME COLUMN code TO translation_key;
+ALTER TABLE education_levels RENAME TO educational_levels;
+ALTER TABLE indicator_education_levels RENAME TO indicator_educational_levels;
+ALTER TABLE indicator_educational_levels RENAME COLUMN education_level_id TO educational_level_id;
+ALTER TABLE indicators DROP COLUMN uis_dataset;
+ALTER TABLE indicators DROP COLUMN uis_data_query;
