@@ -31,7 +31,7 @@ const fields = [
   'decimals',
 ];
 
-const find = async (query) => {
+const find = async (table, query) => {
   const allFields = [
     'unit_measure',
     'edu_level',
@@ -40,8 +40,12 @@ const find = async (query) => {
     'location',
   ].concat(fields);
 
-  return db.uis_data.find(query, {
+  return table.find(query, {
     fields: allFields,
+    order: [{
+      field: 'time_period',
+      direction: 'asc',
+    }],
   });
 };
 
@@ -203,7 +207,7 @@ export default {
     );
 
     const rawData = await find(
-      _.assign(indicator.query, { ref_area: country.toUpperCase() }),
+      db[indicator.uis_dataset.toLowerCase()], _.assign(indicator.query, { ref_area: country.toUpperCase() }),
     );
 
     const dataPromise = filterDataByVariation(
@@ -226,7 +230,7 @@ export default {
   },
 
   getFreeEducationYearsByCountry: async (country) => {
-    const data = await db.uis_data.findOne(
+    const data = await db.sdg4.findOne(
       { stat_unit: 'FREE_EDU', ref_area: country },
       {
         fields,
@@ -237,7 +241,7 @@ export default {
     return data || {};
   },
   getCompulsoryEducationYearsByCountry: async (country) => {
-    const data = await db.uis_data.findOne(
+    const data = await db.sdg4.findOne(
       { stat_unit: 'COMP_EDU', ref_area: country },
       {
         fields,
@@ -248,7 +252,7 @@ export default {
     return data || {};
   },
   getLiteracyRateByCountry: async (country) => {
-    const data = await db.uis_data.findOne(
+    const data = await db.sdg4.findOne(
       { stat_unit: 'LR', ref_area: country, age: 'Y_GE15' },
       {
         fields,
@@ -260,7 +264,7 @@ export default {
   },
 
   getNetEnrollmentRateByCountry: async (country) => {
-    const rawData = await db.uis_data.find(
+    const rawData = await db.sdg4.find(
       {
         stat_unit: 'NER',
         ref_area: country,
@@ -293,7 +297,7 @@ export default {
   },
 
   getCompletionRateByCountry: async (country) => {
-    const rawData = await db.uis_data.find(
+    const rawData = await db.sdg4.find(
       {
         stat_unit: 'CR',
         unit_measure: 'PT',
@@ -324,7 +328,7 @@ export default {
     return data;
   },
   getOutOfSchoolRateByCountry: async (country) => {
-    const data = await db.uis_data.findOne(
+    const data = await db.sdg4.findOne(
       {
         stat_unit: 'ROFST',
         ref_area: country,

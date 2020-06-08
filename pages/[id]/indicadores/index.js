@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 import styled from 'styled-components';
 import IndicatorListItem from '../../../components/indicators/IndicatorListItem';
-import Header from '../../../components/layout/Header';
 
 import Title from '../../../components/layout/Title';
 import PecIcon from '../../../public/img/home/icon_pec_indicadores.svg';
@@ -27,7 +26,6 @@ const IndicatorListPage = ({
 
   return (
     <>
-      <Header />
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container>
         <Row className="mt-5 mb-5">
