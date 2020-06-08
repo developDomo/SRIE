@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { Container } from 'react-bootstrap';
 import { withTranslation } from '../../../i18n';
-import Header from '../../../components/layout/Header';
 import CountryHeader from '../../../components/countries/CountryHeader';
 
 import FetchUtils from '../../../utils/Fetch.utils';
@@ -16,7 +15,6 @@ const IndicatorPage = ({
 
   return (
     <>
-      <Header />
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container />
     </>

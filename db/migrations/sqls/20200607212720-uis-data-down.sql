@@ -1,0 +1,1 @@
+ALTER TABLE indicators DROP COLUMN updated_at;
