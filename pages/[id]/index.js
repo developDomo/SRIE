@@ -9,7 +9,7 @@ import Boxes from '../../components/layout/Boxes';
 import { ButtonNav, ButtonNavIndicadores } from '../../components/layout/Button';
 import Title from '../../components/layout/Title';
 import {
-  BoxPreescolar, BoxPrimaria, BoxSecundaria, BoxIndicador, Box,
+  BoxPreescolar, BoxPrimaria, BoxSecundaria, BoxIndicador, Box, Box2,
 } from '../../components/layout/Box';
 import { LineTime, TitleLineTime } from '../../components/layout/TimeLineEducation';
 import Banner from '../../components/layout/Banner';
@@ -81,11 +81,12 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mt-4 mb-5">
           <div className="col-lg-4 mb-4">
-            <Box
+            <Box2
               iconImg={EducacionIcon}
-              title="Educación gratuita y obligatoria"
-              subtitle="Número de años: 12"
+              title="Número de años:"
               color="azul"
+              gratuita={12}
+              obligatoria={12}
             />
           </div>
           <div className="col-lg-4 mb-4">
