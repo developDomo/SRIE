@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 import { theme } from './theme';
-import { blue5, blue2 } from './colors';
+import { blue2 } from './colors';
 
 export default css.global`
   body {
