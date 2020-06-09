@@ -26,9 +26,6 @@ export default css.global`
       /*height:345px;*/
       height:21em;
     }
-  .roboto {
-    font-family: 'Roboto', sans-serif; 
-  }
   .breadcrum-item{
     font-family: 'Roboto', sans-serif; 
     font-size: 14px;
