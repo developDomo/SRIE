@@ -1,6 +1,7 @@
 
 import { Container } from 'react-bootstrap';
 import Header from '../components/layout/Header';
+import CountryHeader from '../components/countries/CountryHeader';
 // import IndEducativo from "../components/layout/IndEducativo";
 
 export default class extends React.Component {
@@ -10,10 +11,8 @@ export default class extends React.Component {
   }
 
   render() {
-    const { pa } = this.props;
     return (
       <>
-        <Header path={pa} />
         <Container>
           <h2>Glosario</h2>
           <p>Pronto disponible.</p>

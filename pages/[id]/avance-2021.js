@@ -10,7 +10,6 @@ const Progress2021 = ({ t, countries, country }) => {
 
   return (
     <>
-      <Header />
       <CountryHeader countries={countries} country={country} navigation={navigation} active="progress-2021" />
       <Container />
     </>
