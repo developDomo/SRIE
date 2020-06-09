@@ -60,8 +60,6 @@ export default class extends React.Component {
     const array = [1, 2, 3, 4, 5];
     return (
       <>
-        <Header path={pa} />
-        {/* Header nav */}
         <Container>
           <Row>
             <div className="col-lg-12 pr-0 text-center p-2">
