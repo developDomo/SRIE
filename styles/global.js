@@ -29,12 +29,14 @@ export default css.global`
   .roboto {
     font-family: 'Roboto', sans-serif; 
   }
-  .font-size-14{
+  .breadcrum-item{
+    font-family: 'Roboto', sans-serif; 
     font-size: 14px;
   }
-  a{
+  .breadcrum-item a{
     color: ${blue2}!important;
   }
+  
   @media (max-width: 576px) { 
     .country-selector{
       
