@@ -1,6 +1,5 @@
 import { Container } from 'react-bootstrap';
 import { withTranslation } from '../../i18n';
-import Header from '../../components/layout/Header';
 import CountryHeader from '../../components/countries/CountryHeader';
 
 const Progress2021 = ({ t, countries, country }) => {

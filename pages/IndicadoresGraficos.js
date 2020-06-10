@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Container, Row, Breadcrumb } from 'react-bootstrap';
 import styled from 'styled-components';
 import Header from '../components/layout/Header';
@@ -8,6 +7,7 @@ import {
 } from '../components/layout/Button';
 import CrFlag from '../public/img/home/cr-flag.png';
 import Title from '../components/layout/Title';
+
 import { txt } from '../theme/colors';
 import { GraficoCompuestoComponent } from '../components/layout/Grafico';
 

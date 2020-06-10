@@ -1,7 +1,7 @@
 import { Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import Header from '../components/layout/Header';
 import Title from '../components/layout/Title';
+
 import { txt, bordes, blue4 } from '../styles/colors';
 
 const DirectoryContainer = styled.div`
