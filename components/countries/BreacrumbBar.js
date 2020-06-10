@@ -2,12 +2,12 @@ import { Container, Breadcrumb } from 'react-bootstrap';
 import { withTranslation } from '../../i18n';
 
 const BreadcrumbBar = ({ t, country, navigation }) => (
-  <Container className="p-0">
+  <Container className="p-0 pb-4">
     <Breadcrumb className="bg-white-ol">
-      <Breadcrumb.Item key="home" className="bg-white" href="/">
+      <Breadcrumb.Item key="home" className="bg-white  breadcrum-item" href="/">
         {t('navigation.pages.home')}
       </Breadcrumb.Item>
-      <Breadcrumb.Item key="country" href={`/${country.short_name}`}>
+      <Breadcrumb.Item key="country" href={`/${country.short_name}`} className="breadcrum-item">
         {t(`countries:countries.${country.code}`)}
       </Breadcrumb.Item>
       {navigation.map((navItem) => {
@@ -18,7 +18,7 @@ const BreadcrumbBar = ({ t, country, navigation }) => (
           breadcrumbAttributes.active = true;
         }
         return (
-          <Breadcrumb.Item key={navItem.key} className="truncate" {...breadcrumbAttributes}>
+          <Breadcrumb.Item key={navItem.key} className="truncate breadcrum-item " {...breadcrumbAttributes}>
             {t(`${navItem.key}`)}
           </Breadcrumb.Item>
         );

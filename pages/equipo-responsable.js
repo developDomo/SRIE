@@ -1,7 +1,7 @@
 import { Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import Header from '../components/layout/Header';
 import Title from '../components/layout/Title';
+
 import { txt, bordes, blue4 } from '../styles/colors';
 
 const DirectoryContainer = styled.div`
@@ -60,8 +60,6 @@ export default class extends React.Component {
     const array = [1, 2, 3, 4, 5];
     return (
       <>
-        <Header path={pa} />
-        {/* Header nav */}
         <Container>
           <Row>
             <div className="col-lg-12 pr-0 text-center p-2">
