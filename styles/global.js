@@ -1,5 +1,6 @@
 import css from 'styled-jsx/css';
 import { theme } from './theme';
+import { blue2 } from './colors';
 
 export default css.global`
   body {
@@ -25,6 +26,14 @@ export default css.global`
       /*height:345px;*/
       height:21em;
     }
+  .breadcrum-item{
+    font-family: 'Roboto', sans-serif; 
+    font-size: 14px;
+  }
+  .breadcrum-item a{
+    color: ${blue2}!important;
+  }
+  
   @media (max-width: 576px) { 
     .country-selector{
       

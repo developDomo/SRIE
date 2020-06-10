@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { Container } from 'react-bootstrap';
 import { withTranslation } from '../../../i18n';
-import CountryHeader from '../../../components/countries/CountryHeader';
 
+import CountryHeader from '../../../components/countries/CountryHeader';
 import FetchUtils from '../../../utils/Fetch.utils';
 
 const IndicatorPage = ({

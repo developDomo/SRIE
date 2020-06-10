@@ -1,15 +1,15 @@
 import { Container, Row } from 'react-bootstrap';
 import _ from 'lodash';
-
 import styled from 'styled-components';
-import IndicatorListItem from '../../../components/indicators/IndicatorListItem';
 
+import IndicatorListItem from '../../../components/indicators/IndicatorListItem';
 import Title from '../../../components/layout/Title';
 import PecIcon from '../../../public/img/home/icon_pec_indicadores.svg';
 
 import { withTranslation } from '../../../i18n';
 import FilterResult from '../../../components/indicadors/FilterResult';
 import CountryHeader from '../../../components/countries/CountryHeader';
+
 import FetchUtils from '../../../utils/Fetch.utils';
 
 const IconImg = styled.img`
