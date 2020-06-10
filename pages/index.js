@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import { Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import InfoSlider from '../components/homepage/InfoSlider';
+
 import CountrySelector from '../components/homepage/CountrySelector';
 import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';

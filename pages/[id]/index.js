@@ -1,33 +1,30 @@
 import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
 import {
-  Col, Container, Breadcrumb, Row,
+  Container, Row,
 } from 'react-bootstrap';
-import styled from 'styled-components';
-import Header from '../../components/layout/Header';
 import Boxes from '../../components/layout/Boxes';
-import { ButtonNav, ButtonNavIndicadores } from '../../components/layout/Button';
+
+import { ButtonNavIndicadores } from '../../components/layout/Button';
 import Title from '../../components/layout/Title';
-import {
-  BoxPreescolar, BoxPrimaria, BoxSecundaria, BoxIndicador, Box,
-} from '../../components/layout/Box';
-import { LineTime, TitleLineTime } from '../../components/layout/TimeLineEducation';
+import { BoxIndicador, Box } from '../../components/layout/Box';
+
 import Banner from '../../components/layout/Banner';
 import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
-import {
-  green, blue2, blue1, txt,
-} from '../../styles/colors';
+import { green } from '../../styles/colors';
 import { withTranslation } from '../../i18n';
 
 import EducacionIcon from '../../public/img/home/icon_datos_educ.svg';
 import AlfabetizacionIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
 import CentroseducIcon from '../../public/img/home/icon_datos_centroseduc.svg';
+
 import DatoNinoIcon from '../../public/img/home/icono_datos_ninos.svg';
 import ParticipacionIcon from '../../public/img/home/icon_participacion_indicador.svg';
 import OfertaIcon from '../../public/img/home/icon_oferta_indicador.svg';
+
 import AprendizajeIcon from '../../public/img/home/icon_aprendizaje_indicador.svg';
 import ConclusionIcon from '../../public/img/home/icon_conclusion_indicador.svg';
 import EntornoIcon from '../../public/img/home/icon_entorno_indicador.svg';
+
 import MetasIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
 
