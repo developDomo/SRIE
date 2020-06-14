@@ -17,6 +17,33 @@
             "interpretation": "",
             "source": "",
             "limitations": ""
+        },
+        "4": {
+            "name": "Tasa Neta de Cobertura de los Programas de Educación Pre-Primaria",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "5": {
+            "name": "Número de años de educación preescolar gratuita y obligatoria garantizada en los marcos legales",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "6": {
+            "name": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
         }
     }
 }

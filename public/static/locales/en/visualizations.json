@@ -1,0 +1,15 @@
+{
+    "labels": {
+        "_T": "Total",
+        "_Z": "Not applicable",
+        "M": "Male",
+        "F": "Female",
+        "Q1": "Poorest",
+        "Q2": "Second",
+        "Q3": "Middle",
+        "Q4": "Fourth",
+        "Q5": "Richest",
+        "URB": "Urban",
+        "RUR": "Rural"
+    }
+}
