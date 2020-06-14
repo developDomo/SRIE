@@ -2,8 +2,8 @@
     "labels": {
         "_T": "Total",
         "_Z": "Not applicable",
-        "M": "Hombres",
-        "F": "Muejeres",
+        "M": "Male",
+        "F": "Female",
         "Q1": "Poorest",
         "Q2": "Second",
         "Q3": "Middle",

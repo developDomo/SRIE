@@ -38,6 +38,7 @@ const find = async (table, query) => {
     'sex',
     'wealth_quintile',
     'location',
+    'subject',
   ].concat(fields);
 
   return table.find(query, {

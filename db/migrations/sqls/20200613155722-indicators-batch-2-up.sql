@@ -82,3 +82,7 @@ INSERT INTO indicator_indexes VALUES
 (6, 1),
 (6, 2),
 (6, 3);
+
+INSERT INTO indicator_variations VALUES
+(6, '6-a', '{ "subject": "READING" }'::JSONB, 'a'),
+(6, '6-b', '{ "subject": "MATH" }'::JSONB, 'b');
