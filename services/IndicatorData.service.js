@@ -154,7 +154,7 @@ const filterDataByView = async (viewList, data) => {
 
     dataByView[view.code] = await filterHistoricalData(
       _.map(filteredData, (item) => _.assign(
-        { label: `${view.label_root || 'indexes'}.${item[view.label]}` },
+        { label: `${item[view.label]}` },
         _.omit(
           item,
           'unit_measure',

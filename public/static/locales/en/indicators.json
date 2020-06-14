@@ -17,6 +17,33 @@
             "interpretation": "",
             "source": "",
             "limitations": ""
+        },
+        "4": {
+            "name": "Net enrolment rate, pre-primary",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "5": {
+            "name": "Number of years of free and compulsory pre-primary education guarranteed in legal framewoks",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "6": {
+            "name": "Proportion of students in Grade 2 or 3 achieving at least a minimum proficiency level in mathematics, by sex",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
         }
     }
 }
