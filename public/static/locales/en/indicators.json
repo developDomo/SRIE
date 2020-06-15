@@ -1,7 +1,7 @@
 {
     "indicators": {
         "1": {
-            "name": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being (%)",
+            "name": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
             "description": "Description...",
             "definition": "Definition...",
             "formula": "Formula...",
@@ -10,7 +10,7 @@
             "limitations": ""
         },
         "2": {
-            "name": "Adjusted net attendance rate, one year before the official primary entry age",
+            "name": "Participation rate in organized learning (one year before the official primary entry age), by sex",
             "description": "Description...",
             "definition": "Definition...",
             "formula": "Formula...",
@@ -19,7 +19,7 @@
             "limitations": ""
         },
         "4": {
-            "name": "Net enrolment rate, pre-primary",
+            "name": "Net Rate of Coverage for Pre-Primary Education Programs (ISCED 02)",
             "description": "Description...",
             "definition": "Definition...",
             "formula": "Formula...",
@@ -28,7 +28,7 @@
             "limitations": ""
         },
         "5": {
-            "name": "Number of years of free and compulsory pre-primary education guarranteed in legal framewoks",
+            "name": "Number of years of (a) free and (b) compulsory pre-primary education guaranteed in legal frameworks",
             "description": "Description...",
             "definition": "Definition...",
             "formula": "Formula...",
@@ -37,7 +37,52 @@
             "limitations": ""
         },
         "6": {
-            "name": "Proportion of students in Grade 2 or 3 achieving at least a minimum proficiency level in mathematics, by sex",
+            "name": "Proportion of children and young people (a) in Grade 2 or 3; (b) at the end of primary education; and (c) at the end of lower secondary education achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "7": {
+            "name": "Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "8": {
+            "name": "Net rate of admission to primary, lower secondary and upper secondary",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "9": {
+            "name": "Gross intake ratio to the last grade (primary, lower secondary)",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "10": {
+            "name": "Completion rate (primary education, lower secondary education, upper secondary education)",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "11": {
+            "name": "Out-of-school rate (primary education, lower secondary education, upper secondary education)",
             "description": "Description...",
             "definition": "Definition...",
             "formula": "Formula...",
