@@ -32,19 +32,6 @@ INSERT INTO pec_goals VALUES
 (7, '5.1', '5-1', 7),
 (8, '6.1', '6-1', 8);
 
--- ods4_scales
--- INSERT INTO ods4_scales VALUES
--- (1, '4.1', '4-1', 1),
--- (2, '4.2', '4-2', 2),
--- (3, '4.3', '4-3', 3),
--- (4, '4.4', '4-4', 4),
--- (5, '4.5', '4-5', 5),
--- (6, '4.6', '4-6', 6),
--- (7, '4.7', '4-7', 7),
--- (8, '4.a', '4-a', 8),
--- (9, '4.b', '4-b', 9),
--- (10, '4.c', '4-c', 10);
-
 -- indexes
 INSERT INTO indexes VALUES (1, 'GPIA', '{ "unit_measure": "GPIA", "sex": "_T", "location": "_T", "wealth_quintile": [ "_Z", "_T"] }'::JSONB);
 INSERT INTO indexes VALUES (2, 'GLPIA', '{ "unit_measure": "GLPIA", "sex": "_T", "location": "_T", "wealth_quintile": [ "_Z", "_T"] }'::JSONB);

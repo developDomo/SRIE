@@ -1,4 +1,5 @@
 DELETE FROM indicator_ods4_goals;
+DELETE FROM ods4_goals;
 
 ALTER TABLE ods4_goals RENAME COLUMN goal_order TO  scale_order;
 ALTER TABLE ods4_goals RENAME TO ods4_scales;
