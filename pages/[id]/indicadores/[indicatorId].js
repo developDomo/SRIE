@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import { Container } from 'react-bootstrap';
+import { useEffect } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import { withTranslation } from '../../../i18n';
 
 import CountryHeader from '../../../components/countries/CountryHeader';
 import FetchUtils from '../../../utils/Fetch.utils';
+import IndicatorChart from '../../../components/charts/IndicatorChart';
 
 const IndicatorPage = ({
   t, countries, country, indicator, data,
@@ -13,10 +16,19 @@ const IndicatorPage = ({
     { key: `indicators:indicators.${indicator.id}.name` },
   ];
 
+  const showIndicators = ({ id, variations }) => {
+    if (!isEmpty(variations)) {
+      return variations.map((variation) => `${id}${isEmpty(variation) ? '' : `.${variation.code}`}`);
+    }
+    return [`${id}`];
+  };
+
   return (
     <>
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
-      <Container />
+      <Container>
+        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
+      </Container>
     </>
   );
 };
@@ -31,7 +43,6 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}`,
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/data?country=${country.code}`,
   ]);
-
   return {
     namespacesRequired: ['common'],
     countries,
