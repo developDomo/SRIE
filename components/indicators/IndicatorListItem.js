@@ -109,7 +109,7 @@ const IndicatorListItem = ({ t, indicator, countryName }) => (
           ))}
         </div>
         <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-        <Ods>4.2</Ods>
+        <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
         <IconContainer className=" ">
           <div />
         </IconContainer>
