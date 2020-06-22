@@ -238,11 +238,7 @@ export const Box2 = ({
 }) => (
   <ContainerIndicadorStyled>
     <IconContainer>
-      {iconImg ? (
-        <IconImgStyled src={iconImg} alt="icon" height="50px" width="50px" />
-      ) : (
-        <Icon icon={icon} color={color} />
-      )}
+      {getIcon(iconImg || icon, color)}
     </IconContainer>
     <Title className="m-0 mb-1">
       {title}
