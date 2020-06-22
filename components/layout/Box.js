@@ -118,17 +118,17 @@ const Icon = styled.div`
   mask-position: center;
 `;
 const IconImgStyled = styled.img`
-  width:${(props) => (props.width ? props.width : '80px')};
-  height: ${(props) => (props.height ? props.height : '80px')};
+  width:${(props) => (props.width || '80px')};
+  height: ${(props) => (props.height || '80px')};
 `;
 
 
 const ColorSubtitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: ${(props) => (props.font_size ? props.font_size : '1.8em')};
+  font-size: ${(props) => (props.font_size || '1.8em')};
   margin: 0;
-  margin-bottom: ${(props) => (props.mb ? props.mb : '0')};
+  margin-bottom: ${(props) => (props.mb || '0')};
   width: 100%;
   color: ${(props) => (props.color === 'azul'
     ? blue3
@@ -152,12 +152,12 @@ const IndicadorContainer = styled.div`
   color: white;
   font-size: 1em;
   text-align: center;
-  padding: ${(props) => (props.padding ? props.padding : '40px 8px')};
+  padding: ${(props) => (props.padding || '40px 8px')};
   width: 24%;
-  height:${(props) => (props.height ? props.height : '70px')};
+  height:${(props) => (props.height || '70px')};
   box-sizing: content-box;
-  margin-left: ${(props) => (props.ml ? props.ml : '0')};
-  margin-right: ${(props) => (props.mr ? props.mr : '10px')}; 
+  margin-left: ${(props) => (props.ml || '0')};
+  margin-right: ${(props) => (props.mr || '10px')}; 
   background-color: ${(props) => (props.color === 'azul'
     ? blue
     : props.color === 'verde'
@@ -174,7 +174,7 @@ const IndicadorContainer = styled.div`
                 ? pink2
                 : 'black')};
   & h3 {
-    padding-bottom: ${(props) => (props.pbh3 ? props.pbh3 : '30px')};
+    padding-bottom: ${(props) => (props.pbh3 || '30px')};
     border-bottom: 2px solid white;
     margin: 0;
     font-size: 1.2em;
@@ -212,16 +212,19 @@ const SectionContainer = styled.div`
     font-weight: 400;
   }
 `;
+
+const getIcon = (iconImg, icon, color) => (iconImg ? (
+  <IconImgStyled src={iconImg} alt="icon" />
+) : (
+  <Icon icon={icon} color={color} />
+));
+
 export const Box = ({
   icon, iconImg, title, subtitle, color,
 }) => (
   <ContainerStyled>
     <IconContainer>
-      {iconImg ? (
-        <IconImgStyled src={iconImg} alt="icon" />
-      ) : (
-        <Icon icon={icon} color={color} />
-      )}
+      {getIcon(iconImg || icon, color)}
     </IconContainer>
     <TextContainer>
       <Title>{title}</Title>
