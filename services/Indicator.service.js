@@ -104,16 +104,13 @@ export default {
    * @param {number} id Indicator id
    */
   findRelated: async (id) => {
-    const sql = `SELECT i.id, i.code, i.translation_key FROM (
-                 SELECT related_id as id 
-                 FROM related_indicators 
-                 WHERE indicator_id = ${id} 
-                 UNION 
-                 SELECT indicator_id as id 
-                 FROM related_indicators 
-                 WHERE related_id = ${id}
-               ) r 
-               LEFT JOIN indicators i ON r.id = i.id;`;
+    const sql = `SELECT i.*
+                 FROM indicator_topics it
+                 LEFT JOIN indicators i ON (it.indicator_id = i.id)
+                 WHERE topic_id = (
+                     SELECT topic_id
+                     FROM indicator_topics
+                     WHERE indicator_id = ${id});`;
 
     return db.query(sql);
   },
