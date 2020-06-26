@@ -147,9 +147,9 @@ const BoxSectioInfo = styled.div`
   align-content: stretch;
   flex-grow: ${(props) => (props.flexGrow ? props.flexGrow : 1)};
   ${(props) => (props.flexbasis ? `flex-basis: ${props.flexbasis};` : '')}
-  align-self: flex-start;
+  align-self: stretch;
   width:  ${(props) => (props.width ? '25%' : '100%')};
-  height: 100%;
+  min-height: 80px;
   background-color: ${(props) => (props.color !== '' ? props.color : '#cecece')}; 
   
   ${(props) => (props.border ? `border-${props.border.side} : 10px solid${props.border.color};padding: 0 5px;` : '')}
@@ -184,14 +184,7 @@ const BoxSectioInfo = styled.div`
   
 `;
 const ContainerData = styled.div`
-  position: relative;
-  width: 100%;
-  height: 1000px;
   padding: 0 15px;
-  @media (min-width: 992px) { 
-    height: 200px;
-  }
-  
 `;
 const Boxes = ({ countryId, t }) => {
   if (countryId === 'bz') {
