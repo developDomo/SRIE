@@ -11,9 +11,10 @@ import LinkChild from './LinkChild';
 import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
-  border: 1px solid white;
-  width: 100%;
+  background-color: white;
+  height: 1px;
   margin: 0 0 0 0;
+  width: 100%;
 `;
 
 const Header = ({ router: { pathname } }) => {
