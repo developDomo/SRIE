@@ -13,7 +13,7 @@ const Layout = ({ children, path }) => (
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700;900&display=swap" rel="stylesheet" />
       <script src="https://kit.fontawesome.com/93f079ed62.js" rel="external" />
     </Head>
-    <Header path={path} />
+    <Header />
     <div className="content">{children}</div>
     <Footer />
     <style jsx>
@@ -34,9 +34,10 @@ const Layout = ({ children, path }) => (
   </div>
 );
 
-Layout.getInitialProps = ({ pathname: path }) => ({
-  path,
-});
+Layout.getInitialProps = ({ pathname: path }) => {
+  const test = 'testtttt';
+  return { test };
+};
 
 
 export default Layout;

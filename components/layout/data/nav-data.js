@@ -20,7 +20,7 @@ const navData = [
       },
       {
         id: null,
-        href: '/glosario',
+        href: 'glosario',
         label: 'Glosario',
       },
       {
@@ -41,56 +41,56 @@ const navData = [
     items: [
       {
         id: 'bh',
-        href: '/country/bh',
+        href: 'belice',
         label: 'Belice',
         img:
                   '/img/home/bandera-belice.png',
       },
       {
         id: 'cr',
-        href: '/country/cr',
+        href: 'costa-rica',
         label: 'Costa Rica',
         img:
                   '/img/home/bandera-costa_rica.png',
       },
       {
         id: 'su',
-        href: '/country/su',
+        href: 'el-salvador',
         label: 'El Salvador',
         img:
                   '/img/home/bandera-el_salvador.png',
       },
       {
         id: 'gt',
-        href: '/country/gt',
+        href: 'guatemala',
         label: 'Guatemala',
         img:
                   '/img/home/bandera-guatemala.png',
       },
       {
         id: 'ho',
-        href: '/country/ho',
+        href: 'honduras',
         label: 'Honduras',
         img:
                   '/img/home/bandera-honduras.png',
       },
       {
         id: 'nu',
-        href: '/country/nu',
+        href: 'nicaragua',
         label: 'Nicaragua',
         img:
                   '/img/home/bandera-nicaragua.png',
       },
       {
         id: 'pm',
-        href: '/country/pm',
+        href: 'panama',
         label: 'Panamá',
         img:
                   '/img/home/bandera-panama.png',
       },
       {
         id: 'dr',
-        href: '/country/dr',
+        href: 'republica-dominicana',
         label: 'Rep. Dominicana',
         img:
                   '/img/home/bandera-rep_dominicana.png',

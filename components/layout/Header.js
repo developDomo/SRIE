@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import {
   Navbar, Nav, NavDropdown,
 } from 'react-bootstrap';
-import Router, { withRouter } from 'next/router';
+import Router, { withRouter, useRouter } from 'next/router';
+import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
@@ -17,8 +18,10 @@ const WhiteLine = styled.hr`
   width: 100%;
 `;
 
-const Header = ({ router: { pathname } }) => {
+
+const Header = ({ router: { pathname }, patht }) => {
   const [path, setPath] = useState(pathname);
+
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -30,7 +33,6 @@ const Header = ({ router: { pathname } }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-
 
   return (
     <>
@@ -51,12 +53,9 @@ const Header = ({ router: { pathname } }) => {
                   key={item.label}
                 >
                   {item.items.map((item2, index) => (
-                    <LinkChild
-                      id={item2.id}
-                      href={item2.href}
-                      label={item2.label}
-                      key={`linkChild-${index}`}
-                    />
+                    <Link href="/[id]" as={`/${item2.href}`} key={item2.href}>
+                      <a className={`${path === `/${item2.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item2.label}</a>
+                    </Link>
                   ))}
                 </NavDropdown>
               ))}
@@ -72,8 +71,11 @@ const Header = ({ router: { pathname } }) => {
         {`
 
       ${path === '/'
-          ? `body { background-image: ${getThemeProperty('navbar.home.body.background-image')}}`
-          : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')}}`}
+          ? `body { background-image: ${getThemeProperty('navbar.home.body.background-image')};} 
+            .nav-item > a {border-bottom: 2px solid transparent;}`
+          : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')};} 
+            .nav-item > a {border-bottom: 2px solid ${theme.navbar.primaryFontColor};}`
+        }
 
       .navbar-light .navbar-nav .nav-link {
         color: ${theme.navbar.primaryFontColor};
@@ -117,18 +119,20 @@ const Header = ({ router: { pathname } }) => {
         display: block;
         padding: 5px 10px;
         width: 210px;
+        margin: 0 15px;
         }
-
       .show.dropdown.nav-item > a {
         border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
       }
-
+      .active-link {
+        border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
+      }
       a.nav-item-drop:hover {
         color: #16181b;
         text-decoration: none;
         background-color: ${theme.navbar.menuHoverColor};
         color: ${theme.navbar.primaryFontColor};
-        width: 100%;
+        
     }
 
     light .navbar-nav .nav-link:hover {
