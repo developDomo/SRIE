@@ -4,7 +4,7 @@ import Boxes from '../../components/layout/Boxes';
 
 import { ButtonNavIndicadores } from '../../components/layout/Button';
 import Title from '../../components/layout/Title';
-import { BoxIndicador, Box, Box2 } from '../../components/layout/Box';
+import { BoxIndicador, Box } from '../../components/layout/Box';
 
 import Banner from '../../components/layout/Banner';
 import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
@@ -76,7 +76,7 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mt-4 mb-5">
           <div className="col-lg-4 mb-4">
-            <Box2
+            <Box
               iconImg={EducacionIcon}
               title="Número de años:"
               color="azul"

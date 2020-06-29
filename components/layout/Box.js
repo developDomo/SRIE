@@ -220,44 +220,48 @@ const getIcon = (iconImg, icon, color) => (iconImg ? (
 ));
 
 export const Box = ({
-  icon, iconImg, title, subtitle, color,
-}) => (
-  <ContainerStyled>
-    <IconContainer>
-      {getIcon(iconImg || icon, color)}
-    </IconContainer>
-    <TextContainer>
-      <Title>{title}</Title>
-      <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
-    </TextContainer>
-  </ContainerStyled>
-);
+  icon, iconImg, title, subtitle, gratuita, obligatoria, color,
+}) => {
+  if (gratuita && obligatoria) {
+    return (
+      <>
+        <ContainerIndicadorStyled>
+          <IconContainer>
+            {getIcon(iconImg || icon, color)}
+          </IconContainer>
+          <Title className="m-0 mb-1">
+            {title}
+          </Title>
 
-export const Box2 = ({
-  icon, iconImg, title, gratuita, obligatoria, color,
-}) => (
-  <ContainerIndicadorStyled>
-    <IconContainer>
-      {getIcon(iconImg || icon, color)}
-    </IconContainer>
-    <Title className="m-0 mb-1">
-      {title}
-    </Title>
+          {gratuita ? (
+            <IndicadorContainer color="amarillo" height="82" padding="6px 6px" pbh3="5px">
+              <h3>{gratuita}</h3>
+              <p>Educación gratuita</p>
+            </IndicadorContainer>
+          ) : undefined}
 
-    {gratuita ? (
-      <IndicadorContainer color="amarillo" height="82" padding="6px 6px" pbh3="5px">
-        <h3>{gratuita}</h3>
-        <p>Educación gratuita</p>
-      </IndicadorContainer>
-    ) : undefined}
+          <IndicadorContainer color="verde" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
+            <h3>{obligatoria}</h3>
+            <p>Educación obligatoria</p>
+          </IndicadorContainer>
 
-    <IndicadorContainer color="verde" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
-      <h3>{obligatoria}</h3>
-      <p>Educación obligatoria</p>
-    </IndicadorContainer>
+        </ContainerIndicadorStyled>
+      </>
+    );
+  }
+  return (
+    <ContainerStyled>
+      <IconContainer>
+        {getIcon(iconImg || icon, color)}
+      </IconContainer>
+      <TextContainer>
+        <Title>{title}</Title>
+        <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
+      </TextContainer>
+    </ContainerStyled>
+  );
+};
 
-  </ContainerIndicadorStyled>
-);
 export const BoxIndicador = ({
   title, prescolar, primaria, secundaria,
 }) => (
