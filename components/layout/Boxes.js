@@ -1,7 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  orange2, yellowRoll, blue42, brown2,
+  blue,
+  blueLight,
+  blueTeapot,
+  blueMarlin,
+  blueNightTime,
+  bluePrussian,
+  blueDark,
+  greenSeaweed,
+  greenBase,
+  greenJuniper,
+  greenCrocodile,
+  greenPickle,
+  greenSage,
+  greenSageGrey,
+  greenSageLight,
+  greenLight,
+  black, orange2,
+  yellowRoll,
+  blue42,
+  brown2,
+  white,
+  grayBck,
+  pink,
+  pinkRosewood,
+  pinkRose,
+  pinkWatermelon,
 } from '../../styles/colors';
 import { i18n, withTranslation } from '../../i18n';
 
@@ -150,11 +175,11 @@ const BoxSectioInfo = styled.div`
   align-self: stretch;
   width:  ${(props) => (props.width ? '25%' : '100%')};
   min-height: 80px;
-  background-color: ${(props) => (props.color !== '' ? props.color : '#cecece')}; 
+  background-color: ${(props) => (props.color !== '' ? props.color : `${grayBck}`)}; 
   
   ${(props) => (props.border ? `border-${props.border.side} : 10px solid${props.border.color};padding: 0 5px;` : '')}
   
-  ${(props) => (props.colorTxt ? `color: ${props.colorTxt};` : 'color: #fff; ')}
+  ${(props) => (props.colorTxt ? `color: ${props.colorTxt};` : `color: ${white}; `)}
   
   & p {
       ${(props) => (props.rotateTxt ? 'transform: rotate(-90deg);' : '')}
@@ -193,14 +218,14 @@ const Boxes = ({ countryId, t }) => {
         <ContainerData>
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
-              <BoxSectioInfo color="#fdcccc" flexdirection="column" rotateTxt width colorTxt="#000" flexdirectionSm="column" heightSm="40px">
+              <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
                 <p className="text-uppercase">{t('pre_edu_label_header')}</p>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -212,9 +237,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -230,9 +255,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('pre_edu_label')}
@@ -241,14 +266,22 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
-              <BoxSectioInfo color="#caf0b0" flexdirection="column" rotateTxt width colorTxt="#000" flexdirectionSm="column" heightSm="40px">
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
                 <p className="text-uppercase">{t('primary_edu_label_header')}</p>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#c1d4ac"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSageGrey}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -259,9 +292,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#bcda9c"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSageLight}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -272,54 +305,54 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -330,9 +363,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('primary_edu_label')}
@@ -342,11 +375,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -356,54 +389,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -415,9 +448,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>
                     {t('high_edu_label')}
@@ -436,14 +469,14 @@ const Boxes = ({ countryId, t }) => {
         <ContainerData>
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
-              <BoxSectioInfo color="#fdcccc" flexdirection="column" rotateTxt width colorTxt="#000" flexdirectionSm="column" heightSm="40px">
+              <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
                 <p className="text-uppercase">{t('pre_edu_label_header')}</p>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -454,9 +487,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -467,9 +500,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -481,9 +514,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={2}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fc9999' }}
-                  borderSm={{ side: 'top', color: '#fc9999' }}
-                  colorTxt="#fc9999"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
                 >
                   <p>
                     {t('maternal_infant')}
@@ -492,9 +525,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('pre_edu_label')}
@@ -503,59 +536,59 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
-              <BoxSectioInfo color="#caf0b0" flexdirection="column" rotateTxt width colorTxt="#000" flexdirectionSm="column" heightSm="40px">
+              <BoxSectioInfo color={greenLight} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
                 <p className="text-uppercase">{t('primary_edu_label_header')}</p>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -566,9 +599,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>{t('basic_general_edu')}</p>
                 </BoxSectioInfo>
@@ -576,11 +609,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -588,54 +621,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -647,16 +680,16 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  borderSm={{ side: 'top', color: greenBase }}
                 />
                 <BoxSectioInfo
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>{t('diversified_education')}</p>
                 </BoxSectioInfo>
@@ -674,11 +707,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -688,9 +721,9 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -700,9 +733,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -712,9 +745,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -725,9 +758,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('pre_edu_label')}
@@ -741,11 +774,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -755,54 +788,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -813,9 +846,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('basic_general_edu')}
@@ -825,11 +858,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -839,54 +872,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -898,16 +931,16 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  borderSm={{ side: 'top', color: greenBase }}
                 />
                 <BoxSectioInfo
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>{t('media_education')}</p>
                 </BoxSectioInfo>
@@ -925,11 +958,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -939,9 +972,9 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -950,9 +983,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -961,9 +994,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -976,9 +1009,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fc9999' }}
-                  borderSm={{ side: 'top', color: '#fc9999' }}
-                  colorTxt="#fc9999"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
                 >
                   <p>
                     {t('initial')}
@@ -988,9 +1021,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={2}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('pre_primary')}
@@ -1000,11 +1033,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1014,54 +1047,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1072,9 +1105,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('primary')}
@@ -1084,11 +1117,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1098,54 +1131,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1157,9 +1190,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#338dc9' }}
-                  colorTxt="#338dc9"
-                  borderSm={{ side: 'top', color: '#338dc9' }}
+                  border={{ side: 'left', color: blueMarlin }}
+                  colorTxt={blueMarlin}
+                  borderSm={{ side: 'top', color: blueMarlin }}
                 >
                   <p>
                     {t('basic')}
@@ -1169,9 +1202,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>
                     {t('diversified_education')}
@@ -1191,11 +1224,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1205,9 +1238,9 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1216,9 +1249,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1227,9 +1260,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1242,9 +1275,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fc9999' }}
-                  borderSm={{ side: 'top', color: '#fc9999' }}
-                  colorTxt="#fc9999"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
                 >
                   <p>
                     {t('pre_kindergarden')}
@@ -1253,9 +1286,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fb8080' }}
-                  colorTxt="#fb8080"
-                  borderSm={{ side: 'top', color: '#fb8080' }}
+                  border={{ side: 'left', color: pink }}
+                  colorTxt={pink}
+                  borderSm={{ side: 'top', color: pink }}
                 >
                   <p>
                     {t('kindergarden')}
@@ -1264,9 +1297,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('preparatory')}
@@ -1276,11 +1309,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1290,54 +1323,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1348,9 +1381,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('primary_edu_label')}
@@ -1360,11 +1393,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1374,54 +1407,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1433,9 +1466,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>
                     {t('media_education')}
@@ -1455,11 +1488,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1469,9 +1502,9 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1481,9 +1514,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1493,9 +1526,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1508,9 +1541,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>{t('pre_edu_label')}</p>
                 </BoxSectioInfo>
@@ -1518,11 +1551,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1532,54 +1565,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1590,9 +1623,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('primary_edu_label')}
@@ -1602,11 +1635,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1616,54 +1649,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1675,9 +1708,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>{t('high_edu_label')}</p>
                 </BoxSectioInfo>
@@ -1695,11 +1728,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1709,27 +1742,27 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>{t('first_grades')}</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>{t('penultimate_grade')}</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1742,9 +1775,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fc9999' }}
-                  borderSm={{ side: 'top', color: '#fc9999' }}
-                  colorTxt="#fc9999"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
                 >
                   <p>
                     {t('pre_kindergarden')}
@@ -1754,9 +1787,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={2}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#BC6060' }}
-                  colorTxt="#BC6060"
-                  borderSm={{ side: 'top', color: '#BC6060' }}
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
                     {t('kindergarden')}
@@ -1766,11 +1799,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1780,54 +1813,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1838,9 +1871,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('primary_edu_label')}
@@ -1850,11 +1883,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1864,54 +1897,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1923,9 +1956,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#338dc9' }}
-                  colorTxt="#338dc9"
-                  borderSm={{ side: 'top', color: '#338dc9' }}
+                  border={{ side: 'left', color: blueMarlin }}
+                  colorTxt={blueMarlin}
+                  borderSm={{ side: 'top', color: blueMarlin }}
                 >
                   <p>
                     {t('premedia')}
@@ -1935,9 +1968,9 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>
                     {t('media_education')}
@@ -1957,11 +1990,11 @@ const Boxes = ({ countryId, t }) => {
           <ContainerBox>
             <ContainerBoxSection flexbasis="0" flexGrow={1}>
               <BoxSectioInfo
-                color="#fdcccc"
+                color={pinkRose}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -1971,9 +2004,9 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#fc9999"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1982,9 +2015,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#fb8080"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -1993,9 +2026,9 @@ const Boxes = ({ countryId, t }) => {
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#BC6060"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -2008,9 +2041,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#fc9999' }}
-                  borderSm={{ side: 'top', color: '#fc9999' }}
-                  colorTxt="#fc9999"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
                 >
                   <p>
                     {t('initial')}
@@ -2020,11 +2053,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#caf0b0"
+                color={greenLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -2034,54 +2067,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#afd188"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>1º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#95c161"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>2º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#7ab239"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>3º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#5c852b"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>4º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#3d591d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>5º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#324914"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -2092,9 +2125,9 @@ const Boxes = ({ countryId, t }) => {
                 <BoxSectioInfo
                   flexbasis="0"
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 >
                   <p>
                     {t('basic')}
@@ -2104,11 +2137,11 @@ const Boxes = ({ countryId, t }) => {
             </ContainerBoxSection>
             <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo
-                color="#cce3f2"
+                color={blueLight}
                 flexdirection="column"
                 rotateTxt
                 width
-                colorTxt="#000"
+                colorTxt={black}
                 flexdirectionSm="column"
                 heightSm="40px"
               >
@@ -2118,54 +2151,54 @@ const Boxes = ({ countryId, t }) => {
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
-                  color="#66aad7"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>7º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#338dc9"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>8º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#0071bc"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>9º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00558d"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>10º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#00395E"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
                   <p>11º</p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
-                  color="#032D44"
-                  border={{ side: 'right', color: '#fff' }}
-                  borderSm={{ side: 'bottom', color: '#fff' }}
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
@@ -2177,17 +2210,17 @@ const Boxes = ({ countryId, t }) => {
                   flexbasis="0"
                   flexGrow={1}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#7ab239' }}
-                  colorTxt="#7ab239"
-                  borderSm={{ side: 'top', color: '#7ab239' }}
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
                 />
                 <BoxSectioInfo
                   flexbasis="0"
                   flexGrow={2}
                   flexdirection="column"
-                  border={{ side: 'left', color: '#0071bc' }}
-                  colorTxt="#0071bc"
-                  borderSm={{ side: 'top', color: '#0071bc' }}
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
                 >
                   <p>
                     {t('middle')}
