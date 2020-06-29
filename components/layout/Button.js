@@ -37,7 +37,7 @@ export const ButtonNav = styled.button`
             ? green
             : props.amarillo
               ? yellow
-              : undefined)};
+              : 'transparent')};
   text-transform: uppercase;
   padding: 10px 0;
   font-family: 'Roboto', sans-serif;
@@ -53,7 +53,7 @@ export const ButtonNav = styled.button`
         ? yellow
         : props.celeste
           ? blue4
-          : undefined)};
+          : 'transparent')};
   color: white;
   &:hover {
     background-color: ${(props) => (props.azul
@@ -62,7 +62,7 @@ export const ButtonNav = styled.button`
       ? greenRoll
       : props.amarillo
         ? yellowRoll
-        : undefined)};
+        : 'transparent')};
     border-bottom: 10px solid
       ${(props) => (props.azul
     ? blue
@@ -70,7 +70,7 @@ export const ButtonNav = styled.button`
       ? green
       : props.amarillo
         ? yellow
-        : undefined)};
+        : 'transparent')};
   }
 `;
 export const ButtonNavWithIcon = styled.button`
@@ -83,7 +83,7 @@ export const ButtonNavWithIcon = styled.button`
       ? greenRoll
       : props.amarillo
         ? yellowRoll
-        : undefined)};
+        : 'transparent')};
   text-transform: uppercase;
   padding: 16px 48px;
   font-family: 'Roboto', sans-serif;
@@ -97,7 +97,7 @@ export const ButtonNavWithIcon = styled.button`
       ? green
       : props.amarillo
         ? yellow
-        : undefined)};
+        : 'transparent')};
   color: white;
   &:hover {
     background-color: ${(props) => (props.azul
@@ -106,7 +106,7 @@ export const ButtonNavWithIcon = styled.button`
       ? greenRoll
       : props.amarillo
         ? yellowRoll
-        : undefined)};
+        : 'transparent')};
     border-bottom: 10px solid ${blue};
   }
   &:before {
@@ -144,7 +144,7 @@ export const ButtonNavIndicadores = styled.button`
       ? green
       : props.amarillo
         ? yellow
-        : undefined)};
+        : 'transparent')};
   color: white;
   &:hover {
     background-color: ${blueRoll};
@@ -162,7 +162,7 @@ export const ButtonNavIndicadores = styled.button`
     margin-left: 10px;
   }
 `;
-export const ButtonContainer = styled.button`
+export const ButtonContainer = styled.div`
   display: flex;
   outline: 0;
   border: 0;
@@ -170,14 +170,16 @@ export const ButtonContainer = styled.button`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-align: left;
-
+  padding:0;
   font-size: 14px;
   cursor: pointer;
+  background-color: "transparent";
   transition: all ease-in 0.9s;
   width: 100%;
   color: white;
   & div {
     border-bottom: 10px solid white;
+
   }
 
   &:hover div {
@@ -196,10 +198,11 @@ export const ButtonContainer = styled.button`
               ? orange2
               : props.color === 'rosa'
                 ? pink2
-                : undefined)};
+                : 'transparent')};
   }
 `;
 export const IconContainer = styled.div`
+
   background-color: ${(props) => (props.color === 'azul'
     ? blue
     : props.color === 'verde'
@@ -214,7 +217,7 @@ export const IconContainer = styled.div`
               ? orange
               : props.color === 'rosa'
                 ? pink
-                : undefined)};
+                : 'white')};
   margin-right: 5px;
   padding: 20px 20px;
   & img {
@@ -237,7 +240,7 @@ export const TextContainer = styled.div`
               ? orange
               : props.color === 'rosa'
                 ? pink
-                : undefined)};
+                : 'white')};
   text-transform: capitalize;
   font-size: 1.2em;
   padding: 23px 15px;
