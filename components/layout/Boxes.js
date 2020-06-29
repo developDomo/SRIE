@@ -1,9 +1,34 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import {
-  orange2, yellowRoll, blue42, brown2,
+  blue,
+  blueLight,
+  blueTeapot,
+  blueMarlin,
+  blueNightTime,
+  bluePrussian,
+  blueDark,
+  greenSeaweed,
+  greenBase,
+  greenJuniper,
+  greenCrocodile,
+  greenPickle,
+  greenSage,
+  greenSageGrey,
+  greenSageLight,
+  greenLight,
+  black, orange2,
+  yellowRoll,
+  blue42,
+  brown2,
+  white,
+  grayBck,
+  pink,
+  pinkRosewood,
+  pinkRose,
+  pinkWatermelon,
 } from '../../styles/colors';
+import { i18n, withTranslation } from '../../i18n';
 
 const Title = styled.h3` width: 100%; font-family: "Roboto", sans-serif; font-weight: bold; font-size: 1.2em; margin-bottom: 5px;`;
 
@@ -94,738 +119,2117 @@ const LineTitle = styled.div`
   text-align: center;
   font-size: 0.9em;
 `;
+// new
+const ContainerBox = styled.div`
+  display: flex;
+  flex-direction: ${(props) => (props.flexdirection ? props.flexdirection : 'column')};
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  flex-grow: 1;
+  align-self: flex-start;
+  width: 100%;
+  height: 100%;
+  @media (min-width: 992px) { 
+    flex-direction: ${(props) => (props.flexdirectionSm ? props.flexdirectionSm : 'row')};
+  }
+  
+`;
+const ContainerBoxSection = styled.div`
+  display: flex;
+  flex-direction: ${(props) => (props.flexdirection ? props.flexdirection : 'row')};
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
 
-const Boxes = ({ countryId }) => {
+  flex-grow: 1;
+  align-self: flex-start;
+  width: 100%;
+  height: 100%;
+  flex-grow: ${(props) => (props.flexGrow ? props.flexGrow : 1)};
+  ${(props) => (props.flexbasis ? `flex-basis: ${props.flexbasis};` : '')}
+
+  background-color: ${(props) => (props.color > 1 ? props.color : '')};
+  border-width: ${(props) => (props.bw > 1 ? props.bw : '0px')};
+  border-style: ${(props) => (props.bs > 1 ? props.bs : 'none')};
+  border-color: ${(props) => (props.bc > 1 ? props.bc : 'transparent')};
+  @media (min-width: 992px) { 
+    flex-direction: ${(props) => (props.flexdirectionSm ? props.flexdirectionSm : 'column')};
+    flex-grow: ${(props) => (props.flexGrow ? props.flexGrow : 1)};
+    ${(props) => (props.flexbasis ? `flex-basis: ${props.flexbasis};` : '')}
+  }
+  
+`;
+
+const BoxSectioInfo = styled.div`
+  display: ${(props) => (props.dflex ? props.dflex : 'flex')};
+  flex-direction: ${(props) => (props.flexdirection ? props.flexdirection : 'row')};
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  flex-grow: ${(props) => (props.flexGrow ? props.flexGrow : 1)};
+  ${(props) => (props.flexbasis ? `flex-basis: ${props.flexbasis};` : '')}
+  align-self: stretch;
+  width:  ${(props) => (props.width ? '25%' : '100%')};
+  min-height: 80px;
+  background-color: ${(props) => (props.color !== '' ? props.color : `${grayBck}`)}; 
+  
+  ${(props) => (props.border ? `border-${props.border.side} : 10px solid${props.border.color};padding: 0 5px;` : '')}
+  
+  ${(props) => (props.colorTxt ? `color: ${props.colorTxt};` : `color: ${white}; `)}
+  
+  & p {
+      ${(props) => (props.rotateTxt ? 'transform: rotate(-90deg);' : '')}
+      min-width: 99px;
+      margin: 0;
+      line-height: 14px;
+      font-size: 0.8rem;
+      & span {
+        font-size: 1.3em;
+        display: block;
+      }
+    }
+  @media (min-width: 992px) {
+    border: none;
+    min-width: inherit;
+    flex-direction: ${(props) => (props.flexdirectionSm ? props.flexdirectionSm : 'row')};
+    flex-grow: ${(props) => (props.flexGrow ? props.flexGrow : 1)};
+    ${(props) => (props.flexbasis ? `flex-basis: ${props.flexbasis};` : '')}
+    ${(props) => (props.borderSm ? `border-${props.borderSm.side} : 5px solid${props.borderSm.color};padding: 5px 0;` : '')}
+    width:  ${(props) => (props.widthSm ? '25%' : '100%')};
+    min-height: ${(props) => (props.heightSm ? props.heightSm : '80px')};
+    & p {
+      transform: none;
+      min-width: initial;
+    }
+  }
+  
+`;
+const ContainerData = styled.div`
+  padding: 0 15px;
+`;
+const Boxes = ({ countryId, t }) => {
   if (countryId === 'bz') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" width="50%">
-                <h3>Preescolar nivel</h3>
-                <p>1</p>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" width="50%">
-                <h3>Preescolar nivel</h3>
-                <p>2</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#c1d4ac" width="12.5%">
-                <p>Infant 1</p>
-              </SectionContainer>
-              <SectionContainer color="#bcda9c" width="12.5%">
-                <p>Infant 2</p>
-              </SectionContainer>
-              <SectionContainer color="#afd188" width="12.5%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="12.5%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="12.5%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="12.5%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="12.5%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="12.5%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="25%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="25%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="25%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="25%">
-                <p>10º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#fb8080" className="col-4" />
-              <Line color="#7ab239" className="col-4" />
-              <Line color="#0071bc" className="col-4" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#bc6060" className="col-4">
-                Preescolar
-              </LineTitle>
-              <LineTitle color="#7ab239" className="col-4">
-                Educación general básica
-              </LineTitle>
-              <LineTitle color="#0071bc" className="col-4">
-                Educación diversificada
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
+                <p className="text-uppercase">{t('pre_edu_label_header')}</p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('pre_edu_label')}
+                    {' '}
+                    {t('level')}
+                    <span>1</span>
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('pre_edu_label')}
+                    {' '}
+                    {t('level')}
+                    <span>2</span>
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('pre_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">{t('primary_edu_label_header')}</p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSageGrey}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('infant')}
+                    {' '}
+                    1
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSageLight}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('infant')}
+                    {' '}
+                    2
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('primary_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>
+                    {t('high_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'cr') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Grupo interactivo </h3>
-                <p>1</p>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Grupo interactivo </h3>
-                <p>2</p>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Transición</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="22.2%" />
-              <Line color="#BC6060" width="11.1%" />
-              <Line color="#7ab239" width="50.1%" />
-              <Line color="#0071bc" width="16.6%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="22.2%">
-                Materno infantil
-              </LineTitle>
-              <LineTitle color="#BC6060" width="11.1%">
-                Preescolar
-              </LineTitle>
-              <LineTitle color="#7ab239" width="50.1%">
-                Educación general básica
-              </LineTitle>
-              <LineTitle color="#0071bc" width="16.6%">
-                Educación diversificada
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
+                <p className="text-uppercase">{t('pre_edu_label_header')}</p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('interactive_group')}
+                    {' '}
+                    <span>1</span>
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('interactive_group')}
+                    {' '}
+                    <span>2</span>
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>{t('transition')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={2}
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('maternal_infant')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('pre_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo color={greenLight} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
+                <p className="text-uppercase">{t('primary_edu_label_header')}</p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>{t('basic_general_edu')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">{t('high_edu_label_header')}</p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  borderSm={{ side: 'top', color: greenBase }}
+                />
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>{t('diversified_education')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'sv') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="33.3%" />
-              <Line color="#7ab239" width="50.1%" />
-              <Line color="#0071bc" width="16.6%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="33.3%">
-                Preescolar o Parvularia
-              </LineTitle>
-              <LineTitle color="#7ab239" width="50.1%">
-                Educación básica
-              </LineTitle>
-              <LineTitle color="#0071bc" width="16.6%">
-                Educación media
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('first_grades')}
+                    {' '}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('penultimate_grade')}
+                    {' '}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>{t('last_grade')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('pre_edu_label')}
+                    {' '}
+                    {t('or')}
+                    {' '}
+                    {t('nursery_school')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('basic_general_edu')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  borderSm={{ side: 'top', color: greenBase }}
+                />
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>{t('media_education')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'gt') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="11.1%" />
-              <Line color="#BC6060" width="22.2%" />
-              <Line color="#7ab239" width="33.3%" />
-              <Line color="#338dc9" width="16.7%" />
-              <Line color="#0071bc" width="16.7%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="11.1%">
-                Inicial
-              </LineTitle>
-              <LineTitle color="#BC6060" width="22.2%">
-                Preprimaria
-              </LineTitle>
-              <LineTitle color="#7ab239" width="33.3%">
-                Primaria
-              </LineTitle>
-              <LineTitle color="#338dc9" width="16.7%">
-                Básico
-              </LineTitle>
-              <LineTitle color="#0071bc" width="16.7%">
-                Educación media
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('first_grades')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('penultimate_grade')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('last_grade')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('initial')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={2}
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('pre_primary')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('primary')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blueMarlin }}
+                  colorTxt={blueMarlin}
+                  borderSm={{ side: 'top', color: blueMarlin }}
+                >
+                  <p>
+                    {t('basic')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>
+                    {t('diversified_education')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'hn') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#fc9999" width="11.1%" />
-              <Line color="#fb8080" width="11.1%" />
-              <Line color="#BC6060" width="11.1%" />
-              <Line color="#7AB239" width="33.4%" />
-              <Line color="#0071bc" width="33.3%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#fc9999" width="11.1%">
-                Prekinder
-              </LineTitle>
-              <LineTitle color="#fb8080" width="11.1%">
-                Kinder
-              </LineTitle>
-              <LineTitle color="#BC6060" width="11.1%">
-                Preparatoria
-              </LineTitle>
-              <LineTitle color="#7AB239" width="33.4%">
-                Educación primaria
-              </LineTitle>
-              <LineTitle color="#0071bc" width="33.3%">
-                Educación media
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('first_grades')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('penultimate_grade')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('last_grade')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('pre_kindergarden')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pink }}
+                  colorTxt={pink}
+                  borderSm={{ side: 'top', color: pink }}
+                >
+                  <p>
+                    {t('kindergarden')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('preparatory')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('primary_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>
+                    {t('media_education')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'ni') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="33.3%" />
-              <Line color="#7ab239" width="33.4%" />
-              <Line color="#0071bc" width="33.3%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="33.3%">
-                Preescolar
-              </LineTitle>
-              <LineTitle color="#7ab239" width="33.4%">
-                Primaria
-              </LineTitle>
-              <LineTitle color="#0071bc" width="33.3%">
-                Secundaria
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('first_grades')}
+                    {' '}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('penultimate_grade')}
+                    {' '}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('last_grade')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>{t('pre_edu_label')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('primary_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>{t('high_edu_label')}</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'pa') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="11.1%" />
-              <Line color="#BC6060" width="22.2%" />
-              <Line color="#7ab239" width="33.3%" />
-              <Line color="#338dc9" width="16.7%" />
-              <Line color="#0071bc" width="16.7%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="11.1%">
-                Prejardín
-              </LineTitle>
-              <LineTitle color="#BC6060" width="22.2%">
-                Jardín
-              </LineTitle>
-              <LineTitle color="#7ab239" width="33.3%">
-                Primaria
-              </LineTitle>
-              <LineTitle color="#338dc9" width="16.7%">
-                Premedia
-              </LineTitle>
-              <LineTitle color="#0071bc" width="16.7%">
-                Media
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>{t('first_grades')}</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>{t('penultimate_grade')}</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('last_grade')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('pre_kindergarden')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={2}
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkRosewood }}
+                  colorTxt={pinkRosewood}
+                  borderSm={{ side: 'top', color: pinkRosewood }}
+                >
+                  <p>
+                    {t('kindergarden')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('primary_edu_label')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blueMarlin }}
+                  colorTxt={blueMarlin}
+                  borderSm={{ side: 'top', color: blueMarlin }}
+                >
+                  <p>
+                    {t('premedia')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>
+                    {t('media_education')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
   if (countryId === 'do') {
     return (
       <>
-        <Row>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="rosa">
-              <Title>Preescolar</Title>
-              <SectionContainer color="#fc9999" className="col-4">
-                <h3>Primeros grados</h3>
-              </SectionContainer>
-              <SectionContainer color="#fb8080" className="col-4">
-                <h3>Penúltimo grado </h3>
-              </SectionContainer>
-              <SectionContainer color="#BC6060" className="col-4">
-                <h3>Último grado</h3>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="verde">
-              <Title>Primaria</Title>
-              <SectionContainer color="#afd188" width="16.67%">
-                <p>1º</p>
-              </SectionContainer>
-              <SectionContainer color="#95c161" width="16.67%">
-                <p>2º</p>
-              </SectionContainer>
-              <SectionContainer color="#7ab239" width="16.67%">
-                <p>3º</p>
-              </SectionContainer>
-              <SectionContainer color="#5c852b" width="16.67%">
-                <p>4º</p>
-              </SectionContainer>
-              <SectionContainer color="#3d591d" width="16.67%">
-                <p>5º</p>
-              </SectionContainer>
-              <SectionContainer color="#324914" width="16.67%">
-                <p>6º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-          <Col xs={12} sm={4} className="px-0">
-            <ContainerEducationStyled color="azul">
-              <Title>Secundaria</Title>
-              <SectionContainer color="#66aad7" width="16.67%">
-                <p>7º</p>
-              </SectionContainer>
-              <SectionContainer color="#338dc9" width="16.67%">
-                <p>8º</p>
-              </SectionContainer>
-              <SectionContainer color="#0071bc" width="16.67%">
-                <p>9º</p>
-              </SectionContainer>
-              <SectionContainer color="#00558d" width="16.67%">
-                <p>10º</p>
-              </SectionContainer>
-              <SectionContainer color="#00395E" width="16.67%">
-                <p>11º</p>
-              </SectionContainer>
-              <SectionContainer color="#032D44" width="16.67%">
-                <p>12º</p>
-              </SectionContainer>
-            </ContainerEducationStyled>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="px-0 col-12">
-            <LineContainer>
-              <Line color="#FB8080" width="33.3%" />
-              <Line color="#7ab239" width="33.4%" />
-              <Line color="#0071bc" width="33.3%" />
-            </LineContainer>
-            <LineContainer>
-              <LineTitle color="#FB8080" width="33.3%">
-                Inicial
-              </LineTitle>
-              <LineTitle color="#7ab239" width="33.4%">
-                Básico
-              </LineTitle>
-              <LineTitle color="#338dc9" width="33.3%">
-                Medio
-              </LineTitle>
-            </LineContainer>
-          </Col>
-        </Row>
+        <ContainerData>
+          <ContainerBox>
+            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+              <BoxSectioInfo
+                color={pinkRose}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('pre_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={pinkWatermelon}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('first_grades')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('penultimate_grade')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pinkRosewood}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('last_grade')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('initial')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={greenLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('primary_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={greenSage}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>1º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenPickle}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>2º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenBase}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>3º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenCrocodile}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>4º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenJuniper}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>5º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={greenSeaweed}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>6º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                >
+                  <p>
+                    {t('basic')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo
+                color={blueLight}
+                flexdirection="column"
+                rotateTxt
+                width
+                colorTxt={black}
+                flexdirectionSm="column"
+                heightSm="40px"
+              >
+                <p className="text-uppercase">
+                  {t('high_edu_label_header')}
+                </p>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  color={blueTeapot}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>7º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueMarlin}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>8º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blue}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>9º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueNightTime}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>10º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={bluePrussian}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>11º</p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={blueDark}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>12º</p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+              <BoxSectioInfo flexdirection="column">
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={1}
+                  flexdirection="column"
+                  border={{ side: 'left', color: greenBase }}
+                  colorTxt={greenBase}
+                  borderSm={{ side: 'top', color: greenBase }}
+                />
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={2}
+                  flexdirection="column"
+                  border={{ side: 'left', color: blue }}
+                  colorTxt={blue}
+                  borderSm={{ side: 'top', color: blue }}
+                >
+                  <p>
+                    {t('middle')}
+                  </p>
+                </BoxSectioInfo>
+              </BoxSectioInfo>
+            </ContainerBoxSection>
+          </ContainerBox>
+        </ContainerData>
       </>
     );
   }
@@ -836,4 +2240,4 @@ const Boxes = ({ countryId }) => {
   );
 };
 
-export default Boxes;
+export default withTranslation('educational-data-structure')(Boxes);

@@ -31,14 +31,24 @@ const fields = [
   'decimals',
 ];
 
+/**
+ * Default fields to be filtered
+ */
+const filteringFields = [
+  'unit_measure',
+  'edu_level',
+  'edu_attain',
+  'sex',
+  'wealth_quintile',
+  'location',
+  'subject',
+  'stat_unit',
+  'grade',
+  'age',
+];
+
 const find = async (table, query) => {
-  const allFields = [
-    'unit_measure',
-    'edu_level',
-    'sex',
-    'wealth_quintile',
-    'location',
-  ].concat(fields);
+  const allFields = filteringFields.concat(fields);
 
   return table.find(query, {
     fields: allFields,
@@ -107,7 +117,7 @@ const filterDataByVariation = async (variations, indicatorCode, rawData) => {
 
   if (variations.length > 0) {
     variations.forEach(async (variation) => {
-      data[`${indicatorCode}.${variation.code}`] = _.filter(
+      data[`${indicatorCode}.${variation.code}`] = FilterUtils.filter(
         rawData,
         variation.query,
       );
@@ -154,14 +164,10 @@ const filterDataByView = async (viewList, data) => {
 
     dataByView[view.code] = await filterHistoricalData(
       _.map(filteredData, (item) => _.assign(
-        { label: `${view.label_root || 'indexes'}.${item[view.label]}` },
+        { label: `${item[view.label]}` },
         _.omit(
           item,
-          'unit_measure',
-          'edu_level',
-          'sex',
-          'wealth_quintile',
-          'location',
+          filteringFields,
         ),
       )),
     );

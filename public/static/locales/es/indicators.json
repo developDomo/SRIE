@@ -17,6 +17,78 @@
             "interpretation": "",
             "source": "",
             "limitations": ""
+        },
+        "4": {
+            "name": "Tasa Neta de Cobertura de los Programas de Educación Pre-Primaria (CINE 02)",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "5": {
+            "name": "Número de años de educación preescolar (a) gratuita, (b) obligatoria garantizada en los marcos legales",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "6": {
+            "name": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo.",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "7": {
+            "name": "Proporción de niños, niñas y adolescentes en los grados que al final de la educación primaria; han alcanzado al menos un nivel mínimo de competencia en i) lectura y ii) matemáticas, desglosada por sexo",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "8": {
+            "name": "Tasa neta de ingreso a primaria, secundaria baja y secundaria alta",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "9": {
+            "name": "Tasa bruta de ingreso al último grado (primaria y educación secundaria baja)",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "10": {
+            "name": "Tasa de finalización (primaria, educación secundaria baja y educación secundaria alta) ",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
+        },
+        "11": {
+            "name": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
+            "description": "Description...",
+            "definition": "Definition...",
+            "formula": "Formula...",
+            "interpretation": "",
+            "source": "",
+            "limitations": ""
         }
     }
 }
