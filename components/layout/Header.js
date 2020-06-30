@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import {
   Navbar, Nav, NavDropdown,
 } from 'react-bootstrap';
-import Router, { withRouter, useRouter } from 'next/router';
+import Router, { withRouter } from 'next/router';
 import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import LinkChild from './LinkChild';
 import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
@@ -34,6 +33,22 @@ const Header = ({ router: { pathname }, patht }) => {
     };
   }, []);
 
+  function LinkIsCountry(item2) {
+    if (item2.isCountry) {
+      return (
+        <Link href="/[id]" as={`/${item2.href}`} key={item2.href}>
+          {' '}
+          <a className={`${path === `/${item2.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item2.label}</a>
+          {' '}
+        </Link>
+      );
+    }
+    return (
+      <Link href={`/${item2.href}`} key={item2.href}>
+        <a className={`${path === `/${item2.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item2.label}</a>
+      </Link>
+    );
+  }
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
@@ -53,9 +68,7 @@ const Header = ({ router: { pathname }, patht }) => {
                   key={item.label}
                 >
                   {item.items.map((item2, index) => (
-                    <Link href="/[id]" as={`/${item2.href}`} key={item2.href}>
-                      <a className={`${path === `/${item2.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item2.label}</a>
-                    </Link>
+                    LinkIsCountry(item2)
                   ))}
                 </NavDropdown>
               ))}
@@ -65,7 +78,6 @@ const Header = ({ router: { pathname }, patht }) => {
             </div>
           </Navbar.Collapse>
         </div>
-
       </Navbar>
       <style type="text/css">
         {`
