@@ -17,8 +17,10 @@ const WhiteLine = styled.hr`
   width: 100%;
 `;
 
-const Header = ({ router: { pathname } }) => {
+
+const Header = ({ router: { pathname }, patht }) => {
   const [path, setPath] = useState(pathname);
+
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -47,7 +49,6 @@ const Header = ({ router: { pathname } }) => {
       </Link>
     );
   }
-
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
