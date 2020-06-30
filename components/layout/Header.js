@@ -32,7 +32,7 @@ const Header = ({ router: { pathname } }) => {
   }, []);
 
   function LinkIsCountry(item2) {
-    if (item2.isCountrie) {
+    if (item2.isCountry) {
       return (
         <Link href="/[id]" as={`/${item2.href}`} key={item2.href}>
           {' '}
