@@ -10,7 +10,7 @@
     "dev": "node server.js",
     "build": "db-migrate up && next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
-    "lint": "./node_modules/.bin/eslint . --fix",
+    "lint": "./node_modules/.bin/eslint .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

@@ -34,10 +34,4 @@ const Layout = ({ children, path }) => (
   </div>
 );
 
-Layout.getInitialProps = ({ pathname: path }) => {
-  const test = 'testtttt';
-  return { test };
-};
-
-
 export default Layout;
