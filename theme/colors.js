@@ -32,3 +32,6 @@ export const pink = '#FB8080';
 export const pink2 = '#D87171';
 
 export const red = '#BF1922';
+
+export const femaleBarColor = '#2A58AD';
+export const maleBarColor = '#359B8A';

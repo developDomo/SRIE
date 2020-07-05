@@ -8,7 +8,8 @@ import { ChartMetrics } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
 import { charDataFormatHelper } from './helpers/ChartDataHelper';
-
+import { defaultBarSize } from './Constants';
+import { maleBarColor, femaleBarColor } from '../../theme/colors';
 
 const Content = styled.div`
   width: 100%;
@@ -37,8 +38,8 @@ const SexChart = ({ data, t }) => {
           <YAxis unit="%" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="M" fill="#359B8A" name={t('M')} unit="%" />
-          <Bar dataKey="F" fill="#2A58AD" name={t('F')} unit="%" />
+          <Bar dataKey="M" fill={maleBarColor} name={t('M')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="F" fill={femaleBarColor} name={t('F')} unit="%" barSize={defaultBarSize} />
         </BarChart>
       </ResponsiveContainer>
     </Content>

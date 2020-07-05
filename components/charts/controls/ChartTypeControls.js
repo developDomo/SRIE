@@ -28,6 +28,7 @@ const Content = styled.div`
   justify-content: flex-end;
   padding-top: 1.5em;
   padding-right: 1em;
+  margin-bottom: 1em;
 `;
 
 const ChartTypeControls = ({ setChartType, activeState, t }) => (

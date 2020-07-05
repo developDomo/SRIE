@@ -8,6 +8,7 @@ import { ChartMetrics } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
 import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { defaultBarSize } from './Constants';
 
 const Content = styled.div`
   width: 100%;
@@ -34,7 +35,7 @@ const TotalChart = ({ data, t }) => {
           <YAxis unit="%" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="_T" fill="#359b8a" name={t('total')} unit="%" />
+          <Bar dataKey="_T" fill="#359b8a" name={t('total')} unit="%" barSize={defaultBarSize} />
         </BarChart>
       </ResponsiveContainer>
     </Content>

@@ -15,6 +15,7 @@ import { ChartMetrics, IndexeType } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
 import IndexesControls from './controls/IndexesControls';
+import { defaultBarSize } from './Constants';
 
 const Content = styled.div`
   width: 100%;
@@ -41,10 +42,10 @@ const IndexesChart = ({ data, t }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis />
+          <YAxis domain={[0, 2]} />
           <Tooltip />
           <Legend />
-          <Bar dataKey={indexes} fill="#359B8A" />
+          <Bar dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} />
         </BarChart>
       </ResponsiveContainer>
     </Content>

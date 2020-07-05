@@ -16,6 +16,18 @@ export default css.global`
     outline: none;
   }
   
+  .indicatorChartTabs {
+    background-color: #3784c4;
+  }
+  .indicatorChartTabs > nav > a {
+    color: white;
+  }
+
+  .indicatorChartTabs .navbar-default .navbar-nav > .active > a:focus {
+    color: #000;
+    background: green;
+  }
+
   .info-slider > .row {
     height: 435px;
   }

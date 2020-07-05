@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import {
+  Tabs, Tab, Container, Row, Col,
+} from 'react-bootstrap';
 import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes } from './types/ChartTypes';
@@ -16,7 +18,16 @@ const ChartContent = styled.div`
 `;
 
 const TapTitle = styled.span`
-  color: black;
+  &::before {
+    content: url(${(props) => props.iconUrl});
+    display:block;
+    width: 20px;
+    margin: 0 10px;
+    float: left;
+  }
+`;
+
+const DownloadIcon = styled.span`
   &::before {
     content: url(${(props) => props.iconUrl});
     color: red;
@@ -27,10 +38,41 @@ const TapTitle = styled.span`
   }
 `;
 
+
 const FooterSource = styled.div`
   color: #727EAB;
   padding-top: 1em;
 `;
+
+const SideBarIcons = styled.div`
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid #E0E6EB;
+   & > p {
+    max-width: 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    margin: .25rem;
+    padding: .25rem;
+   }
+`;
+
+const SideBarDownloadContainer = styled.div`
+margin-top: 1.4em;
+margin-left: 1em;
+
+ & > h5 {
+  color: #5E7C8B;
+ }
+`;
+const SideBarDescriptionContainer = styled.div`
+  border-top: 1px solid #E0E6EB;
+  margin-top: 2em;
+  padding: 1em;
+`;
+
 
 const IndicatorChart = ({
   t, data, indicator, indicatorSource,
@@ -105,20 +147,55 @@ const IndicatorChart = ({
   };
   return (
     <>
-      <ChartContent>
-        <ChartTypeControls setChartType={setChartType} activeState={chartType} />
-        <Tabs defaultActiveKey={tabsToShow[0] || ''} id="uncontrolled-tab-example">
-          {showTotalTab()}
-          {showSexTab()}
-          {showGeoZoneTab()}
-          {showSocioeconomicLevelTab()}
-          {showIndexesTab()}
-        </Tabs>
-        <FooterSource>
-          {t('source')}
-          : Lorem ipsum dolor sit amet.
-        </FooterSource>
-      </ChartContent>
+      <Container>
+        <Row>
+          <Col xs lg="9">
+            <ChartContent>
+              <ChartTypeControls setChartType={setChartType} activeState={chartType} />
+              <Tabs defaultActiveKey={tabsToShow[0] || ''} className="indicatorChartTabs">
+                {showTotalTab()}
+                {showSexTab()}
+                {showGeoZoneTab()}
+                {showSocioeconomicLevelTab()}
+                {showIndexesTab()}
+              </Tabs>
+              <FooterSource>
+                {t('source')}
+                : Lorem ipsum dolor sit amet.
+              </FooterSource>
+            </ChartContent>
+          </Col>
+          <Col md="auto" lg="3">
+            <SideBarIcons>
+              <DownloadIcon iconUrl="/img/home/icon_table_1.svg" />
+              <DownloadIcon iconUrl="/img/home/icon_table_2.svg" />
+            </SideBarIcons>
+            <SideBarDownloadContainer>
+              <h5>Descargas:</h5>
+              <div>
+                {' '}
+                <a href="/#">Formato PDF</a>
+                {' '}
+              </div>
+              <div>
+                {' '}
+                <a href="/#">Formato PNG</a>
+                {' '}
+              </div>
+              <div>
+                {' '}
+                <a href="/#">Formato CSV</a>
+                {' '}
+              </div>
+            </SideBarDownloadContainer>
+            <SideBarDescriptionContainer>
+              Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
+              Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken. Landjaeger turkey sausage beef.
+              Tongue landjaeger andouille, fatback shank t-bone
+            </SideBarDescriptionContainer>
+          </Col>
+        </Row>
+      </Container>
     </>
 
   );
