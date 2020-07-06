@@ -4,6 +4,7 @@ import {
   Navbar, Nav, NavDropdown,
 } from 'react-bootstrap';
 import Router, { withRouter } from 'next/router';
+import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
@@ -17,8 +18,10 @@ const WhiteLine = styled.hr`
   width: 100%;
 `;
 
-const Header = ({ router: { pathname } }) => {
+
+const Header = ({ router: { pathname }, patht }) => {
   const [path, setPath] = useState(pathname);
+
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -30,7 +33,7 @@ const Header = ({ router: { pathname } }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-
+  
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>

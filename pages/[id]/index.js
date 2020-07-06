@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import {
-  Container, Row,
-} from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Boxes from '../../components/layout/Boxes';
 
 import { ButtonNavIndicadores } from '../../components/layout/Button';
@@ -11,20 +9,20 @@ import { BoxIndicador, Box } from '../../components/layout/Box';
 import Banner from '../../components/layout/Banner';
 import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
 import { green } from '../../styles/colors';
-import { withTranslation } from '../../i18n';
 
+import { withTranslation } from '../../i18n';
 import EducacionIcon from '../../public/img/home/icon_datos_educ.svg';
 import AlfabetizacionIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
-import CentroseducIcon from '../../public/img/home/icon_datos_centroseduc.svg';
 
+import CentroseducIcon from '../../public/img/home/icon_datos_centroseduc.svg';
 import DatoNinoIcon from '../../public/img/home/icono_datos_ninos.svg';
 import ParticipacionIcon from '../../public/img/home/icon_participacion_indicador.svg';
-import OfertaIcon from '../../public/img/home/icon_oferta_indicador.svg';
 
+import OfertaIcon from '../../public/img/home/icon_oferta_indicador.svg';
 import AprendizajeIcon from '../../public/img/home/icon_aprendizaje_indicador.svg';
 import ConclusionIcon from '../../public/img/home/icon_conclusion_indicador.svg';
-import EntornoIcon from '../../public/img/home/icon_entorno_indicador.svg';
 
+import EntornoIcon from '../../public/img/home/icon_entorno_indicador.svg';
 import MetasIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
 
@@ -80,9 +78,10 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4 mb-4">
             <Box
               iconImg={EducacionIcon}
-              title="Educación gratuita y obligatoria"
-              subtitle="Número de años: 12"
+              title="Número de años:"
               color="azul"
+              gratuita={12}
+              obligatoria={12}
             />
           </div>
           <div className="col-lg-4 mb-4">
