@@ -33,7 +33,6 @@ const Header = ({ router: { pathname }, patht }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-  
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
