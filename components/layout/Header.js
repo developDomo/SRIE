@@ -50,7 +50,7 @@ const Header = ({ router: { pathname } }) => {
                   key={item.label}
                 >
                   {item.items.map((itemNavbar, index) => (
-                    <LinkIsCountry item={itemNavbar} path={path} />
+                    <LinkIsCountry item={itemNavbar} />
                   ))}
                 </NavDropdown>
               ))}
