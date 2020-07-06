@@ -7,7 +7,7 @@ import Router, { withRouter } from 'next/router';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import LinkIsCountry from './NavbarLink';
+import NavbarLink from './NavbarLink';
 import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
@@ -50,7 +50,7 @@ const Header = ({ router: { pathname } }) => {
                   key={item.label}
                 >
                   {item.items.map((itemNavbar, index) => (
-                    <LinkIsCountry item={itemNavbar} />
+                    <NavbarLink item={itemNavbar} />
                   ))}
                 </NavDropdown>
               ))}
