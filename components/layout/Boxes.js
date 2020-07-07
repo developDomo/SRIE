@@ -39,7 +39,7 @@ const ContainerEducationStyled = styled.div`
   text-align: center;
   font-family: "Roboto", sans-serif;
   flex-basis: auto;
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? '#cce3f2'
     : props.color === 'green'
       ? ' #caf0b0'

@@ -62,7 +62,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
       <Container>
         <Row>
           <div className="col-lg-12 pr-0 text-center p-2">
-            <Title color="azul" type="title">
+            <Title color="blue" type="title">
               EQUIPO RESPONSABLE
             </Title>
           </div>

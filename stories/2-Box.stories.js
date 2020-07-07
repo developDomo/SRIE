@@ -27,7 +27,7 @@ export const IndicadorEducativo = () => (
 //   </ButtonNav>
 // );
 // export const Nav2 = () => (
-//   <ButtonNav azul onClick={action('clicked')}>
+//   <ButtonNav blue onClick={action('clicked')}>
 //     Hello Button
 //   </ButtonNav>
 // );
@@ -36,7 +36,7 @@ export const Box1 = () => (
     iconImg={EducacionIcon}
     title="Educación gratuita y obligatoria"
     subtitle="Número de años: 12"
-    color="azul"
+    color="blue"
   />
 );
 

@@ -29,7 +29,7 @@ const TextContainer = styled.h3`
     : props.type === 'subtitle'
       ? 'initial'
       : undefined)};
-  color: ${(props) => (props.color === 'azul'
+  color: ${(props) => (props.color === 'blue'
     ? blue1
     : props.color === 'green'
       ? green

@@ -30,14 +30,14 @@ const IndicatorListPage = ({
       <Container>
         <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
-            <Title color="azul" type="title">
+            <Title color="blue" type="title">
               INDICADORES EDUCATIVOS
             </Title>
           </div>
         </Row>
         <Row>
           <div className="col-lg-12 pr-0 text-left">
-            <Title color="azul" type="subtitle">
+            <Title color="blue" type="subtitle">
               Filtrar indicadores por:
             </Title>
             <form>

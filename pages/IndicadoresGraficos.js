@@ -52,7 +52,7 @@ export default class extends React.Component {
               </div>
 
               <div className="col-lg-3 pr-0">
-                <ButtonNav azul active>
+                <ButtonNav blue active>
                   INDICADORES EDUCATIVOS
                 </ButtonNav>
               </div>

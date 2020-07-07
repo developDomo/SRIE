@@ -25,7 +25,7 @@ export const Nav1 = () => (
   </ButtonNav>
 );
 export const Nav2 = () => (
-  <ButtonNav azul onClick={action('clicked')}>
+  <ButtonNav blue onClick={action('clicked')}>
     Hello Button
   </ButtonNav>
 );
@@ -36,7 +36,7 @@ export const Nav3 = () => (
 );
 
 export const NavIndicadores = () => (
-  <ButtonNavIndicadores azul onClick={action('clicked')}>
+  <ButtonNavIndicadores blue onClick={action('clicked')}>
     Ver los indicadores
   </ButtonNavIndicadores>
 );
@@ -56,7 +56,7 @@ export const ButtonWithIconNav2 = () => (
 );
 export const ButtonWithIconNav3 = () => (
   <ButtonWithIcon
-    color="azul"
+    color="blue"
     onClick={action('clicked')}
     icon={AprendizajeIcon}
   >

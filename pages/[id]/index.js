@@ -82,7 +82,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={EducacionIcon}
               title="Número de años:"
-              color="azul"
+              color="blue"
               gratuita={12}
               obligatoria={12}
             />
@@ -141,12 +141,12 @@ const Country = ({ t, countries, country }) => {
       <Container>
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
-            <Title color="azul" type="title">
+            <Title color="blue" type="title">
               Indicadores Educativos
             </Title>
           </div>
           <div className="col-lg-12 text-center">
-            <Title color="azul" type="subtitle">
+            <Title color="blue" type="subtitle">
               Por categoria
             </Title>
           </div>
@@ -165,7 +165,7 @@ const Country = ({ t, countries, country }) => {
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="azul" icon={AprendizajeIcon}>
+            <ButtonWithIcon color="blue" icon={AprendizajeIcon}>
               Aprendizaje y competencias
             </ButtonWithIcon>
           </div>
@@ -190,7 +190,7 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mb-5">
           <div className="col-lg-12 d-flex justify-content-end">
-            <ButtonNavIndicadores azul>
+            <ButtonNavIndicadores blue>
               Ver los indicadores
             </ButtonNavIndicadores>
           </div>

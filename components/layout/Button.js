@@ -25,13 +25,13 @@ export const ButtonNav = styled.button`
   border: 0;
   width: 100%;
   border-bottom: 10px solid
-    ${(props) => (props.active && props.azul
+    ${(props) => (props.active && props.blue
     ? blueRoll
     : props.active && props.green
       ? greenRoll
       : props.active && props.yellow
         ? yellowRoll
-        : props.azul
+        : props.blue
           ? blue
           : props.green
             ? green
@@ -45,7 +45,7 @@ export const ButtonNav = styled.button`
   font-size: 13px;
   cursor: pointer;
   transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
+  background-color: ${(props) => (props.blue
     ? blue
     : props.green
       ? green
@@ -56,7 +56,7 @@ export const ButtonNav = styled.button`
           : 'transparent')};
   color: white;
   &:hover {
-    background-color: ${(props) => (props.azul
+    background-color: ${(props) => (props.blue
     ? blueRoll
     : props.green
       ? greenRoll
@@ -64,7 +64,7 @@ export const ButtonNav = styled.button`
         ? yellowRoll
         : 'transparent')};
     border-bottom: 10px solid
-      ${(props) => (props.azul
+      ${(props) => (props.blue
     ? blue
     : props.green
       ? green
@@ -77,7 +77,7 @@ export const ButtonNavWithIcon = styled.button`
   outline: 0;
   border: 0;
   border-bottom: 10px solid
-    ${(props) => (props.azul
+    ${(props) => (props.blue
     ? blueRoll
     : props.green
       ? greenRoll
@@ -91,7 +91,7 @@ export const ButtonNavWithIcon = styled.button`
   font-size: 14px;
   cursor: pointer;
   transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
+  background-color: ${(props) => (props.blue
     ? blue
     : props.green
       ? green
@@ -100,7 +100,7 @@ export const ButtonNavWithIcon = styled.button`
         : 'transparent')};
   color: white;
   &:hover {
-    background-color: ${(props) => (props.azul
+    background-color: ${(props) => (props.blue
     ? blueRoll
     : props.green
       ? greenRoll
@@ -138,7 +138,7 @@ export const ButtonNavIndicadores = styled.button`
   font-size: 14px;
   cursor: pointer;
   transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
+  background-color: ${(props) => (props.blue
     ? blue
     : props.green
       ? green

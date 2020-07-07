@@ -41,7 +41,7 @@ const ContainerEducationStyled = styled.div`
   text-align: center;
   font-family: 'Roboto', sans-serif;
   flex-basis: auto;
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? '#cce3f2'
     : props.color === 'green'
       ? ' #caf0b0'
@@ -96,7 +96,7 @@ const IconContainer = styled.div`
 const Icon = styled.div`
   width: 80px;
   height: 80px;
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? blue
     : props.color === 'green'
       ? green
@@ -130,7 +130,7 @@ const ColorSubtitle = styled.h3`
   margin: 0;
   margin-bottom: ${(props) => (props.mb || '0')};
   width: 100%;
-  color: ${(props) => (props.color === 'azul'
+  color: ${(props) => (props.color === 'blue'
     ? blue3
     : props.color === 'green'
       ? green
@@ -158,7 +158,7 @@ const IndicadorContainer = styled.div`
   box-sizing: content-box;
   margin-left: ${(props) => (props.ml || '0')};
   margin-right: ${(props) => (props.mr || '10px')}; 
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? blue
     : props.color === 'green'
       ? green
@@ -278,7 +278,7 @@ export const BoxIndicador = ({
       <h3>{primaria}</h3>
       <p>Primaria</p>
     </IndicadorContainer>
-    <IndicadorContainer color="azul">
+    <IndicadorContainer color="blue">
       <h3>{secundaria}</h3>
       <p>Secundaria</p>
     </IndicadorContainer>
@@ -331,7 +331,7 @@ export const BoxPrimaria = ({
 export const BoxSecundaria = ({
   title,
 }) => (
-  <ContainerEducationStyled color="azul">
+  <ContainerEducationStyled color="blue">
     <Title>{title}</Title>
     <SectionContainer color="#66aad7" width="16%">
       <p>7º</p>

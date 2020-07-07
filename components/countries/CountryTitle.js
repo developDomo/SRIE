@@ -53,7 +53,7 @@ const CountryTitle = ({ t, country, active }) => (
         </div>
         <div className="col-lg-5 pr-0 m-0">
           <Link href={`/${country.short_name}/indicadores`} as={`/${country.short_name}/indicadores`}>
-            <ButtonNav azul active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
+            <ButtonNav blue active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
           </Link>
         </div>
         <div className="col-lg-3 pr-0">
