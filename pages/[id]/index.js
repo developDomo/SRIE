@@ -51,17 +51,20 @@ const timeLineEducationProps = [
 ];
 
 const Country = ({ t, countries, country }) => {
-  const navigation = [
-    { key: 'navigation.pages.country-data' },
-  ];
+  const navigation = [{ key: 'navigation.pages.country-data' }];
 
   return (
     <div>
-      <CountryHeader countries={countries} country={country} navigation={navigation} active="country-data" />
+      <CountryHeader
+        countries={countries}
+        country={country}
+        navigation={navigation}
+        active="country-data"
+      />
       <Container className="mt-4">
         <Row className="mt-4">
           <div className="col-lg-12 mb-3 text-center">
-            <Title color="amarillo" type="title">
+            <Title color="yellow" type="title">
               Datos país
             </Title>
           </div>
@@ -89,7 +92,7 @@ const Country = ({ t, countries, country }) => {
               iconImg={AlfabetizacionIcon}
               title="Tasa de alfabetización"
               subtitle="88%"
-              color="verde"
+              color="green"
             />
           </div>
 
@@ -98,7 +101,7 @@ const Country = ({ t, countries, country }) => {
               iconImg={CentroseducIcon}
               title="Cantidad de centros educativos"
               subtitle="10.000"
-              color="naranja"
+              color="orange"
             />
           </div>
 
@@ -123,7 +126,7 @@ const Country = ({ t, countries, country }) => {
               iconImg={DatoNinoIcon}
               title="Niñas, niños y adolescentes fuera de la escuela"
               subtitle="10,00%"
-              color="celeste"
+              color="light_blue"
             />
           </div>
         </Row>
@@ -150,13 +153,13 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mt-4 mb-4">
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="celeste" icon={ParticipacionIcon}>
+            <ButtonWithIcon color="light_blue" icon={ParticipacionIcon}>
               participacion
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="cafe" icon={OfertaIcon}>
+            <ButtonWithIcon color="brown" icon={OfertaIcon}>
               oferta
             </ButtonWithIcon>
           </div>
@@ -168,19 +171,19 @@ const Country = ({ t, countries, country }) => {
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="naranja" icon={ConclusionIcon}>
+            <ButtonWithIcon color="orange" icon={ConclusionIcon}>
               Conclusión
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="rosa" icon={EntornoIcon}>
+            <ButtonWithIcon color="pink" icon={EntornoIcon}>
               Entorno educativo
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="amarillo" icon={MetasIcon}>
+            <ButtonWithIcon color="yellow" icon={MetasIcon}>
               Metas transversales
             </ButtonWithIcon>
           </div>
@@ -203,7 +206,6 @@ const Country = ({ t, countries, country }) => {
           color: #cecece;
         }
       `}
-
       </style>
     </div>
   );
@@ -213,7 +215,9 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
-  const countryResponse = await fetch(`${process.env.API_URL}/api/countries/${query.id}`);
+  const countryResponse = await fetch(
+    `${process.env.API_URL}/api/countries/${query.id}`,
+  );
   const country = await countryResponse.json();
 
   return {

@@ -22,7 +22,7 @@ export const IndicadorEducativo = () => (
   <IndEducativo />
 );
 // export const Nav1 = () => (
-//   <ButtonNav amarillo onClick={action('clicked')}>
+//   <ButtonNav yellow onClick={action('clicked')}>
 //     Hello Button
 //   </ButtonNav>
 // );
@@ -45,7 +45,7 @@ export const Box2 = () => (
     iconImg={AlfabetizacionIcon}
     title="Tasa de alfabetización"
     subtitle="88%"
-    color="verde"
+    color="green"
   />
 );
 
@@ -54,7 +54,7 @@ export const Box3 = () => (
     iconImg={CentroseducIcon}
     title="Cantidad de centros educativos"
     subtitle="10.000"
-    color="naranja"
+    color="orange"
   />
 );
 
@@ -64,7 +64,7 @@ export const Box4 = () => (
     title="Niñas, niños y adolescentes fuera
     de la escuela"
     subtitle="10,00%"
-    color="celeste"
+    color="light_blue"
   />
 );
 export const Box5 = () => (

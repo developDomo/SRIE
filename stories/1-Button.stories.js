@@ -20,7 +20,7 @@ export default {
 };
 
 export const Nav1 = () => (
-  <ButtonNav amarillo onClick={action('clicked')}>
+  <ButtonNav yellow onClick={action('clicked')}>
     Hello Button
   </ButtonNav>
 );
@@ -30,7 +30,7 @@ export const Nav2 = () => (
   </ButtonNav>
 );
 export const Nav3 = () => (
-  <ButtonNav verde onClick={action('clicked')}>
+  <ButtonNav green onClick={action('clicked')}>
     Hello Button
   </ButtonNav>
 );
@@ -42,7 +42,7 @@ export const NavIndicadores = () => (
 );
 export const ButtonWithIconNav = () => (
   <ButtonWithIcon
-    color="celeste"
+    color="light_blue"
     onClick={action('clicked')}
     icon={ParticipacionIcon}
   >
@@ -50,7 +50,7 @@ export const ButtonWithIconNav = () => (
   </ButtonWithIcon>
 );
 export const ButtonWithIconNav2 = () => (
-  <ButtonWithIcon color="cafe" onClick={action('clicked')} icon={OfertaIcon}>
+  <ButtonWithIcon color="brown" onClick={action('clicked')} icon={OfertaIcon}>
     oferta
   </ButtonWithIcon>
 );
@@ -65,7 +65,7 @@ export const ButtonWithIconNav3 = () => (
 );
 export const ButtonWithIconNav4 = () => (
   <ButtonWithIcon
-    color="naranja"
+    color="orange"
     onClick={action('clicked')}
     icon={ConclusionIcon}
   >
@@ -73,12 +73,12 @@ export const ButtonWithIconNav4 = () => (
   </ButtonWithIcon>
 );
 export const ButtonWithIconNav5 = () => (
-  <ButtonWithIcon color="rosa" onClick={action('clicked')} icon={EntornoIcon}>
+  <ButtonWithIcon color="pink" onClick={action('clicked')} icon={EntornoIcon}>
     Entorno educativo
   </ButtonWithIcon>
 );
 export const ButtonWithIconNav6 = () => (
-  <ButtonWithIcon color="amarillo" onClick={action('clicked')} icon={MetasIcon}>
+  <ButtonWithIcon color="yellow" onClick={action('clicked')} icon={MetasIcon}>
     Metas transversales
   </ButtonWithIcon>
 );

@@ -43,17 +43,17 @@ const ContainerEducationStyled = styled.div`
   flex-basis: auto;
   background-color: ${(props) => (props.color === 'azul'
     ? '#cce3f2'
-    : props.color === 'verde'
+    : props.color === 'green'
       ? ' #caf0b0'
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue42
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange2
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? '#fdcccc'
                 : 'black')};
   padding: 0;
@@ -98,17 +98,17 @@ const Icon = styled.div`
   height: 80px;
   background-color: ${(props) => (props.color === 'azul'
     ? blue
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue42
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange2
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink2
                 : 'black')};
   -webkit-mask-image: url(${(props) => props.icon});
@@ -132,17 +132,17 @@ const ColorSubtitle = styled.h3`
   width: 100%;
   color: ${(props) => (props.color === 'azul'
     ? blue3
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue4
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink2
                 : 'black')};
 `;
@@ -160,17 +160,17 @@ const IndicadorContainer = styled.div`
   margin-right: ${(props) => (props.mr || '10px')}; 
   background-color: ${(props) => (props.color === 'azul'
     ? blue
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue4
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink2
                 : 'black')};
   & h3 {
@@ -234,13 +234,13 @@ export const Box = ({
           </Title>
 
           {gratuita ? (
-            <IndicadorContainer color="amarillo" height="82" padding="6px 6px" pbh3="5px">
+            <IndicadorContainer color="yellow" height="82" padding="6px 6px" pbh3="5px">
               <h3>{gratuita}</h3>
               <p>Educación gratuita</p>
             </IndicadorContainer>
           ) : undefined}
 
-          <IndicadorContainer color="verde" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
+          <IndicadorContainer color="green" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
             <h3>{obligatoria}</h3>
             <p>Educación obligatoria</p>
           </IndicadorContainer>
@@ -268,13 +268,13 @@ export const BoxIndicador = ({
   <ContainerIndicadorStyled>
     <Title>{title}</Title>
     {prescolar ? (
-      <IndicadorContainer color="amarillo">
+      <IndicadorContainer color="yellow">
         <h3>{prescolar}</h3>
         <p>Preescolar</p>
       </IndicadorContainer>
     ) : undefined}
 
-    <IndicadorContainer color="verde">
+    <IndicadorContainer color="green">
       <h3>{primaria}</h3>
       <p>Primaria</p>
     </IndicadorContainer>
@@ -288,7 +288,7 @@ export const BoxIndicador = ({
 export const BoxPreescolar = ({
   title,
 }) => (
-  <ContainerEducationStyled color="rosa">
+  <ContainerEducationStyled color="pink">
     <Title>{title}</Title>
     <SectionContainer color="#fc9999" width="33.2%">
       <h3>Grupo interactivo</h3>
@@ -306,7 +306,7 @@ export const BoxPreescolar = ({
 export const BoxPrimaria = ({
   title, prescolar, primaria, secundaria,
 }) => (
-  <ContainerEducationStyled color="verde">
+  <ContainerEducationStyled color="green">
     <Title>{title}</Title>
     <SectionContainer color="#afd188" width="16%">
       <p>1º</p>

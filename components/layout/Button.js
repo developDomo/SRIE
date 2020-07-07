@@ -27,15 +27,15 @@ export const ButtonNav = styled.button`
   border-bottom: 10px solid
     ${(props) => (props.active && props.azul
     ? blueRoll
-    : props.active && props.verde
+    : props.active && props.green
       ? greenRoll
-      : props.active && props.amarillo
+      : props.active && props.yellow
         ? yellowRoll
         : props.azul
           ? blue
-          : props.verde
+          : props.green
             ? green
-            : props.amarillo
+            : props.yellow
               ? yellow
               : 'transparent')};
   text-transform: uppercase;
@@ -47,28 +47,28 @@ export const ButtonNav = styled.button`
   transition: all ease-in 0.2s;
   background-color: ${(props) => (props.azul
     ? blue
-    : props.verde
+    : props.green
       ? green
-      : props.amarillo
+      : props.yellow
         ? yellow
-        : props.celeste
+        : props.light_blue
           ? blue4
           : 'transparent')};
   color: white;
   &:hover {
     background-color: ${(props) => (props.azul
     ? blueRoll
-    : props.verde
+    : props.green
       ? greenRoll
-      : props.amarillo
+      : props.yellow
         ? yellowRoll
         : 'transparent')};
     border-bottom: 10px solid
       ${(props) => (props.azul
     ? blue
-    : props.verde
+    : props.green
       ? green
-      : props.amarillo
+      : props.yellow
         ? yellow
         : 'transparent')};
   }
@@ -79,9 +79,9 @@ export const ButtonNavWithIcon = styled.button`
   border-bottom: 10px solid
     ${(props) => (props.azul
     ? blueRoll
-    : props.verde
+    : props.green
       ? greenRoll
-      : props.amarillo
+      : props.yellow
         ? yellowRoll
         : 'transparent')};
   text-transform: uppercase;
@@ -93,18 +93,18 @@ export const ButtonNavWithIcon = styled.button`
   transition: all ease-in 0.2s;
   background-color: ${(props) => (props.azul
     ? blue
-    : props.verde
+    : props.green
       ? green
-      : props.amarillo
+      : props.yellow
         ? yellow
         : 'transparent')};
   color: white;
   &:hover {
     background-color: ${(props) => (props.azul
     ? blueRoll
-    : props.verde
+    : props.green
       ? greenRoll
-      : props.amarillo
+      : props.yellow
         ? yellowRoll
         : 'transparent')};
     border-bottom: 10px solid ${blue};
@@ -140,9 +140,9 @@ export const ButtonNavIndicadores = styled.button`
   transition: all ease-in 0.2s;
   background-color: ${(props) => (props.azul
     ? blue
-    : props.verde
+    : props.green
       ? green
-      : props.amarillo
+      : props.yellow
         ? yellow
         : 'transparent')};
   color: white;
@@ -170,52 +170,50 @@ export const ButtonContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-align: left;
-  padding:0;
+  padding: 0;
   font-size: 14px;
   cursor: pointer;
-  background-color: "transparent";
+  background-color: 'transparent';
   transition: all ease-in 0.9s;
   width: 100%;
   color: white;
   & div {
     border-bottom: 10px solid white;
-
   }
 
   &:hover div {
     border-bottom: 10px solid
-      ${(props) => (props.color === 'azul'
+      ${(props) => (props.color === 'blue'
     ? blue52
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue42
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange2
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink2
                 : 'transparent')};
   }
 `;
 export const IconContainer = styled.div`
-
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? blue
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellow
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue4
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink
                 : 'white')};
   margin-right: 5px;
@@ -226,19 +224,19 @@ export const IconContainer = styled.div`
   }
 `;
 export const TextContainer = styled.div`
-  background-color: ${(props) => (props.color === 'azul'
+  background-color: ${(props) => (props.color === 'blue'
     ? blue
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellow
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue4
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? pink
                 : 'white')};
   text-transform: capitalize;

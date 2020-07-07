@@ -31,9 +31,9 @@ const TextContainer = styled.h3`
       : undefined)};
   color: ${(props) => (props.color === 'azul'
     ? blue1
-    : props.color === 'verde'
+    : props.color === 'green'
       ? green
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellow
         : props.color === 'negro'
           ? txt

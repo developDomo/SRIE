@@ -41,17 +41,17 @@ const ContainerEducationStyled = styled.div`
   flex-basis: auto;
   background-color: ${(props) => (props.color === 'azul'
     ? '#cce3f2'
-    : props.color === 'verde'
+    : props.color === 'green'
       ? ' #caf0b0'
-      : props.color === 'amarillo'
+      : props.color === 'yellow'
         ? yellowRoll
-        : props.color === 'celeste'
+        : props.color === 'light_blue'
           ? blue42
-          : props.color === 'cafe'
+          : props.color === 'brown'
             ? brown2
-            : props.color === 'naranja'
+            : props.color === 'orange'
               ? orange2
-              : props.color === 'rosa'
+              : props.color === 'pink'
                 ? '#fdcccc'
                 : 'black')};
   padding: 0;
