@@ -11,19 +11,19 @@ import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
 import { green } from '../../styles/colors';
 
 import { withTranslation } from '../../i18n';
-import EducacionIcon from '../../public/img/home/icon_datos_educ.svg';
-import AlfabetizacionIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
+import EducationIcon from '../../public/img/home/icon_datos_educ.svg';
+import LiteracyIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
 
-import CentroseducIcon from '../../public/img/home/icon_datos_centroseduc.svg';
-import DatoNinoIcon from '../../public/img/home/icono_datos_ninos.svg';
-import ParticipacionIcon from '../../public/img/home/icon_participacion_indicador.svg';
+import SchoolsIcon from '../../public/img/home/icon_datos_centroseduc.svg';
+import DataChildIcon from '../../public/img/home/icono_datos_ninos.svg';
+import ParticipationIcon from '../../public/img/home/icon_participacion_indicador.svg';
 
-import OfertaIcon from '../../public/img/home/icon_oferta_indicador.svg';
-import AprendizajeIcon from '../../public/img/home/icon_aprendizaje_indicador.svg';
+import OfferIcon from '../../public/img/home/icon_oferta_indicador.svg';
+import LearningIcon from '../../public/img/home/icon_aprendizaje_indicador.svg';
 import ConclusionIcon from '../../public/img/home/icon_conclusion_indicador.svg';
 
-import EntornoIcon from '../../public/img/home/icon_entorno_indicador.svg';
-import MetasIcon from '../../public/img/home/icon_metas_indicador.svg';
+import EnvironmentIcon from '../../public/img/home/icon_entorno_indicador.svg';
+import GoalsIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
 
 // TODO: Fix this
@@ -80,7 +80,7 @@ const Country = ({ t, countries, country }) => {
         <Row className="mt-4 mb-5">
           <div className="col-lg-4 mb-4">
             <Box
-              iconImg={EducacionIcon}
+              iconImg={EducationIcon}
               title="Número de años:"
               color="blue"
               gratuita={12}
@@ -89,7 +89,7 @@ const Country = ({ t, countries, country }) => {
           </div>
           <div className="col-lg-4 mb-4">
             <Box
-              iconImg={AlfabetizacionIcon}
+              iconImg={LiteracyIcon}
               title="Tasa de alfabetización"
               subtitle="88%"
               color="green"
@@ -98,7 +98,7 @@ const Country = ({ t, countries, country }) => {
 
           <div className="col-lg-4 mb-4">
             <Box
-              iconImg={CentroseducIcon}
+              iconImg={SchoolsIcon}
               title="Cantidad de centros educativos"
               subtitle="10.000"
               color="orange"
@@ -123,7 +123,7 @@ const Country = ({ t, countries, country }) => {
           </div>
           <div className="col-lg-4">
             <Box
-              iconImg={DatoNinoIcon}
+              iconImg={DataChildIcon}
               title="Niñas, niños y adolescentes fuera de la escuela"
               subtitle="10,00%"
               color="light_blue"
@@ -153,19 +153,19 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mt-4 mb-4">
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="light_blue" icon={ParticipacionIcon}>
+            <ButtonWithIcon color="light_blue" icon={ParticipationIcon}>
               participacion
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="brown" icon={OfertaIcon}>
+            <ButtonWithIcon color="brown" icon={OfferIcon}>
               oferta
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="blue" icon={AprendizajeIcon}>
+            <ButtonWithIcon color="blue" icon={LearningIcon}>
               Aprendizaje y competencias
             </ButtonWithIcon>
           </div>
@@ -177,13 +177,13 @@ const Country = ({ t, countries, country }) => {
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="pink" icon={EntornoIcon}>
+            <ButtonWithIcon color="pink" icon={EnvironmentIcon}>
               Entorno educativo
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="yellow" icon={MetasIcon}>
+            <ButtonWithIcon color="yellow" icon={GoalsIcon}>
               Metas transversales
             </ButtonWithIcon>
           </div>
