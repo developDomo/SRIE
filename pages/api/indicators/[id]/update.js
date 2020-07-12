@@ -8,15 +8,20 @@ const schema = {
   id: {
     type: 'number', positive: true, integer: true, convert: true,
   },
+  countries: { type: 'string', optional: true },
 };
 
 const inputValidator = InputValidatorUtils.getInputValidator(schema);
 
 handler.get(async (req, res) => {
   if (InputValidatorUtils.validate(inputValidator, req.query, res)) {
-    UisDataService.updateDataByIndicatorId(req.query.id);
+    const success = await UisDataService.updateDataByIndicatorId(req.query.id, req.query.countries);
 
-    res.status(200).end();
+    if (success) {
+      res.status(200).end();
+    } else {
+      res.status(404).json({ error: true, message: 'Indicator not found' });
+    }
   } else {
     res.status(400).json({ error: true, message: 'Bad request' });
   }

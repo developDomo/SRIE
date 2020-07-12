@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import _ from 'lodash';
 import FilterUtils from '../utils/Filter.utils';
 import IndicatorService from './Indicator.service';
@@ -45,6 +46,7 @@ const filteringFields = [
   'stat_unit',
   'grade',
   'age',
+  'infrastr',
 ];
 
 const find = async (table, query) => {
@@ -185,8 +187,11 @@ const filterDataByView = async (viewList, data) => {
  *
  * @returns {object} Returns the data filterd by visualizations and views
  */
-const filterData = async (data, visualizations, indexes) => {
+const filterData = async (unit_measure, data, visualizations, indexes) => {
   const dataByViews = {};
+
+  indexes = _.map(indexes, (i) => _.assign(i, { label: 'unit_measure' }));
+  visualizations = _.map(visualizations, (i) => _.assign(i, { unit_measure }));
 
   Object.keys(data).forEach(async (code) => {
     dataByViews[code] = {};
@@ -195,7 +200,7 @@ const filterData = async (data, visualizations, indexes) => {
       data[code],
     );
     dataByViews[code].indexes = await filterDataByView(
-      _.map(indexes, (i) => _.assign(i, { label: 'unit_measure' })),
+      indexes,
       data[code],
     );
   });
@@ -208,6 +213,10 @@ export default {
 
   findByIndicatorId: async (id, country) => {
     const indicator = await IndicatorService.findById(id);
+    if (!indicator) {
+      return indicator;
+    }
+
     indicator.variations = await IndicatorVariationService.findByIndicatorId(
       id,
     );
@@ -232,7 +241,7 @@ export default {
       dataPromise, visualizationsPromise, indexesPromise,
     ]);
 
-    return filterData(data, visualizations, indexes);
+    return filterData(indicator.uis_unit_measure, data, visualizations, indexes);
   },
 
   getFreeEducationYearsByCountry: async (country) => {
