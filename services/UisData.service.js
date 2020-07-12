@@ -59,21 +59,28 @@ const updateDataByIndicatorId = async (id, countries = allCountries) => {
   }
 
   const url = `${apiUrl}/${indicator.uis_dataset}/${indicator.uis_data_query}.${countries}`;
-  const response = await axios.get(url, { params });
-  if (response.status === 200) {
-    parse(response.data, { columns: true }, (err, output) => { updateIndicatorData(indicator, output); });
-    return true;
-  }
+  axios.get(url, { params })
+    .then((response) => {
+      if (response.status === 200) {
+        parse(response.data, { columns: true }, (err, output) => { updateIndicatorData(indicator, output); });
+      }
+    })
+    .catch(() => {
+      // if no data, just ignore
+    });
 
-  return false;
+
+  return true;
 };
 
 const updateAllIndicators = async (countries = allCountries) => {
   const indicators = await IndicatorService.findAll();
 
-  indicators.forEach((indicator) => {
-    updateDataByIndicatorId(indicator, countries);
+  indicators.forEach(async (indicator) => {
+    updateDataByIndicatorId(indicator.id, countries);
   });
+
+  return true;
 };
 
 export default {
