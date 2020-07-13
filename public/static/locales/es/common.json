@@ -4,5 +4,11 @@
   "error": {
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
-  }
+  },
+  "alphabetizationRate": "Tasa de alfabetización",
+  "numberOfYears" : "Número de años:",
+  "numberOfEducationalCenters": "Cantidad de centros educativos",
+  "tuitionFeesByLevel" : "Tasas de matrícula, por nivel",
+  "completionRateByLevel": "Tasa de finalización, por nivel",
+  "girlsBoysAndAdolescentsOutsideOfSchool": "Girls, boys and adolescents outside of school"
 }

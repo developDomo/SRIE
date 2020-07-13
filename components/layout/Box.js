@@ -118,17 +118,16 @@ const Icon = styled.div`
   mask-position: center;
 `;
 const IconImgStyled = styled.img`
-  width:${(props) => (props.width || '80px')};
-  height: ${(props) => (props.height || '80px')};
+  width: ${(props) => props.width || '80px'};
+  height: ${(props) => props.height || '80px'};
 `;
-
 
 const ColorSubtitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: ${(props) => (props.font_size || '1.8em')};
+  font-size: ${(props) => props.font_size || '1.8em'};
   margin: 0;
-  margin-bottom: ${(props) => (props.mb || '0')};
+  margin-bottom: ${(props) => props.mb || '0'};
   width: 100%;
   color: ${(props) => (props.color === 'blue'
     ? blue3
@@ -152,12 +151,12 @@ const IndicadorContainer = styled.div`
   color: white;
   font-size: 1em;
   text-align: center;
-  padding: ${(props) => (props.padding || '40px 8px')};
+  padding: ${(props) => props.padding || '40px 8px'};
   width: 24%;
-  height:${(props) => (props.height || '70px')};
+  height: ${(props) => props.height || '70px'};
   box-sizing: content-box;
-  margin-left: ${(props) => (props.ml || '0')};
-  margin-right: ${(props) => (props.mr || '10px')}; 
+  margin-left: ${(props) => props.ml || '0'};
+  margin-right: ${(props) => props.mr || '10px'};
   background-color: ${(props) => (props.color === 'blue'
     ? blue
     : props.color === 'green'
@@ -174,7 +173,7 @@ const IndicadorContainer = styled.div`
                 ? pink2
                 : 'black')};
   & h3 {
-    padding-bottom: ${(props) => (props.pbh3 || '30px')};
+    padding-bottom: '30px';
     border-bottom: 2px solid white;
     margin: 0;
     font-size: 1.2em;
@@ -220,40 +219,49 @@ const getIcon = (iconImg, icon, color) => (iconImg ? (
 ));
 
 export const Box = ({
-  icon, iconImg, title, subtitle, gratuita, obligatoria, color,
+  icon,
+  iconImg,
+  title,
+  subtitle,
+  isFree,
+  mandatory,
+  color,
 }) => {
-  if (gratuita && obligatoria) {
+  if (isFree && mandatory) {
     return (
       <>
         <ContainerIndicadorStyled>
-          <IconContainer>
-            {getIcon(iconImg || icon, color)}
-          </IconContainer>
-          <Title className="m-0 mb-1">
-            {title}
-          </Title>
+          <IconContainer>{getIcon(iconImg || icon, color)}</IconContainer>
+          <Title className="m-0 mb-1">{title}</Title>
 
-          {gratuita ? (
-            <IndicadorContainer color="yellow" height="82" padding="6px 6px" pbh3="5px">
-              <h3>{gratuita}</h3>
+          {isFree ? (
+            <IndicadorContainer
+              color="yellow"
+              height="82"
+              padding="6px 6px 5px 6px"
+            >
+              <h3>{isFree}</h3>
               <p>Educación gratuita</p>
             </IndicadorContainer>
           ) : undefined}
 
-          <IndicadorContainer color="green" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
-            <h3>{obligatoria}</h3>
+          <IndicadorContainer
+            color="green"
+            height="82"
+            padding="6px 6px 5px 6px"
+            ml="10px"
+            mr="0"
+          >
+            <h3>{mandatory}</h3>
             <p>Educación obligatoria</p>
           </IndicadorContainer>
-
         </ContainerIndicadorStyled>
       </>
     );
   }
   return (
     <ContainerStyled>
-      <IconContainer>
-        {getIcon(iconImg || icon, color)}
-      </IconContainer>
+      <IconContainer>{getIcon(iconImg || icon, color)}</IconContainer>
       <TextContainer>
         <Title>{title}</Title>
         <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
@@ -285,9 +293,7 @@ export const BoxIndicador = ({
   </ContainerIndicadorStyled>
 );
 
-export const BoxPreescolar = ({
-  title,
-}) => (
+export const BoxPreescolar = ({ title }) => (
   <ContainerEducationStyled color="pink">
     <Title>{title}</Title>
     <SectionContainer color="#fc9999" width="33.2%">
@@ -328,9 +334,7 @@ export const BoxPrimaria = ({
     </SectionContainer>
   </ContainerEducationStyled>
 );
-export const BoxSecundaria = ({
-  title,
-}) => (
+export const BoxSecundaria = ({ title }) => (
   <ContainerEducationStyled color="blue">
     <Title>{title}</Title>
     <SectionContainer color="#66aad7" width="16%">

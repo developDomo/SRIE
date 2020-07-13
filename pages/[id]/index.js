@@ -81,16 +81,16 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4 mb-4">
             <Box
               iconImg={EducationIcon}
-              title="Número de años:"
+              title={t('numberOfYears')}
               color="blue"
-              gratuita={12}
-              obligatoria={12}
+              isFree={12}
+              mandatory={12}
             />
           </div>
           <div className="col-lg-4 mb-4">
             <Box
               iconImg={LiteracyIcon}
-              title="Tasa de alfabetización"
+              title={t('alphabetizationRate')}
               subtitle="88%"
               color="green"
             />
@@ -99,7 +99,7 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4 mb-4">
             <Box
               iconImg={SchoolsIcon}
-              title="Cantidad de centros educativos"
+              title={t('numberOfEducationalCenters')}
               subtitle="10.000"
               color="orange"
             />
@@ -107,7 +107,7 @@ const Country = ({ t, countries, country }) => {
 
           <div className="col-lg-4">
             <BoxIndicador
-              title="Tasas de matrícula, por nivel"
+              title={t('tuitionFeesByLevel')}
               prescolar="50,09%"
               primaria="40,60%"
               secundaria="50,00%"
@@ -116,7 +116,7 @@ const Country = ({ t, countries, country }) => {
 
           <div className="col-lg-4">
             <BoxIndicador
-              title="Tasa de finalización, por nivel"
+              title={t('completionRateByLevel')}
               primaria="36,00%"
               secundaria="50,00%"
             />
@@ -124,7 +124,7 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4">
             <Box
               iconImg={DataChildIcon}
-              title="Niñas, niños y adolescentes fuera de la escuela"
+              title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
               subtitle="10,00%"
               color="light_blue"
             />
