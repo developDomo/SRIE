@@ -85,17 +85,17 @@ const IndicatorListPage = ({
       </Container>
       <Container>
         <Row className="mt-3 mb-3">
-          <div className="col-lg-7 mb-3">
+          <div className="col-lg-8 mb-3">
             <Title color="negro" type="caption">
               Indicadores Educativos
             </Title>
           </div>
-          <div className="col-lg-3 mb-3">
+          <div className="col-lg-2 mb-3">
             <Row className="d-flex align-content-center">
               <div className="col-lg-2 m-0 p-0">
                 <IconImg src={PecIcon} />
               </div>
-              <div className="col-lg-8 m-0 p-0">
+              <div className="col-lg-2 m-0 p-0">
                 <Title color="negro" type="caption">
                   PEC
                 </Title>

@@ -4,7 +4,9 @@ import Link from 'next/link';
 import {
   gray1,
   txt,
+  black,
   green1,
+  grayBck,
   blue,
   red,
   bordes,
@@ -34,32 +36,30 @@ export const Tag = styled.h4`
   color: white;
   font-size: 0.9em;
   text-align: center;
-  width: 100px;
+  width: max-content;
   margin-top: 15px;
 `;
 const Pec = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid ${txt};
+  text-align:center;
+  border-left: 2px solid ${grayBck};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
-  height: 100px;
-  width: 20%;
+  height: 90px;
   color: ${blue};
 `;
 const Ods = styled.h4`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid ${txt};
-  border-right: 1px solid ${txt};
+  border-left: 2px solid ${grayBck};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
-  width: 16.5%;
-  height: 100px;
+  height: 90px;
   color: ${red};
 `;
 const IconContainer = styled.div`
@@ -67,9 +67,10 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-
+  width: 40px;
+  border-left:  1px solid ${black};
+  position: absolute;
+  right: 0;
   & div {
     display: flex;
     justify-content: center;
@@ -98,9 +99,9 @@ const IconContainer = styled.div`
 
 const IndicatorListItem = ({ t, indicator, countryName }) => (
   <Link key={`indicador-${indicator.code}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
-    <div className="col-lg-12 mb-3 p-0">
-      <Container className="d-flex  justify-content-between p-0">
-        <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
+    <div className="col-lg-12 mb-3 p-0  position-relative">
+      <Container className="d-flex p-3">
+        <div className="col-lg-8 m-0 p-0">
           <Title>
             {t(`indicators.${indicator.code}.name`)}
           </Title>
@@ -108,8 +109,12 @@ const IndicatorListItem = ({ t, indicator, countryName }) => (
             <Tag>{t(`topics:topics.${topic.code}`)}</Tag>
           ))}
         </div>
-        <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-        <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
+        <div className="col-lg-2 m-0 p-0">
+          <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
+        </div>
+        <div className="col-lg-2 m-0 p-0 pr-4">
+          <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
+        </div>
         <IconContainer className=" ">
           <div />
         </IconContainer>
