@@ -1,4 +1,5 @@
 // Paleta Principal
+export const white = '#FFFFFF';
 export const yellowRoll = '#E59E2C';
 export const yellow = '#FBB03B';
 export const blueRoll = '#00558D';

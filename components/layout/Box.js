@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
   gray1,
   blue,
+  blue3,
   orange2,
   orange,
   yellowRoll,
@@ -117,18 +118,20 @@ const Icon = styled.div`
   mask-position: center;
 `;
 const IconImgStyled = styled.img`
-  width: 80px;
-  height: 80px;
+  width:${(props) => (props.width || '80px')};
+  height: ${(props) => (props.height || '80px')};
 `;
+
 
 const ColorSubtitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: ${(props) => (props.font_size || '1.8em')};
   margin: 0;
+  margin-bottom: ${(props) => (props.mb || '0')};
   width: 100%;
   color: ${(props) => (props.color === 'azul'
-    ? blue
+    ? blue3
     : props.color === 'verde'
       ? green
       : props.color === 'amarillo'
@@ -149,11 +152,12 @@ const IndicadorContainer = styled.div`
   color: white;
   font-size: 1em;
   text-align: center;
-  padding: 40px 8px;
+  padding: ${(props) => (props.padding || '40px 8px')};
   width: 24%;
-  height: 70px;
+  height:${(props) => (props.height || '70px')};
   box-sizing: content-box;
-  margin-right: 10px;
+  margin-left: ${(props) => (props.ml || '0')};
+  margin-right: ${(props) => (props.mr || '10px')}; 
   background-color: ${(props) => (props.color === 'azul'
     ? blue
     : props.color === 'verde'
@@ -170,7 +174,7 @@ const IndicadorContainer = styled.div`
                 ? pink2
                 : 'black')};
   & h3 {
-    padding-bottom: 30px;
+    padding-bottom: ${(props) => (props.pbh3 || '30px')};
     border-bottom: 2px solid white;
     margin: 0;
     font-size: 1.2em;
@@ -208,23 +212,56 @@ const SectionContainer = styled.div`
     font-weight: 400;
   }
 `;
+
+const getIcon = (iconImg, icon, color) => (iconImg ? (
+  <IconImgStyled src={iconImg} alt="icon" />
+) : (
+  <Icon icon={icon} color={color} />
+));
+
 export const Box = ({
-  icon, iconImg, title, subtitle, color,
-}) => (
-  <ContainerStyled>
-    <IconContainer>
-      {iconImg ? (
-        <IconImgStyled src={iconImg} alt="icon" />
-      ) : (
-        <Icon icon={icon} color={color} />
-      )}
-    </IconContainer>
-    <TextContainer>
-      <Title>{title}</Title>
-      <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
-    </TextContainer>
-  </ContainerStyled>
-);
+  icon, iconImg, title, subtitle, gratuita, obligatoria, color,
+}) => {
+  if (gratuita && obligatoria) {
+    return (
+      <>
+        <ContainerIndicadorStyled>
+          <IconContainer>
+            {getIcon(iconImg || icon, color)}
+          </IconContainer>
+          <Title className="m-0 mb-1">
+            {title}
+          </Title>
+
+          {gratuita ? (
+            <IndicadorContainer color="amarillo" height="82" padding="6px 6px" pbh3="5px">
+              <h3>{gratuita}</h3>
+              <p>Educación gratuita</p>
+            </IndicadorContainer>
+          ) : undefined}
+
+          <IndicadorContainer color="verde" height="82" padding="6px 6px" ml="10px" mr="0" pbh3="5px">
+            <h3>{obligatoria}</h3>
+            <p>Educación obligatoria</p>
+          </IndicadorContainer>
+
+        </ContainerIndicadorStyled>
+      </>
+    );
+  }
+  return (
+    <ContainerStyled>
+      <IconContainer>
+        {getIcon(iconImg || icon, color)}
+      </IconContainer>
+      <TextContainer>
+        <Title>{title}</Title>
+        <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
+      </TextContainer>
+    </ContainerStyled>
+  );
+};
+
 export const BoxIndicador = ({
   title, prescolar, primaria, secundaria,
 }) => (
