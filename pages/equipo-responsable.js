@@ -63,7 +63,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
         <Row>
           <div className="col-lg-12 pr-0 text-center p-2">
             <Title color="blue" type="title">
-              EQUIPO RESPONSABLE
+              {t('title')}
             </Title>
           </div>
         </Row>
@@ -74,26 +74,10 @@ const ResponsibleTeam = ({ countries, t, path }) => {
             <Row className="d-flex justify-content-betweent mt-5 mb-5 ">
               <div className="col-lg-12 font">
                 <p>
-                  El desarrollo de la Serie Regional de Indicadores Educativos
-                  se inició en 2009 con la conducción institucional y política
-                  de CECC/SICA y la coordinación técnica de la Asociación
-                  Civil Educación Para Todos, para el planteo de los
-                  indicadores, la integración y revisión de aportes de los
-                  equipos nacionales, diseño y desarrollo de la plataforma
-                  web. Durante el año 2012 se realizó un nuevo proceso de
-                  trabajo y mejora de las funcionalidades del sitio, así como
-                  la producción de informes nacionales.
+                  {t('p1')}
                 </p>
                 <p>
-                  La información estadística es provista y actualizada en
-                  forma institucional por equipos técnicos de las áreas de
-                  estadística de los Ministerios de Educación de los países
-                  miembros de la CECC/SICA cuyos aportes son cruciales para el
-                  contenido del sitio. A lo largo de los años, diferentes
-                  personas han formado parte de los equipos nacionales, las
-                  cuales han realizado aportes valiosos y fundamentales. Las
-                  dependencias institucionales de los Ministerios de Educación
-                  que participan de este proceso son las siguientes:
+                  {t('p2')}
                 </p>
               </div>
               <div className="col-lg-12 bg-white mb-4 mt-3 pt-3 pb-3">
@@ -119,27 +103,16 @@ const ResponsibleTeam = ({ countries, t, path }) => {
               </div>
               <div className="font">
                 <p>
-                  El apoyo del equipo de gestión de la CECC/SICA ha sido un
-                  soporte a lo largo del proceso, en particular con las tareas
-                  técnicas de Fressie Aguilar y Alejandra Sanchez, y el
-                  soporte administrativo de Nidia Abarca, y Giselle Barboza.
+                  {t('p3')}
                 </p>
                 <p>
-                  El equipo de la Asociación Civil Educación Para Todos es
-                  coordinado en los aspectos técnicos e institucionales por
-                  Irene Kit y Sergio España.
+                  {t('p4')}
                 </p>
                 <p>
-                  En el diseño conceptual de indicadores y definición
-                  comunicacional, la tarea fue coordinada por Martín Scasso,
-                  con la cooperación en distintos momentos de Verónica Marino,
-                  Verona Batiuk, Lujan Vago, Irene Butcher y Daniela Cura.
+                  {t('p5')}
                 </p>
                 <p>
-                  El desarrollo de la Plataforma Informática estuvo a cargo de
-                  Pablo De Vas con la cooperación de Ernesto Soler y Andrés
-                  Suárez. Las propuestas gráficas son un aporte de Flavia
-                  Cebrian, Miriam Sátollo y Gabriella Tenner.
+                  {t('p6')}
                 </p>
               </div>
             </Row>
