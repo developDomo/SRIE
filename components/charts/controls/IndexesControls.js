@@ -1,21 +1,32 @@
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { useState } from 'react';
-import { IndexeType } from '../types/ChartTypes';
+import styled from 'styled-components';
 import { hasSomeData } from '../helpers/ChartDataHelper';
 import { withTranslation } from '../../../i18n';
 
+const Content = styled.div`
+  padding: 1.2em;
+  margin-left: auto;
+`;
 const IndexesControls = ({ setIndexes, indexesData, t }) => (
-  <>
+  <Content>
     <Dropdown onSelect={(e) => setIndexes(e)}>
-      <Dropdown.Toggle id="dropdown-basic">
+      <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown">
         Indices
       </Dropdown.Toggle>
-      <Dropdown.Menu>
-        {Object.keys(indexesData)?.map((indexe) => <Dropdown.Item eventKey={indexe} disabled={hasSomeData(indexesData[indexe])}>{t(indexe)}</Dropdown.Item>
+      <Dropdown.Menu className="indicator-dropdown-menu">
+        {Object.keys(indexesData)?.map((indexe) => (
+          <Dropdown.Item
+            className="indicator-dropdown-item"
+            eventKey={indexe}
+            disabled={hasSomeData(indexesData[indexe])}
+          >
+            {t(indexe)}
+          </Dropdown.Item>
+        )
         )}
       </Dropdown.Menu>
     </Dropdown>
-  </>
+  </Content>
 );
 
 

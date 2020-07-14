@@ -1,0 +1,21 @@
+{
+  "historical": "Histórico",
+  "lastYear": "Último año",
+  "M": "Hombre",
+  "F": "Mujer",
+  "total": "Total",
+  "sex": "Sexo",
+  "socioeconomicLevel": "Nivel Socioeconómico",
+  "geoZone": "Zona Geográfica",
+  "indexes": "Indices",
+  "chart": "Gráfico",
+  "table": "Tabla",
+  "sideBar": {
+    "downloads": "Descargas",
+    "formats": {
+      "PDF": "Formato PDF",
+      "PNG": "Formato PNG",
+      "CSV": "Formato CSV"
+    }
+  }
+}

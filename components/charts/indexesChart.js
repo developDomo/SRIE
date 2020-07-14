@@ -22,6 +22,12 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
+const ControlContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+
 const IndexesChart = ({ data, t }) => {
   const [indexes, setIndexes] = useState(IndexeType.GPI.description);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
@@ -30,8 +36,10 @@ const IndexesChart = ({ data, t }) => {
 
   return (
     <Content>
-      <IndexesControls setIndexes={setIndexes} indexesData={data.indexes} />
-      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+      <ControlContainer>
+        <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+        <IndexesControls setIndexes={setIndexes} indexesData={data.indexes} />
+      </ControlContainer>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData}

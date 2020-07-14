@@ -1,4 +1,6 @@
 {
+    "relatedIndicatorTitle": "Related Indicators",
+    "indicatorTitle": "Education Indicators",
     "indicators": {
         "1": {
             "name": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",

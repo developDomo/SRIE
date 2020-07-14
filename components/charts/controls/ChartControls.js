@@ -34,6 +34,7 @@ const Span = styled.span`
 
 const Content = styled.div`
   padding: 1.2em;
+  justify-content: flex-start;
 `;
 
 const ChartControls = ({ setChartMetrics, t, chartMetrics }) => (

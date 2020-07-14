@@ -45,6 +45,27 @@ export default css.global`
   .breadcrum-item a{
     color: ${blue2}!important;
   }
+
+  .indicator-indexes-dropdown {
+    background-color: #00558D !important;
+  }
+
+  .indicator-dropdown-menu {
+    background-color: white !important;
+  }
+
+  .indicator-dropdown-menu > a {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #16181B;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
   
   @media (max-width: 576px) { 
     .country-selector{

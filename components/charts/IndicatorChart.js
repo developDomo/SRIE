@@ -45,11 +45,11 @@ const FooterSource = styled.div`
 `;
 
 const SideBarIcons = styled.div`
-  margin-top: 1em;
+  margin-top: 2.9em;
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  border-bottom: 1px solid #E0E6EB;
+  border-bottom: 2px solid #AABAC3;
    & > p {
     max-width: 30px;
     text-align: center;
@@ -68,7 +68,7 @@ margin-left: 1em;
  }
 `;
 const SideBarDescriptionContainer = styled.div`
-  border-top: 1px solid #E0E6EB;
+  border-top: 2px solid #AABAC3;
   margin-top: 2em;
   padding: 1em;
 `;
@@ -89,7 +89,7 @@ const IndicatorChart = ({
         <Tab
           eventKey="total"
           disabled={hasSomeData(chartData.visualizations?.total)}
-          title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('total')}</TapTitle>}
+          title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
           <TotalChart data={chartData} />
         </Tab>
@@ -104,7 +104,7 @@ const IndicatorChart = ({
         <Tab
           eventKey="sex"
           disabled={hasSomeData(chartData.visualizations?.sex)}
-          title={<TapTitle iconUrl="/img/home/icon_sexo_line.svg">{t('sex')}</TapTitle>}
+          title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
           <SexChart data={chartData} />
         </Tab>
@@ -116,7 +116,7 @@ const IndicatorChart = ({
   const showGeoZoneTab = () => {
     if (tabsToShow.indexOf('geozone') !== -1) {
       return (
-        <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/icon_socioeconomico_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
+        <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
           <TotalChart data={chartData} />
         </Tab>
       );
@@ -138,7 +138,7 @@ const IndicatorChart = ({
   const showIndexesTab = () => {
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
-        <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/icon_indice_line.svg">{t('indexes')}</TapTitle>}>
+        <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
           <IndexesChart data={chartData} />
         </Tab>
       );
@@ -171,20 +171,23 @@ const IndicatorChart = ({
               <DownloadIcon iconUrl="/img/home/icon_table_2.svg" />
             </SideBarIcons>
             <SideBarDownloadContainer>
-              <h5>Descargas:</h5>
+              <h5>
+                {t('sideBar.downloads')}
+                :
+              </h5>
               <div>
                 {' '}
-                <a href="/#">Formato PDF</a>
+                <a href="/#">{t('sideBar.formats.PDF')}</a>
                 {' '}
               </div>
               <div>
                 {' '}
-                <a href="/#">Formato PNG</a>
+                <a href="/#">{t('sideBar.formats.PNG')}</a>
                 {' '}
               </div>
               <div>
                 {' '}
-                <a href="/#">Formato CSV</a>
+                <a href="/#">{t('sideBar.formats.CSV')}</a>
                 {' '}
               </div>
             </SideBarDownloadContainer>

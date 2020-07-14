@@ -26,6 +26,7 @@ export const blue52 = '#00597C';
 
 export const orange = '#EF522E';
 export const orange2 = '#D6432B';
+export const orangeLink = '#fbb03a';
 
 export const pink = '#FB8080';
 export const pink2 = '#D87171';
