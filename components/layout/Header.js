@@ -4,20 +4,24 @@ import {
   Navbar, Nav, NavDropdown,
 } from 'react-bootstrap';
 import Router, { withRouter } from 'next/router';
+import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import LinkChild from './LinkChild';
+import NavbarLink from './NavbarLink';
 import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
-  border: 1px solid white;
-  width: 100%;
+  background-color: white;
+  height: 1px;
   margin: 0 0 0 0;
+  width: 100%;
 `;
 
-const Header = ({ router: { pathname } }) => {
+
+const Header = ({ router: { pathname }, patht }) => {
   const [path, setPath] = useState(pathname);
+
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -29,8 +33,6 @@ const Header = ({ router: { pathname } }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-
-
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
@@ -49,13 +51,8 @@ const Header = ({ router: { pathname } }) => {
                   alignRight
                   key={item.label}
                 >
-                  {item.items.map((item2, index) => (
-                    <LinkChild
-                      id={item2.id}
-                      href={item2.href}
-                      label={item2.label}
-                      key={`linkChild-${index}`}
-                    />
+                  {item.items.map((itemNavbar, index) => (
+                    <NavbarLink item={itemNavbar} />
                   ))}
                 </NavDropdown>
               ))}
@@ -65,14 +62,16 @@ const Header = ({ router: { pathname } }) => {
             </div>
           </Navbar.Collapse>
         </div>
-
       </Navbar>
       <style type="text/css">
         {`
 
       ${path === '/'
-          ? `body { background-image: ${getThemeProperty('navbar.home.body.background-image')}}`
-          : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')}}`}
+          ? `body { background-image: ${getThemeProperty('navbar.home.body.background-image')};} 
+            .nav-item > a {border-bottom: 2px solid transparent;}`
+          : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')};} 
+            .nav-item > a {border-bottom: 2px solid ${theme.navbar.primaryFontColor};}`
+        }
 
       .navbar-light .navbar-nav .nav-link {
         color: ${theme.navbar.primaryFontColor};
@@ -116,18 +115,20 @@ const Header = ({ router: { pathname } }) => {
         display: block;
         padding: 5px 10px;
         width: 210px;
+        margin: 0 15px;
         }
-
       .show.dropdown.nav-item > a {
         border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
       }
-
+      .active-link {
+        border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
+      }
       a.nav-item-drop:hover {
         color: #16181b;
         text-decoration: none;
         background-color: ${theme.navbar.menuHoverColor};
         color: ${theme.navbar.primaryFontColor};
-        width: 100%;
+        
     }
 
     light .navbar-nav .nav-link:hover {

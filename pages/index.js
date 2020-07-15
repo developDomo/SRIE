@@ -9,14 +9,14 @@ import { withTranslation } from '../i18n';
 const Home = ({ countries, t, path }) => (
   <>
     <div className="home">
-      <Row className="justify-content-md-center mxs-0">
+      <Row className="justify-content-md-center m-0">
         <div className="col-sm-8 px-0">
           <InfoSlider />
           <CountrySelector countries={countries} />
         </div>
       </Row>
     </div>
-    <div className="row justify-content-md-center slider-box">
+    <div className="row justify-content-md-center slider-box m-0">
       <div className="col-sm-8">
         <BannerOds />
       </div>

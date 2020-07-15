@@ -3,7 +3,7 @@ import { withTranslation } from '../../i18n';
 
 const NavSecondaryCountry = ({ t, country, selected }) => (
   <div>
-    <Link href="/[code]" as={`/${country.short_name}`} key={country.short_name}>
+    <Link href="/[id]" as={`/${country.short_name}`} key={country.short_name}>
       <a
         title={t(`countries.${country.code}`)}
         id={`link_${country.code}`}
@@ -11,7 +11,6 @@ const NavSecondaryCountry = ({ t, country, selected }) => (
       >
         <span className="country-link">{country.title}</span>
       </a>
-
     </Link>
     <style jsx>
       {`
