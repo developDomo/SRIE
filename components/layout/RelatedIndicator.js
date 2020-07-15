@@ -60,29 +60,26 @@ const IconContainer = styled.div`
   }
 `;
 
-const RelatedIndicator = ({ relatedIndicators, countryName, t }) => {
-  console.log(countryName);
-  return (
-    <>
-      {relatedIndicators?.map((indicator) => (
-        <Link key={`indicador-${indicator.id}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
-          <div className="col-lg-12 mb-3 p-0">
-            <Container className="d-flex  justify-content-between p-0">
-              <div className="col-lg-11 m-0 py-0 pl-4 pr-2">
-                <Title>
-                  {t(`indicators.${indicator.code}.name`)}
-                </Title>
-              </div>
-              <IconContainer className=" ">
-                <div />
-              </IconContainer>
-            </Container>
-          </div>
-        </Link>
-      ))}
-    </>
-  );
-};
+const RelatedIndicator = ({ relatedIndicators, countryName, t }) => (
+  <>
+    {relatedIndicators?.map((indicator) => (
+      <Link key={`indicador-${indicator.id}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
+        <div className="col-lg-12 mb-3 p-0">
+          <Container className="d-flex  justify-content-between p-0">
+            <div className="col-lg-11 m-0 py-0 pl-4 pr-2">
+              <Title>
+                {t(`indicators.${indicator.code}.name`)}
+              </Title>
+            </div>
+            <IconContainer className=" ">
+              <div />
+            </IconContainer>
+          </Container>
+        </div>
+      </Link>
+    ))}
+  </>
+);
 
 RelatedIndicator.getInitialProps = ({ t, countryName }) => ({
   namespacesRequired: ['indicators'],

@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
-import { DisplayTypes } from './types/ChartTypes';
+import { DisplayTypes, ChartTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
 import SexChart from './SexChart';
 import ChartTypeControls from './controls/ChartTypeControls';
@@ -91,7 +91,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} />
+          <TotalChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
@@ -106,7 +106,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} />
+          <SexChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
@@ -117,7 +117,7 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('geozone') !== -1) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <TotalChart data={chartData} />
+          <TotalChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
@@ -128,7 +128,7 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('socioeconomicLevel') !== -1) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <TotalChart data={chartData} />
+          <TotalChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
@@ -139,12 +139,22 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
         <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} />
+          <IndexesChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
     return (<></>);
   };
+
+  const showContent = () => (
+    <Tabs defaultActiveKey={tabsToShow[0] || ''} className="indicatorChartTabs">
+      {showTotalTab()}
+      {showSexTab()}
+      {showGeoZoneTab()}
+      {showSocioeconomicLevelTab()}
+      {showIndexesTab()}
+    </Tabs>
+  );
   return (
     <>
       <Container>
@@ -152,13 +162,7 @@ const IndicatorChart = ({
           <Col xs lg="9">
             <ChartContent>
               <ChartTypeControls setChartType={setChartType} activeState={chartType} />
-              <Tabs defaultActiveKey={tabsToShow[0] || ''} className="indicatorChartTabs">
-                {showTotalTab()}
-                {showSexTab()}
-                {showGeoZoneTab()}
-                {showSocioeconomicLevelTab()}
-                {showIndexesTab()}
-              </Tabs>
+              {showContent()}
               <FooterSource>
                 {t('source')}
                 : Lorem ipsum dolor sit amet.
