@@ -20,7 +20,11 @@ handler.get(async (req, res) => {
       req.query.country,
     );
 
-    res.status(200).json(indicator);
+    if (indicator) {
+      res.status(200).json(indicator);
+    } else {
+      res.status(404).json({ error: true, message: 'Indicator not found' });
+    }
   }
 });
 
