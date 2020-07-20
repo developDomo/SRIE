@@ -145,7 +145,12 @@ export const ButtonNavIndicadores = styled.button`
       : props.amarillo
         ? yellow
         : undefined)};
-  color: white;
+  a{
+    color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   &:hover {
     background-color: ${blueRoll};
   }

@@ -18,10 +18,8 @@ const WhiteLine = styled.hr`
   width: 100%;
 `;
 
-
 const Header = ({ router: { pathname }, patht }) => {
   const [path, setPath] = useState(pathname);
-
 
   useEffect(() => {
     const handleRouteChange = (url) => {

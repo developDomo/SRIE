@@ -5,7 +5,6 @@ import {
   blue1, yellow, green, txt,
 } from '../../styles/colors';
 
-
 const TextContainer = styled.h3`
   font-family: ${(props) => (props.type === 'title'
     ? 'Roboto Slab'

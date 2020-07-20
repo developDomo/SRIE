@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const LineContainer = styled.div`
   font-weight: 400;
   display: flex;
