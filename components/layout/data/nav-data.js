@@ -5,13 +5,13 @@ const navData = [
     items: [
       {
         id: null,
-        href: '#',
+        href: 'sobre-srie',
         label: '¿Que es el SRIE?',
         isCountry: false,
       },
       {
         id: null,
-        href: '#',
+        href: 'socios-implementadores',
         label: 'Socios implementadores',
         isCountry: false,
       },
@@ -29,13 +29,13 @@ const navData = [
       },
       {
         id: null,
-        href: '#',
+        href: 'preguntas-frecuentes',
         label: 'Preguntas frecuentes',
         isCountry: false,
       },
       {
         id: null,
-        href: '#',
+        href: 'equipo-responsable',
         label: 'Equipo responsable',
         isCountry: false,
       },

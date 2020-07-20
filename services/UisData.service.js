@@ -27,7 +27,6 @@ const dataFields = [
   'decimals',
 ];
 
-
 const updateIndicatorData = async (indicator, data) => {
   const table = db[indicator.uis_dataset.toLowerCase()];
 
@@ -44,7 +43,6 @@ const updateIndicatorData = async (indicator, data) => {
 
   db.indicators.update(indicator.id, { updated_at: new Date() });
 };
-
 
 const updateDataByIndicatorId = async (id) => {
   const indicator = await IndicatorService.findById(id);

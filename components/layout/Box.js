@@ -122,7 +122,6 @@ const IconImgStyled = styled.img`
   height: ${(props) => (props.height || '80px')};
 `;
 
-
 const ColorSubtitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;

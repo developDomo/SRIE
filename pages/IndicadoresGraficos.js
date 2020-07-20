@@ -6,7 +6,6 @@ import Title from '../components/layout/Title';
 import { txt } from '../theme/colors';
 import { GraficoCompuestoComponent } from '../components/layout/Grafico';
 
-
 const Divider = styled.span`
   display: block;
   width: 100%;

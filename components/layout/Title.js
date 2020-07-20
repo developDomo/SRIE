@@ -5,7 +5,6 @@ import {
   blue1, yellow, green, txt,
 } from '../../styles/colors';
 
-
 const TextContainer = styled.h3`
   font-family: ${(props) => (props.type === 'title'
     ? 'Roboto Slab'
@@ -38,10 +37,16 @@ const TextContainer = styled.h3`
         : props.color === 'negro'
           ? txt
           : undefined)};
+  ${(props) => (props.textCenter
+    ? 'text-align: center;'
+    : ''
+  )};
 `;
 
-const Title = ({ children, color, type }) => (
-  <TextContainer color={color} type={type}>
+const Title = ({
+  children, color, type, textCenter,
+}) => (
+  <TextContainer color={color} type={type} textCenter={textCenter}>
     {children}
   </TextContainer>
 );
