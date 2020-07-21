@@ -34,42 +34,6 @@ const ContainerStyled = styled.div`
   width: 100%;
   height: 230px;
 `;
-const ContainerEducationStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  flex-basis: auto;
-  background-color: ${(props) => (props.color === 'blue'
-    ? '#cce3f2'
-    : props.color === 'green'
-      ? ' #caf0b0'
-      : props.color === 'yellow'
-        ? yellowRoll
-        : props.color === 'light_blue'
-          ? blue42
-          : props.color === 'brown'
-            ? brown2
-            : props.color === 'orange'
-              ? orange2
-              : props.color === 'pink'
-                ? '#fdcccc'
-                : 'black')};
-  padding: 0;
-  width: 100%;
-  min-height: 120px;
-
-  & ${Title} {
-    padding: 10px 1px;
-    margin-bottom: 0;
-    text-transform: uppercase;
-    text-align: center;
-    color: ${txt};
-    font-weight: 500;
-    font-size: 1.1em;
-  }
-`;
 const ContainerIndicadorStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -189,28 +153,7 @@ const IndicadorContainer = styled.div`
     margin-right: 0;
   }
 `;
-const SectionContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: ${(props) => props.width};
-  padding: 1px 1px;
-  min-height: 120px;
-  background-color: ${(props) => props.color};
-  & h3 {
-    margin: 0;
-    color: white;
-    width: 100%;
-    font-size: 0.9em;
-    padding: 0 10px;
-  }
-  & p {
-    margin: 0;
-    color: white;
-    font-weight: 400;
-  }
-`;
+
 
 const getIcon = (iconImg, icon, color) => (iconImg ? (
   <IconImgStyled src={iconImg} alt="icon" />
@@ -224,7 +167,9 @@ export const Box = ({
   title,
   subtitle,
   isFree,
+  isFreeTitle,
   mandatory,
+  mandatoryTitle,
   color,
 }) => {
   if (isFree && mandatory) {
@@ -241,7 +186,7 @@ export const Box = ({
               padding="6px 6px 5px 6px"
             >
               <h3>{isFree}</h3>
-              <p>Educación gratuita</p>
+              <p>{isFreeTitle}</p>
             </IndicadorContainer>
           ) : undefined}
 
@@ -253,7 +198,7 @@ export const Box = ({
             mr="0"
           >
             <h3>{mandatory}</h3>
-            <p>Educación obligatoria</p>
+            <p>{mandatoryTitle}</p>
           </IndicadorContainer>
         </ContainerIndicadorStyled>
       </>
@@ -271,89 +216,24 @@ export const Box = ({
 };
 
 export const BoxIndicador = ({
-  title, prescolar, primaria, secundaria,
+  title, preschoolValue, primarySchoolValue, highSchoolValue, preschoolText, primarySchoolText, highSchoolText,
 }) => (
   <ContainerIndicadorStyled>
     <Title>{title}</Title>
-    {prescolar ? (
+    {preschoolValue ? (
       <IndicadorContainer color="yellow">
-        <h3>{prescolar}</h3>
-        <p>Preescolar</p>
+        <h3>{preschoolValue}</h3>
+        <p>{preschoolText}</p>
       </IndicadorContainer>
     ) : undefined}
 
     <IndicadorContainer color="green">
-      <h3>{primaria}</h3>
-      <p>Primaria</p>
+      <h3>{primarySchoolValue}</h3>
+      <p>{primarySchoolText}</p>
     </IndicadorContainer>
     <IndicadorContainer color="blue">
-      <h3>{secundaria}</h3>
-      <p>Secundaria</p>
+      <h3>{highSchoolValue}</h3>
+      <p>{highSchoolText}</p>
     </IndicadorContainer>
   </ContainerIndicadorStyled>
-);
-
-export const BoxPreescolar = ({ title }) => (
-  <ContainerEducationStyled color="pink">
-    <Title>{title}</Title>
-    <SectionContainer color="#fc9999" width="33.2%">
-      <h3>Grupo interactivo</h3>
-      <p>1</p>
-    </SectionContainer>
-    <SectionContainer color="#fb8080" width="33%">
-      <h3>Grupo interactivo</h3>
-      <p>2</p>
-    </SectionContainer>
-    <SectionContainer color="#bc6060" width="33.1%">
-      <p> Transicion</p>
-    </SectionContainer>
-  </ContainerEducationStyled>
-);
-export const BoxPrimaria = ({
-  title, prescolar, primaria, secundaria,
-}) => (
-  <ContainerEducationStyled color="green">
-    <Title>{title}</Title>
-    <SectionContainer color="#afd188" width="16%">
-      <p>1º</p>
-    </SectionContainer>
-    <SectionContainer color="#95c161" width="17%">
-      <p>2º</p>
-    </SectionContainer>
-    <SectionContainer color="#7ab239" width="17%">
-      <p>3º</p>
-    </SectionContainer>
-    <SectionContainer color="#5c852b" width="17%">
-      <p>4º</p>
-    </SectionContainer>
-    <SectionContainer color="#3d591d" width="17%">
-      <p>5º</p>
-    </SectionContainer>
-    <SectionContainer color="#324914" width="16%">
-      <p>6º</p>
-    </SectionContainer>
-  </ContainerEducationStyled>
-);
-export const BoxSecundaria = ({ title }) => (
-  <ContainerEducationStyled color="blue">
-    <Title>{title}</Title>
-    <SectionContainer color="#66aad7" width="16%">
-      <p>7º</p>
-    </SectionContainer>
-    <SectionContainer color="#338dc9" width="16%">
-      <p>8º</p>
-    </SectionContainer>
-    <SectionContainer color="#0071bc" width="17%">
-      <p>9º</p>
-    </SectionContainer>
-    <SectionContainer color="#00558d" width="17%">
-      <p>10º</p>
-    </SectionContainer>
-    <SectionContainer color="#00395e" width="17%">
-      <p>11º</p>
-    </SectionContainer>
-    <SectionContainer color="#032d44" width="17%">
-      <p>12º</p>
-    </SectionContainer>
-  </ContainerEducationStyled>
 );

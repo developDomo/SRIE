@@ -5,10 +5,30 @@
     "with-status": "A {{statusCode}} error occurred on server",
     "without-status": "An error occurred on the server"
   },
-  "alphabetizationRate": "Tasa de alfabetización",
+  "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
   "numberOfEducationalCenters": "Number of educational centers",
   "tuitionFeesByLevel" : "Tuition fees, by level",
   "completionRateByLevel": "Completion rate, by level",
-  "girlsBoysAndAdolescentsOutsideOfSchool": "Girls, boys and adolescents outside of school"
+  "girlsBoysAndAdolescentsOutsideOfSchool": "Girls, boys and adolescents outside of school",
+  "participation": "Participation",
+  "offering":"Offering",
+  "learningAndSkills" :"Learning and skills",
+  "Completion" : "Completion",
+  "educationalEnvironment": "Educational environment",
+  "CrossCuttingGoals": "Cross-cutting goals",
+  "EducationalIndicators":"Educational Indicators" ,
+  "byCategory": "by Category",
+  "seeTheIndicators": "See the indicators",
+  "countryData": "Country data",
+  "structureOfTheCountryEducationalSystem": "Structure of the country's educational system",
+  "preschool":"Preschool",
+  "highSchool": "High school",
+  "primary":"Primary",
+  "freeAndCompulsoryEducation": "Free and compulsory education",
+  "ObligatoryEducation": "Obligatory education",
+  "seeTheProgressIn": "See the progress in",
+  "complianceWithGoalsCentralAmericanEducationalPolicy": "Compliance with Goals Central American Educational Policy",
+  "selectAnotherCountryThatYouWantToConsult": "Select another country that you want to consult"
+
 }

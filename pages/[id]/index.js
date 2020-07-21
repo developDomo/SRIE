@@ -65,12 +65,12 @@ const Country = ({ t, countries, country }) => {
         <Row className="mt-4">
           <div className="col-lg-12 mb-3 text-center">
             <Title color="yellow" type="title">
-              Datos país
+              {t('countryData')}
             </Title>
           </div>
           <div className="col-lg-12 mb-4 p-0 text-center">
             <Title color="negro" type="subtitle">
-              Estructura del sistema educativo del país
+              {t('structureOfTheCountryEducationalSystem')}
             </Title>
           </div>
           <div className="col-lg-12 mb-4 p-0 text-center">
@@ -84,7 +84,9 @@ const Country = ({ t, countries, country }) => {
               title={t('numberOfYears')}
               color="blue"
               isFree={12}
+              isFreeTitle={t('freeAndCompulsoryEducation')}
               mandatory={12}
+              mandatoryTitle={t('ObligatoryEducation')}
             />
           </div>
           <div className="col-lg-4 mb-4">
@@ -108,17 +110,22 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              prescolar="50,09%"
-              primaria="40,60%"
-              secundaria="50,00%"
+              preschoolValue="50,09%"
+              primarySchoolValue="40,60%"
+              highSchoolValue="50,00%"
+              preschoolText={t('preschool')}
+              primarySchoolText={t('highSchool')}
+              highSchoolText={t('primary')}
             />
           </div>
 
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primaria="36,00%"
-              secundaria="50,00%"
+              primarySchoolValue="36,00%"
+              highSchoolValue="50,00%"
+              primarySchoolText={t('highSchool')}
+              highSchoolText={t('primary')}
             />
           </div>
           <div className="col-lg-4">
@@ -134,7 +141,7 @@ const Country = ({ t, countries, country }) => {
       <Container fluid className="bg-verde-oscuro">
         <Row>
           <div className="col-lg-12 p-0 m-0">
-            <Banner />
+            <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
           </div>
         </Row>
       </Container>
@@ -142,56 +149,56 @@ const Country = ({ t, countries, country }) => {
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
             <Title color="blue" type="title">
-              Indicadores Educativos
+              {t('EducationalIndicators')}
             </Title>
           </div>
           <div className="col-lg-12 text-center">
             <Title color="blue" type="subtitle">
-              Por categoria
+              {t('byCategory')}
             </Title>
           </div>
         </Row>
         <Row className="mt-4 mb-4">
           <div className="col-lg-4 mb-3">
             <ButtonWithIcon color="light_blue" icon={ParticipationIcon}>
-              participacion
+              {t('participation')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
             <ButtonWithIcon color="brown" icon={OfferIcon}>
-              oferta
+              {t('offering')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
             <ButtonWithIcon color="blue" icon={LearningIcon}>
-              Aprendizaje y competencias
+              {t('learningAndSkills')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
             <ButtonWithIcon color="orange" icon={ConclusionIcon}>
-              Conclusión
+              {t('Completion')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
             <ButtonWithIcon color="pink" icon={EnvironmentIcon}>
-              Entorno educativo
+              {t('educationalEnvironment')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
             <ButtonWithIcon color="yellow" icon={GoalsIcon}>
-              Metas transversales
+              {t('CrossCuttingGoals')}
             </ButtonWithIcon>
           </div>
         </Row>
         <Row className="mb-5">
           <div className="col-lg-12 d-flex justify-content-end">
             <ButtonNavIndicadores blue>
-              Ver los indicadores
+              {t('seeTheIndicators')}
             </ButtonNavIndicadores>
           </div>
         </Row>
