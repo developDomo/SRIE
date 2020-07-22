@@ -36,7 +36,7 @@ export const Nav3 = () => (
 );
 
 export const NavIndicadores = () => (
-  <ButtonNavIndicadores blue onClick={action('clicked')}>
+  <ButtonNavIndicadores color="blue" onClick={action('clicked')}>
     Ver los indicadores
   </ButtonNavIndicadores>
 );

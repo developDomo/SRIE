@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
+
 import { greenRoll, gray1 } from '../../styles/colors';
 import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg';
 import ArrowIcon from '../../public/img/home/arrow_indicadores.svg';

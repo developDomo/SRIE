@@ -51,6 +51,7 @@ const InfoDirectoryContainer = styled.div`
     margin-left: 5px;
   }
 `;
+
 const ResponsibleTeam = ({ countries, t, path }) => {
   const array = [1, 2, 3, 4, 5];
   const navigation = [
@@ -136,10 +137,10 @@ ResponsibleTeam.getInitialProps = async ({ pathname: path }) => {
   const countries = await res.json();
 
   return {
-    namespacesRequired: ['reposibleTeam'],
+    namespacesRequired: ['responsibleTeam'],
     countries,
     path,
   };
 };
 
-export default withTranslation('reposibleTeam')(ResponsibleTeam);
+export default withTranslation('responsibleTeam')(ResponsibleTeam);

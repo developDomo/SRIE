@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import {
   gray1,
   blue,
@@ -16,6 +15,28 @@ import {
   txt,
 } from '../../styles/colors';
 
+const backgroundColors = {
+  green,
+  blue: blue3,
+  yellow: yellowRoll,
+  light_blue: blue4,
+  brown: brown2,
+  pink: pink2,
+  orange,
+  black: txt,
+};
+
+const iconColors = {
+  green,
+  blue,
+  yellow: yellowRoll,
+  light_blue: blue42,
+  brown: brown2,
+  pink: pink2,
+  orange: orange2,
+  black: txt,
+};
+
 const Title = styled.h3`
   width: 100%;
   font-family: 'Raleway', sans-serif;
@@ -24,6 +45,7 @@ const Title = styled.h3`
   margin-bottom: 15px;
   color: ${txt};
 `;
+
 const ContainerStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -34,6 +56,7 @@ const ContainerStyled = styled.div`
   width: 100%;
   height: 230px;
 `;
+
 const ContainerIndicadorStyled = styled.div`
   display: flex;
   justify-content: center;
@@ -44,6 +67,7 @@ const ContainerIndicadorStyled = styled.div`
   width: 100%;
   height: 230px;
 `;
+
 const TextContainer = styled.div`
   display: flex;
   align-items: center;
@@ -57,30 +81,18 @@ const IconContainer = styled.div`
   width: 100%;
   margin-bottom: 10px;
 `;
+
 const Icon = styled.div`
   width: 80px;
   height: 80px;
-  background-color: ${(props) => (props.color === 'blue'
-    ? blue
-    : props.color === 'green'
-      ? green
-      : props.color === 'yellow'
-        ? yellowRoll
-        : props.color === 'light_blue'
-          ? blue42
-          : props.color === 'brown'
-            ? brown2
-            : props.color === 'orange'
-              ? orange2
-              : props.color === 'pink'
-                ? pink2
-                : 'black')};
+  background-color: ${(props) => (iconColors[props.color])};
   -webkit-mask-image: url(${(props) => props.icon});
   mask-image: url(${(props) => props.icon});
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   mask-position: center;
 `;
+
 const IconImgStyled = styled.img`
   width: ${(props) => props.width || '80px'};
   height: ${(props) => props.height || '80px'};
@@ -93,22 +105,9 @@ const ColorSubtitle = styled.h3`
   margin: 0;
   margin-bottom: ${(props) => props.mb || '0'};
   width: 100%;
-  color: ${(props) => (props.color === 'blue'
-    ? blue3
-    : props.color === 'green'
-      ? green
-      : props.color === 'yellow'
-        ? yellowRoll
-        : props.color === 'light_blue'
-          ? blue4
-          : props.color === 'brown'
-            ? brown2
-            : props.color === 'orange'
-              ? orange
-              : props.color === 'pink'
-                ? pink2
-                : 'black')};
+  color: ${(props) => (backgroundColors[props.color])};
 `;
+
 const IndicadorContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -121,21 +120,7 @@ const IndicadorContainer = styled.div`
   box-sizing: content-box;
   margin-left: ${(props) => props.ml || '0'};
   margin-right: ${(props) => props.mr || '10px'};
-  background-color: ${(props) => (props.color === 'blue'
-    ? blue
-    : props.color === 'green'
-      ? green
-      : props.color === 'yellow'
-        ? yellowRoll
-        : props.color === 'light_blue'
-          ? blue4
-          : props.color === 'brown'
-            ? brown2
-            : props.color === 'orange'
-              ? orange
-              : props.color === 'pink'
-                ? pink2
-                : 'black')};
+  background-color: ${(props) => (backgroundColors[props.color])};
   & h3 {
     padding-bottom: '30px';
     border-bottom: 2px solid white;

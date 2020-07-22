@@ -17,10 +17,7 @@ import {
   greenSageGrey,
   greenSageLight,
   greenLight,
-  black, orange2,
-  yellowRoll,
-  blue42,
-  brown2,
+  black,
   white,
   grayBck,
   pink,
@@ -28,97 +25,9 @@ import {
   pinkRose,
   pinkWatermelon,
 } from '../../styles/colors';
-import { i18n, withTranslation } from '../../i18n';
 
-const Title = styled.h3` width: 100%; font-family: "Roboto", sans-serif; font-weight: bold; font-size: 1.2em; margin-bottom: 5px;`;
+import { withTranslation } from '../../i18n';
 
-const ContainerEducationStyled = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  flex-basis: auto;
-  background-color: ${(props) => (props.color === 'blue'
-    ? '#cce3f2'
-    : props.color === 'green'
-      ? ' #caf0b0'
-      : props.color === 'yellow'
-        ? yellowRoll
-        : props.color === 'light_blue'
-          ? blue42
-          : props.color === 'brown'
-            ? brown2
-            : props.color === 'orange'
-              ? orange2
-              : props.color === 'pink'
-                ? '#fdcccc'
-                : 'black')};
-  padding: 0;
-  width: 100%;
-  min-height: 120px;
-  & ${Title} 
-    {
-      padding: 3px 1px;
-      text-transform: uppercase;
-      text-align: center;
-      color: black;
-      font-weight: 400;
-    }
-`;
-
-const SectionContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: ${(props) => props.width};
-  padding: 1px 1px;
-  min-height: 70px;
-  background-color: ${(props) => props.color};
-  & h3 {
-    margin: 0;
-    color: white;
-    width: 100%;
-    font-size: 0.8em;
-  }
-  & p {
-    margin: 0;
-    color: white;
-    font-weight: 400;
-  }
-`;
-
-const LineContainer = styled.div`
-  font-weight: 400;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
-  margin-top: 5px;
-  margin-bottom: 5px;
-`;
-
-const Line = styled.div`
-  padding: 3px 0px;
-  height: 2px;
-  background-color: ${(props) => props.color};
-  width: ${(props) => props.width};
-  margin-right: 0px;
-  /*margin-right: 5px;*/
-  box-sizing: content-box;
-`;
-
-const LineTitle = styled.div`
-  padding: 3px 0px;
-  color: ${(props) => props.color};
-  width: ${(props) => props.width};
-  margin-right: 0px;
-  box-sizing: content-box;
-  text-align: center;
-  font-size: 0.9em;
-`;
 // new
 const ContainerBox = styled.div`
   display: flex;
