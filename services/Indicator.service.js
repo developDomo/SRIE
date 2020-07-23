@@ -97,6 +97,7 @@ export default {
       decompose: INDICATOR_DECOMPOSE,
     });
   },
+  findAll: async () => db.indicators.find({}),
   findById: async (id) => db.indicators.findOne({ id }),
   /**
    * Finds related indicators
