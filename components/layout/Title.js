@@ -6,6 +6,12 @@ import {
   blue1, yellow, green, txt,
 } from '../../styles/colors';
 
+const colors = {
+  green,
+  blue: blue1,
+  yellow,
+  black: txt,
+};
 
 const TextContainer = styled.h3`
   font-family: ${(props) => (props.type === 'title'
@@ -30,15 +36,7 @@ const TextContainer = styled.h3`
     : props.type === 'subtitle'
       ? 'initial'
       : undefined)};
-  color: ${(props) => (props.color === 'blue'
-    ? blue1
-    : props.color === 'green'
-      ? green
-      : props.color === 'yellow'
-        ? yellow
-        : props.color === 'negro'
-          ? txt
-          : undefined)};
+  color: ${(props) => (colors[props.color])};
 `;
 
 const Title = ({ children, color, type }) => (
