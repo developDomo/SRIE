@@ -190,7 +190,7 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-12 d-flex justify-content-end">
             <ButtonNavIndicadores azul>
               <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
-                Ver los indicadores
+                { t('moreIndicatorsBtn') }
               </Link>
             </ButtonNavIndicadores>
           </div>
