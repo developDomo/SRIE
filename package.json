@@ -39,9 +39,11 @@
     "prop-types": "^15.7.2",
     "react": "16.13.0",
     "react-bootstrap": "^1.0.0",
+    "react-data-table-component": "^6.9.7",
     "react-dom": "16.13.0",
+    "react-i18next": "^11.7.0",
     "recharts": "^1.8.5",
-    "styled-components": "^5.0.1",
+    "styled-components": "^5.1.1",
     "styled-jsx": "^3.3.0",
     "swr": "^0.1.18"
   },
