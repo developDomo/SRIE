@@ -30,7 +30,7 @@ const Faqs = ({ t }) => (
         <Row className="d-sm-flex justify-content-center">
           <div className="col-sm-8 py-2 py-sm-5">
             {/* <FaqsItems t={t}/> */}
-            <p>Pronto disponible.</p>
+            <p>{t('soon')}</p>
           </div>
         </Row>
       </Container>

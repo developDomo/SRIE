@@ -68,7 +68,6 @@ const updateDataByIndicatorId = async (id, countries = allCountries) => {
       // if no data, just ignore
     });
 
-
   return true;
 };
 

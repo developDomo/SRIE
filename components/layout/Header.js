@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  Navbar, Nav, NavDropdown,
+  Navbar, Nav,
 } from 'react-bootstrap';
 import Router, { withRouter } from 'next/router';
 import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import NavbarLink from './NavbarLink';
-import navData from './data/nav-data';
+import { i18n } from '../../i18n';
+import LinksMainNav from './LinksMainNav';
 
 const WhiteLine = styled.hr`
   background-color: white;
@@ -31,6 +31,7 @@ const Header = ({ router: { pathname }, patht }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
+  const actualLang = i18n.language;
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
@@ -41,7 +42,8 @@ const Header = ({ router: { pathname }, patht }) => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              {navData.map((item) => (
+              <LinksMainNav lang={actualLang} />
+              {/* {navData.en.map((item) => (
                 <NavDropdown
                   title={item.label}
                   id="basic-nav-dropdown"
@@ -53,7 +55,7 @@ const Header = ({ router: { pathname }, patht }) => {
                     <NavbarLink item={itemNavbar} />
                   ))}
                 </NavDropdown>
-              ))}
+              ))} */}
             </Nav>
             <div>
               <LanguageSelector path={path} />
