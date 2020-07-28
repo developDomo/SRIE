@@ -29,5 +29,15 @@
   "ObligatoryEducation": "Educación obligatoria",
   "seeTheProgressIn": "Conozca el avance en el",
   "complianceWithGoalsCentralAmericanEducationalPolicy": "Cumplimiento de Metas Política Educativa Centroamericana",
-  "selectAnotherCountryThatYouWantToConsult": "Seleccione otro país que desee consultar"
+  "selectAnotherCountryThatYouWantToConsult": "Seleccione otro país que desee consultar",
+  "filter": {
+    "filterIndicatorsBy": "Filtrar indicadores por",
+    "searchResultsFor": "Resultados de la búsqueda por",
+    "goalMeta" : "Meta Pec",
+    "topic": "Tema",
+    "level": "Nivel"
+  },
+  "educationalIndicators": "Indicadores educativos",
+  "pec": "PEC",
+  "ods4": "ODS 4"
 }

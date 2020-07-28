@@ -53,9 +53,46 @@ const InfoDirectoryContainer = styled.div`
 `;
 
 const ResponsibleTeam = ({ countries, t, path }) => {
-  const array = [1, 2, 3, 4, 5];
-  const navigation = [
-    { key: 'navigation.pages.country-data' },
+  const contributorsCountries = [{
+    country: 'Belice',
+    title: t('policyAndPlanningUnit'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'Costa Rica',
+    title: t('institutionalPlanningDirectorateStatisticalAnalysisDepartment'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'El Salvador',
+    title: t('planningDirectorateStatisticsDepartment'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'Guatemala',
+    title: t('educationalPlanningDirectorateStatisticsDepartment'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'Honduras',
+    title: t('managementPlanningAndEvaluationUnitInfotechnologyUnit'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'Nicaragua',
+    title: t('generalPlanningDirectorateStatisticsDirectorate'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'Panamá',
+    title: t('nationalDirectorateOfEducationalPlanningStatisticsDepartment'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
+  {
+    country: 'República Dominicana',
+    title: t('officeOfEducationalPlanningAndDevelopmentDepartmentOfStatistics'),
+    email: 'lore_ipsu@dolorsit.com',
+  },
   ];
 
   return (
@@ -82,20 +119,19 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                 </p>
               </div>
               <div className="col-lg-12 bg-white mb-4 mt-3 pt-3 pb-3">
-                {array.map((item) => (
+                {contributorsCountries.map((item) => (
                   <DirectoryContainer>
                     <TitlePais className="col-lg-3 ">
-                      <h3>Costa Rica</h3>
+                      <h3>{item.country}</h3>
                     </TitlePais>
                     <InfoDirectoryContainer className="col-lg-9 ">
                       <h3>
-                        Dirección de Planificación Institucional -
-                        Departamento de Análisis Estadístico
+                        {item.title}
                       </h3>
                       <p>
-                        correo electrónico:
-                        <a href="mail:lore_ipsu@dolorsit.com">
-                          lore_ipsu@dolorsit.com
+                        {`${t('email')}:`}
+                        <a href={`mail:${item.email}`}>
+                          {item.email}
                         </a>
                       </p>
                     </InfoDirectoryContainer>
