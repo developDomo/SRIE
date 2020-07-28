@@ -7,31 +7,37 @@ const navData = [
         id: null,
         href: '#',
         label: '¿Que es el SRIE?',
+        isCountry: false,
       },
       {
         id: null,
         href: '#',
         label: 'Socios implementadores',
+        isCountry: false,
       },
       {
         id: null,
         href: '#',
         label: '¿Cómo usar el sistema?',
+        isCountry: false,
       },
       {
         id: null,
-        href: '/glosario',
+        href: 'glosario',
         label: 'Glosario',
+        isCountry: false,
       },
       {
         id: null,
         href: '#',
         label: 'Preguntas frecuentes',
+        isCountry: false,
       },
       {
         id: null,
         href: '#',
         label: 'Equipo responsable',
+        isCountry: false,
       },
     ],
   },
@@ -41,59 +47,59 @@ const navData = [
     items: [
       {
         id: 'bh',
-        href: '/country/bh',
+        href: 'belice',
         label: 'Belice',
-        img:
-                  '/img/home/bandera-belice.png',
+        img: '/img/home/bandera-belice.png',
+        isCountry: true,
       },
       {
         id: 'cr',
-        href: '/country/cr',
+        href: 'costa-rica',
         label: 'Costa Rica',
-        img:
-                  '/img/home/bandera-costa_rica.png',
+        img: '/img/home/bandera-costa_rica.png',
+        isCountry: true,
       },
       {
         id: 'su',
-        href: '/country/su',
+        href: 'el-salvador',
         label: 'El Salvador',
-        img:
-                  '/img/home/bandera-el_salvador.png',
+        img: '/img/home/bandera-el_salvador.png',
+        isCountry: true,
       },
       {
         id: 'gt',
-        href: '/country/gt',
+        href: 'guatemala',
         label: 'Guatemala',
-        img:
-                  '/img/home/bandera-guatemala.png',
+        img: '/img/home/bandera-guatemala.png',
+        isCountry: true,
       },
       {
         id: 'ho',
-        href: '/country/ho',
+        href: 'honduras',
         label: 'Honduras',
-        img:
-                  '/img/home/bandera-honduras.png',
+        img: '/img/home/bandera-honduras.png',
+        isCountry: true,
       },
       {
         id: 'nu',
-        href: '/country/nu',
+        href: 'nicaragua',
         label: 'Nicaragua',
-        img:
-                  '/img/home/bandera-nicaragua.png',
+        img: '/img/home/bandera-nicaragua.png',
+        isCountry: true,
       },
       {
         id: 'pm',
-        href: '/country/pm',
+        href: 'panama',
         label: 'Panamá',
-        img:
-                  '/img/home/bandera-panama.png',
+        img: '/img/home/bandera-panama.png',
+        isCountry: true,
       },
       {
         id: 'dr',
-        href: '/country/dr',
+        href: 'republica-dominicana',
         label: 'Rep. Dominicana',
-        img:
-                  '/img/home/bandera-rep_dominicana.png',
+        img: '/img/home/bandera-rep_dominicana.png',
+        isCountry: true,
       },
     ],
   },

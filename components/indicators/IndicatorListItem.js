@@ -12,6 +12,7 @@ import {
 } from '../../styles/colors';
 import arrow from '../../public/img/home/arrow_indicadores.svg';
 import { withTranslation } from '../../i18n';
+import TopicTag from '../layout/TopicTag';
 
 const Container = styled.div`
   display: flex;
@@ -27,16 +28,7 @@ const Title = styled.h3`
   font-size: 1.1em;
   color: ${txt};
 `;
-export const Tag = styled.h4`
-  background-color: ${green1};
-  font-family: 'Raleway', sans-serif;
-  padding: 5px;
-  color: white;
-  font-size: 0.9em;
-  text-align: center;
-  width: 100px;
-  margin-top: 15px;
-`;
+
 const Pec = styled.h4`
   display: flex;
   justify-content: center;
@@ -105,11 +97,11 @@ const IndicatorListItem = ({ t, indicator, countryName }) => (
             {t(`indicators.${indicator.code}.name`)}
           </Title>
           {indicator.topics.map((topic) => (
-            <Tag>{t(`topics:topics.${topic.code}`)}</Tag>
+            <TopicTag topicCode={topic.code} />
           ))}
         </div>
         <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-        <Ods>4.2</Ods>
+        <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
         <IconContainer className=" ">
           <div />
         </IconContainer>

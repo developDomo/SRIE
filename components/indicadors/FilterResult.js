@@ -1,26 +1,25 @@
-const FilterResult = ({ pec, level, topic }) => (
+import { withTranslation } from '../../i18n';
+
+const FilterResult = ({
+  pec, level, topic, t,
+}) => (
   <>
-    <div className="col-lg-12 mb-1">Resultados de la búsqueda por:</div>
+    <div className="col-lg-12 mb-1">
+      {`${t('filter.searchResultsFor')}:`}
+    </div>
     <div className="col-lg-12 mb-3">
-      Meta Pec:
-      {' '}
+      {`${t('filter.goalMeta')}: `}
       <strong>{pec}</strong>
-      {' '}
-      / Tema:
+      {`/ ${t('filter.topic')}: `}
       <strong>
-        {' '}
         {level}
       </strong>
-      {' '}
-      / Nivel:
+      {`/ ${t('filter.level')}: `}
       <strong>
-        {' '}
         {topic}
       </strong>
     </div>
   </>
 );
 
-FilterResult.propTypes = {};
-
-export default FilterResult;
+export default withTranslation('common')(FilterResult);

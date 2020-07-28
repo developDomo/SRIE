@@ -11,18 +11,18 @@ const INDICATOR_SELECT = `SELECT i.id as indicator_id, i.translation_key as indi
       t.code as topic,
       el.id as education_level_id,
       el.code as education_level,
-      os.id as ods4_scale_id,
-      os.code as ods4_scale`;
+      os.id as ods4_goal_id,
+      os.code as ods4_goal`;
 
 const INDICATOR_FROM = `FROM indicators i
    LEFT JOIN indicator_pec_goals ipg ON i.id = ipg.indicator_id
    LEFT JOIN indicator_topics it ON i.id = it.indicator_id
    LEFT JOIN indicator_education_levels iel ON i.id = iel.indicator_id
-   LEFT JOIN indicator_ods4_scales ios ON i.id = ios.indicator_id
+   LEFT JOIN indicator_ods4_goals ios ON i.id = ios.indicator_id
    LEFT JOIN pec_goals pg ON pg.id = ipg.pec_goal_id
    LEFT JOIN topics t ON t.id = it.topic_id
    LEFT JOIN education_levels el ON el.id = iel.education_level_id
-   LEFT JOIN ods4_scales os ON os.id = ios.ods4_scale_id`;
+   LEFT JOIN ods4_goals os ON os.id = ios.ods4_goal_id`;
 
 const INDICATOR_DECOMPOSE = {
   pk: 'indicator_id',
@@ -35,6 +35,10 @@ const INDICATOR_DECOMPOSE = {
     pk: 'pec_goal_id',
     columns: { pec_goal: 'code' },
   },
+  ods4_goals: {
+    pk: 'ods4_goal_id',
+    columns: { ods4_goal: 'code' },
+  },
   topics: {
     pk: 'topic_id',
     columns: { topic: 'code' },
@@ -42,10 +46,6 @@ const INDICATOR_DECOMPOSE = {
   education_levels: {
     pk: 'education_level_id',
     columns: { education_level: 'translation_key' },
-  },
-  ods4_scales: {
-    pk: 'ods4_scale_id',
-    columns: { ods4_scale: 'code' },
   },
 };
 
@@ -86,7 +86,7 @@ export default {
    */
   search: async (pecGoal, topic, educationLevel) => {
     const where = getSearchWhere(pecGoal, topic, educationLevel);
-    const orderBy = 'ORDER BY i.code, pg.goal_order, os.scale_order, el.code';
+    const orderBy = 'ORDER BY i.code, pg.goal_order, os.goal_order, el.code';
 
     const sql = `${INDICATOR_SELECT}
       ${INDICATOR_FROM}
@@ -97,6 +97,7 @@ export default {
       decompose: INDICATOR_DECOMPOSE,
     });
   },
+  findAll: async () => db.indicators.find({}),
   findById: async (id) => db.indicators.findOne({ id }),
   /**
    * Finds related indicators
@@ -104,16 +105,13 @@ export default {
    * @param {number} id Indicator id
    */
   findRelated: async (id) => {
-    const sql = `SELECT i.id, i.code, i.translation_key FROM (
-                 SELECT related_id as id 
-                 FROM related_indicators 
-                 WHERE indicator_id = ${id} 
-                 UNION 
-                 SELECT indicator_id as id 
-                 FROM related_indicators 
-                 WHERE related_id = ${id}
-               ) r 
-               LEFT JOIN indicators i ON r.id = i.id;`;
+    const sql = `SELECT i.*
+                 FROM indicator_topics it
+                 LEFT JOIN indicators i ON (it.indicator_id = i.id)
+                 WHERE topic_id = (
+                     SELECT topic_id
+                     FROM indicator_topics
+                     WHERE indicator_id = ${id});`;
 
     return db.query(sql);
   },

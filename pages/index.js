@@ -10,15 +10,15 @@ import WelcomeText from '../components/layout/WelcomeText';
 const Home = ({ countries, t, path }) => (
   <>
     <div className="home">
-      <Row className="justify-content-md-center mxs-0">
-        <div className="col-sm-8 px-0 pb-5">
+      <Row className="justify-content-md-center m-0">
+        <div className="col-sm-8 px-0">
           <InfoSlider />
           <WelcomeText />
           <CountrySelector countries={countries} />
         </div>
       </Row>
     </div>
-    <div className="row justify-content-md-center slider-box">
+    <div className="row justify-content-md-center slider-box m-0">
       <div className="col-sm-8">
         <BannerOds />
       </div>
