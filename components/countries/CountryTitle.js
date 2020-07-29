@@ -46,14 +46,14 @@ const CountryTitle = ({ t, country, active }) => (
       <Row className="col-lg-6 d-flex justify-content-end p-0 m-0">
         <div className="col-lg-3 pr-0">
           <Link href="/[id]" as={`/${country.short_name}`}>
-            <ButtonNav amarillo active={active === 'country-data'}>
+            <ButtonNav color="yellow" active={active === 'country-data'}>
               {t('navigation.pages.country-data')}
             </ButtonNav>
           </Link>
         </div>
         <div className="col-lg-5 pr-0 m-0">
           <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
-            <ButtonNav azul active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
+            <ButtonNav color="blue" active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
           </Link>
         </div>
         <div className="col-lg-3 pr-0">
