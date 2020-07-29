@@ -5,6 +5,7 @@
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
   },
+  "moreIndicatorsBtn": "Ver los indicadores",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
   "numberOfEducationalCenters": "Cantidad de centros educativos",

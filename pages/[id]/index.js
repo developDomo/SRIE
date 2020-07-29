@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 import { Container, Row } from 'react-bootstrap';
+import Link from 'next/link';
 import Boxes from '../../components/layout/Boxes';
 
 import { ButtonNavIndicadores } from '../../components/layout/Button';
@@ -173,8 +174,10 @@ const Country = ({ t, countries, country }) => {
         </Row>
         <Row className="mb-5">
           <div className="col-lg-12 d-flex justify-content-end">
-            <ButtonNavIndicadores color="blue">
-              {t('seeTheIndicators')}
+            <ButtonNavIndicadores azul>
+              <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
+                { t('moreIndicatorsBtn') }
+              </Link>
             </ButtonNavIndicadores>
           </div>
         </Row>
