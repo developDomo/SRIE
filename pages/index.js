@@ -5,6 +5,7 @@ import InfoSlider from '../components/homepage/InfoSlider';
 import CountrySelector from '../components/homepage/CountrySelector';
 import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';
+import WelcomeText from '../components/layout/WelcomeText';
 
 const Home = ({ countries, t, path }) => (
   <>
@@ -12,6 +13,7 @@ const Home = ({ countries, t, path }) => (
       <Row className="justify-content-md-center m-0">
         <div className="col-sm-8 px-0">
           <InfoSlider />
+          <WelcomeText />
           <CountrySelector countries={countries} />
         </div>
       </Row>
