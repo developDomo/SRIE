@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from '../../i18n';
 
 const NavItem = ({ path, disabled, name }) => {
   const pageURI = window.location.pathname + window.location.search;
@@ -61,55 +62,51 @@ class NavDropdown extends React.Component {
   }
 }
 
-class Navigation extends React.Component {
-  render() {
-    return (
-      <nav className="navbar navbar-expand-lg">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+const Navigation = ({ t }) => (
+  <nav className="navbar navbar-expand-lg">
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon" />
+    </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <NavDropdown name="Sobre el SRIE">
-              <a className="dropdown-item" href="/">
-                ¿Que es el SRIE?
-              </a>
-              <a className="dropdown-item" href="/">
-                Socios implementadores
-              </a>
-              <a className="dropdown-item" href="/">
-                ¿Cómo usar el sistema?
-              </a>
-              <a className="dropdown-item" href="/">
-                Glosario
-              </a>
-              <a className="dropdown-item" href="/">
-                Preguntas frecuentes
-              </a>
-              <a className="dropdown-item" href="/">
-                Equipo responsable
-              </a>
-            </NavDropdown>
-            <NavDropdown name="Indicadores educativos">
-              <a className="dropdown-item" href="/">
-                Nivel
-              </a>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav mr-auto">
+        <NavDropdown name="Sobre el SRIE">
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.whatIsTheSRIE')}
+          </a>
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.implementingPartners')}
+          </a>
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.howToUseTheSystem')}
+          </a>
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.glossary')}
+          </a>
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.frequentQuestions')}
+          </a>
+          <a className="dropdown-item" href="/">
+            {t('navigation.pages.responsibleTeam')}
+          </a>
+        </NavDropdown>
+        <NavDropdown name="Indicadores educativos">
+          <a className="dropdown-item" href="/">
+            {t('navigation.level')}
+          </a>
 
-            </NavDropdown>
-          </ul>
-        </div>
-      </nav>
-    );
-  }
-}
+        </NavDropdown>
+      </ul>
+    </div>
+  </nav>
+);
 
-export default Navigation;
+export default withTranslation('navigation')(Navigation);

@@ -1,17 +1,14 @@
 import { Carousel, Row, Col } from 'react-bootstrap';
+import { withTranslation } from '../../i18n';
 
-const InfoSlider = () => (
+const InfoSlider = ({ t }) => (
   <>
     <Carousel>
       <Carousel.Item>
         <Row className="align-items-center">
           <Col>
             <h3>
-              1-SRIE es una plataforma para la consulta del estado de los
-              principales indicadores educativos en los países de la región de
-              Centroamerica y Caribe, de mira al compromiso de cumplimiento de las
-              metas de la Política Educativa Centroamericana (PEC 2013‐2030) y del
-              Objetivo 4 de la Agenda 2030 de Objetivos de Desarrollo Sostenible.
+              {t('slide1')}
             </h3>
           </Col>
         </Row>
@@ -20,11 +17,7 @@ const InfoSlider = () => (
         <Row className="align-items-center">
           <Col>
             <h3>
-              2-SRIE es una plataforma para la consulta del estado de los
-              principales indicadores educativos en los países de la región de
-              Centroamerica y Caribe, de mira al compromiso de cumplimiento de las
-              metas de la Política Educativa Centroamericana (PEC 2013‐2030) y del
-              Objetivo 4 de la Agenda 2030 de Objetivos de Desarrollo Sostenible.
+              {t('slide2')}
             </h3>
           </Col>
         </Row>
@@ -52,4 +45,4 @@ const InfoSlider = () => (
   </>
 );
 
-export default InfoSlider;
+export default withTranslation('homepage')(InfoSlider);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
+
 import { greenRoll, gray1 } from '../../styles/colors';
 import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg';
 import ArrowIcon from '../../public/img/home/arrow_indicadores.svg';
@@ -65,26 +66,25 @@ const Arrow = styled.div`
     margin-left: 10px;
   }
 `;
-export default class extends React.Component {
-  render() {
-    return (
-      <Container>
-        <ContainerStyled>
-          <TextContainer>
-            <h3>
-              Conozca el avance en el
-              <span>
-                Cumplimiento de Metas Política Educativa Centroamericana
-              </span>
-            </h3>
-          </TextContainer>
 
-          <IconContainer>
-            <img src={BannerIcon} alt="icon" />
-          </IconContainer>
-          <Arrow />
-        </ContainerStyled>
-      </Container>
-    );
-  }
-}
+const Banner = ({ text1, text2 }) => (
+  <Container>
+    <ContainerStyled>
+      <TextContainer>
+        <h3>
+          {text1}
+          <span>
+            {text2}
+          </span>
+        </h3>
+      </TextContainer>
+
+      <IconContainer>
+        <img src={BannerIcon} alt="icon" />
+      </IconContainer>
+      <Arrow />
+    </ContainerStyled>
+  </Container>
+);
+
+export default Banner;

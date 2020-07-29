@@ -18,26 +18,40 @@ import {
   blue52,
 } from '../../styles/colors';
 import arrow from '../../public/img/home/arrow-more-rollover.svg';
-// TODO: importar libreria de colores
+
+const colors = {
+  blue,
+  green,
+  yellow,
+  light_blue: blue4,
+  brown,
+  orange,
+  pink,
+};
+const colorActive = {
+  blue: blueRoll,
+  green: greenRoll,
+  yellow: yellowRoll,
+};
+
+const ButtonContainerColors = {
+  blue: blue52,
+  green,
+  yellow: yellowRoll,
+  light_blue: blue42,
+  brown: brown2,
+  orange: orange2,
+  pink: pink2,
+};
 
 export const ButtonNav = styled.button`
   outline: 0;
   border: 0;
   width: 100%;
   border-bottom: 10px solid
-    ${(props) => (props.active && props.azul
-    ? blueRoll
-    : props.active && props.verde
-      ? greenRoll
-      : props.active && props.amarillo
-        ? yellowRoll
-        : props.azul
-          ? blue
-          : props.verde
-            ? green
-            : props.amarillo
-              ? yellow
-              : 'transparent')};
+    ${(props) => (props.active && colorActive[props.color]
+    ? colorActive[props.color]
+    : colors[props.color])};
   text-transform: uppercase;
   padding: 10px 0;
   font-family: 'Roboto', sans-serif;
@@ -45,82 +59,12 @@ export const ButtonNav = styled.button`
   font-size: 13px;
   cursor: pointer;
   transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
-    ? blue
-    : props.verde
-      ? green
-      : props.amarillo
-        ? yellow
-        : props.celeste
-          ? blue4
-          : 'transparent')};
+  background-color: ${(props) => (colors[props.color])};
   color: white;
   &:hover {
-    background-color: ${(props) => (props.azul
-    ? blueRoll
-    : props.verde
-      ? greenRoll
-      : props.amarillo
-        ? yellowRoll
-        : 'transparent')};
+    background-color: ${(props) => (colorActive[props.color])};
     border-bottom: 10px solid
-      ${(props) => (props.azul
-    ? blue
-    : props.verde
-      ? green
-      : props.amarillo
-        ? yellow
-        : 'transparent')};
-  }
-`;
-export const ButtonNavWithIcon = styled.button`
-  outline: 0;
-  border: 0;
-  border-bottom: 10px solid
-    ${(props) => (props.azul
-    ? blueRoll
-    : props.verde
-      ? greenRoll
-      : props.amarillo
-        ? yellowRoll
-        : 'transparent')};
-  text-transform: uppercase;
-  padding: 16px 48px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
-    ? blue
-    : props.verde
-      ? green
-      : props.amarillo
-        ? yellow
-        : 'transparent')};
-  color: white;
-  &:hover {
-    background-color: ${(props) => (props.azul
-    ? blueRoll
-    : props.verde
-      ? greenRoll
-      : props.amarillo
-        ? yellowRoll
-        : 'transparent')};
-    border-bottom: 10px solid ${blue};
-  }
-  &:before {
-    content: '';
-
-    display: inline-block;
-    -webkit-mask-image: url(${arrow});
-    mask-image: url(${arrow});
-    background-color: ${gray1};
-    background-size: 15px 15px;
-    background-repeat: no-repeat;
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
+      ${(props) => (colors[props.color])};
   }
 `;
 
@@ -138,13 +82,7 @@ export const ButtonNavIndicadores = styled.button`
   font-size: 14px;
   cursor: pointer;
   transition: all ease-in 0.2s;
-  background-color: ${(props) => (props.azul
-    ? blue
-    : props.verde
-      ? green
-      : props.amarillo
-        ? yellow
-        : 'transparent')};
+  background-color: ${(props) => (colors[props.color])};
   color: white;
   &:hover {
     background-color: ${blueRoll};
@@ -170,10 +108,10 @@ export const ButtonContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   text-align: left;
-  padding:0;
+  padding: 0;
   font-size: 14px;
   cursor: pointer;
-  background-color: "transparent";
+  background-color: 'transparent';
   transition: all ease-in 0.9s;
   width: 100%;
   color: white;
@@ -184,40 +122,11 @@ export const ButtonContainer = styled.div`
 
   &:hover div {
     border-bottom: 10px solid
-      ${(props) => (props.color === 'azul'
-    ? blue52
-    : props.color === 'verde'
-      ? green
-      : props.color === 'amarillo'
-        ? yellowRoll
-        : props.color === 'celeste'
-          ? blue42
-          : props.color === 'cafe'
-            ? brown2
-            : props.color === 'naranja'
-              ? orange2
-              : props.color === 'rosa'
-                ? pink2
-                : 'transparent')};
+      ${(props) => (ButtonContainerColors[props.color])};
   }
 `;
 export const IconContainer = styled.div`
-
-  background-color: ${(props) => (props.color === 'azul'
-    ? blue
-    : props.color === 'verde'
-      ? green
-      : props.color === 'amarillo'
-        ? yellow
-        : props.color === 'celeste'
-          ? blue4
-          : props.color === 'cafe'
-            ? brown
-            : props.color === 'naranja'
-              ? orange
-              : props.color === 'rosa'
-                ? pink
-                : 'white')};
+  background-color: ${(props) => (colors[props.color])};
   margin-right: 5px;
   padding: 20px 20px;
   & img {
@@ -225,22 +134,9 @@ export const IconContainer = styled.div`
     height: 31px;
   }
 `;
+
 export const TextContainer = styled.div`
-  background-color: ${(props) => (props.color === 'azul'
-    ? blue
-    : props.color === 'verde'
-      ? green
-      : props.color === 'amarillo'
-        ? yellow
-        : props.color === 'celeste'
-          ? blue4
-          : props.color === 'cafe'
-            ? brown
-            : props.color === 'naranja'
-              ? orange
-              : props.color === 'rosa'
-                ? pink
-                : 'white')};
+  background-color: ${(props) => (colors[props.color])};
   text-transform: capitalize;
   font-size: 1.2em;
   padding: 23px 15px;
