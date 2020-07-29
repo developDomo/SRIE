@@ -36,7 +36,7 @@ const Header = ({ router: { pathname }, patht }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-  const actualLang = i18n.language;
+  const selectectedLanguage = i18n.language;
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
@@ -47,20 +47,7 @@ const Header = ({ router: { pathname }, patht }) => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              <LinksMainNav lang={actualLang} />
-              {/* {navData.en.map((item) => (
-                <NavDropdown
-                  title={item.label}
-                  id="basic-nav-dropdown"
-                  className={`${path !== '/' ? 'blue-navbar-item' : ''}`}
-                  alignRight
-                  key={item.label}
-                >
-                  {item.items.map((itemNavbar, index) => (
-                    <NavbarLink item={itemNavbar} />
-                  ))}
-                </NavDropdown>
-              ))} */}
+              <LinksMainNav selectectedLanguage={selectectedLanguage} />
             </Nav>
             <div>
               <LanguageSelector path={path} />

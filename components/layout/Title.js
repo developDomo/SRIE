@@ -36,23 +36,7 @@ const TextContainer = styled.h3`
     : props.type === 'subtitle'
       ? 'initial'
       : undefined)};
-<<<<<<< HEAD
-  color: ${(props) => (props.color === 'azul'
-    ? blue1
-    : props.color === 'verde'
-      ? green
-      : props.color === 'amarillo'
-        ? yellow
-        : props.color === 'negro'
-          ? txt
-          : undefined)};
-  ${(props) => (props.textCenter
-    ? 'text-align: center;'
-    : ''
-  )};
-=======
   color: ${(props) => (colors[props.color])};
->>>>>>> develop
 `;
 
 const Title = ({

@@ -54,7 +54,7 @@ const ContainerStyled = styled.div`
   background-color: ${gray1};
   padding: 30px 20px;
   width: 100%;
-  height: 230px;
+  height: 250px;
 `;
 
 const ContainerIndicadorStyled = styled.div`
@@ -65,7 +65,7 @@ const ContainerIndicadorStyled = styled.div`
   background-color: ${gray1};
   padding: 10px 11px;
   width: 100%;
-  height: 230px;
+  height: 250px;
 `;
 
 const TextContainer = styled.div`

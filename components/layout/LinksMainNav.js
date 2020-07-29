@@ -4,8 +4,8 @@ import {
 import NavbarLink from './NavbarLink';
 import navData from './data/nav-data';
 
-const LinksMainNav = ({ lang, path }) => {
-  if (lang === 'es') {
+const LinksMainNav = ({ selectectedLanguage, path }) => {
+  if (selectectedLanguage === 'es') {
     return navData.es.map((item) => (
       <NavDropdown
         title={item.label}
@@ -33,8 +33,6 @@ const LinksMainNav = ({ lang, path }) => {
       ))}
     </NavDropdown>
   ));
-
-  // return lang;
 };
 
 export default LinksMainNav;

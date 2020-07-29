@@ -20,7 +20,7 @@ const GlossaryItems = ({ t }) => {
   return items;
 };
 
-const Glosario = ({ t }) => (
+const Glossary = ({ t }) => (
   <>
     <Title color="azul" type="title" textCenter>
       {t('title')}
@@ -37,4 +37,4 @@ const Glosario = ({ t }) => (
   </>
 );
 
-export default withTranslation('glossary')(Glosario);
+export default withTranslation('glossary')(Glossary);
