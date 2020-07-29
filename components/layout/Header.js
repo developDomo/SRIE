@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
-  Navbar, Nav, NavDropdown,
+  Navbar, Nav,
 } from 'react-bootstrap';
 
 import Router, { withRouter } from 'next/router';
@@ -10,6 +10,7 @@ import { theme, getThemeProperty } from '../../styles/theme';
 
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
+import LinksMainNav from './LinksMainNav';
 import NavbarLink from './NavbarLink';
 
 import navData from './data/nav-data';
@@ -44,19 +45,7 @@ const Header = ({ router: { pathname }, patht }) => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              {navData.map((item) => (
-                <NavDropdown
-                  title={item.label}
-                  id="basic-nav-dropdown"
-                  className={`${path !== '/' ? 'blue-navbar-item' : ''}`}
-                  alignRight
-                  key={item.label}
-                >
-                  {item.items.map((itemNavbar, index) => (
-                    <NavbarLink item={itemNavbar} />
-                  ))}
-                </NavDropdown>
-              ))}
+              <LinksMainNav />
             </Nav>
             <div>
               <LanguageSelector path={path} />
@@ -137,7 +126,7 @@ const Header = ({ router: { pathname }, patht }) => {
     }
   `}
       </style>
-      <WhiteLine />
+      {path === '/' ? <WhiteLine /> : ''}
     </>
   );
 };

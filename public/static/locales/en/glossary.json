@@ -1,0 +1,50 @@
+{
+  "title": "Glossary",
+  "item": {
+    "1":{
+      "label": "EMIS",
+      "description": "Comúnmente denominados Sistemas de Información sobre Administración de la Educación."
+    },
+    "2":{
+      "label": "Ed‐DQAF",
+      "description": "Marco de Evaluación de la Calidad de los Datos en la Educación."
+    },
+    "3":{
+      "label": "ISSC",
+      "description": "Estudio Internacional de Educación Cívica y Formación Ciudadana."
+    },
+    "4":{
+      "label": "TIMSS y PIRLS",
+      "description": "Estudio Internacional de Tendencias en Matemática y Ciencias y del Progreso en Compete."
+    },
+    "5":{
+      "label": "Mini‐LAMP",
+      "description": "En esta temática, es de particular relevancia el nuevo módulo desarrollado por el UIS para medir competencias de lectura y aritmética."
+    },
+    "6":{
+      "label": "MICS",
+      "description": "Encuesta de Indicadores Múltiples."
+    },
+    "7":{
+      "label": "PPA$",
+      "description": "Gasto gubernamental en educación por estudiante y por nivel educativo en dólares."
+    },
+    "8":{
+      "label": "Índices de paridad",
+      "description": "Representa la razón valor del indicador de un grupo al valor del otro grupo. Por lo general, el grupo más desfavorecido es el numerador. Un valor de exactamente 1, indica paridad entre los dos grupos."
+    },
+    "9":{
+      "label": "Índice de Paridad de Género",
+      "description": "El índice de paridad de género (IPG) es un índice socioeconómico normalmente diseñado para calcular la relación entre el valor correspondiente al sexo femenino y el correspondiente al sexo masculino para un indicador dado. El IPG mide el avance hacia la paridad entre los géneros en términos de la participación en la educación y/o las oportunidades de aprendizaje abiertas a la mujer relativas a las disponibles al hombre. Adicionalmente, refleja el nivel de potenciamiento de la mujer en la sociedad. "
+    },
+    "10":{
+      "label": "Tasa bruta de escolaridad",
+      "description": " Refleja la cobertura que alcanza un sistema educativo. Relaciona la matrícula escolar con la población que tiene la edad oficial para asistir al nivel educativo especificado."
+    },
+    "11":{
+      "label": "Tasa neta de escolaridad",
+      "description": "Refleja la cobertura de los estudiantes que asisten a un nivel educativo determinado y que tienen la edad oficial para asistir a dicho nivel educativo. La palabra “neta” en este caso se utiliza porque excluye a los estudiantes que no tienen la..."
+    }
+  }
+}
+  

@@ -39,8 +39,10 @@ const TextContainer = styled.h3`
   color: ${(props) => (colors[props.color])};
 `;
 
-const Title = ({ children, color, type }) => (
-  <TextContainer color={color} type={type}>
+const Title = ({
+  children, color, type, textCenter,
+}) => (
+  <TextContainer color={color} type={type} textCenter={textCenter}>
     {children}
   </TextContainer>
 );
