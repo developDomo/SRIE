@@ -38,7 +38,6 @@ const DownloadIcon = styled.span`
   }
 `;
 
-
 const FooterSource = styled.div`
   color: #727EAB;
   padding-top: 1em;
@@ -73,13 +72,11 @@ const SideBarDescriptionContainer = styled.div`
   padding: 1em;
 `;
 
-
 const IndicatorChart = ({
   t, data, indicator, indicatorSource,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART);
   const [chartData, setChartData] = useState(data[indicatorSource]);
-
 
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 

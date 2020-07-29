@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import { ChartMetrics } from '../types/ChartTypes';
 import { withTranslation } from '../../../i18n';

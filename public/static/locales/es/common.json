@@ -5,5 +5,43 @@
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
   },
+<<<<<<< HEAD
   "moreIndicatorsBtn": "Ver los indicadores"
+=======
+  "alphabetizationRate": "Tasa de alfabetización",
+  "numberOfYears" : "Número de años:",
+  "numberOfEducationalCenters": "Cantidad de centros educativos",
+  "tuitionFeesByLevel" : "Tasas de matrícula, por nivel",
+  "completionRateByLevel": "Tasa de finalización, por nivel",
+  "girlsBoysAndAdolescentsOutsideOfSchool": "Girls, boys and adolescents outside of school",
+  "participation": "Participación",
+  "offering":"Oferta",
+  "learningAndSkills" :"Aprendizaje y competencias",
+  "Completion" : "Conclusión",
+  "educationalEnvironment": "Entorno educativo",
+  "CrossCuttingGoals": "Metas transversales",
+  "EducationalIndicators":"Indicadores educativos" ,
+  "byCategory": "por categoría",
+  "seeTheIndicators": "Ver los indicadores",
+  "countryData": "Datos país",
+  "structureOfTheCountryEducationalSystem": "Estructura del sistema educativo del país",
+  "preschool":"Preescolar",
+  "highSchool": "Secundaria",
+  "primary":"Primaria",
+  "freeAndCompulsoryEducation": "Educación gratuita y obligatoria",
+  "ObligatoryEducation": "Educación obligatoria",
+  "seeTheProgressIn": "Conozca el avance en el",
+  "complianceWithGoalsCentralAmericanEducationalPolicy": "Cumplimiento de Metas Política Educativa Centroamericana",
+  "selectAnotherCountryThatYouWantToConsult": "Seleccione otro país que desee consultar",
+  "filter": {
+    "filterIndicatorsBy": "Filtrar indicadores por",
+    "searchResultsFor": "Resultados de la búsqueda por",
+    "goalMeta" : "Meta Pec",
+    "topic": "Tema",
+    "level": "Nivel"
+  },
+  "educationalIndicators": "Indicadores educativos",
+  "pec": "PEC",
+  "ods4": "ODS 4"
+>>>>>>> develop
 }

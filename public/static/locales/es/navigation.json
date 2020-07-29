@@ -14,8 +14,15 @@
             "home": "Inicio",
             "country-data": "Datos país",
             "indicators": "Indicadores educativos",
-            "progress2021": "Avance 2021"
+            "progress2021": "Avance 2021",
+            "whatIsTheSRIE": "¿Que es el SRIE?",
+            "implementingPartners": "Socios implementadores",
+            "howToUseTheSystem": "¿Cómo usar el sistema?",
+            "glossary": "Glosario",
+            "frequentQuestions": "Preguntas frecuentes",
+            "responsibleTeam": "Equipo responsable"
         },
-        "language": "Idioma"
+        "language": "Idioma",
+        "level": "Nivel"
     }
 }

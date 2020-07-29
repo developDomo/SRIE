@@ -30,15 +30,15 @@ const IndicatorListPage = ({
       <Container>
         <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
-            <Title color="azul" type="title">
-              INDICADORES EDUCATIVOS
+            <Title color="blue" type="title">
+              {t('common:educationalIndicators')}
             </Title>
           </div>
         </Row>
         <Row>
           <div className="col-lg-12 pr-0 text-left">
-            <Title color="azul" type="subtitle">
-              Filtrar indicadores por:
+            <Title color="blue" type="subtitle">
+              {`${t('common:filter.filterIndicatorsBy')}:`}
             </Title>
             <form>
               <Row>
@@ -87,7 +87,7 @@ const IndicatorListPage = ({
         <Row className="mt-3 mb-3">
           <div className="col-lg-7 mb-3">
             <Title color="negro" type="caption">
-              Indicadores Educativos
+              {t('common:educationalIndicators')}
             </Title>
           </div>
           <div className="col-lg-3 mb-3">
@@ -97,7 +97,7 @@ const IndicatorListPage = ({
               </div>
               <div className="col-lg-8 m-0 p-0">
                 <Title color="negro" type="caption">
-                  PEC
+                  {t('common:pec')}
                 </Title>
               </div>
             </Row>
@@ -109,7 +109,7 @@ const IndicatorListPage = ({
               </div>
               <div className="col-lg-8 m-0 p-0">
                 <Title color="negro" type="caption">
-                  ODS 4
+                  {t('common:ods4')}
                 </Title>
               </div>
             </Row>
@@ -145,4 +145,4 @@ IndicatorListPage.getInitialProps = async ({ query }) => {
   };
 };
 
-export default withTranslation('topics', 'education-levels')(IndicatorListPage);
+export default withTranslation('topics', 'education-levels', 'common')(IndicatorListPage);
