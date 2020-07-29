@@ -5,9 +5,7 @@
     "with-status": "A {{statusCode}} error occurred on server",
     "without-status": "An error occurred on the server"
   },
-<<<<<<< HEAD
-  "moreIndicatorsBtn": "See the indicators"
-=======
+  "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
   "numberOfEducationalCenters": "Number of educational centers",
@@ -43,5 +41,4 @@
   "educationalIndicators": "Educational indicators",
   "pec": "PEC",
   "ods4": "ODS 4"
->>>>>>> develop
 }
