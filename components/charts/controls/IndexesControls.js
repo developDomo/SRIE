@@ -29,7 +29,6 @@ const IndexesControls = ({ setIndexes, indexesData, t }) => (
   </Content>
 );
 
-
 IndexesControls.getInitialProps = ({ setIndexes, indexesData, t }) => (
   {
     setIndexes,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { green } from '../../theme/colors';
-// import BannerIcon from './public/img/home/icon_cumplimiento_metas.svg'
+
 import BannerIcon from '../../public/img/home/icon_cumplimiento_metas.svg';
 
 const ContainerStyled = styled.div`

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { i18n, withTranslation } from '../../i18n';
+
 import { theme } from '../../styles/theme';
 
 const Button = styled.button`

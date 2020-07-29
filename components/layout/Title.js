@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import {
   blue1, yellow, green, txt,
 } from '../../styles/colors';
+
+const colors = {
+  green,
+  blue: blue1,
+  yellow,
+  black: txt,
+};
 
 const TextContainer = styled.h3`
   font-family: ${(props) => (props.type === 'title'
@@ -28,6 +36,7 @@ const TextContainer = styled.h3`
     : props.type === 'subtitle'
       ? 'initial'
       : undefined)};
+<<<<<<< HEAD
   color: ${(props) => (props.color === 'azul'
     ? blue1
     : props.color === 'verde'
@@ -41,6 +50,9 @@ const TextContainer = styled.h3`
     ? 'text-align: center;'
     : ''
   )};
+=======
+  color: ${(props) => (colors[props.color])};
+>>>>>>> develop
 `;
 
 const Title = ({
