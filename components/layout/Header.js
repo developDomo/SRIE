@@ -10,7 +10,6 @@ import { theme, getThemeProperty } from '../../styles/theme';
 
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
-import { i18n } from '../../i18n';
 import LinksMainNav from './LinksMainNav';
 import NavbarLink from './NavbarLink';
 
@@ -36,7 +35,6 @@ const Header = ({ router: { pathname }, patht }) => {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, []);
-  const selectectedLanguage = i18n.language;
   return (
     <>
       <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
@@ -47,7 +45,7 @@ const Header = ({ router: { pathname }, patht }) => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              <LinksMainNav selectectedLanguage={selectectedLanguage} />
+              <LinksMainNav />
             </Nav>
             <div>
               <LanguageSelector path={path} />

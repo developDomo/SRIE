@@ -3,8 +3,10 @@ import {
 } from 'react-bootstrap';
 import NavbarLink from './NavbarLink';
 import navData from './data/nav-data';
+import { i18n } from '../../i18n';
 
-const LinksMainNav = ({ selectectedLanguage, path }) => {
+const LinksMainNav = ({ path }) => {
+  const selectectedLanguage = i18n.language;
   if (selectectedLanguage === 'es') {
     return navData.es.map((item) => (
       <NavDropdown
