@@ -8,7 +8,6 @@ import IndicatorIndexService from './IndicatorIndex.service';
 
 const db = require('express-http-context').get('db');
 
-
 /**
  * Default order
  */

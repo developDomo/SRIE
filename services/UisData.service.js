@@ -27,7 +27,6 @@ const dataFields = [
   'decimals',
 ];
 
-
 const updateIndicatorData = async (indicator, data) => {
   const table = db[indicator.uis_dataset.toLowerCase()];
 
@@ -68,7 +67,6 @@ const updateDataByIndicatorId = async (id, countries = allCountries) => {
     .catch(() => {
       // if no data, just ignore
     });
-
 
   return true;
 };

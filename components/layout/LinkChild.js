@@ -27,5 +27,4 @@ const LinkChild = ({ label, id, href }) => {
   );
 };
 
-
 export default LinkChild;

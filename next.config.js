@@ -14,7 +14,6 @@ const envs = {
   API_URL: process.env.API_URL,
 };
 
-
 module.exports = (phase) => ({
   env: (phase === PHASE_DEVELOPMENT_SERVER) ? dotenv.parsed : envs,
   webpack(config) {

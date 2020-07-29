@@ -19,7 +19,6 @@ const Button = styled.button`
   font-weight: bold;
 `;
 
-
 const Container = styled.div`
   margin: 0.8em;
 `;

@@ -55,5 +55,4 @@ ChartTypeControls.getInitialProps = ({ t }) => ({
   t,
 });
 
-
 export default withTranslation('charts')(ChartTypeControls);
