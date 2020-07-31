@@ -92,9 +92,8 @@ const OdsIndicator = styled.p`
 `;
 
 const IndicatorPage = ({
-  countries, country, indicator, data, relatedIndicators,
+  countries, country, indicator, data, relatedIndicators, t,
 }) => {
-  const { t, i18n } = useTranslation();
   const navigation = [
     { key: 'navigation.pages.indicators', url: `/${country.short_name}/indicadores` },
     { key: `indicators:indicators.${indicator.id}.name` },
@@ -165,9 +164,14 @@ const IndicatorPage = ({
         </IndicatorDescription>
       </Container>
       <Container fluid style={containerWithColor}>
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
+        {showIndicators(indicator).map((indicatorSource) => (
+          <IndicatorChart
+            data={data}
+            indicatorSource={indicatorSource}
+            indicator={indicator.id}
+            country={country}
+          />
+        ))}
       </Container>
       <Container>
         <FooterIndicator>
@@ -181,7 +185,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query }) => {
+IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -198,6 +202,7 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     indicator,
     data,
     relatedIndicators,
+    t,
   };
 };
 

@@ -19,7 +19,7 @@ const WhiteLine = styled.hr`
 `;
 
 
-const Header = ({ router: { pathname }, patht }) => {
+const Header = ({ router: { pathname, query } }) => {
   const [path, setPath] = useState(pathname);
 
 
@@ -35,7 +35,12 @@ const Header = ({ router: { pathname }, patht }) => {
   }, []);
   return (
     <>
-      <Navbar bg="dark" expand="md" className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}>
+      <Navbar
+        bg="dark"
+        expand="md"
+        className={`navbar navbar-expand-md navbar-light bg-transparent ${path !== '/' ? 'white-navbar' : ''} `}
+        hidden={query.share === 'true'}
+      >
         <div className="container">
           <Navbar.Toggle aria-controls="basic-navbar-nav" aria-hidden="true" />
           <Navbar.Brand href="#home">

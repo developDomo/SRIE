@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Tabs, Tab, Container, Row, Col,
+  Tabs, Tab, Container, Row, Col, Button, Modal,
 } from 'react-bootstrap';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes, ChartTypes } from './types/ChartTypes';
@@ -27,7 +28,7 @@ const TapTitle = styled.span`
   }
 `;
 
-const DownloadIcon = styled.span`
+const SidebarIcon = styled.span`
   &::before {
     content: url(${(props) => props.iconUrl});
     color: red;
@@ -73,14 +74,67 @@ const SideBarDescriptionContainer = styled.div`
   padding: 1em;
 `;
 
+const InfoModal = ({ onHide }) => (
+  <Modal
+    {...onHide}
+    size="lg"
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+  >
+    <Modal.Header closeButton>
+      <Modal.Title id="contained-modal-title-vcenter">
+        Info
+      </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <h4>Centered Modal</h4>
+      <p>
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+        consectetur ac, vestibulum at eros.
+      </p>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={onHide}>Close</Button>
+    </Modal.Footer>
+  </Modal>
+);
+
+
+const ShareModal = ({ onHide }) => (
+  <Modal
+    {...onHide}
+    size="lg"
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+  >
+    <Modal.Header closeButton>
+      <Modal.Title id="contained-modal-title-vcenter">
+        Share
+      </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <h4>Centered Modal</h4>
+      <p>
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+        consectetur ac, vestibulum at eros.
+      </p>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={onHide}>Close</Button>
+    </Modal.Footer>
+  </Modal>
+);
+
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country,
 }) => {
-  const [chartType, setChartType] = useState(DisplayTypes.CHART);
+  const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(data[indicatorSource]);
-
-
+  const [infoModalShow, setInfoModalShow] = useState(false);
+  const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
   const showTotalTab = () => {
@@ -114,7 +168,7 @@ const IndicatorChart = ({
   };
 
   const showGeoZoneTab = () => {
-    if (tabsToShow.indexOf('geozone') !== -1) {
+    if (tabsToShow.indexOf('location') !== -1) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
           <TotalChart data={chartData} chartType={chartType} />
@@ -125,7 +179,7 @@ const IndicatorChart = ({
   };
 
   const showSocioeconomicLevelTab = () => {
-    if (tabsToShow.indexOf('socioeconomicLevel') !== -1) {
+    if (tabsToShow.indexOf('wealth-quintille') !== -1) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
           <TotalChart data={chartData} chartType={chartType} />
@@ -147,7 +201,7 @@ const IndicatorChart = ({
   };
 
   const showContent = () => (
-    <Tabs defaultActiveKey={tabsToShow[0] || ''} className="indicatorChartTabs">
+    <Tabs defaultActiveKey={tabsToShow[tabNumber - 1 || 0] || ''} className="indicatorChartTabs">
       {showTotalTab()}
       {showSexTab()}
       {showGeoZoneTab()}
@@ -159,7 +213,7 @@ const IndicatorChart = ({
     <>
       <Container>
         <Row>
-          <Col xs lg="9">
+          <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
               <ChartTypeControls setChartType={setChartType} activeState={chartType} />
               {showContent()}
@@ -169,10 +223,18 @@ const IndicatorChart = ({
               </FooterSource>
             </ChartContent>
           </Col>
-          <Col md="auto" lg="3">
+          <Col md="auto" lg="3" hidden={hideSideBar === 'true'}>
             <SideBarIcons>
-              <DownloadIcon iconUrl="/img/home/icon_table_1.svg" />
-              <DownloadIcon iconUrl="/img/home/icon_table_2.svg" />
+              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" onClick={() => setDownloadModalShow(true)} />
+              <ShareModal
+                show={downloadModalShow}
+                onHide={() => setDownloadModalShow(false)}
+              />
+              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" onClick={() => setInfoModalShow(true)} />
+              <InfoModal
+                show={infoModalShow}
+                onHide={() => setInfoModalShow(false)}
+              />
             </SideBarIcons>
             <SideBarDownloadContainer>
               <h5>
@@ -180,19 +242,22 @@ const IndicatorChart = ({
                 :
               </h5>
               <div>
-                {' '}
-                <a href="/#">{t('sideBar.formats.PDF')}</a>
-                {' '}
+                <a
+                  // eslint-disable-next-line max-len
+                  href={`${process.env.PDF_URL}/?url=${process.env.API_URL}/${country}/indicator-share/${indicator}?share=true&indicatorVariation=${indicatorSource}&hideSideBar=false&type=table&tabNumber=${tabNumber}`}
+                >
+                  <a>{t('sideBar.formats.PDF')}</a>
+                </a>
               </div>
               <div>
-                {' '}
+
                 <a href="/#">{t('sideBar.formats.PNG')}</a>
-                {' '}
+
               </div>
               <div>
-                {' '}
+
                 <a href="/#">{t('sideBar.formats.CSV')}</a>
-                {' '}
+
               </div>
             </SideBarDownloadContainer>
             <SideBarDescriptionContainer>
@@ -209,13 +274,19 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicator, indicatorSource, t,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period,
 }) => ({
   namespacesRequired: ['charts'],
   data,
   t,
   indicator,
   indicatorSource,
+  share,
+  hideSideBar,
+  type,
+  tabNumber,
+  period,
+  country,
 });
 
 export default withTranslation('charts')(IndicatorChart);

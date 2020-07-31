@@ -12,6 +12,8 @@ const envs = {
   DB_PASS: process.env.DB_PASS,
   DB_PORT: process.env.DB_PORT,
   API_URL: process.env.API_URL,
+  PDF_API_KEY: process.env.PDF_API,
+  PDF_URL: process.env.PDF_URL,
 };
 
 
