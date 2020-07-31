@@ -24,7 +24,6 @@ const WhiteLine = styled.hr`
 
 
 const Header = ({ router: { pathname, query } }) => {
-
   const [path, setPath] = useState(pathname);
 
   useEffect(() => {
