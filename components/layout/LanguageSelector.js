@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { i18n, withTranslation } from '../../i18n';
+
 import { theme } from '../../styles/theme';
 
 const Button = styled.button`
@@ -17,7 +18,6 @@ const Button = styled.button`
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 `;
-
 
 const Container = styled.div`
   margin: 0.8em;

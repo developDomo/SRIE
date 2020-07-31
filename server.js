@@ -15,7 +15,6 @@ const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 const massive = require('./db');
 
-
 (async () => {
   if (!dev && cluster.isMaster) {
     console.log(`Node cluster master ${process.pid} is running`);

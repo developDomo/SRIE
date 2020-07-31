@@ -25,9 +25,11 @@ const Layout = ({ children, path }) => (
         min-height: 100vh;
         font-family: 'Roboto';
       }
-
       .content {
         flex: auto;
+      }
+      h2{
+        text-align: center;
       }
     `}
     </style>

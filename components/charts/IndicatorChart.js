@@ -39,7 +39,6 @@ const SidebarIcon = styled.span`
   }
 `;
 
-
 const FooterSource = styled.div`
   color: #727EAB;
   padding-top: 1em;
@@ -127,7 +126,6 @@ const ShareModal = ({ onHide }) => (
   </Modal>
 );
 
-
 const IndicatorChart = ({
   t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country,
 }) => {
@@ -135,6 +133,7 @@ const IndicatorChart = ({
   const [chartData, setChartData] = useState(data[indicatorSource]);
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
+
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
   const showTotalTab = () => {

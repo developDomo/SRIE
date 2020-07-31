@@ -126,7 +126,6 @@ const IndicatorPage = ({
     </Popover>
   );
 
-
   return (
     <>
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />

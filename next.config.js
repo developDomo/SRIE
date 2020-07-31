@@ -16,7 +16,6 @@ const envs = {
   PDF_URL: process.env.PDF_URL,
 };
 
-
 module.exports = (phase) => ({
   env: (phase === PHASE_DEVELOPMENT_SERVER) ? dotenv.parsed : envs,
   webpack(config) {

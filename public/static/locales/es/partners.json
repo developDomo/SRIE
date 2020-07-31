@@ -1,0 +1,42 @@
+{
+  "title": "Socios implementadores",
+  "partners": {
+    "1":{
+      "name": "CCEC/SICA",
+      "img_url": "/img/home/CECC-SICA.png",
+      "description": "<p>La Coordinación Educativa y Cultural Centroamericana (CECC/SICA) es una institución del Sistema de la Integración Centroamericana SICA que cumple funciones de Secretaría Técnica en los campos de Educación y de Cultura. Su misión es promover e impulsar la integración regional centroamericana en dichas áreas, como ejes fundamentales para el desarrollo humano sostenible.</p><p>La instancia máxima de gobierno del SICA es la Reunión de Presidentes de Centroamérica y la de la CECC/SICA, el Consejo de Ministros de Educación y Cultura de Centroamérica, cuya Presidencia es ejercida pro témpore durante 6 meses por cada país. Cuenta con una Secretaría General, cuyo titular es designado por el Consejo de Ministros.</p>",
+      "site_url": "https://ceccsica.info/"
+    },
+    "2":{
+      "name": "UNICEF",
+      "img_url": "/img/home/logo-unicef.png",
+      "description": "<p>El Fondo de las Naciones Unidas para la Infancia, UNICEF por sus siglas en inglés, es un órgano de las Naciones Unidas que tiene como objetivo promover la defensa de los derechos de los niños, suplir sus necesidades básicas y contribuir a su desarrollo.</p><p>UNICEF se guía por lo estipulado en la Convención sobre los Derechos del Niño. Trabaja en pro de la igualdad de quienes son objeto de discriminación, en particular niñas y mujeres. Obra para alcanzar los Objetivos de Desarrollo para el Milenio y el progreso que augura la Carta de la Naciones Unidas. Tratamos de promover la paz y la seguridad. Intenta que todos rindan cuentas por las promesas efectuadas a los niños.</p><p>Formas parte del Movimiento Mundial en favor de la Infancia: una amplia coalición dedicada a mejorar la vida de todos y cada uno de los niños y niñas. Por conducto de ese Movimiento, y de reuniones como la sesión especial de las Naciones Unidas sobre la infancia, alentamos a los jóvenes a expresarse y participar en las decisiones que afectan sus vidas.</p><p></p><p>UNICEF lleva a cabo su labor en más de 190 países y territorios por medio de programas de país y Comités Nacionales. Somos el UNICEF, el Fondo de las Naciones Unidas para la Infancia.</p>",
+      "site_url": "https://www.unicef.org/es"
+    },
+    "3":{
+      "name": "Instituto de Estadística de la UNESCO (UIS)",
+      "img_url": "/img/home/logo-unesco-uis.png",
+      "description": "<p>Es la oficina estadística de la UNESCO y es el depositario de las Naciones Unidas para estadísticas comparables a nivel nacional sobre educación, ciencia y tecnología, cultura y comunicación.</p><p>La UIS fue establecido en 1999. Con cede en Montreal, Quebec, Canadá, fue creado para mejorar el programa estadístico de la UNESCO y para desarrollar y entregar a tiempo, estadísticas relevantes de política para ser comparadas entre los países.</p>",
+      "site_url": "http://uis.unesco.org/"
+    },
+    "4":{
+      "name": "CEPAL",
+      "img_url": "/img/home/logo-cepal.png",
+      "description": "<p>La Comisión Económica para América Latina y el Caribe es una de las cinco comisiones regionales de las Naciones Unidas ubicada en Santiago de Chile. Se fundó para contribuir con el desarrollo económico de América Latina, coordinar las acciones encaminadas a su promoción y reforzar las relaciones económicas de los países entre sí y con las demás naciones del mundo. Posteriormente, su labor se amplió a los países del Caribe y se incorporó el objetivo de promover el desarrollo social.</p>",
+      "site_url": "https://www.cepal.org/es"
+    },
+    "5":{
+      "name": "UNESCO",
+      "img_url": "/img/home/logo-unesco-uis.png",
+      "description": "<p>Es una organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura, su objetivo principal es contribuir al mantenimiento de la paz y la seguridad en el mundo y la comunicación, la colaboración entre las naciones, a fin de garantizar el respeto universal de la justicia, el imperio de la ley y los derechos humanos.</p>",
+      "site_url": "http://unesco.org/ "
+    },
+    "6":{
+      "name": "LLECE",
+      "img_url": "",
+      "description": "<p>Es el laboratorio Latinoamericano de Evaluación de la Calidad de la Educación y es la red de los Sistemas Nacionales de Medición y Evaluación de la Calidad educativa de los países de América Latina, es coordinada por la oficina Regional de Educación de América Latina, es coordinada por la oficina Regional de Educación para América Latina y el Caribe (OREALC)de la UNESCO.</p>",
+      "site_url": "https://es.unesco.org/fieldoffice/santiago/projects/llece "
+    }
+  }
+}
+  

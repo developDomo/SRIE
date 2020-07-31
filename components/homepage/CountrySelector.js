@@ -1,7 +1,6 @@
 import { Row } from 'react-bootstrap';
 import CountryItem from './CountryItem';
 
-
 export default function CountrySelector({ countries }) {
   return (
     <div className="country-selector">
