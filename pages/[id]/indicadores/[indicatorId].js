@@ -102,9 +102,13 @@ const IndicatorPage = ({
 
   const showIndicators = ({ id, variations }) => {
     if (!isEmpty(variations)) {
-      return variations.map((variation) => `${id}${isEmpty(variation) ? '' : `.${variation.code}`}`);
+      return variations.map((variation) => ({
+        source: `${id}.${variation.code}`,
+        translation_key: variation.translation_key,
+        isVariation: true,
+      }));
     }
-    return [`${id}`];
+    return [{ source: `${id}`, isVariation: false }];
   };
 
   const popoverPec = (
@@ -164,9 +168,7 @@ const IndicatorPage = ({
         </IndicatorDescription>
       </Container>
       <Container fluid style={containerWithColor}>
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
+        {showIndicators(indicator).map((variation) => <IndicatorChart data={data} variation={variation} indicator={indicator} />)}
       </Container>
       <Container>
         <FooterIndicator>
