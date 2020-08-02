@@ -35,6 +35,20 @@ const generalLabels = {
   _Z: 'No aplicable',
 };
 
+const noData = [{
+  PAIS: '',
+  PERIODO: '',
+  UNIDAD_DE_MEDIDA: '',
+  NIVEL_EDUCATIVO: '',
+  SEXO: '',
+  EDAD: '',
+  GRADO: '',
+  MATERIA_TEMA_O_NORMA: '',
+  NIVEL_SOCIOECONOMICO: '',
+  UBICACION: '',
+  VALOR: '',
+}];
+
 const labels = {
   units: {
     PT: 'Porcentaje',
@@ -120,22 +134,24 @@ const labels = {
   },
 };
 
-const updateCsvFile = async (country, code, data) => {
-  const csv = new ObjectsToCsv(data.map((item) => ({
-    PAIS: labels.countries[item.ref_area],
-    PERIODO: item.time_period,
-    UNIDAD_DE_MEDIDA: labels.units[item.unit_measure],
-    NIVEL_EDUCATIVO: labels.educative_levels[item.edu_level],
-    SEXO: labels.sexos[item.sex],
-    EDAD: labels.ages[item.age],
-    GRADO: labels.grades[item.grade],
-    MATERIA_TEMA_O_NORMA: labels.subjects[item.subject],
-    NIVEL_SOCIOECONOMICO: labels.wealth_quintiles[item.wealth_quintile],
-    UBICACION: labels.locations[item.location],
-    VALOR: item.obs_value,
-  })));
+const mapDataForCSV = (data) => data.map((item) => ({
+  PAIS: labels.countries[item.ref_area],
+  PERIODO: item.time_period,
+  UNIDAD_DE_MEDIDA: labels.units[item.unit_measure],
+  NIVEL_EDUCATIVO: labels.educative_levels[item.edu_level],
+  SEXO: labels.sexos[item.sex],
+  EDAD: labels.ages[item.age],
+  GRADO: labels.grades[item.grade],
+  MATERIA_TEMA_O_NORMA: labels.subjects[item.subject],
+  NIVEL_SOCIOECONOMICO: labels.wealth_quintiles[item.wealth_quintile],
+  UBICACION: labels.locations[item.location],
+  VALOR: item.obs_value,
+}));
 
-  await csv.toDisk(`./public/csv/${country}-${code}.csv`);
+const updateCsvFile = async (country, code, data) => {
+  const objects = (data.length > 0) ? mapDataForCSV(data) : noData;
+
+  await new ObjectsToCsv(objects).toDisk(`./public/csv/${country}-${code}.csv`);
 };
 
 const updateVariationsCsvFiles = async (country, indicator, variations, data) => {
@@ -206,6 +222,7 @@ const updateDataByIndicatorId = async (id, countries = allCountries) => {
     })
     .catch(() => {
       // if no data, just ignore
+      updateCsvFiles(countries, indicator, []);
     });
 
   return true;
