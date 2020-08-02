@@ -73,10 +73,10 @@ const SideBarDescriptionContainer = styled.div`
 `;
 
 const IndicatorChart = ({
-  t, data, indicator, variation,
+  t, chart,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART);
-  const [chartData, setChartData] = useState(data[variation.source]);
+  const [chartData, setChartData] = useState(chart.data);
 
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
@@ -154,10 +154,10 @@ const IndicatorChart = ({
   );
 
   const showVariationTitle = () => {
-    if (variation.isVariation) {
+    if (chart.isVariation) {
       return (
         <div>
-          {t(`indicators:variations.${variation.translation_key}`)}
+          {t(`indicators:variations.${chart.translation_key}`)}
         </div>
       );
     }
@@ -165,7 +165,7 @@ const IndicatorChart = ({
   };
   return (
     <>
-      <Container key={variation.source}>
+      <Container key={chart.code}>
         {showVariationTitle()}
         <Row>
           <Col xs lg="9">
@@ -218,13 +218,13 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicator, variation, t,
+  data, indicator, chart, t,
 }) => ({
   namespacesRequired: ['charts', 'indicators'],
   data,
   t,
   indicator,
-  variation,
+  chart,
 });
 
 export default withTranslation('charts', 'indicators')(IndicatorChart);
