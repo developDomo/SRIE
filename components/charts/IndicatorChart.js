@@ -73,7 +73,7 @@ const SideBarDescriptionContainer = styled.div`
 `;
 
 const IndicatorChart = ({
-  t, chart,
+  t, chart, countryCode,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART);
   const [chartData, setChartData] = useState(chart.data);
@@ -200,7 +200,7 @@ const IndicatorChart = ({
               </div>
               <div>
                 {' '}
-                <a href="/#">{t('sideBar.formats.CSV')}</a>
+                <a href={`/csv/${countryCode.toUpperCase()}-${chart.code}.csv`}>{t('sideBar.formats.CSV')}</a>
                 {' '}
               </div>
             </SideBarDownloadContainer>
@@ -218,13 +218,14 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicator, chart, t,
+  t, data, indicator, chart, countryCode,
 }) => ({
   namespacesRequired: ['charts', 'indicators'],
   data,
   t,
   indicator,
   chart,
+  countryCode,
 });
 
 export default withTranslation('charts', 'indicators')(IndicatorChart);

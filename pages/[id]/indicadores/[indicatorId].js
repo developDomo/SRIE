@@ -171,7 +171,7 @@ const IndicatorPage = ({
         </IndicatorDescription>
       </Container>
       <Container fluid style={containerWithColor}>
-        {showIndicators(indicator).map((chart) => <IndicatorChart key={chart.code} chart={chart} />)}
+        {showIndicators(indicator).map((chart) => <IndicatorChart key={chart.code} chart={chart} countryCode={country.code} />)}
       </Container>
       <Container>
         <FooterIndicator>
