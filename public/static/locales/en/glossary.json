@@ -3,47 +3,47 @@
   "item": {
     "1":{
       "label": "EMIS",
-      "description": "Comúnmente denominados Sistemas de Información sobre Administración de la Educación."
+      "description": "Commonly called Information Systems for Educational Administration."
     },
     "2":{
       "label": "Ed‐DQAF",
-      "description": "Marco de Evaluación de la Calidad de los Datos en la Educación."
+      "description": "Framework for Assessing Data Quality in Education."
     },
     "3":{
       "label": "ISSC",
-      "description": "Estudio Internacional de Educación Cívica y Formación Ciudadana."
+      "description": "International Study of Civic Education and Citizen Training."
     },
     "4":{
       "label": "TIMSS y PIRLS",
-      "description": "Estudio Internacional de Tendencias en Matemática y Ciencias y del Progreso en Compete."
+      "description": "International Study of Trends in Mathematics and Sciences and Progress in Compete"
     },
     "5":{
       "label": "Mini‐LAMP",
-      "description": "En esta temática, es de particular relevancia el nuevo módulo desarrollado por el UIS para medir competencias de lectura y aritmética."
+      "description": "In this area, the new module developed by the UIS to measure reading and arithmetic skills is of particular relevance."
     },
     "6":{
       "label": "MICS",
-      "description": "Encuesta de Indicadores Múltiples."
+      "description": "Multiple Indicator Survey."
     },
     "7":{
-      "label": "PPA$",
-      "description": "Gasto gubernamental en educación por estudiante y por nivel educativo en dólares."
+      "label": "PPP$",
+      "description": "Government expenditure on education per student and by educational level in dollars."
     },
     "8":{
-      "label": "Índices de paridad",
-      "description": "Representa la razón valor del indicador de un grupo al valor del otro grupo. Por lo general, el grupo más desfavorecido es el numerador. Un valor de exactamente 1, indica paridad entre los dos grupos."
+      "label": "Parity indices",
+      "description": "Represents the ratio value of the indicator of one group to the value of the other group. Generally, the most disadvantaged group is the numerator. A value of exactly 1 indicates parity between the two groups"
     },
     "9":{
-      "label": "Índice de Paridad de Género",
-      "description": "El índice de paridad de género (IPG) es un índice socioeconómico normalmente diseñado para calcular la relación entre el valor correspondiente al sexo femenino y el correspondiente al sexo masculino para un indicador dado. El IPG mide el avance hacia la paridad entre los géneros en términos de la participación en la educación y/o las oportunidades de aprendizaje abiertas a la mujer relativas a las disponibles al hombre. Adicionalmente, refleja el nivel de potenciamiento de la mujer en la sociedad. "
+      "label": "Gender Parity Index",
+      "description": "The gender parity index (GPI) is a socioeconomic index normally designed to calculate the relationship between the value corresponding to the female sex and that corresponding to the male sex for a given indicator. The IPG measures progress towards gender parity in terms of participation in education and / or learning opportunities open to women relative to those available to men. Additionally, it reflects the level of empowerment of women in society."
     },
     "10":{
-      "label": "Tasa bruta de escolaridad",
-      "description": " Refleja la cobertura que alcanza un sistema educativo. Relaciona la matrícula escolar con la población que tiene la edad oficial para asistir al nivel educativo especificado."
+      "label": "Crude rate of schooling",
+      "description": " It reflects the coverage that an educational system achieves. It relates the school enrollment with the population that is the official age to attend the specified educational level."
     },
     "11":{
-      "label": "Tasa neta de escolaridad",
-      "description": "Refleja la cobertura de los estudiantes que asisten a un nivel educativo determinado y que tienen la edad oficial para asistir a dicho nivel educativo. La palabra “neta” en este caso se utiliza porque excluye a los estudiantes que no tienen la..."
+      "label": "Net schooling rate: ",
+      "description": "It reflects the coverage of students who attend a certain educational level and who are of official age to attend that educational level. The word “net” in this case is used because it excludes students who do not have the..."
     }
   }
 }
