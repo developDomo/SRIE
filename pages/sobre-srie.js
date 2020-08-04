@@ -6,7 +6,7 @@ import Title from '../components/layout/Title';
 
 const AboutSRIE = ({ t }) => (
   <>
-    <Title color="azul" type="title" textCenter>
+    <Title color="blue" type="title" textCenter>
       {t('title')}
     </Title>
     <div className="bg-light">

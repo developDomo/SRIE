@@ -73,10 +73,10 @@ const SideBarDescriptionContainer = styled.div`
 `;
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource,
+  t, chart, countryCode,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART);
-  const [chartData, setChartData] = useState(data[indicatorSource]);
+  const [chartData, setChartData] = useState(chart.data);
 
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
@@ -152,9 +152,22 @@ const IndicatorChart = ({
       {showIndexesTab()}
     </Tabs>
   );
+
+  const VariationTitle = ({ isVariation, translationKey }) => {
+    if (isVariation) {
+      return (
+        <div>
+          {t(`indicators:variations.${translationKey}`)}
+        </div>
+      );
+    }
+    return (<></>);
+  };
+
   return (
     <>
-      <Container>
+      <Container key={chart.code}>
+        <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
         <Row>
           <Col xs lg="9">
             <ChartContent>
@@ -188,7 +201,7 @@ const IndicatorChart = ({
               </div>
               <div>
                 {' '}
-                <a href="/#">{t('sideBar.formats.CSV')}</a>
+                <a href={`/csv/${countryCode.toUpperCase()}-${chart.code}.csv`}>{t('sideBar.formats.CSV')}</a>
                 {' '}
               </div>
             </SideBarDownloadContainer>
@@ -206,13 +219,14 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicator, indicatorSource, t,
+  t, data, indicator, chart, countryCode,
 }) => ({
-  namespacesRequired: ['charts'],
+  namespacesRequired: ['charts', 'indicators'],
   data,
   t,
   indicator,
-  indicatorSource,
+  chart,
+  countryCode,
 });
 
-export default withTranslation('charts')(IndicatorChart);
+export default withTranslation('charts', 'indicators')(IndicatorChart);

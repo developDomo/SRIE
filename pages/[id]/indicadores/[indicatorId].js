@@ -4,7 +4,6 @@ import {
 } from 'react-bootstrap';
 import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
 import { withTranslation } from '../../../i18n';
 import CountryHeader from '../../../components/countries/CountryHeader';
 import FetchUtils from '../../../utils/Fetch.utils';
@@ -92,9 +91,8 @@ const OdsIndicator = styled.p`
 `;
 
 const IndicatorPage = ({
-  countries, country, indicator, data, relatedIndicators,
+  countries, country, indicator, data, relatedIndicators, t,
 }) => {
-  const { t, i18n } = useTranslation();
   const navigation = [
     { key: 'navigation.pages.indicators', url: `/${country.short_name}/indicadores` },
     { key: `indicators:indicators.${indicator.id}.name` },
@@ -102,9 +100,21 @@ const IndicatorPage = ({
 
   const showIndicators = ({ id, variations }) => {
     if (!isEmpty(variations)) {
-      return variations.map((variation) => `${id}${isEmpty(variation) ? '' : `.${variation.code}`}`);
+      return variations.map((variation) => {
+        const code = `${id}.${variation.code}`;
+        return {
+          code,
+          data: data[code],
+          translation_key: variation.translation_key,
+          isVariation: true,
+        };
+      });
     }
-    return [`${id}`];
+    return [{
+      code: id,
+      data: data[id],
+      isVariation: false,
+    }];
   };
 
   const popoverPec = (
@@ -139,7 +149,7 @@ const IndicatorPage = ({
             <Col xs lg="10">
               <NameParagraph>{t(`indicators:indicators.${indicator.id}.name`)}</NameParagraph>
               {indicator.topics.map((topic) => (
-                <TopicTag topicCode={topic.code} />
+                <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
             </Col>
             <Col md="auto" lg="2">
@@ -164,9 +174,7 @@ const IndicatorPage = ({
         </IndicatorDescription>
       </Container>
       <Container fluid style={containerWithColor}>
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
-        {showIndicators(indicator).map((indicatorSource) => <IndicatorChart data={data} indicatorSource={indicatorSource} indicator={indicator} />)}
+        {showIndicators(indicator).map((chart) => <IndicatorChart key={chart.code} chart={chart} countryCode={country.code} />)}
       </Container>
       <Container>
         <FooterIndicator>
@@ -180,7 +188,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query }) => {
+IndicatorPage.getInitialProps = async ({ query, t }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -197,6 +205,7 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     indicator,
     data,
     relatedIndicators,
+    t,
   };
 };
 
