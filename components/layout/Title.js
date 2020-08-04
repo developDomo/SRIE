@@ -37,6 +37,7 @@ const TextContainer = styled.h3`
       ? 'initial'
       : undefined)};
   color: ${(props) => (colors[props.color])};
+  ${(props) => (props.textCenter ? 'text-align: center;' : '')}
 `;
 
 const Title = ({

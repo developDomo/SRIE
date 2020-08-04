@@ -1,5 +1,42 @@
 {
   "title": "Partners",
-  "text": ""
+  "partners": {
+    "1":{
+      "name": "CCEC/SICA",
+      "img_url": "/img/home/CECC-SICA.png",
+      "description": "<p>The Central American Educational and Cultural Coordination (CECC/SICA) is an institution of the SICA Central American Integration System that performs the functions of Technical Secretariat in the fields of Education and Culture. Its mission is to promote and drive Central American regional integration in these areas, as fundamental axes for sustainable human development.</p><p>The highest instance of SICA government is the Meeting of Presidents of Central America and that of CECC / SICA, the Council of Ministers of Education and Culture of Central America, whose Presidency is held pro tempore for 6 months by each country. It has a General Secretariat, whose owner is designated by the Council of Ministers.</p>",
+      "site_url": "https://ceccsica.info/"
+    },
+    "2":{
+      "name": "UNICEF",
+      "img_url": "/img/home/logo-unicef.png",
+      "description": "<p>The United Nations Children's Fund, UNICEF, is a United Nations body that aims to promote the defense of children's rights, meet their basic needs and contribute to their development.</p><p>UNICEF is guided by the provisions of the Convention on the Rights of the Child. It works for the equality of those who are subject to discrimination, particularly girls and women. Work to achieve the Millennium Development Goals and the progress that the United Nations Charter predicts. We try to promote peace and security. Try to hold everyone accountable for the promises made to the children.</p><p>Join the Global Movement for Children: a broad coalition dedicated to improving the lives of each and every child. Through this Movement, and through meetings such as the United Nations special session on children, we encourage young people to express themselves and participate in the decisions that affect their lives.</p><p></p><p>UNICEF carries out its work in more than 190 countries and territories through country programs and National Committees. We are UNICEF, the United Nations Children's Fund.</p>",
+      "site_url": "https://www.unicef.org/es"
+    },
+    "3":{
+      "name": "Instituto de Estadística de la UNESCO (UIS)",
+      "img_url": "/img/home/logo-unesco-uis.png",
+      "description": "<p>It is the UNESCO statistical office, and it is the United Nations repository for comparable national statistics on education, science and technology, culture and communication.</p><p>The UIS was established in 1999. With headquarters in Montreal, Quebec, Canada, it was created to improve UNESCO's statistical program and to develop and deliver on time, relevant policy statistics to be compared between countries.</p>",
+      "site_url": "http://uis.unesco.org/"
+    },
+    "4":{
+      "name": "ECLAC",
+      "img_url": "/img/home/logo-cepal.png",
+      "description": "<p>The Economic Commission for Latin America and the Caribbean is one of the five regional commissions of the United Nations located in Santiago de Chile. It was founded to contribute to the economic development of Latin America, coordinate the actions aimed at its promotion and strengthen the economic relations of the countries among themselves and with the other nations of the world. Subsequently, its work was expanded to the Caribbean countries and the objective of promoting social development was incorporated.</p>",
+      "site_url": "https://www.cepal.org/es"
+    },
+    "5":{
+      "name": "UNESCO",
+      "img_url": "/img/home/logo-unesco-uis.png",
+      "description": "<p>It is an organization of the United Nations for Education, Science and Culture. Its main objective is to contribute to the maintenance of peace and security in the world and communication, collaboration between nations, in order to guarantee universal respect of justice, the rule of law and human rights.</p>",
+      "site_url": "http://unesco.org/ "
+    },
+    "6":{
+      "name": "LLECE",
+      "img_url": "",
+      "description": "<p>It is the Latin American Laboratory for the Evaluation of the Quality of Education and it is the network of the National Systems of Measurement and Evaluation of the Educational Quality of the countries of Latin America, it is coordinated by the UNESCO Regional Office for Education in Latin America and the Caribbean (OREALC).</p>",
+      "site_url": "https://es.unesco.org/fieldoffice/santiago/projects/llece "
+    }
+  }
 }
   
