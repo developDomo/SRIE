@@ -153,20 +153,21 @@ const IndicatorChart = ({
     </Tabs>
   );
 
-  const showVariationTitle = () => {
-    if (chart.isVariation) {
+  const VariationTitle = ({ isVariation, translationKey }) => {
+    if (isVariation) {
       return (
         <div>
-          {t(`indicators:variations.${chart.translation_key}`)}
+          {t(`indicators:variations.${translationKey}`)}
         </div>
       );
     }
     return (<></>);
   };
+
   return (
     <>
       <Container key={chart.code}>
-        {showVariationTitle()}
+        <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
         <Row>
           <Col xs lg="9">
             <ChartContent>

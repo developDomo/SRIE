@@ -100,12 +100,15 @@ const IndicatorPage = ({
 
   const showIndicators = ({ id, variations }) => {
     if (!isEmpty(variations)) {
-      return variations.map((variation) => ({
-        code: `${id}.${variation.code}`,
-        data: data[`${id}.${variation.code}`],
-        translation_key: variation.translation_key,
-        isVariation: true,
-      }));
+      return variations.map((variation) => {
+        const code = `${id}.${variation.code}`;
+        return {
+          code,
+          data: data[code],
+          translation_key: variation.translation_key,
+          isVariation: true,
+        };
+      });
     }
     return [{
       code: id,
