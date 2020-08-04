@@ -180,7 +180,7 @@ const updateCsvFiles = async (countries, indicator, data) => {
 const updateIndicatorData = async (indicator, data, countries) => {
   const table = db[indicator.uis_dataset.toLowerCase()];
 
-  const lowercaseData = data.map((obj) => _.transform(obj, (result = '', val, key) => {
+  const lowercaseData = data.map((obj) => _.transform(obj, (result, val, key = '') => {
     // eslint-disable-next-line no-param-reassign
     result[key.toLowerCase()] = val;
   }));
