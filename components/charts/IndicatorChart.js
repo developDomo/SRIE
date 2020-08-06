@@ -127,13 +127,12 @@ const ShareModal = ({ onHide }) => (
 );
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(data[indicatorSource]);
   const [infoModalShow, setInfoModalShow] = useState(false);
-  const [downloadModalShow, setDownloadModalShow] = useState(false);
-
+  const [downloadModalShow, setDownloadModalShow] = useState(false)
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
   const showTotalTab = () => {
@@ -208,9 +207,22 @@ const IndicatorChart = ({
       {showIndexesTab()}
     </Tabs>
   );
+
+  const VariationTitle = ({ isVariation, translationKey }) => {
+    if (isVariation) {
+      return (
+        <div>
+          {t(`indicators:variations.${translationKey}`)}
+        </div>
+      );
+    }
+    return (<></>);
+  };
+
   return (
     <>
-      <Container>
+      <Container key={chart.code}>
+        <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
         <Row>
           <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
@@ -254,9 +266,9 @@ const IndicatorChart = ({
 
               </div>
               <div>
-
-                <a href="/#">{t('sideBar.formats.CSV')}</a>
-
+                {' '}
+                <a href={`/csv/${countryCode.toUpperCase()}-${chart.code}.csv`}>{t('sideBar.formats.CSV')}</a>
+                {' '}
               </div>
             </SideBarDownloadContainer>
             <SideBarDescriptionContainer>
@@ -273,9 +285,9 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, chart, countryCode, chart, countryCode,
 }) => ({
-  namespacesRequired: ['charts'],
+  namespacesRequired: ['charts', 'indicators'],
   data,
   t,
   indicator,
@@ -286,6 +298,8 @@ IndicatorChart.getInitialProps = async ({
   tabNumber,
   period,
   country,
+  chart,
+  countryCode,
 });
 
-export default withTranslation('charts')(IndicatorChart);
+export default withTranslation('charts', 'indicators')(IndicatorChart);

@@ -4,7 +4,6 @@ import {
 } from 'react-bootstrap';
 import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
 import { withTranslation } from '../../../i18n';
 import CountryHeader from '../../../components/countries/CountryHeader';
 import FetchUtils from '../../../utils/Fetch.utils';
@@ -101,9 +100,21 @@ const IndicatorPage = ({
 
   const showIndicators = ({ id, variations }) => {
     if (!isEmpty(variations)) {
-      return variations.map((variation) => `${id}${isEmpty(variation) ? '' : `.${variation.code}`}`);
+      return variations.map((variation) => {
+        const code = `${id}.${variation.code}`;
+        return {
+          code,
+          data: data[code],
+          translation_key: variation.translation_key,
+          isVariation: true,
+        };
+      });
     }
-    return [`${id}`];
+    return [{
+      code: id,
+      data: data[id],
+      isVariation: false,
+    }];
   };
 
   const popoverPec = (
@@ -138,7 +149,7 @@ const IndicatorPage = ({
             <Col xs lg="10">
               <NameParagraph>{t(`indicators:indicators.${indicator.id}.name`)}</NameParagraph>
               {indicator.topics.map((topic) => (
-                <TopicTag topicCode={topic.code} />
+                <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
             </Col>
             <Col md="auto" lg="2">
@@ -169,6 +180,9 @@ const IndicatorPage = ({
             indicatorSource={indicatorSource}
             indicator={indicator.id}
             country={country}
+            key={chart.code} 
+            chart={chart} 
+            countryCode={country.code}
           />
         ))}
       </Container>
