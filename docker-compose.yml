@@ -11,7 +11,6 @@ services:
       - "5432:5432"
     volumes:
       - srie_data:/var/lib/postgresql/data
-
 volumes:
   srie_data:
     driver: local

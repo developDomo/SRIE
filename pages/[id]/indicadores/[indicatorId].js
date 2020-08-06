@@ -174,7 +174,17 @@ const IndicatorPage = ({
         </IndicatorDescription>
       </Container>
       <Container fluid style={containerWithColor}>
-        {showIndicators(indicator).map((chart) => <IndicatorChart key={chart.code} chart={chart} countryCode={country.code} />)}
+        {showIndicators(indicator).map((indicatorSource) => (
+          <IndicatorChart
+            data={data}
+            indicatorSource={indicatorSource}
+            indicator={indicator.id}
+            country={country}
+            key={indicatorSource.code}
+            chart={indicatorSource}
+            countryCode={country.code}
+          />
+        ))}
       </Container>
       <Container>
         <FooterIndicator>
@@ -188,7 +198,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query, t }) => {
+IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
