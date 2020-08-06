@@ -73,6 +73,12 @@ const SideBarDescriptionContainer = styled.div`
   padding: 1em;
 `;
 
+const IndicatorTitleH3 = styled.h3`
+  font-size: 1.2rem;
+  color: #6c757d;
+  font-weight: 700;
+`;
+
 const InfoModal = ({ onHide }) => (
   <Modal
     {...onHide}
@@ -127,12 +133,12 @@ const ShareModal = ({ onHide }) => (
 );
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
-  const [chartData, setChartData] = useState(data[indicatorSource]);
+  const [chartData, setChartData] = useState(data[indicatorSource.code]);
   const [infoModalShow, setInfoModalShow] = useState(false);
-  const [downloadModalShow, setDownloadModalShow] = useState(false)
+  const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
 
   const showTotalTab = () => {
@@ -211,9 +217,9 @@ const IndicatorChart = ({
   const VariationTitle = ({ isVariation, translationKey }) => {
     if (isVariation) {
       return (
-        <div>
+        <IndicatorTitleH3>
           {t(`indicators:variations.${translationKey}`)}
-        </div>
+        </IndicatorTitleH3>
       );
     }
     return (<></>);
@@ -254,8 +260,7 @@ const IndicatorChart = ({
               </h5>
               <div>
                 <a
-                  // eslint-disable-next-line max-len
-                  href={`${process.env.PDF_URL}/?url=${process.env.API_URL}/${country}/indicator-share/${indicator}?share=true&indicatorVariation=${indicatorSource}&hideSideBar=false&type=table&tabNumber=${tabNumber}`}
+                  href="/#"
                 >
                   <a>{t('sideBar.formats.PDF')}</a>
                 </a>
@@ -285,7 +290,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, chart, countryCode, chart, countryCode,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart,
 }) => ({
   namespacesRequired: ['charts', 'indicators'],
   data,

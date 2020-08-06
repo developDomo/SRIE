@@ -180,8 +180,8 @@ const IndicatorPage = ({
             indicatorSource={indicatorSource}
             indicator={indicator.id}
             country={country}
-            key={chart.code} 
-            chart={chart} 
+            key={indicatorSource.code}
+            chart={indicatorSource}
             countryCode={country.code}
           />
         ))}
