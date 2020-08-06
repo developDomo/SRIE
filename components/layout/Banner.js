@@ -9,12 +9,16 @@ import ArrowIcon from '../../public/img/home/arrow_indicadores.svg';
 const ContainerStyled = styled.div`
   display: flex;
   justify-content: center;
-  background-color: ${greenRoll};
   color: white;
+  cursor: pointer;
+  transition: all ease-in 0.2s; 
   height: 200px;
   padding: 25px 0;
   & h3 {
     font-size: 1.4em;
+  }
+  &:hover{
+    background-color: ${greenRoll};
   }
 `;
 const TextContainer = styled.div`

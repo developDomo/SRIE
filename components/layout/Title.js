@@ -37,10 +37,13 @@ const TextContainer = styled.h3`
       ? 'initial'
       : undefined)};
   color: ${(props) => (colors[props.color])};
+  ${(props) => (props.textCenter ? 'text-align: center;' : '')}
 `;
 
-const Title = ({ children, color, type }) => (
-  <TextContainer color={color} type={type}>
+const Title = ({
+  children, color, type, textCenter,
+}) => (
+  <TextContainer color={color} type={type} textCenter={textCenter}>
     {children}
   </TextContainer>
 );

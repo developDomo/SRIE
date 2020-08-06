@@ -5,6 +5,7 @@
     "with-status": "A {{statusCode}} error occurred on server",
     "without-status": "An error occurred on the server"
   },
+  "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
   "numberOfEducationalCenters": "Number of educational centers",
@@ -39,5 +40,6 @@
   },
   "educationalIndicators": "Educational indicators",
   "pec": "PEC",
-  "ods4": "ODS 4"
+  "ods4": "ODS 4",
+  "selectTheCountryYouWantToConsult": "Select the country you want to consult"
 }

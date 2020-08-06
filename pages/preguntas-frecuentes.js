@@ -7,7 +7,7 @@ const Text = styled.p`
   width: 100%;
 `;
 
-const GlossaryItems = ({ t }) => {
+const FaqsItems = ({ t }) => {
   const items = [];
   for (let i = 1; i <= 11; i++) {
     items.push(
@@ -20,7 +20,7 @@ const GlossaryItems = ({ t }) => {
   return items;
 };
 
-const Glossary = ({ t }) => (
+const Faqs = ({ t }) => (
   <>
     <Title color="blue" type="title" textCenter>
       {t('title')}
@@ -29,7 +29,8 @@ const Glossary = ({ t }) => (
       <Container>
         <Row className="d-sm-flex justify-content-center">
           <div className="col-sm-8 py-2 py-sm-5">
-            <GlossaryItems t={t} />
+            {/* <FaqsItems t={t}/> */}
+            <p>{t('soon')}</p>
           </div>
         </Row>
       </Container>
@@ -37,4 +38,4 @@ const Glossary = ({ t }) => (
   </>
 );
 
-export default withTranslation('glossary')(Glossary);
+export default withTranslation('faqs')(Faqs);

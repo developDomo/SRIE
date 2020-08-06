@@ -5,6 +5,7 @@
     "with-status": "Un error {{statusCode}} ha ocurrido en el servidor",
     "without-status": "Un error ha ocurrido en el servidor"
   },
+  "moreIndicatorsBtn": "Ver los indicadores",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
   "numberOfEducationalCenters": "Cantidad de centros educativos",
@@ -39,5 +40,7 @@
   },
   "educationalIndicators": "Indicadores educativos",
   "pec": "PEC",
-  "ods4": "ODS 4"
+  "ods4": "ODS 4",
+  "selectTheCountryYouWantToConsult": "Seleccione el país que desea consultar"
+
 }

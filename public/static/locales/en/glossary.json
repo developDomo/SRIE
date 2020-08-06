@@ -1,0 +1,50 @@
+{
+  "title": "Glossary",
+  "item": {
+    "1":{
+      "label": "EMIS",
+      "description": "Commonly called Information Systems for Educational Administration."
+    },
+    "2":{
+      "label": "Ed‐DQAF",
+      "description": "Framework for Assessing Data Quality in Education."
+    },
+    "3":{
+      "label": "ISSC",
+      "description": "International Study of Civic Education and Citizen Training."
+    },
+    "4":{
+      "label": "TIMSS y PIRLS",
+      "description": "International Study of Trends in Mathematics and Sciences and Progress in Compete"
+    },
+    "5":{
+      "label": "Mini‐LAMP",
+      "description": "In this area, the new module developed by the UIS to measure reading and arithmetic skills is of particular relevance."
+    },
+    "6":{
+      "label": "MICS",
+      "description": "Multiple Indicator Survey."
+    },
+    "7":{
+      "label": "PPP$",
+      "description": "Government expenditure on education per student and by educational level in dollars."
+    },
+    "8":{
+      "label": "Parity indices",
+      "description": "Represents the ratio value of the indicator of one group to the value of the other group. Generally, the most disadvantaged group is the numerator. A value of exactly 1 indicates parity between the two groups"
+    },
+    "9":{
+      "label": "Gender Parity Index",
+      "description": "The gender parity index (GPI) is a socioeconomic index normally designed to calculate the relationship between the value corresponding to the female sex and that corresponding to the male sex for a given indicator. The IPG measures progress towards gender parity in terms of participation in education and / or learning opportunities open to women relative to those available to men. Additionally, it reflects the level of empowerment of women in society."
+    },
+    "10":{
+      "label": "Crude rate of schooling",
+      "description": " It reflects the coverage that an educational system achieves. It relates the school enrollment with the population that is the official age to attend the specified educational level."
+    },
+    "11":{
+      "label": "Net schooling rate: ",
+      "description": "It reflects the coverage of students who attend a certain educational level and who are of official age to attend that educational level. The word “net” in this case is used because it excludes students who do not have the..."
+    }
+  }
+}
+  

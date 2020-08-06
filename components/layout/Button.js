@@ -117,6 +117,7 @@ export const ButtonContainer = styled.div`
   color: white;
   & div {
     border-bottom: 10px solid white;
+
   }
 
   &:hover div {

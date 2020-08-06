@@ -1,11 +1,12 @@
 import {
   Container, Row, Col,
 } from 'react-bootstrap';
+import Router, { withRouter } from 'next/router';
 import { i18n, withTranslation } from '../../i18n';
 
-const Footer = ({ t }) => (
+const Footer = ({ t, router: { query } }) => (
   <>
-    <Col className="footer">
+    <Col className="footer" hidden={query.share === 'true'}>
       <Container>
         <Row>
           <Col xs={12} sm={7} className="d-none d-sm-block">
@@ -57,7 +58,7 @@ const Footer = ({ t }) => (
 
       </Container>
     </Col>
-    <Col className="copyright p-0">
+    <Col className="copyright p-0" hidden={query.share === 'true'}>
       <p className="text-white text-center w-100 font-italic">
         <small>
           {t('footer.copy')}
@@ -140,4 +141,4 @@ Footer.getInitialProps = async () => ({
   namespacesRequired: ['footer'],
 });
 
-export default withTranslation('footer')(Footer);
+export default withRouter(withTranslation('footer')(Footer));
