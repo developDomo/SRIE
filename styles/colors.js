@@ -24,6 +24,7 @@ export const greenJuniper = '#3d591d';
 export const greenSeaweed = '#324914';
 export const blue3 = '#0865BA';
 export const txt = '#1D2D49';
+export const blueTitle = '#007bff';
 export const blue4 = '#22BAD3';
 export const blue42 = '#21A9B7';
 export const blueLight = '#cce3f2';
