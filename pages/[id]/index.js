@@ -27,8 +27,11 @@ import EnvironmentIcon from '../../public/img/home/icon_entorno_indicador.svg';
 import GoalsIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
 
-const Country = ({ t, countries, country }) => {
+const Country = ({
+  t, countries, country, countryInfo,
+}) => {
   const navigation = [{ key: 'navigation.pages.country-data' }];
+  console.log('countryInfo', countryInfo);
 
   return (
     <div>
@@ -60,9 +63,9 @@ const Country = ({ t, countries, country }) => {
               iconImg={EducationIcon}
               title={t('numberOfYears')}
               color="blue"
-              isFree={12}
+              isFree={parseInt(countryInfo.free_edu.obs_value, 10)}
               isFreeTitle={t('freeAndCompulsoryEducation')}
-              mandatory={12}
+              mandatory={parseInt(countryInfo.free_edu.obs_value, 10)}
               mandatoryTitle={t('ObligatoryEducation')}
             />
           </div>
@@ -70,7 +73,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={LiteracyIcon}
               title={t('alphabetizationRate')}
-              subtitle="88%"
+              subtitle={`${parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2)}%`}
               color="green"
             />
           </div>
@@ -99,8 +102,8 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue="36,00%"
-              highSchoolValue="50,00%"
+              primarySchoolValue={`${parseFloat(countryInfo.completion_rate.data.L1.obs_value).toFixed(2)}%`}
+              highSchoolValue={`${parseFloat(countryInfo.completion_rate.data.L3.obs_value).toFixed(2)}%`}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
             />
@@ -109,7 +112,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={DataChildIcon}
               title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
-              subtitle="10,00%"
+              subtitle={`${parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2)}%`}
               color="light_blue"
             />
           </div>
@@ -117,9 +120,11 @@ const Country = ({ t, countries, country }) => {
       </Container>
       <Container fluid className="bg-verde-oscuro">
         <Row>
-          <div className="col-lg-12 p-0 m-0">
-            <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
-          </div>
+          <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
+            <div className="col-lg-12 p-0 m-0">
+              <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
+            </div>
+          </Link>
         </Row>
       </Container>
       <Container>
@@ -199,18 +204,26 @@ const Country = ({ t, countries, country }) => {
 
 Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
+
   const countries = await countriesResponse.json();
 
   const countryResponse = await fetch(
     `${process.env.API_URL}/api/countries/${query.id}`,
-    `${process.env.API_URL}/api/countries/${query.id}/info`,
   );
+
   const country = await countryResponse.json();
+
+  const countryInfoResponse = await fetch(
+    `https://srie-staging.herokuapp.com/api/countries/${country.code}/info`,
+  );
+
+  const countryInfo = await countryInfoResponse.json();
 
   return {
     namespacesRequired: ['common'],
     countries,
     country,
+    countryInfo,
     path,
   };
 };
