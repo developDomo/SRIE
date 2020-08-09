@@ -18,8 +18,10 @@ export const ChartTypes = Object.freeze({
 
 export const IndexeType = Object.freeze({
   GPI: Symbol('GPI'),
+  GPIA: Symbol('GPIA'),
   GLPI: Symbol('GLPI'),
+  GLPIA: Symbol('GLPIA'),
   SESPI: Symbol('SESPI'),
+  SESPIA: Symbol('SESPIA'),
   IPIA: Symbol('IPIA'),
-
 });
