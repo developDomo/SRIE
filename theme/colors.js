@@ -6,6 +6,7 @@ export const blueRoll = '#00558D';
 export const blue = '#0071BC';
 export const blue1 = '#044A95';
 export const blue2 = '#006A9B';
+export const blueTitle = '#007bff';
 export const borders = '#5E7C8B';
 export const bckFlags = '#E6E6E6';
 export const gray1 = '#EAEEF2';
