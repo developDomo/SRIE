@@ -41,5 +41,8 @@
   "educationalIndicators": "Educational indicators",
   "pec": "PEC",
   "ods4": "ODS 4",
+  "goal": {
+    "all": "All"
+  },
   "selectTheCountryYouWantToConsult": "Select the country you want to consult"
 }
