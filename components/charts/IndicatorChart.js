@@ -201,7 +201,7 @@ const IndicatorChart = ({
               </div>
               <div>
                 {' '}
-                <a href={`/csv/${countryCode.toUpperCase()}-${chart.code}.csv`}>{t('sideBar.formats.CSV')}</a>
+                <a href={`${process.env.API_URL}/api/indicators/csv?country=${countryCode.toUpperCase()}&code=${chart.code}`}>{t('sideBar.formats.CSV')}</a>
                 {' '}
               </div>
             </SideBarDownloadContainer>
