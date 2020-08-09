@@ -87,14 +87,14 @@ const IndicatorListPage = ({
       <Container>
         <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
-            <Title color="blue" type="title">
+            <Title color="blueTitle" type="title">
               {t('common:educationalIndicators')}
             </Title>
           </div>
         </Row>
         <Row>
           <div className="col-lg-12 pr-0 text-left">
-            <Title color="blue" type="subtitle">
+            <Title color="bordes" type="subtitle">
               {`${t('common:filter.filterIndicatorsBy')}:`}
             </Title>
             <form>
