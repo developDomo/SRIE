@@ -277,14 +277,14 @@ export default {
   },
 
   getNetEnrollmentRateByCountry: async (country) => {
-    const rawData = await db.sdg4.find(
+    const rawData = await db.edu_non_finance.find(
       {
         stat_unit: 'NER',
         ref_area: country,
         unit_measure: 'PT',
         sex: '_T',
         age: 'SCH_AGE_GROUP',
-        wealth_quintile: '_T',
+        wealth_quintile: '_Z',
         location: '_T',
         or: [{ edu_level: 'L02' }, { edu_level: 'L1' }, { edu_level: 'L2_3' }],
       },
