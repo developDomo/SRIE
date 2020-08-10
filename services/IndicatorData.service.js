@@ -190,13 +190,12 @@ const filterData = async (unit_measure, data, visualizations, indexes) => {
   const dataByViews = {};
 
   indexes = _.map(indexes, (i) => _.assign(i, { label: 'unit_measure' }));
-  visualizations = _.map(visualizations, (i) => _.assign(i, { unit_measure }));
 
   Object.keys(data).forEach(async (code) => {
     dataByViews[code] = {};
     dataByViews[code].visualizations = await filterDataByView(
       visualizations,
-      data[code],
+      _.filter(data[code], { unit_measure }),
     );
     dataByViews[code].indexes = await filterDataByView(
       indexes,
