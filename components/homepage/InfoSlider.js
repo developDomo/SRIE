@@ -8,7 +8,10 @@ const InfoSlider = ({ t }) => (
         <Row className="align-items-center">
           <Col>
             <h3>
-              {t('slide1')}
+              <div dangerouslySetInnerHTML={
+                { __html: t('slide1', { interpolation: { escapeValue: false } }) }
+              }
+              />
             </h3>
           </Col>
         </Row>
@@ -17,7 +20,10 @@ const InfoSlider = ({ t }) => (
         <Row className="align-items-center">
           <Col>
             <h3>
-              {t('slide2')}
+              <div dangerouslySetInnerHTML={
+                { __html: t('slide2', { interpolation: { escapeValue: false } }) }
+              }
+              />
             </h3>
           </Col>
         </Row>
