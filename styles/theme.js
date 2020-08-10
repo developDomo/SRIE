@@ -17,6 +17,8 @@ const theme = {
     dropdownMenuColor: '#1D2D49',
     underlineMenuColor: '#FBB03B',
     menuHoverColor: '#0071BC',
+    langColorBtn: '#0865BA',
+    langColorBtnActive: '#E59E2C',
     home: {
       color: 'white',
       body: {
