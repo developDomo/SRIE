@@ -3,7 +3,6 @@ import { withTranslation } from '../../../i18n';
 import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 
-
 const IndicatorShare = ({
   data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country,
 }) => (
@@ -22,7 +21,6 @@ const IndicatorShare = ({
     )
   </>
 );
-
 
 IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
@@ -43,6 +41,5 @@ IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
     country,
   };
 };
-
 
 export default IndicatorShare;

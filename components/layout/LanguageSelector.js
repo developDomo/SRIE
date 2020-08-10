@@ -12,11 +12,11 @@ const Button = styled.button`
   width: 2em;
   border-radius: 50%;
   color: white;
-  background-color: #0865BA;
   border: none;
   font-size: 0.93em;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  ${(props) => (props.active ? 'background-color: #E59E2C;' : 'background-color: #0865BA;')}
 `;
 
 const Container = styled.div`
@@ -29,18 +29,19 @@ const LanguageSelector = ({ t, path }) => {
   font-weight: bold;
   color: ${path === '/' ? `${theme.navbar.primaryFontColor}` : `${theme.navbar.secondaryFontColor}`};
   `;
+  const selectectedLanguage = i18n.language;
   return (
     <Container>
       <Span>
         {t('lanLabel')}
       </Span>
       <Span>
-        <Button type="button" onClick={() => i18n.changeLanguage('en')}>
+        <Button active={selectectedLanguage === 'en' ? 'active' : ''} type="button" onClick={() => i18n.changeLanguage('en')}>
           {t('language.english')}
         </Button>
       </Span>
       <Span>
-        <Button type="button" onClick={() => i18n.changeLanguage('es')}>
+        <Button active={selectectedLanguage === 'es' ? 'active' : ''} type="button" onClick={() => i18n.changeLanguage('es')}>
           {t('language.spanish')}
         </Button>
       </Span>
