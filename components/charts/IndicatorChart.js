@@ -105,7 +105,6 @@ const InfoModal = ({ onHide }) => (
   </Modal>
 );
 
-
 const ShareModal = ({ onHide }) => (
   <Modal
     {...onHide}

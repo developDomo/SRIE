@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
 
 const Text = styled.p`
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-weight: 500;
     font-size:1.25em;
 `;
