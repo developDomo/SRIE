@@ -214,7 +214,7 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   const country = await countryResponse.json();
 
   const countryInfoResponse = await fetch(
-    `https://srie-staging.herokuapp.com/api/countries/${country.code}/info`,
+    `${process.env.API_URL}/api/countries/${country.code}/info`,
   );
 
   const countryInfo = await countryInfoResponse.json();
