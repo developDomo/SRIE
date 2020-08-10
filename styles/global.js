@@ -36,7 +36,7 @@ export default css.global`
   }
   .carousel-item .row{
       /*height:345px;*/
-      height:21em;
+      height:18em;
     }
   .breadcrum-item{
     font-family: 'Roboto', sans-serif; 
