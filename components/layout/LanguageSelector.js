@@ -16,7 +16,7 @@ const Button = styled.button`
   font-size: 0.93em;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  ${(props) => (props.active ? `background-color: ${theme.navbar.langColorBtn};` : `background-color: ${theme.navbar.langColorBtnActive};`)}
+  ${(props) => (props.active ? `background-color: ${theme.navbar.langColorBtnActive};` : `background-color: ${theme.navbar.langColorBtn};`)}
 `;
 
 const Container = styled.div`
