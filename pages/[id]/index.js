@@ -225,6 +225,7 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   );
 
   const country = await countryResponse.json();
+
   const countryInfoResponse = await fetch(
     `${process.env.API_URL}/api/countries/${country.code}/info`,
   );
