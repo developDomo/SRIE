@@ -31,7 +31,20 @@ const Country = ({
   t, countries, country, countryInfo,
 }) => {
   const navigation = [{ key: 'navigation.pages.country-data' }];
-  console.log('countryInfo', countryInfo);
+
+  const isFreeValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
+  const mandatoryValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
+  const alphabetizationRateValue = parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2) || 0;
+
+  const numberOfEducationalCentersValue = parseFloat(countryInfo.net_enrollment_rate.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelPreschoolValue = 0;
+  const tuitionFeesByLevelHighSchoolValue = 0;
+
+  const tuitionFeesByLevelPrimarySchoolValue = 0;
+  const RateByLevelPrimaryVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1 ? countryInfo.completion_rate.data.L1.obs_value : 0;
+  const RateByLevelHighVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3 ? countryInfo.completion_rate.data.L3.obs_value : 0;
+
+  const girlsBoysAndAdolescentsOutsideOfSchoolValue = parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2) || 0;
 
   return (
     <div>
@@ -63,9 +76,9 @@ const Country = ({
               iconImg={EducationIcon}
               title={t('numberOfYears')}
               color="blue"
-              isFree={parseInt(countryInfo.free_edu.obs_value, 10)}
+              isFree={isFreeValue}
               isFreeTitle={t('freeAndCompulsoryEducation')}
-              mandatory={parseInt(countryInfo.free_edu.obs_value, 10)}
+              mandatory={mandatoryValue}
               mandatoryTitle={t('ObligatoryEducation')}
             />
           </div>
@@ -73,7 +86,7 @@ const Country = ({
             <Box
               iconImg={LiteracyIcon}
               title={t('alphabetizationRate')}
-              subtitle={`${parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2)}%`}
+              subtitle={`${alphabetizationRateValue}%`}
               color="green"
             />
           </div>
@@ -82,7 +95,7 @@ const Country = ({
             <Box
               iconImg={SchoolsIcon}
               title={t('numberOfEducationalCenters')}
-              subtitle="10.000"
+              subtitle={numberOfEducationalCentersValue}
               color="orange"
             />
           </div>
@@ -90,9 +103,9 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              preschoolValue="50,09%"
-              primarySchoolValue="40,60%"
-              highSchoolValue="50,00%"
+              preschoolValue={`${tuitionFeesByLevelPreschoolValue}%`}
+              primarySchoolValue={`${tuitionFeesByLevelPrimarySchoolValue}%`}
+              highSchoolValue={`${tuitionFeesByLevelHighSchoolValue}%`}
               preschoolText={t('preschool')}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
@@ -102,8 +115,8 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue={`${parseFloat(countryInfo.completion_rate.data.L1.obs_value).toFixed(2)}%`}
-              highSchoolValue={`${parseFloat(countryInfo.completion_rate.data.L3.obs_value).toFixed(2)}%`}
+              primarySchoolValue={`${parseFloat(RateByLevelPrimaryVal).toFixed(2)}%`}
+              highSchoolValue={`${parseFloat(RateByLevelHighVal).toFixed(2)}%`}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
             />
@@ -112,7 +125,7 @@ const Country = ({
             <Box
               iconImg={DataChildIcon}
               title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
-              subtitle={`${parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2)}%`}
+              subtitle={`${girlsBoysAndAdolescentsOutsideOfSchoolValue}%`}
               color="light_blue"
             />
           </div>
@@ -212,7 +225,6 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   );
 
   const country = await countryResponse.json();
-
   const countryInfoResponse = await fetch(
     `${process.env.API_URL}/api/countries/${country.code}/info`,
   );
