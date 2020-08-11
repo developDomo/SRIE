@@ -66,7 +66,9 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-  
+  .robot-slab{
+    font-family: 'Roboto Slab', serif;
+  }
   @media (max-width: 576px) { 
     .country-selector{
       
@@ -77,7 +79,7 @@ export default css.global`
       
     }
     .home .row,.row.slider-box{
-    margin 0;
+      margin: 0;
     }
   }
   @media (min-width: 576px) { 
