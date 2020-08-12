@@ -125,7 +125,7 @@ export default css.global`
 
   @media (min-width: 992px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 1200px;
+      max-width: 1300px;
     }
   }
   /* fin992 */
@@ -133,7 +133,7 @@ export default css.global`
   
   @media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 1200px;
+      max-width: 1300px;
     }
   }
   /* fin1200 */

@@ -143,6 +143,6 @@ export const TextContainer = styled.div`
   text-transform: capitalize;
   font-family: 'Roboto Slab', serif;
   font-size: 1.5em;
-  padding: 25px 15px 5px 15px;
+  padding: 25px 10px 5px 10px;
   width: 100%;
 `;
