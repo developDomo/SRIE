@@ -3,7 +3,9 @@ import get from 'lodash/get';
 const theme = {
   fontFamily: {
     sansSerif: 'Roboto, sans-serif',
+    RobotoSlab: 'Roboto Slab, sans-serif',
     mono: 'Menlo, Monaco, monospace',
+    Raleway: 'Raleway, sans-serif',
   },
   colors: {
     primary: '#cccccc',
