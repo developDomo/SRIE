@@ -54,11 +54,13 @@ const IndicatorListPage = ({
   const showFilter = () => {
     if (topic !== 0 || educationLevel !== 0 || pec !== 0) {
       return (
-        <FilterResult
-          pec={pecGoals.find((e) => e.id === pec)?.code || t('common:goal.all')}
-          level={t(`topics.${topics.find((e) => e.id === topic)?.code || t('all')}`)}
-          topic={t(`education-levels:${educationLevels.find((e) => e.id === educationLevel)?.code || t('common:goal.all')}`)}
-        />
+        <Row>
+          <FilterResult
+            pec={pecGoals.find((e) => e.id === pec)?.code || t('common:goal.all')}
+            level={t(`topics.${topics.find((e) => e.id === topic)?.code || t('all')}`)}
+            topic={t(`education-levels:${educationLevels.find((e) => e.id === educationLevel)?.code || t('common:goal.all')}`)}
+          />
+        </Row>
       );
     }
     return (
@@ -69,10 +71,10 @@ const IndicatorListPage = ({
 
   const showIndicatorList = () => {
     if (topic !== 0 || educationLevel !== 0 || pec !== 0) {
-      const tempIndicator = indicators.filter((indicator) => filterPec(pec, indicator, pecGoals)
+      const filteredIndicators = indicators.filter((indicator) => filterPec(pec, indicator, pecGoals)
         && filterTopic(topic, indicator, topics)
         && filterEducationLevel(educationLevel, indicator, educationLevels));
-      return (tempIndicator.map((indicator) => (
+      return (filteredIndicators.map((indicator) => (
         <IndicatorListItem indicator={indicator} countryName={country.short_name} />
       )));
     }
@@ -114,8 +116,8 @@ const IndicatorListPage = ({
                 <div className="form-group col-lg-4">
                   <select id="topic-select" className="form-control" onChange={(e) => setTopic(parseInt(e.target.value, 10))}>
                     <option key="topic-default" value={0}>{t('topics.all')}</option>
-                    {topics.map((iTopic) => (
-                      <option key={`topic-${iTopic.id}`} value={iTopic.id}>{t(`topics.${iTopic.code}`)}</option>
+                    {topics.map((topicItem) => (
+                      <option key={`topic-${topicItem.id}`} value={topicItem.id}>{t(`topics.${topicItem.code}`)}</option>
                     ))}
                   </select>
                 </div>
@@ -139,9 +141,7 @@ const IndicatorListPage = ({
       <Container fluid>
         <Row className="mt-5 mb-5 bg-light pt-2 pb-0">
           <Container>
-            <Row>
-              {showFilter()}
-            </Row>
+            {showFilter()}
           </Container>
         </Row>
       </Container>
