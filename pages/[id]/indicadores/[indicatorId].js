@@ -74,20 +74,26 @@ const Icon = styled.span`
     }
 `;
 
-const NameParagraph = styled.p`
+const IndecatorName = styled.h2`
   color: #22314D;
   font-weight: bold;
+  font-size: 1.4rem;
+  font-family: "Roboto Slab", sans-serif;
 `;
-const Title = styled.h1`
+const Title = styled.h3`
     color: #4495CD;
+    font-family: "Roboto Slab";
+    font-size: 1.5em;
 `;
 
 const PecIndicator = styled.p`
   color: #5CA0BE;
+  font-family: "Roboto Slab";
 `;
 
 const OdsIndicator = styled.p`
   color: #C84046;
+  font-family: "Roboto Slab";
 `;
 
 const IndicatorPage = ({
@@ -147,7 +153,7 @@ const IndicatorPage = ({
         <IndicatorDescription>
           <Row>
             <Col xs lg="10">
-              <NameParagraph>{t(`indicators:indicators.${indicator.id}.name`)}</NameParagraph>
+              <IndecatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndecatorName>
               {indicator.topics.map((topic) => (
                 <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
@@ -156,16 +162,14 @@ const IndicatorPage = ({
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverPec}>
                 <Icon iconUrl="/img/home/icon_ods4_indicadores.svg">
                   <PecIndicator>
-                    PEC
-                    {indicator.pec_goals.map((goal) => goal.code).join('/')}
+                    {`PEC ${indicator.pec_goals.map((goal) => goal.code).join('/')}`}
                   </PecIndicator>
                 </Icon>
               </OverlayTrigger>
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverOds}>
                 <Icon iconUrl="/img/home/icon_ods_table.svg">
                   <OdsIndicator>
-                    ODS
-                    {indicator.ods4_goals.map((goal) => goal.code).join('/')}
+                    {`ODS ${indicator.ods4_goals.map((goal) => goal.code).join('/')}`}
                   </OdsIndicator>
                 </Icon>
               </OverlayTrigger>
