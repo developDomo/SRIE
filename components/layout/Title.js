@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
-  blue1, yellow, green, txt, blueTitle, bordes,
+  blue1, yellow, green, txt, blueTitle, bordes, blue2,
 } from '../../styles/colors';
 
 const colors = {
   green,
   blue: blue1,
+  blue2,
   blueTitle,
   yellow,
   black: txt,
@@ -40,6 +41,7 @@ const TextContainer = styled.h3`
       : undefined)};
   color: ${(props) => (colors[props.color])};
   ${(props) => (props.textCenter ? 'text-align: center;' : '')}
+  margin: 1rem 0;
 `;
 
 const Title = ({
