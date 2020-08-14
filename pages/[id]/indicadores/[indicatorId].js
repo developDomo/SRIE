@@ -74,7 +74,7 @@ const Icon = styled.span`
     }
 `;
 
-const IndecatorName = styled.h2`
+const IndicatorName = styled.h2`
   color: #22314D;
   font-weight: bold;
   font-size: 1.4rem;
@@ -153,7 +153,7 @@ const IndicatorPage = ({
         <IndicatorDescription>
           <Row>
             <Col xs lg="10">
-              <IndecatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndecatorName>
+              <IndicatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndicatorName>
               {indicator.topics.map((topic) => (
                 <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
