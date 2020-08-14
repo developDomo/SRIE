@@ -38,6 +38,9 @@
     "topic": "Tema",
     "level": "Nivel"
   },
+  "goal": {
+    "all": "Todos"
+  },
   "educationalIndicators": "Indicadores educativos",
   "pec": "PEC",
   "ods4": "ODS 4",

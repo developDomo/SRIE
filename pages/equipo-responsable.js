@@ -106,11 +106,11 @@ const ResponsibleTeam = ({ countries, t, path }) => {
           </div>
         </Row>
       </Container>
-      <Container fluid className="bg-light mt-4 pb-5">
+      <Container className="bg-light mt-4 pb-5">
         <Row>
           <Container>
-            <Row className="d-flex justify-content-betweent mt-5 mb-5 ">
-              <div className="col-lg-12 font">
+            <Row className="d-flex justify-content-center mt-5 mb-5 ">
+              <div className="col-sm-8">
                 <p>
                   {t('p1')}
                 </p>
@@ -118,7 +118,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                   {t('p2')}
                 </p>
               </div>
-              <div className="col-lg-12 bg-white mb-4 mt-3 pt-3 pb-3">
+              <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
                 {contributorsCountries.map((item) => (
                   <DirectoryContainer>
                     <TitlePais className="col-lg-3 ">
@@ -138,7 +138,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                   </DirectoryContainer>
                 ))}
               </div>
-              <div className="font">
+              <div className="col-sm-8">
                 <p>
                   {t('p3')}
                 </p>
@@ -156,14 +156,6 @@ const ResponsibleTeam = ({ countries, t, path }) => {
           </Container>
         </Row>
       </Container>
-      <style jsx>
-        {`
-          .font {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1.1em;
-          }
-        `}
-      </style>
     </>
   );
 };

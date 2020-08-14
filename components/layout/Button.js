@@ -83,7 +83,10 @@ export const ButtonNavIndicadores = styled.button`
   cursor: pointer;
   transition: all ease-in 0.2s;
   background-color: ${(props) => (colors[props.color])};
-  color: white;
+  & > a{
+    color: white;
+    text-decoration: none;
+  } 
   &:hover {
     background-color: ${blueRoll};
   }
@@ -116,7 +119,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   color: white;
   & div {
-    border-bottom: 10px solid white;
+    border-bottom: 10px solid ${(props) => (colors[props.color])};
 
   }
 
@@ -128,7 +131,7 @@ export const ButtonContainer = styled.div`
 export const IconContainer = styled.div`
   background-color: ${(props) => (colors[props.color])};
   margin-right: 5px;
-  padding: 20px 20px;
+  padding: 25px 25px 10px 25px;
   & img {
     width: 31px;
     height: 31px;
@@ -138,7 +141,8 @@ export const IconContainer = styled.div`
 export const TextContainer = styled.div`
   background-color: ${(props) => (colors[props.color])};
   text-transform: capitalize;
-  font-size: 1.2em;
-  padding: 23px 15px;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5em;
+  padding: 25px 10px 5px 10px;
   width: 100%;
 `;
