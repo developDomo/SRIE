@@ -77,7 +77,7 @@ const IndicatorTitleH3 = styled.h3`
   font-size: 1.2rem;
   color: #6c757d;
   font-weight: 700;
-  margin-top: 10px;
+  margin-top: 40px;
 `;
 
 const InfoModal = ({ onHide }) => (
