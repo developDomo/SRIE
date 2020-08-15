@@ -202,7 +202,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
+IndicatorPage.getInitialProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -219,7 +219,6 @@ IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
     indicator,
     data,
     relatedIndicators,
-    t,
   };
 };
 
