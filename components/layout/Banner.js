@@ -30,6 +30,7 @@ const TextContainer = styled.div`
     font-weight: 400;
 
     & span {
+      font-family: 'Roboto Slab', serif;
       font-weight: bold;
       display: block;
     }
