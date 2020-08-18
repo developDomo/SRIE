@@ -8,7 +8,7 @@ const NavSecondaryCountries = ({ t, countries, countryCode }) => (
       <Container>
         <Row>
           <Col sm={5}>
-            <p className="p-select text-right robot-slab">
+            <p className="p-select text-right font-family-roboto-slab">
               {t('selectAnotherCountryThatYouWantToConsult')}
             </p>
           </Col>
