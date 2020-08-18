@@ -46,7 +46,6 @@ const Ods = styled.h4`
   justify-content: center;
   align-items: center;
   border-left: 1px solid ${txt};
-  border-right: 1px solid ${txt};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
@@ -58,10 +57,10 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 78%;
   padding-left: 20px;
   padding-right: 20px;
-
+  border-left: 1px solid black;
   & div {
     display: flex;
     justify-content: center;
@@ -81,6 +80,8 @@ const IconContainer = styled.div`
   }
 
   &:hover {
+    height: 100%;
+    border-left: 1px solid transparent;
     background-color: ${blue};
     & > div {
       background-color: ${bckBanderas};
@@ -91,7 +92,7 @@ const IconContainer = styled.div`
 const IndicatorListItem = ({ t, indicator, countryName }) => (
   <Link key={`indicador-${indicator.code}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
     <div className="col-lg-12 mb-3 p-0">
-      <Container className="d-flex  justify-content-between p-0">
+      <Container className="d-flex  justify-content-end p-0">
         <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
           <Title>
             {t(`indicators.${indicator.code}.name`)}
@@ -100,8 +101,8 @@ const IndicatorListItem = ({ t, indicator, countryName }) => (
             <TopicTag topicCode={topic.code} />
           ))}
         </div>
-        <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-        <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
+        <Pec className="m-0">{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
+        <Ods className="m-0">{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
         <IconContainer className=" ">
           <div />
         </IconContainer>
