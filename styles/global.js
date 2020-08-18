@@ -66,7 +66,7 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-  .robot-slab{
+  .font-family-roboto-slab{
     font-family: 'Roboto Slab', serif;
   }
   @media (max-width: 576px) { 
