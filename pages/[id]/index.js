@@ -46,9 +46,10 @@ const Country = ({
   const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
 
   const RateByLevelPrimaryValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1;
-  const RateByLevelPrimaryVal = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L1.obs_value : 0;
+  const RateByLevelPrimaryValue = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L1.obs_value : 0;
+
   const RateByLevelHighValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3;
-  const RateByLevelHighVal = RateByLevelHighValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
+  const RateByLevelHighValue = RateByLevelHighValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
 
   const girlsBoysAndAdolescentsOutsideOfSchoolValue = parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2) || 0;
 
@@ -121,8 +122,8 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue={`${parseFloat(RateByLevelPrimaryVal).toFixed(2)}%`}
-              highSchoolValue={`${parseFloat(RateByLevelHighVal).toFixed(2)}%`}
+              primarySchoolValue={`${parseFloat(RateByLevelPrimaryValue).toFixed(2)}%`}
+              highSchoolValue={`${parseFloat(RateByLevelHighValue).toFixed(2)}%`}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
             />
