@@ -45,8 +45,10 @@ const Country = ({
   const tuitionFeesByLevelHighSchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L02.obs_value).toFixed(2) || 0;
   const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
 
-  const RateByLevelPrimaryVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1 ? countryInfo.completion_rate.data.L1.obs_value : 0;
-  const RateByLevelHighVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3 ? countryInfo.completion_rate.data.L3.obs_value : 0;
+  const RateByLevelPrimaryValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1;
+  const RateByLevelPrimaryVal = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L1.obs_value : 0;
+  const RateByLevelHighValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3;
+  const RateByLevelHighVal = RateByLevelHighValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
 
   const girlsBoysAndAdolescentsOutsideOfSchoolValue = parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2) || 0;
 
@@ -226,7 +228,6 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   const country = _.find(countries, (c) => c.short_name === query.id);
 
   const [countryInfo] = await FetchUtils.multipleFetch([
-    `${process.env.API_URL}/api/countries/${query.id}`,
     `${process.env.API_URL}/api/countries/${country.code}/info`,
   ]);
 
