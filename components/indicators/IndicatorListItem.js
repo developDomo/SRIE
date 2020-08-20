@@ -27,6 +27,13 @@ const Title = styled.h3`
   font-weight: bold;
   font-size: 1.1em;
   color: ${txt};
+  line-height: 1.5em; /* Sets line height to 1.5 times text size */
+  height: 3em; /* Sets the div height to 2x line-height (3 times text size) */
+  width: 100%; /* Use whatever width you want */
+  white-space: normal; /* Wrap lines of text */
+  overflow: hidden; /* Hide text that goes beyond the boundaries of the div */
+  text-overflow: ellipsis; /* Ellipses (cross-browser) */
+  -o-text-overflow: ellipsis; /* Ellipses (cross-browser) */
 `;
 
 const Pec = styled.h4`
