@@ -1,6 +1,9 @@
+import _ from 'lodash';
 import fetch from 'isomorphic-unfetch';
 import { Container, Row } from 'react-bootstrap';
+
 import Link from 'next/link';
+import FetchUtils from '../../utils/Fetch.utils';
 import Boxes from '../../components/layout/Boxes';
 
 import { ButtonNavIndicadores } from '../../components/layout/Button';
@@ -36,11 +39,12 @@ const Country = ({
   const mandatoryValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
   const alphabetizationRateValue = parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2) || 0;
 
-  const numberOfEducationalCentersValue = parseFloat(countryInfo.net_enrollment_rate.obs_value).toFixed(2) || 0;
-  const tuitionFeesByLevelPreschoolValue = 0;
-  const tuitionFeesByLevelHighSchoolValue = 0;
+  const numberOfEducationalCentersValue = 0;
+  console.log('countryInfo', countryInfo);
+  const tuitionFeesByLevelPreschoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L1.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelHighSchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L02.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
 
-  const tuitionFeesByLevelPrimarySchoolValue = 0;
   const RateByLevelPrimaryVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1 ? countryInfo.completion_rate.data.L1.obs_value : 0;
   const RateByLevelHighVal = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3 ? countryInfo.completion_rate.data.L3.obs_value : 0;
 
@@ -217,20 +221,14 @@ const Country = ({
 
 Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-
   const countries = await countriesResponse.json();
 
-  const countryResponse = await fetch(
+  const country = _.find(countries, (c) => c.short_name === query.id);
+
+  const [countryInfo] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/countries/${query.id}`,
-  );
-
-  const country = await countryResponse.json();
-
-  const countryInfoResponse = await fetch(
-    `${process.env.API_URL}/api/countries/${country.code}/info`,
-  );
-
-  const countryInfo = await countryInfoResponse.json();
+    `https://srie-staging.herokuapp.com/api/countries/${country.code}/info`,
+  ]);
 
   return {
     namespacesRequired: ['common'],
