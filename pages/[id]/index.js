@@ -40,7 +40,7 @@ const Country = ({
   const alphabetizationRateValue = parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2) || 0;
 
   const numberOfEducationalCentersValue = 0;
-  console.log('countryInfo', countryInfo);
+
   const tuitionFeesByLevelPreschoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L1.obs_value).toFixed(2) || 0;
   const tuitionFeesByLevelHighSchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L02.obs_value).toFixed(2) || 0;
   const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
@@ -227,7 +227,7 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
 
   const [countryInfo] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/countries/${query.id}`,
-    `https://srie-staging.herokuapp.com/api/countries/${country.code}/info`,
+    `${process.env.API_URL}/api/countries/${country.code}/info`,
   ]);
 
   return {
