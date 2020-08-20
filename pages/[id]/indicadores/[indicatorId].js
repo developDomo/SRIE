@@ -123,12 +123,19 @@ const IndicatorPage = ({
     }];
   };
 
+  const PecTooltip = ({ pecGoals }) => (
+    pecGoals.map((pecGoal) => (
+      <p>
+        <strong>{pecGoal.code}</strong>
+        {`: ${t(`pec-goals:pec-goals.${pecGoal.code.toString().replace('.', '-')}.description`)}`}
+      </p>
+    ))
+  );
+
   const popoverPec = (
     <Popover id="popover-pec">
       <Popover.Content>
-        Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-        Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken.
-        Landjaeger turkey sausage beef. Tongue landjaeger andouille, fatback shank t-bone
+        <PecTooltip pecGoals={indicator.pec_goals} />
       </Popover.Content>
     </Popover>
   );
@@ -213,7 +220,7 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/related`,
   ]);
   return {
-    namespacesRequired: ['common', 'indicators'],
+    namespacesRequired: ['common', 'indicators', 'pec-goals'],
     countries,
     country,
     indicator,
@@ -222,4 +229,4 @@ IndicatorPage.getInitialProps = async ({ query }) => {
   };
 };
 
-export default withTranslation('common', 'indicators')(IndicatorPage);
+export default withTranslation('common', 'indicators', 'pec-goals')(IndicatorPage);

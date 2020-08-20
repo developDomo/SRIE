@@ -7,7 +7,7 @@ import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';
 import WelcomeText from '../components/layout/WelcomeText';
 
-const Home = ({ countries, t, path }) => (
+const Home = ({ countries }) => (
   <>
     <div className="home">
       <Row className="justify-content-md-center m-0">
