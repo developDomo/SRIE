@@ -190,13 +190,12 @@ const filterData = async (unit_measure, data, visualizations, indexes) => {
   const dataByViews = {};
 
   indexes = _.map(indexes, (i) => _.assign(i, { label: 'unit_measure' }));
-  visualizations = _.map(visualizations, (i) => _.assign(i, { unit_measure }));
 
   Object.keys(data).forEach(async (code) => {
     dataByViews[code] = {};
     dataByViews[code].visualizations = await filterDataByView(
       visualizations,
-      data[code],
+      _.filter(data[code], { unit_measure }),
     );
     dataByViews[code].indexes = await filterDataByView(
       indexes,
@@ -278,14 +277,14 @@ export default {
   },
 
   getNetEnrollmentRateByCountry: async (country) => {
-    const rawData = await db.sdg4.find(
+    const rawData = await db.edu_non_finance.find(
       {
         stat_unit: 'NER',
         ref_area: country,
         unit_measure: 'PT',
         sex: '_T',
         age: 'SCH_AGE_GROUP',
-        wealth_quintile: '_T',
+        wealth_quintile: '_Z',
         location: '_T',
         or: [{ edu_level: 'L02' }, { edu_level: 'L1' }, { edu_level: 'L2_3' }],
       },

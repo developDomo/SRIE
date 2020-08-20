@@ -4,6 +4,7 @@ import parse from 'csv-parse';
 import ObjectsToCsv from 'objects-to-csv';
 import IndicatorService from './Indicator.service';
 import IndicatorVariationService from './IndicatorVariation.service';
+import CloudinaryService from './Cloudinary.service';
 import FilterUtils from '../utils/Filter.utils';
 
 const db = require('express-http-context').get('db');
@@ -151,7 +152,11 @@ const mapDataForCSV = (data) => data.map((item) => ({
 const updateCsvFile = async (country, code, data) => {
   const objects = (data.length > 0) ? mapDataForCSV(data) : noData;
 
-  await new ObjectsToCsv(objects).toDisk(`./public/csv/${country}-${code}.csv`);
+  const resource = `${country}-${code}.csv`;
+  const file = `./temp/csv/${resource}`;
+
+  await new ObjectsToCsv(objects).toDisk(file);
+  CloudinaryService.upload(file, resource);
 };
 
 const updateVariationsCsvFiles = async (country, indicator, variations, data) => {

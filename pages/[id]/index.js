@@ -143,12 +143,12 @@ const Country = ({
       <Container>
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
-            <Title color="blue" type="title">
+            <Title color="blue2" type="title">
               {t('EducationalIndicators')}
             </Title>
           </div>
           <div className="col-lg-12 text-center">
-            <Title color="blue" type="subtitle">
+            <Title color="blue2" type="subtitle">
               {t('byCategory')}
             </Title>
           </div>
@@ -192,7 +192,7 @@ const Country = ({
         </Row>
         <Row className="mb-5">
           <div className="col-lg-12 d-flex justify-content-end">
-            <ButtonNavIndicadores azul>
+            <ButtonNavIndicadores color="blue">
               <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
                 { t('moreIndicatorsBtn') }
               </Link>

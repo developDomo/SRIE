@@ -77,6 +77,7 @@ const IndicatorTitleH3 = styled.h3`
   font-size: 1.2rem;
   color: #6c757d;
   font-weight: 700;
+  margin-top: 40px;
 `;
 
 const InfoModal = ({ onHide }) => (
@@ -104,7 +105,6 @@ const InfoModal = ({ onHide }) => (
     </Modal.Footer>
   </Modal>
 );
-
 
 const ShareModal = ({ onHide }) => (
   <Modal
@@ -228,7 +228,11 @@ const IndicatorChart = ({
   return (
     <>
       <Container key={chart.code}>
-        <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
+        <Row>
+          <Col lg="9">
+            <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
+          </Col>
+        </Row>
         <Row>
           <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
@@ -272,7 +276,7 @@ const IndicatorChart = ({
               </div>
               <div>
                 {' '}
-                <a href={`/csv/${countryCode.toUpperCase()}-${chart.code}.csv`}>{t('sideBar.formats.CSV')}</a>
+                <a href={`${process.env.API_URL}/api/indicators/csv?country=${countryCode.toUpperCase()}&code=${chart.code}`}>{t('sideBar.formats.CSV')}</a>
                 {' '}
               </div>
             </SideBarDownloadContainer>
