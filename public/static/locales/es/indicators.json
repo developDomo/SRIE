@@ -9,10 +9,40 @@
             "formula": "Formula...",
             "interpretation": "Un alto valor indica un gran número de niños pequeños que están preparados para comenzar la escuela primaria en las áreas de salud, aprendizaje y bienestar psicosocial.",
             "source": "La Encuesta de Indicadores Múltiples por Conglomerados (MICS), de UNICEF.",
-            "limitations": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países."
+            "limitations": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países.",
+            "metadata": {
+              "title": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
+              "definition": [
+                "There is not yet a globally-accepted definition of ‘developmentally on track’. The Multiple Indicator Cluster Survey’s Early Childhood Development Index (ECDI) presently defines ‘on track’ as the percentage of children aged 36-59 months who are developmentally on-track in at least three of the following four domains: literacy-numeracy, physical, socio-emotional and learning. Other measures use different definitions, with varying empirically- and conceptually-driven perspectives on how best to define ‘on track’. Methodological work is ongoing to define commonly agreed terms and methods for more comprehensively assessing each of the domains of early childhood development (i.e. health, learning and psychosocial well-being).",
+                "ECDI defines children as being developmentally on track in literacy-numeracy if they can do at least two of the following tasks: identify/name at least 10 letters of the alphabet; read at least 4 simple, popular words; and/or recognise and name all numbers from 1 to 10. Children are developmentally on-track physically if they can pick up small objects easily and are generally well enough to play. Children are developmentally on-track in socio-emotional development if at least two of the following are true: they get along with other children; do not usually kick, bite or hit other children; and they are not easily distracted. Children are developmentally on-track in learning if they can follow simple instructions correctly on how to do something and/or when given something to do, and they are able to do it independently."
+              ],
+              "purpose": [
+                "The indicator is a broad measure of children’s development and their preparedness to begin school. Available data for global tracking are typically collected in regional or national-level surveys and assessments from individual-level data through direct assessment of children or reported by mothers/primary caregivers or teachers, which are then used to calculate an indicator that represents a composite measure across a range of agreed characteristics in the areas of health, learning and psychosocial well-being."
+              ],
+              "method": [
+                "In the MICS ECDI, the indicator is calculated as the percentage of children aged 36-59 months demonstrating age-appropriate levels of development in the areas being measured, according to the items used in the MICS. One commonly-accepted definition of ‘on track’ has not yet been developed using national and regionally-developed standards for children’s learning and development."
+              ],
+              "formula": "PCDT_{3t4}=\frac{CDT_{3t4}\times 100}{P_{3t4}}",
+              "formulaExplanation": [
+                "<strong>PCDT3t4</strong> = percentage of children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                "<strong>CDT3t4</strong> = children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                "<strong>P3t4</strong>  = population aged 3-4 years (36-59 months)"
+              ],
+              "interpretation": [
+                "A high value indicates a large number of young children are well-prepared for starting primary school in the areas of health, learning and psychosocial well-being."
+              ],
+              "primaryDataSource": [
+                "The Multiple Indicator Cluster Surveys (MICS) by UNICEF."
+              ],
+              "periodicity": "Quinquennial",
+              "limitationsAndComments": [
+                "Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries."
+              ],
+              "licenseAndCopyrights": "Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+            }
         },
         "2": {
-            "name": "Tasa de participación en la enseñanza organizada un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
+            "name": "Tasa de participación en la enseñanza organiza da un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
             "description": "El indicador mide la exposición de los niños a las actividades de aprendizaje organizado durante el año anterior al ingreso a la escuela primaria.",
             "definition": "Porcentaje de niños en el rango de edad determinado que participan en uno o más programas de aprendizaje organizado, incluyendo programas que ofrecen la combinación de educación y cuidado. Incluye la participación en educación de la primera infancia y en la educación primaria. El rango de edad varía según el país en función de la edad oficial de ingreso a la educación primaria. Un programa de aprendizaje organizado es aquel que consiste en un conjunto o secuencia coherente de actividades educativas diseñadas con la intención de lograr resultados de aprendizaje predeterminados o la realización de un conjunto específico de tareas educativas. Los programas de la primera infancia y de educación primaria son ejemplos de programas de aprendizaje organizados. La educación en la primera infancia y la educación primaria se definen en la revisión de 2011 de la Clasificación Internacional Normalizada de la Educación (CINE 2011). La educación en la primera infancia es típicamente diseñada con un enfoque holístico para apoyar el desarrollo temprano cognitivo, físico, social y emocional de los niños e introducir y para introducir a los niños en la instrucción organizada fuera del contexto familiar. La educación primaria ofrece actividades educativas y de aprendizaje diseñadas para desarrollar en los estudiantes habilidades básicas de lectura, escritura y matemáticas y establecer sólidas bases para el aprendizaje y la comprensión de las áreas fundamentales del conocimiento y el desarrollo personal. Se centra en el aprendizaje en el nivel básico de la complejidad con escasa especialización, si la hubiese. La edad oficial de ingreso a la primaria es la edad en que los niños se ven obligados a comenzar la enseñanza primaria, de acuerdo con la legislación o la política nacional.",
             "formula": "Formula...",
