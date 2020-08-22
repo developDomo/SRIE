@@ -43,7 +43,7 @@
     },
     "11":{
       "label": "Tasa neta de escolaridad",
-      "description": "Refleja la cobertura de los estudiantes que asisten a un nivel educativo determinado y que tienen la edad oficial para asistir a dicho nivel educativo. La palabra “neta” en este caso se utiliza porque excluye a los estudiantes que no tienen la..."
+      "description": "Refleja la cobertura de los estudiantes que asisten a un nivel educativo determinado y que tienen la edad oficial para asistir a dicho nivel educativo. La palabra “neta” en este caso se utiliza porque excluye a los estudiantes que no tienen la edad oficial para asistir a dicho nivel educativo, y que sí son tomados en cuenta en el cálculo de la tasa bruta de escolaridad."
     }
   }
 }
