@@ -1,0 +1,1 @@
+DELETE FROM indicator_variations WHERE indicator_id = 5;
