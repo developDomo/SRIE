@@ -9,7 +9,37 @@
             "formula": "Formula...",
             "interpretation": "A high value indicates a large number of young children are well-prepared for starting primary school in the areas of health, learning and psychosocial well-being.",
             "source": "The Multiple Indicator Cluster Surveys (MICS) by UNICEF",
-            "limitations": "Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries."
+            "limitations": "Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries.",
+            "dataSheet": {
+              "title": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
+              "definition": [
+                  "There is not yet a globally-accepted definition of ‘developmentally on track’. The Multiple Indicator Cluster Survey’s Early Childhood Development Index (ECDI) presently defines ‘on track’ as the percentage of children aged 36-59 months who are developmentally on-track in at least three of the following four domains: literacy-numeracy, physical, socio-emotional and learning. Other measures use different definitions, with varying empirically- and conceptually-driven perspectives on how best to define ‘on track’. Methodological work is ongoing to define commonly agreed terms and methods for more comprehensively assessing each of the domains of early childhood development (i.e. health, learning and psychosocial well-being).",
+                  "ECDI defines children as being developmentally on track in literacy-numeracy if they can do at least two of the following tasks: identify/name at least 10 letters of the alphabet; read at least 4 simple, popular words; and/or recognise and name all numbers from 1 to 10. Children are developmentally on-track physically if they can pick up small objects easily and are generally well enough to play. Children are developmentally on-track in socio-emotional development if at least two of the following are true: they get along with other children; do not usually kick, bite or hit other children; and they are not easily distracted. Children are developmentally on-track in learning if they can follow simple instructions correctly on how to do something and/or when given something to do, and they are able to do it independently."
+              ],
+              "purpose": [
+                  "The indicator is a broad measure of children’s development and their preparedness to begin school. Available data for global tracking are typically collected in regional or national-level surveys and assessments from individual-level data through direct assessment of children or reported by mothers/primary caregivers or teachers, which are then used to calculate an indicator that represents a composite measure across a range of agreed characteristics in the areas of health, learning and psychosocial well-being."
+              ],
+              "method": [
+                  "In the MICS ECDI, the indicator is calculated as the percentage of children aged 36-59 months demonstrating age-appropriate levels of development in the areas being measured, according to the items used in the MICS. One commonly-accepted definition of ‘on track’ has not yet been developed using national and regionally-developed standards for children’s learning and development."
+              ],
+              "formula": "PCDT_{3t4}=\\frac{CDT_{3t4}\\times 100}{P_{3t4}}",
+              "formulaExplanation": [
+                  "<strong>PCDT3t4</strong> = percentage of children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                  "<strong>CDT3t4</strong> = children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                  "<strong>P3t4</strong>  = population aged 3-4 years (36-59 months)"
+              ],
+              "interpretation": [
+                  "A high value indicates a large number of young children are well-prepared for starting primary school in the areas of health, learning and psychosocial well-being."
+              ],
+              "primaryDataSource": [
+                  "The Multiple Indicator Cluster Surveys (MICS) by UNICEF."
+              ],
+              "periodicity": "Quinquennial",
+              "limitationsAndComments": [
+                  "Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries."
+              ],
+              "licenseAndCopyrights": "Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)"
+            }
         },
         "2": {
             "name": "Participation rate in organized learning (one year before the official primary entry age), by sex",
