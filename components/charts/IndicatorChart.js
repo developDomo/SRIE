@@ -17,7 +17,6 @@ import GeoChart from './GeoChart';
 import WealthQuintilleChart from './WealthQuintilleChart';
 
 
-
 const ChartContent = styled.div`
   width: 100%;
   height: 700px;
