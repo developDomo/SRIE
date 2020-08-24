@@ -124,17 +124,11 @@ export default css.global`
   /* fin768 */
 
   @media (min-width: 992px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 1300px;
-    }
   }
   /* fin992 */
 
   
   @media (min-width: 1200px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-      max-width: 1300px;
-    }
   }
   /* fin1200 */
   @media (min-width: 1600px){
