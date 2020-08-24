@@ -30,7 +30,7 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({ data, t, chartType }) => {
-  const [indexes, setIndexes] = useState(IndexeType.GPI.description);
+  const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);

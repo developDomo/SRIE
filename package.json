@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "babel-eslint": "^10.1.0",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^8.1.0",
     "db-migrate": "^0.11.6",
     "db-migrate-pg": "^1.0.0",
