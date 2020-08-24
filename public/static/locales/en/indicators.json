@@ -399,6 +399,8 @@
         }
     },
     "variations": {
+        "5-a": "Number of years of free pre-primary education guarranteed in legal framewoks",
+        "5-b": "Number of years of compulsory pre-primary education guarranteed in legal framewoks",
         "6-a": "Proportion of students in Grade 2 or 3 achieving at least a minimum proficiency level in mathematics, by sex",
         "6-b": "Proportion of students in Grade 2 or 3 achieving at least a minimum proficiency level in reading, by sex",
         "7-a": "Proportion of students at the end of primary education achieving at least a minimum proficiency level in reading",

@@ -5,7 +5,6 @@ const handler = nextConnect();
 
 handler.get(async (req, res) => {
   const country = req.query.code.toUpperCase();
-  const response = {};
 
   const free_edu_promise = IndicatorDataService.getFreeEducationYearsByCountry(
     country,

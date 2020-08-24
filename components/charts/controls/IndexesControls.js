@@ -1,4 +1,4 @@
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 import { hasSomeData } from '../helpers/ChartDataHelper';
 import { withTranslation } from '../../../i18n';
@@ -11,16 +11,16 @@ const IndexesControls = ({ setIndexes, indexesData, t }) => (
   <Content>
     <Dropdown onSelect={(e) => setIndexes(e)}>
       <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown">
-        Indices
+        {t('indexes')}
       </Dropdown.Toggle>
       <Dropdown.Menu className="indicator-dropdown-menu">
-        {Object.keys(indexesData)?.map((indexe) => (
+        {Object.keys(indexesData)?.map((index) => (
           <Dropdown.Item
             className="indicator-dropdown-item"
             eventKey={indexe}
             disabled={hasSomeData(indexesData[indexe].historical) && hasSomeData(indexesData[indexe].latest)}
           >
-            {t(indexe)}
+            {t(index)}
           </Dropdown.Item>
         )
         )}

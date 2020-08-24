@@ -17,6 +17,7 @@ import GeoChart from './GeoChart';
 import WealthQuintilleChart from './WealthQuintilleChart';
 
 
+
 const ChartContent = styled.div`
   width: 100%;
   height: 700px;
@@ -135,6 +136,10 @@ const InfoModal = ({
         :
       </strong>
 
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.method`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
       <Row className="h-100">
         <Col className="col-sm-5 my-auto">
           <DataSheetFormula>
@@ -161,6 +166,7 @@ const InfoModal = ({
       </DataSheetParagraph>
 
       <strong>
+
         {translation('common:datasourceType')}
         :
       </strong>

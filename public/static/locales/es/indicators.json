@@ -302,6 +302,8 @@
         }
     },
     "variations": {
+        "5-a": "Número de años de educación preescolar gratuita garantizada en los marcos legales",
+        "5-b": "Número de años de educación preescolar obligatoria garantizada en los marcos legales",
         "6-a": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en lectura, desglosada por sexo.",
         "6-b": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en matemática, desglosada por sexo.",
         "7-a": "Proporción de niños, niñas y adolescentes en los grados que al final de la educación primaria; han alcanzado al menos un nivel mínimo de competencia en lectura, desglosada por sexo",
