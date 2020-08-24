@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const httpContext = require('express-http-context');
-const bodyParser = require('body-parser');
 
 const nextjs = require('next');
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
@@ -35,9 +34,6 @@ const massive = require('./db');
     const server = express();
     const db = await massive();
 
-    server.use(bodyParser.urlencoded({ extended: true }));
-    server.use(bodyParser.json());
-
     server.use(httpContext.middleware);
     server.use((req, res, next) => {
       httpContext.set('db', db);
@@ -69,6 +65,7 @@ const massive = require('./db');
     }));
 
     server.get('*', (req, res) => handle(req, res));
+    server.post('*', (req, res) => handle(req, res));
 
     await server.listen(port);
     console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console

@@ -4,6 +4,8 @@ import {
 } from 'react-bootstrap';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Latex from 'react-latex';
+import { InlineMath, BlockMath } from 'react-katex';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes, ChartTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
@@ -80,25 +82,115 @@ const IndicatorTitleH3 = styled.h3`
   margin-top: 40px;
 `;
 
-const InfoModal = ({ onHide }) => (
+const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
+
+const DataSheetTitle = styled.p`
+  font-family: Raleway, sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(68, 149, 205)
+`;
+
+const DataSheetParagraph = styled.p`
+  font-family: Roboto;
+  color: rgb(108, 117, 125);
+`;
+const DataSheetFormula = styled.p`
+  color: #007BFF;
+`;
+
+const InfoModal = ({
+  onHide, show, translation, indicator,
+}) => (
   <Modal
-    {...onHide}
+    show={show}
+    onHide={onHide}
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
     centered
   >
-    <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter">
-        Info
-      </Modal.Title>
-    </Modal.Header>
+    <Modal.Header closeButton />
     <Modal.Body>
-      <h4>Centered Modal</h4>
-      <p>
-        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-        consectetur ac, vestibulum at eros.
-      </p>
+      <DataSheetTitle>{translation(`indicators:indicators.${indicator}.metadata.title`)}</DataSheetTitle>
+      <strong>
+        {translation('common:definition')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.definition`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+      <strong>
+        {translation('common:purpose')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.purpose`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+      <strong>
+        {translation('common:method')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.method`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <Row className="h-100">
+        <Col className="col-sm-5 my-auto">
+          <DataSheetFormula>
+            <BlockMath math={JSON.stringify(translation(`indicators:indicators.${indicator}.metadata.formula`)).slice(1, -1)} />
+          </DataSheetFormula>
+
+        </Col>
+        <Col>
+          <DataSheetParagraph>
+            {translation('common:where')}
+            :
+          </DataSheetParagraph>
+          <DataSheetParagraph>
+            {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.formulaExplanation`, { joinArrays: '\n' }))}
+          </DataSheetParagraph>
+        </Col>
+      </Row>
+      <strong>
+        {translation('common:interpretation')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.interpretation`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <strong>
+        {translation('common:primaryDataSource')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.primaryDataSource`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <strong>
+        {translation('common:periodicity')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.periodicity`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <strong>
+        {translation('common:limitationsAndComments')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.limitationsAndComments`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <strong>
+        {translation('common:licenseAndCopyrights')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.licenseAndCopyrights`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
     </Modal.Body>
     <Modal.Footer>
       <Button onClick={onHide}>Close</Button>
@@ -106,9 +198,10 @@ const InfoModal = ({ onHide }) => (
   </Modal>
 );
 
-const ShareModal = ({ onHide }) => (
+const ShareModal = ({ show, onHide, indicator }) => (
   <Modal
-    {...onHide}
+    show={show}
+    onHide={onHide}
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
     centered
@@ -119,7 +212,10 @@ const ShareModal = ({ onHide }) => (
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      <h4>Centered Modal</h4>
+      <h4>
+        Centered Modal
+        {indicator}
+      </h4>
       <p>
         Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
         dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -140,6 +236,9 @@ const IndicatorChart = ({
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
+
+  const handleInfoModalClose = () => setInfoModalShow(false);
+  const handleInfoModalShow = () => setInfoModalShow(true);
 
   const showTotalTab = () => {
     if (tabsToShow.indexOf('total') !== -1) {
@@ -246,15 +345,20 @@ const IndicatorChart = ({
           </Col>
           <Col md="auto" lg="3" hidden={hideSideBar === 'true'}>
             <SideBarIcons>
-              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" onClick={() => setDownloadModalShow(true)} />
+
+              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" onClick={handleInfoModalShow} />
+              <InfoModal
+                translation={t}
+                show={infoModalShow}
+                indicator={indicator}
+                onHide={handleInfoModalClose}
+              />
+
+              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" onClick={() => setDownloadModalShow(true)} />
               <ShareModal
                 show={downloadModalShow}
+                indicator={indicator}
                 onHide={() => setDownloadModalShow(false)}
-              />
-              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" onClick={() => setInfoModalShow(true)} />
-              <InfoModal
-                show={infoModalShow}
-                onHide={() => setInfoModalShow(false)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>
@@ -288,6 +392,16 @@ const IndicatorChart = ({
           </Col>
         </Row>
       </Container>
+      <style jsx>
+        {`
+        .nav-link.active,
+        .nav-item.show .nav-link {
+          color: red;
+          background-color: red;
+          border-color: red;
+        }
+      `}
+      </style>
     </>
 
   );
@@ -296,7 +410,7 @@ const IndicatorChart = ({
 IndicatorChart.getInitialProps = async ({
   data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart,
 }) => ({
-  namespacesRequired: ['charts', 'indicators'],
+  namespacesRequired: ['charts', 'indicators', 'common'],
   data,
   t,
   indicator,
@@ -311,4 +425,4 @@ IndicatorChart.getInitialProps = async ({
   countryCode,
 });
 
-export default withTranslation('charts', 'indicators')(IndicatorChart);
+export default withTranslation('charts', 'indicators', 'common')(IndicatorChart);
