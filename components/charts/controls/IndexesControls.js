@@ -18,7 +18,7 @@ const IndexesControls = ({ setIndexes, indexesData, t }) => (
           <Dropdown.Item
             className="indicator-dropdown-item"
             eventKey={indexe}
-            disabled={hasSomeData(indexesData[indexe])}
+            disabled={hasSomeData(indexesData[indexe].historical) && hasSomeData(indexesData[indexe].latest)}
           >
             {t(indexe)}
           </Dropdown.Item>

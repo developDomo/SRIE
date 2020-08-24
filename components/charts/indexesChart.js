@@ -34,7 +34,7 @@ const IndexesChart = ({ data, t, chartType }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
-  const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
+
   const columns = [
     {
       name: t('year'),
@@ -52,7 +52,9 @@ const IndexesChart = ({ data, t, chartType }) => {
     if (chartType === DisplayTypes.CHART) {
       return (
         <BarChart
-          data={datasource}
+          data={chartMetrics === ChartMetrics.LAST_YEAR
+            ? charDataFormatHelper(data.indexes[indexes]?.latest)
+            : charDataFormatHelper(data.indexes[indexes]?.historical)}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
@@ -71,7 +73,9 @@ const IndexesChart = ({ data, t, chartType }) => {
       <DataTable
         title="Total"
         columns={columns}
-        data={datasource}
+        data={chartMetrics === ChartMetrics.LAST_YEAR
+          ? charDataFormatHelper(data.indexes[indexes]?.latest)
+          : charDataFormatHelper(data.indexes[indexes]?.historical)}
         striped
       />
     );

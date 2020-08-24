@@ -14,6 +14,7 @@
   "periodicity": "Periodicity",
   "limitationsAndComments": "Limitations and comments",
   "licenseAndCopyrights": "License and copyrights",
+  "datasourceType": "Type of data source",
   "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
