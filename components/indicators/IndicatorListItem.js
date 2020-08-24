@@ -18,9 +18,9 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px 0;
+ 
   width: 100%;
-  height: auto;
+  height:100%;
   background-color: ${gray1};
 `;
 const Title = styled.h3`
@@ -38,7 +38,7 @@ const Pec = styled.h4`
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
-  height: 100px;
+  height: 80%;
   width: 20%;
   color: ${blue};
 `;
@@ -51,14 +51,14 @@ const Ods = styled.h4`
   font-size: 1.6em;
   font-weight: 400;
   width: 16.5%;
-  height: 100px;
+  height: 80%;
   color: ${red};
 `;
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 78%;
+  height: 100%;
   padding-left: 20px;
   padding-right: 20px;
   border-left: 1px solid black;
@@ -95,7 +95,7 @@ const IndicatorListItem = ({ t, indicator, countryName }) => (
     <div className="col-lg-12 mb-3 p-0">
       <Container className="d-flex  justify-content-end p-0">
         <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
-          <Title>
+          <Title className="py-2">
             {t(`indicators.${indicator.code}.name`)}
           </Title>
           {indicator.topics.map((topic) => (

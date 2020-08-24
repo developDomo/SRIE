@@ -67,7 +67,7 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-  
+
   @media (max-width: 576px) { 
     .country-selector{
       
@@ -124,13 +124,11 @@ export default css.global`
   /* fin768 */
 
   @media (min-width: 992px) {
-  
   }
   /* fin992 */
 
   
   @media (min-width: 1200px) {
-    
   }
   /* fin1200 */
   @media (min-width: 1600px){

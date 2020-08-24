@@ -1,6 +1,9 @@
+import _ from 'lodash';
 import fetch from 'isomorphic-unfetch';
 import { Container, Row } from 'react-bootstrap';
+
 import Link from 'next/link';
+import FetchUtils from '../../utils/Fetch.utils';
 import Boxes from '../../components/layout/Boxes';
 
 import { ButtonNavIndicadores } from '../../components/layout/Button';
@@ -27,8 +30,28 @@ import EnvironmentIcon from '../../public/img/home/icon_entorno_indicador.svg';
 import GoalsIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
 
-const Country = ({ t, countries, country }) => {
+const Country = ({
+  t, countries, country, countryInfo,
+}) => {
   const navigation = [{ key: 'navigation.pages.country-data' }];
+
+  const isFreeValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
+  const mandatoryValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
+  const alphabetizationRateValue = parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2) || 0;
+
+  const numberOfEducationalCentersValue = 0;
+
+  const tuitionFeesByLevelPreschoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L1.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelHighSchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L02.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
+
+  const RateByLevelPrimaryValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1;
+  const RateByLevelPrimaryValue = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L1.obs_value : 0;
+
+  const RateByLevelHighValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3;
+  const RateByLevelHighValue = RateByLevelHighValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
+
+  const girlsBoysAndAdolescentsOutsideOfSchoolValue = parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2) || 0;
 
   return (
     <div>
@@ -60,9 +83,9 @@ const Country = ({ t, countries, country }) => {
               iconImg={EducationIcon}
               title={t('numberOfYears')}
               color="blue"
-              isFree={12}
+              isFree={isFreeValue}
               isFreeTitle={t('freeAndCompulsoryEducation')}
-              mandatory={12}
+              mandatory={mandatoryValue}
               mandatoryTitle={t('ObligatoryEducation')}
             />
           </div>
@@ -70,7 +93,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={LiteracyIcon}
               title={t('alphabetizationRate')}
-              subtitle="88%"
+              subtitle={`${alphabetizationRateValue}%`}
               color="green"
             />
           </div>
@@ -79,7 +102,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={SchoolsIcon}
               title={t('numberOfEducationalCenters')}
-              subtitle="10.000"
+              subtitle={numberOfEducationalCentersValue}
               color="orange"
             />
           </div>
@@ -87,9 +110,9 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              preschoolValue="50,09%"
-              primarySchoolValue="40,60%"
-              highSchoolValue="50,00%"
+              preschoolValue={`${tuitionFeesByLevelPreschoolValue}%`}
+              primarySchoolValue={`${tuitionFeesByLevelPrimarySchoolValue}%`}
+              highSchoolValue={`${tuitionFeesByLevelHighSchoolValue}%`}
               preschoolText={t('preschool')}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
@@ -99,8 +122,8 @@ const Country = ({ t, countries, country }) => {
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue="36,00%"
-              highSchoolValue="50,00%"
+              primarySchoolValue={`${parseFloat(RateByLevelPrimaryValue).toFixed(2)}%`}
+              highSchoolValue={`${parseFloat(RateByLevelHighValue).toFixed(2)}%`}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
             />
@@ -109,7 +132,7 @@ const Country = ({ t, countries, country }) => {
             <Box
               iconImg={DataChildIcon}
               title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
-              subtitle="10,00%"
+              subtitle={`${girlsBoysAndAdolescentsOutsideOfSchoolValue}%`}
               color="light_blue"
             />
           </div>
@@ -117,9 +140,11 @@ const Country = ({ t, countries, country }) => {
       </Container>
       <Container fluid className="bg-verde-oscuro">
         <Row>
-          <div className="col-lg-12 p-0 m-0">
-            <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
-          </div>
+          <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
+            <div className="col-lg-12 p-0 m-0">
+              <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
+            </div>
+          </Link>
         </Row>
       </Container>
       <Container>
@@ -201,15 +226,17 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
-  const countryResponse = await fetch(
-    `${process.env.API_URL}/api/countries/${query.id}`,
-  );
-  const country = await countryResponse.json();
+  const country = _.find(countries, (c) => c.short_name === query.id);
+
+  const [countryInfo] = await FetchUtils.multipleFetch([
+    `${process.env.API_URL}/api/countries/${country.code}/info`,
+  ]);
 
   return {
     namespacesRequired: ['common'],
     countries,
     country,
+    countryInfo,
     path,
   };
 };
