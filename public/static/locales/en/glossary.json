@@ -43,7 +43,7 @@
     },
     "11":{
       "label": "Net schooling rate: ",
-      "description": "It reflects the coverage of students who attend a certain educational level and who are of official age to attend that educational level. The word “net” in this case is used because it excludes students who do not have the..."
+      "description": "It reflects the coverage of students who attend a certain educational level and who are of official age to attend that educational level. The word “net” in this case is used because it excludes students who do not have the word “net” in this case is used because it excludes students who are not of the official age to attend said educational level, and who are taken into account in the calculation of the gross enrollment rate."
     }
   }
 }
