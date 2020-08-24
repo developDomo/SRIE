@@ -5,6 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { appWithTranslation } from '../i18n';
 
 import globalStyles from '../styles/global';
+import 'katex/dist/katex.min.css';
 
 class SrieApp extends App {
   render() {

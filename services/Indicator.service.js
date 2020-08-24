@@ -4,7 +4,10 @@ import IndicatorVariationService from './IndicatorVariation.service';
 
 const db = require('express-http-context').get('db');
 
-const INDICATOR_SELECT = `SELECT i.id as indicator_id, i.translation_key as indicator_translation_key, i.code as indicator_code,
+const INDICATOR_SELECT = `SELECT i.id as indicator_id,
+      i.translation_key as indicator_translation_key,
+      i.code as indicator_code,
+      i.uis_unit_measure as unit_measure,
       pg.id as pec_goal_id,
       pg.code as pec_goal,
       t.id as topic_id,
@@ -30,6 +33,7 @@ const INDICATOR_DECOMPOSE = {
     indicator_id: 'id',
     indicator_translation_key: 'translation_key',
     indicator_code: 'code',
+    unit_measure: 'unit_measure',
   },
   pec_goals: {
     pk: 'pec_goal_id',
