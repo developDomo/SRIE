@@ -15,8 +15,15 @@ import FetchUtils from '../../../utils/Fetch.utils';
 
 
 const IconImg = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+`;
+
+const IndicatorTitle = styled.div`
+ &.col-lg-8 {
+      flex: 0 0 65.666667%;
+      max-width: 65.666667%;
+  }
 `;
 
 const filterPec = (pec, indicator, goals) => {
@@ -147,14 +154,14 @@ const IndicatorListPage = ({
       </Container>
       <Container>
         <Row className="mt-3 mb-3">
-          <div className="col-lg-7 mb-3">
+          <IndicatorTitle className="col-lg-8 mb-3 pr-0">
             <Title color="negro" type="caption">
               {t('common:educationalIndicators')}
             </Title>
-          </div>
-          <div className="col-lg-3 mb-3">
-            <Row className="d-flex align-content-center">
-              <div className="col-lg-2 m-0 p-0">
+          </IndicatorTitle>
+          <div className="col-lg-2 mb-3 p-0">
+            <Row className="">
+              <div className="col-lg-2 m-0 p-0 d-flex align-items-center justify-content-center">
                 <IconImg src={PecIcon} />
               </div>
               <div className="col-lg-8 m-0 p-0">
@@ -166,7 +173,7 @@ const IndicatorListPage = ({
           </div>
           <div className="col-lg-2 mb-3">
             <Row>
-              <div className="col-lg-2 m-0 p-0">
+              <div className="col-lg-2 m-0 p-0 d-flex align-items-center justify-content-center">
                 <IconImg src={PecIcon} />
               </div>
               <div className="col-lg-8 m-0 p-0">
