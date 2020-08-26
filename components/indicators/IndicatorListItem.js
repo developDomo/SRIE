@@ -18,8 +18,9 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+ 
   width: 100%;
-  height: 130px;
+  height:100%;
   background-color: ${gray1};
 `;
 const Title = styled.h3`
@@ -37,7 +38,7 @@ const Pec = styled.h4`
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
-  height: 100px;
+  height: 80%;
   width: 20%;
   color: ${blue};
 `;
@@ -46,12 +47,11 @@ const Ods = styled.h4`
   justify-content: center;
   align-items: center;
   border-left: 1px solid ${txt};
-  border-right: 1px solid ${txt};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
   width: 16.5%;
-  height: 100px;
+  height: 80%;
   color: ${red};
 `;
 const IconContainer = styled.div`
@@ -61,7 +61,7 @@ const IconContainer = styled.div`
   height: 100%;
   padding-left: 20px;
   padding-right: 20px;
-
+  border-left: 1px solid black;
   & div {
     display: flex;
     justify-content: center;
@@ -81,6 +81,8 @@ const IconContainer = styled.div`
   }
 
   &:hover {
+    height: 100%;
+    border-left: 1px solid transparent;
     background-color: ${blue};
     & > div {
       background-color: ${bckBanderas};
@@ -91,17 +93,17 @@ const IconContainer = styled.div`
 const IndicatorListItem = ({ t, indicator, countryName }) => (
   <Link key={`indicador-${indicator.code}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
     <div className="col-lg-12 mb-3 p-0">
-      <Container className="d-flex  justify-content-between p-0">
+      <Container className="d-flex  justify-content-end p-0">
         <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
-          <Title>
+          <Title className="py-2">
             {t(`indicators.${indicator.code}.name`)}
           </Title>
           {indicator.topics.map((topic) => (
             <TopicTag topicCode={topic.code} />
           ))}
         </div>
-        <Pec>{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-        <Ods>{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
+        <Pec className="m-0">{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
+        <Ods className="m-0">{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
         <IconContainer className=" ">
           <div />
         </IconContainer>

@@ -139,6 +139,9 @@ export const IconContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background-color: ${(props) => (colors[props.color])};
   text-transform: capitalize;
   font-family: 'Roboto Slab', serif;
