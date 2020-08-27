@@ -244,7 +244,7 @@ export default {
 
   getFreeEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'FREE_EDU', ref_area: country },
+      { stat_unit: 'FREE_EDU', unit_measure: 'YR', ref_area: country },
       {
         fields,
         order,
@@ -255,7 +255,7 @@ export default {
   },
   getCompulsoryEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'COMP_EDU', ref_area: country },
+      { stat_unit: 'COMP_EDU', unit_measure: 'YR', ref_area: country },
       {
         fields,
         order,
@@ -266,7 +266,12 @@ export default {
   },
   getLiteracyRateByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'LR', ref_area: country, age: 'Y_GE15' },
+      {
+        stat_unit: 'LR',
+        unit_measure: 'PT',
+        ref_area: country,
+        age: 'Y_GE15',
+      },
       {
         fields,
         order,
@@ -344,6 +349,7 @@ export default {
     const data = await db.sdg4.findOne(
       {
         stat_unit: 'ROFST',
+        unit_measure: 'PT',
         ref_area: country,
         sex: '_T',
         age: 'SCH_AGE_GROUP',

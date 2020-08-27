@@ -7,11 +7,11 @@ import {
 const TagContainer = styled.h4`
 background-color: ${green1};
 font-family: 'Raleway', sans-serif;
-padding: 5px;
+padding: 10px;
 color: white;
 font-size: 0.9em;
 text-align: center;
-width: 100px;
+width: max-content;
 margin-top: 15px;
 `;
 
