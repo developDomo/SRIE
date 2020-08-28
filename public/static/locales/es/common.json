@@ -15,6 +15,7 @@
   "periodicity": "Periodicidad",
   "limitationsAndComments": "Limitaciones y comentarios",
   "licenseAndCopyrights": "Licencia y permisos de uso",
+  "datasourceType": "Tipo de fuente de datos",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
   "numberOfEducationalCenters": "Cantidad de centros educativos",

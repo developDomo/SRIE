@@ -161,7 +161,7 @@ const IndicatorPage = ({
           <Row>
             <Col xs lg="10">
               <IndicatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndicatorName>
-              {indicator.topics.map((topic) => (
+              {indicator.topics?.map((topic) => (
                 <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
             </Col>
@@ -169,14 +169,14 @@ const IndicatorPage = ({
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverPec}>
                 <Icon iconUrl="/img/home/icon_ods4_indicadores.svg">
                   <PecIndicator>
-                    {`PEC ${indicator.pec_goals.map((goal) => goal.code).join('/')}`}
+                    {`PEC ${indicator.pec_goals?.map((goal) => goal.code).join('/')}`}
                   </PecIndicator>
                 </Icon>
               </OverlayTrigger>
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverOds}>
                 <Icon iconUrl="/img/home/icon_ods_table.svg">
                   <OdsIndicator>
-                    {`ODS ${indicator.ods4_goals.map((goal) => goal.code).join('/')}`}
+                    {`ODS ${indicator.ods4_goals?.map((goal) => goal.code).join('/')}`}
                   </OdsIndicator>
                 </Icon>
               </OverlayTrigger>
