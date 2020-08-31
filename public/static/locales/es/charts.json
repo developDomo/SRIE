@@ -18,5 +18,11 @@
       "PNG": "Formato PNG",
       "CSV": "Formato CSV"
     }
+  },
+  "units": {
+    "PT": "%",
+    "YR": "Years",
+    "PPP_CONST": "$",
+    "PER": "?"
   }
 }

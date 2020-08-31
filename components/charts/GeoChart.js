@@ -16,7 +16,9 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const GeoChart = ({ data, t, chartType }) => {
+const GeoChart = ({
+  data, t, chartType, unitMeasure,
+}) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.location.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.location.historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
@@ -52,11 +54,11 @@ const GeoChart = ({ data, t, chartType }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis unit="%" />
+          <YAxis unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="URB" fill={maleBarColor} name={t('URB')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="URB" fill={maleBarColor} name={t('URB')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
@@ -81,11 +83,14 @@ const GeoChart = ({ data, t, chartType }) => {
   );
 };
 
-GeoChart.getInitialProps = ({ t, data, chartType }) => (
+GeoChart.getInitialProps = ({
+  t, data, chartType, unitMeasure,
+}) => (
   {
     t,
     data,
     chartType,
+    unitMeasure,
     namespacesRequired: ['charts'],
   }
 );

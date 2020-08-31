@@ -190,6 +190,7 @@ const IndicatorPage = ({
             data={data}
             indicatorSource={indicatorSource}
             indicator={indicator.id}
+            unitMeasure={indicator.unit_measure}
             country={country}
             key={indicatorSource.code}
             chart={indicatorSource}
