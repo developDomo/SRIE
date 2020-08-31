@@ -210,14 +210,13 @@ export const BoxIndicador = ({
         <p>{preschoolText}</p>
       </IndicadorContainer>
     ) : undefined}
-
-    <IndicadorContainer color="green">
-      <h3>{primarySchoolValue}</h3>
-      <p>{primarySchoolText}</p>
-    </IndicadorContainer>
     <IndicadorContainer color="blue">
       <h3>{highSchoolValue}</h3>
       <p>{highSchoolText}</p>
+    </IndicadorContainer>
+    <IndicadorContainer color="green">
+      <h3>{primarySchoolValue}</h3>
+      <p>{primarySchoolText}</p>
     </IndicadorContainer>
   </ContainerIndicadorStyled>
 );
