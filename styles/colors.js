@@ -46,3 +46,4 @@ export const pinkRosewood = '#BC6060';
 export const pinkRose = '#fdcccc';
 export const pinkWatermelon = '#fc9999';
 export const red = '#BF1922';
+export const gray2 = '#333';
