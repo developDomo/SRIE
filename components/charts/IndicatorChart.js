@@ -13,6 +13,8 @@ import SexChart from './SexChart';
 import ChartTypeControls from './controls/ChartTypeControls';
 import IndexesChart from './indexesChart';
 import { hasSomeData } from './helpers/ChartDataHelper';
+import GeoChart from './GeoChart';
+import WealthQuintilleChart from './WealthQuintilleChart';
 
 const ChartContent = styled.div`
   width: 100%;
@@ -130,6 +132,7 @@ const InfoModal = ({
         {translation('common:method')}
         :
       </strong>
+
       <DataSheetParagraph>
         {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.method`, { joinArrays: '\n' }))}
       </DataSheetParagraph>
@@ -160,11 +163,20 @@ const InfoModal = ({
       </DataSheetParagraph>
 
       <strong>
-        {translation('common:primaryDataSource')}
+
+        {translation('common:datasourceType')}
         :
       </strong>
       <DataSheetParagraph>
-        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.primaryDataSource`, { joinArrays: '\n' }))}
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
+      </DataSheetParagraph>
+
+      <strong>
+        {translation('common:datasourceType')}
+        :
+      </strong>
+      <DataSheetParagraph>
+        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
       </DataSheetParagraph>
 
       <strong>
@@ -192,9 +204,6 @@ const InfoModal = ({
       </DataSheetParagraph>
 
     </Modal.Body>
-    <Modal.Footer>
-      <Button onClick={onHide}>Close</Button>
-    </Modal.Footer>
   </Modal>
 );
 
@@ -271,10 +280,12 @@ const IndicatorChart = ({
   };
 
   const showGeoZoneTab = () => {
-    if (tabsToShow.indexOf('location') !== -1) {
+    if ((tabsToShow.indexOf('location') !== -1)
+        && chartData.visualizations.location.historical.length > 0
+        && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <TotalChart data={chartData} chartType={chartType} />
+          <GeoChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }
@@ -282,10 +293,12 @@ const IndicatorChart = ({
   };
 
   const showSocioeconomicLevelTab = () => {
-    if (tabsToShow.indexOf('wealth-quintille') !== -1) {
+    if ((tabsToShow.indexOf('wealth-quintille') !== -1)
+        && chartData.visualizations['wealth-quintille'].historical.length > 0
+        && chartData.visualizations['wealth-quintille'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <TotalChart data={chartData} chartType={chartType} />
+          <WealthQuintilleChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }

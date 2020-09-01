@@ -11,8 +11,8 @@ padding: 5px;
 color: white;
 font-size: 0.9em;
 text-align: center;
-width: 100px;
-margin-top: 15px;
+width: max-content;
+margin-top: 10px;
 `;
 
 const TopicTag = ({ t, topicCode }) => (
