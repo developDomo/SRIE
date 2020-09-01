@@ -41,9 +41,13 @@ const Country = ({
 
   const numberOfEducationalCentersValue = 0;
 
-  const tuitionFeesByLevelPreschoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L1.obs_value).toFixed(2) || 0;
-  const tuitionFeesByLevelHighSchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L02.obs_value).toFixed(2) || 0;
-  const tuitionFeesByLevelPrimarySchoolValue = parseFloat(countryInfo.net_enrollment_rate.data.L2_3.obs_value).toFixed(2) || 0;
+  const tuitionFeesByLevelPreschoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L1.obs_value;
+  const tuitionFeesByLevelHighSchoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L02.obs_value;
+  const tuitionFeesByLevelPrimarySchoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L2_3.obs_value;
+
+  const tuitionFeesByLevelPreschoolValue = tuitionFeesByLevelPreschoolValidation ? countryInfo.net_enrollment_rate.data.L1.obs_value : 0;
+  const tuitionFeesByLevelHighSchoolValue = tuitionFeesByLevelHighSchoolValidation ? countryInfo.net_enrollment_rate.data.L02.obs_value : 0;
+  const tuitionFeesByLevelPrimarySchoolValue = tuitionFeesByLevelPrimarySchoolValidation ? countryInfo.net_enrollment_rate.data.L2_3.obs_value : 0;
 
   const RateByLevelPrimaryValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3;
   const RateByLevelPrimaryValue = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
@@ -110,9 +114,9 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              preschoolValue={`${tuitionFeesByLevelPreschoolValue}%`}
-              primarySchoolValue={`${tuitionFeesByLevelPrimarySchoolValue}%`}
-              highSchoolValue={`${tuitionFeesByLevelHighSchoolValue}%`}
+              preschoolValue={`${parseFloat(tuitionFeesByLevelPreschoolValue).toFixed(2)}%`}
+              primarySchoolValue={`${parseFloat(tuitionFeesByLevelPrimarySchoolValue).toFixed(2)}%`}
+              highSchoolValue={`${parseFloat(tuitionFeesByLevelHighSchoolValue).toFixed(2)}%`}
               preschoolText={t('preschool')}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
@@ -155,7 +159,7 @@ const Country = ({
             </Title>
           </div>
           <div className="col-lg-12 text-center">
-            <Title color="blue2" type="subtitle">
+            <Title color="blue2" type="subtitle" className="mt-0">
               {t('byCategory')}
             </Title>
           </div>

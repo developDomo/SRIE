@@ -139,13 +139,17 @@ export const IconContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
-  white-space: nowrap;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.2;
   background-color: ${(props) => (colors[props.color])};
-  text-transform: capitalize;
+  text-transform: initial;
   font-family: 'Roboto Slab', serif;
   font-size: 1.5em;
-  padding: 25px 10px 5px 10px;
+  padding: 10px 10px 5px 10px;
   width: 100%;
+  display:flex;
+  align-items:center;
 `;
