@@ -90,7 +90,6 @@ const WealthQuintilleChart = ({
     );
   };
 
-
   return (
     <Content>
       <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />

@@ -16,7 +16,6 @@ import { hasSomeData } from './helpers/ChartDataHelper';
 import GeoChart from './GeoChart';
 import WealthQuintilleChart from './WealthQuintilleChart';
 
-
 const ChartContent = styled.div`
   width: 100%;
   height: 700px;
@@ -102,7 +101,6 @@ const DataSheetParagraph = styled.p`
 const DataSheetFormula = styled.p`
   color: #007BFF;
 `;
-
 
 const InfoModal = ({
   onHide, show, translation, indicator,

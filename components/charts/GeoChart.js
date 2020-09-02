@@ -72,7 +72,6 @@ const GeoChart = ({
     );
   };
 
-
   return (
     <Content>
       <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
