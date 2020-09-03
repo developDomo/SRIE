@@ -34,28 +34,34 @@ const Country = ({
   t, countries, country, countryInfo,
 }) => {
   const navigation = [{ key: 'navigation.pages.country-data' }];
+  const { free_edu, literacy_rate, out_of_school_rate } = countryInfo;
 
-  const isFreeValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
-  const mandatoryValue = parseInt(countryInfo.free_edu.obs_value, 10) || 0;
-  const alphabetizationRateValue = parseFloat(countryInfo.literacy_rate.obs_value).toFixed(2) || 0;
+  const enrollment = countryInfo.net_enrollment_rate;
+  const { data: enrollmentData } = enrollment;
+
+  const completionRate = countryInfo.completion_rate;
+  const { data: completionRateData } = completionRate;
+
+
+  const isFreeValue = free_edu?.obs_value || 0;
+  const mandatoryValue = free_edu?.obs_value || 0;
+
+  const alphabetizationRateValue = literacy_rate?.obs_value || 0;
 
   const numberOfEducationalCentersValue = 0;
 
-  const tuitionFeesByLevelPreschoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L1.obs_value;
-  const tuitionFeesByLevelHighSchoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L02.obs_value;
-  const tuitionFeesByLevelPrimarySchoolValidation = countryInfo.net_enrollment_rate.data && countryInfo.net_enrollment_rate.data.L2_3.obs_value;
+  const tuitionFeesByLevelPreschoolValue = enrollmentData?.L1?.obs_value || 0;
+  const tuitionFeesByLevelHighSchoolValue = enrollmentData?.L02?.obs_value || 0;
+  const tuitionFeesByLevelPrimarySchoolValue = enrollmentData?.L2_3?.obs_value || 0;
 
-  const tuitionFeesByLevelPreschoolValue = tuitionFeesByLevelPreschoolValidation ? countryInfo.net_enrollment_rate.data.L1.obs_value : 0;
-  const tuitionFeesByLevelHighSchoolValue = tuitionFeesByLevelHighSchoolValidation ? countryInfo.net_enrollment_rate.data.L02.obs_value : 0;
-  const tuitionFeesByLevelPrimarySchoolValue = tuitionFeesByLevelPrimarySchoolValidation ? countryInfo.net_enrollment_rate.data.L2_3.obs_value : 0;
+  const RateByLevelPrimaryValue = completionRateData?.L3?.obs_value || 0;
+  const RateByLevelHighValue = completionRateData?.L1?.obs_value || 0;
 
-  const RateByLevelPrimaryValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L3;
-  const RateByLevelPrimaryValue = RateByLevelPrimaryValidation ? countryInfo.completion_rate.data.L3.obs_value : 0;
+  const girlsBoysAndAdolescentsOutsideOfSchoolValue = out_of_school_rate?.obs_value || 0;
 
-  const RateByLevelHighValidation = countryInfo.completion_rate.data && countryInfo.completion_rate.data.L1;
-  const RateByLevelHighValue = RateByLevelHighValidation ? countryInfo.completion_rate.data.L1.obs_value : 0;
+  const percentFormat = (data) => `${parseFloat(data).toFixed(2)}%`;
 
-  const girlsBoysAndAdolescentsOutsideOfSchoolValue = parseFloat(countryInfo.out_of_school_rate.obs_value).toFixed(2) || 0;
+  const decimalFormat = (data) => parseInt(data, 10);
 
   return (
     <div>
@@ -87,9 +93,9 @@ const Country = ({
               iconImg={EducationIcon}
               title={t('numberOfYears')}
               color="blue"
-              isFree={isFreeValue}
+              isFree={decimalFormat(isFreeValue)}
               isFreeTitle={t('freeAndCompulsoryEducation')}
-              mandatory={mandatoryValue}
+              mandatory={decimalFormat(mandatoryValue)}
               mandatoryTitle={t('ObligatoryEducation')}
             />
           </div>
@@ -97,7 +103,7 @@ const Country = ({
             <Box
               iconImg={LiteracyIcon}
               title={t('alphabetizationRate')}
-              subtitle={`${alphabetizationRateValue}%`}
+              subtitle={percentFormat(alphabetizationRateValue)}
               color="green"
             />
           </div>
@@ -114,9 +120,9 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              preschoolValue={`${parseFloat(tuitionFeesByLevelPreschoolValue).toFixed(2)}%`}
-              primarySchoolValue={`${parseFloat(tuitionFeesByLevelPrimarySchoolValue).toFixed(2)}%`}
-              highSchoolValue={`${parseFloat(tuitionFeesByLevelHighSchoolValue).toFixed(2)}%`}
+              preschoolValue={percentFormat(tuitionFeesByLevelPreschoolValue)}
+              primarySchoolValue={percentFormat(tuitionFeesByLevelPrimarySchoolValue)}
+              highSchoolValue={percentFormat(tuitionFeesByLevelHighSchoolValue)}
               preschoolText={t('preschool')}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
@@ -126,8 +132,8 @@ const Country = ({
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue={`${parseFloat(RateByLevelPrimaryValue).toFixed(2)}%`}
-              highSchoolValue={`${parseFloat(RateByLevelHighValue).toFixed(2)}%`}
+              primarySchoolValue={percentFormat(RateByLevelPrimaryValue)}
+              highSchoolValue={percentFormat(RateByLevelHighValue)}
               primarySchoolText={t('highSchool')}
               highSchoolText={t('primary')}
             />
@@ -136,7 +142,7 @@ const Country = ({
             <Box
               iconImg={DataChildIcon}
               title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
-              subtitle={`${girlsBoysAndAdolescentsOutsideOfSchoolValue}%`}
+              subtitle={percentFormat(girlsBoysAndAdolescentsOutsideOfSchoolValue)}
               color="light_blue"
             />
           </div>
