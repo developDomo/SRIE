@@ -87,7 +87,6 @@ const IconContainer = styled.div`
   }
 `;
 
-
 const IndicatorListItem = ({ t, indicator, countryName }) => {
   const [onHover, setOnHover] = useState(false);
 
