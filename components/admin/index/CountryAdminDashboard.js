@@ -1,6 +1,6 @@
 const CountryAdminDashboard = () => (
   <div>
-    Country Admin Dashboard
+    <h2>Country Admin Dashboard</h2>
   </div>
 );
 
