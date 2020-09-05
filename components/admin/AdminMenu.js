@@ -35,7 +35,7 @@ const AdminMenu = ({ user }) => {
           {user?.isLoggedIn && (
             <>
               <li>
-                <Link href="/admin">
+                <Link href="/admin/data">
                   <a>Data</a>
                 </Link>
               </li>
