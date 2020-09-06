@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect';
-import ManualDataService from '../../../../services/ManualData.service';
-import InputValidatorUtils from '../../../../utils/InputValidator.utils';
+import ManualDataService from '../../../../../services/ManualData.service';
+import InputValidatorUtils from '../../../../../utils/InputValidator.utils';
 
 const handler = nextConnect();
 
@@ -40,6 +40,7 @@ handler.get(async (req, res) => {
 });
 
 handler.post(async (req, res) => {
+  console.log('post');
   const { id } = req.query;
   if (InputValidatorUtils.validate(inputPostValidator, req.query, res)) {
     await ManualDataService.addData(id, req.body);
