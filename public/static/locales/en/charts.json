@@ -22,7 +22,6 @@
   "units": {
     "PT": "%",
     "YR": "Years",
-    "PPP_CONST": "$",
-    "PER": "?"
+    "PPP_CONST": "constant $"
   }
 }

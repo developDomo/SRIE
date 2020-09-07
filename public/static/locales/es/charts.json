@@ -21,8 +21,8 @@
   },
   "units": {
     "PT": "%",
-    "YR": "Years",
-    "PPP_CONST": "$",
+    "YR": "Años",
+    "PPP_CONST": "$ constantes",
     "PER": "?"
   }
 }
