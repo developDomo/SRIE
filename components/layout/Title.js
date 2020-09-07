@@ -45,9 +45,9 @@ const TextContainer = styled.h3`
 `;
 
 const Title = ({
-  children, color, type, textCenter,
+  children, color, type, textCenter, className,
 }) => (
-  <TextContainer color={color} type={type} textCenter={textCenter}>
+  <TextContainer color={color} type={type} textCenter={textCenter} className={className}>
     {children}
   </TextContainer>
 );
