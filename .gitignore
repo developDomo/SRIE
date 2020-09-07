@@ -14,7 +14,7 @@
 
 # production
 /build
-/public/csv
+/temp/csv
 
 # misc
 .DS_Store

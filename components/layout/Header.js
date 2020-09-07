@@ -22,10 +22,8 @@ const WhiteLine = styled.hr`
   width: 100%;
 `;
 
-
 const Header = ({ router: { pathname, query } }) => {
   const [path, setPath] = useState(pathname);
-
   useEffect(() => {
     const handleRouteChange = (url) => {
       setPath(url);
@@ -68,6 +66,10 @@ const Header = ({ router: { pathname, query } }) => {
           : `body { background-image: ${getThemeProperty('navbar.otherPages.body.background-image')};} 
             .nav-item > a {border-bottom: 2px solid ${theme.navbar.primaryFontColor};}`
         }
+        ${path === '/'
+          ? '.blue-navbar-item a {color: white;}'
+          : `.blue-navbar-item a {color: ${theme.navbar.dropdownMenuColor} !important;}`
+        }
 
       .navbar-light .navbar-nav .nav-link {
         color: ${theme.navbar.primaryFontColor};
@@ -91,9 +93,6 @@ const Header = ({ router: { pathname, query } }) => {
         background-color: transparent;
       }
 
-      .blue-navbar-item a {
-        color: ${theme.navbar.dropdownMenuColor} !important;
-      }
       .white-navbar {
         background-color: ${theme.navbar.primaryFontColor} !important;
       }

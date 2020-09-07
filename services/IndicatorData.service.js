@@ -190,13 +190,12 @@ const filterData = async (unit_measure, data, visualizations, indexes) => {
   const dataByViews = {};
 
   indexes = _.map(indexes, (i) => _.assign(i, { label: 'unit_measure' }));
-  visualizations = _.map(visualizations, (i) => _.assign(i, { unit_measure }));
 
   Object.keys(data).forEach(async (code) => {
     dataByViews[code] = {};
     dataByViews[code].visualizations = await filterDataByView(
       visualizations,
-      data[code],
+      _.filter(data[code], { unit_measure }),
     );
     dataByViews[code].indexes = await filterDataByView(
       indexes,
@@ -245,7 +244,7 @@ export default {
 
   getFreeEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'FREE_EDU', ref_area: country },
+      { stat_unit: 'FREE_EDU', unit_measure: 'YR', ref_area: country },
       {
         fields,
         order,
@@ -256,7 +255,7 @@ export default {
   },
   getCompulsoryEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'COMP_EDU', ref_area: country },
+      { stat_unit: 'COMP_EDU', unit_measure: 'YR', ref_area: country },
       {
         fields,
         order,
@@ -267,7 +266,12 @@ export default {
   },
   getLiteracyRateByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'LR', ref_area: country, age: 'Y_GE15' },
+      {
+        stat_unit: 'LR',
+        unit_measure: 'PT',
+        ref_area: country,
+        age: 'Y_GE15',
+      },
       {
         fields,
         order,
@@ -278,14 +282,14 @@ export default {
   },
 
   getNetEnrollmentRateByCountry: async (country) => {
-    const rawData = await db.sdg4.find(
+    const rawData = await db.edu_non_finance.find(
       {
         stat_unit: 'NER',
         ref_area: country,
         unit_measure: 'PT',
         sex: '_T',
         age: 'SCH_AGE_GROUP',
-        wealth_quintile: '_T',
+        wealth_quintile: '_Z',
         location: '_T',
         or: [{ edu_level: 'L02' }, { edu_level: 'L1' }, { edu_level: 'L2_3' }],
       },
@@ -345,6 +349,7 @@ export default {
     const data = await db.sdg4.findOne(
       {
         stat_unit: 'ROFST',
+        unit_measure: 'PT',
         ref_area: country,
         sex: '_T',
         age: 'SCH_AGE_GROUP',
@@ -360,4 +365,5 @@ export default {
 
     return data || {};
   },
+  filterDataByVariation,
 };

@@ -74,20 +74,26 @@ const Icon = styled.span`
     }
 `;
 
-const NameParagraph = styled.p`
+const IndicatorName = styled.h2`
   color: #22314D;
   font-weight: bold;
+  font-size: 1.4rem;
+  font-family: "Roboto Slab", sans-serif;
 `;
-const Title = styled.h1`
+const Title = styled.h3`
     color: #4495CD;
+    font-family: "Roboto Slab";
+    font-size: 1.5em;
 `;
 
 const PecIndicator = styled.p`
   color: #5CA0BE;
+  font-family: "Roboto Slab";
 `;
 
 const OdsIndicator = styled.p`
   color: #C84046;
+  font-family: "Roboto Slab";
 `;
 
 const IndicatorPage = ({
@@ -117,12 +123,19 @@ const IndicatorPage = ({
     }];
   };
 
+  const PecTooltip = ({ pecGoals }) => (
+    pecGoals.map((pecGoal) => (
+      <p>
+        <strong>{pecGoal.code}</strong>
+        {`: ${t(`pec-goals:pec-goals.${pecGoal.code.toString().replace('.', '-')}.description`)}`}
+      </p>
+    ))
+  );
+
   const popoverPec = (
     <Popover id="popover-pec">
       <Popover.Content>
-        Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-        Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken.
-        Landjaeger turkey sausage beef. Tongue landjaeger andouille, fatback shank t-bone
+        <PecTooltip pecGoals={indicator.pec_goals} />
       </Popover.Content>
     </Popover>
   );
@@ -147,8 +160,8 @@ const IndicatorPage = ({
         <IndicatorDescription>
           <Row>
             <Col xs lg="10">
-              <NameParagraph>{t(`indicators:indicators.${indicator.id}.name`)}</NameParagraph>
-              {indicator.topics.map((topic) => (
+              <IndicatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndicatorName>
+              {indicator.topics?.map((topic) => (
                 <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
             </Col>
@@ -156,16 +169,14 @@ const IndicatorPage = ({
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverPec}>
                 <Icon iconUrl="/img/home/icon_ods4_indicadores.svg">
                   <PecIndicator>
-                    PEC
-                    {indicator.pec_goals.map((goal) => goal.code).join('/')}
+                    {`PEC ${indicator.pec_goals?.map((goal) => goal.code).join('/')}`}
                   </PecIndicator>
                 </Icon>
               </OverlayTrigger>
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverOds}>
                 <Icon iconUrl="/img/home/icon_ods_table.svg">
                   <OdsIndicator>
-                    ODS
-                    {indicator.ods4_goals.map((goal) => goal.code).join('/')}
+                    {`ODS ${indicator.ods4_goals?.map((goal) => goal.code).join('/')}`}
                   </OdsIndicator>
                 </Icon>
               </OverlayTrigger>
@@ -198,7 +209,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
+IndicatorPage.getInitialProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -209,14 +220,13 @@ IndicatorPage.getInitialProps = async ({ query, res: { t } }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/related`,
   ]);
   return {
-    namespacesRequired: ['common', 'indicators'],
+    namespacesRequired: ['common', 'indicators', 'pec-goals'],
     countries,
     country,
     indicator,
     data,
     relatedIndicators,
-    t,
   };
 };
 
-export default withTranslation('common', 'indicators')(IndicatorPage);
+export default withTranslation('common', 'indicators', 'pec-goals')(IndicatorPage);

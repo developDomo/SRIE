@@ -27,8 +27,11 @@ const Footer = ({ t, router: { query } }) => (
           </Col>
           <Col xs={12} sm={1} />
           <Col xs={12} sm={4}>
-            <a href="#0" target="_blank" className="d-block pb-2">
-              <img src="/img/home/CECC-SICA.png" alt="CECC-SICA" />
+            <a href="https://ceccsica.info/" rel="noreferrer" target="_blank" className="d-block pb-2 float-left">
+              <img src="/img/home/CECC.png" alt="CECC" />
+            </a>
+            <a href="https://www.sica.int/" rel="noreferrer" target="_blank" className="d-block pb-2">
+              <img src="/img/home/SICA.png" alt="SICA" />
             </a>
             <p className="small mb-2">
               <strong>
@@ -41,11 +44,6 @@ const Footer = ({ t, router: { query } }) => (
                 {t('footer.tel')}
               </strong>
               {' (506) 2248-0542.'}
-            </p>
-            <p className="small mb-2">
-              <strong>
-                {t('footer.email')}
-              </strong>
             </p>
             <a href="https://www.facebook.com/CECCSG" target="_blank" rel="noreferrer" className="ico-fb">
               Facebook

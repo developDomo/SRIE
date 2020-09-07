@@ -8,6 +8,7 @@ export default css.global`
     color: ${theme.colors.font};
     font-family: 'Roboto', sans-serif;    
   }
+  
   img{
     max-width: 100%;
   }
@@ -36,7 +37,7 @@ export default css.global`
   }
   .carousel-item .row{
       /*height:345px;*/
-      height:21em;
+      height:18em;
     }
   .breadcrum-item{
     font-family: 'Roboto', sans-serif; 
@@ -66,7 +67,7 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-  
+
   @media (max-width: 576px) { 
     .country-selector{
       
@@ -77,7 +78,7 @@ export default css.global`
       
     }
     .home .row,.row.slider-box{
-    margin 0;
+      margin: 0;
     }
   }
   @media (min-width: 576px) { 
@@ -123,14 +124,11 @@ export default css.global`
   /* fin768 */
 
   @media (min-width: 992px) {
-    
-    
   }
   /* fin992 */
 
   
   @media (min-width: 1200px) {
-
   }
   /* fin1200 */
   @media (min-width: 1600px){

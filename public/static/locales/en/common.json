@@ -5,6 +5,16 @@
     "with-status": "A {{statusCode}} error occurred on server",
     "without-status": "An error occurred on the server"
   },
+  "definition": "Definition",
+  "purpose": "Purpose",
+  "method": "Calculation method",
+  "where": "where",
+  "interpretation": "Interpretación",
+  "primaryDataSource": "Fuente primaria de datos",
+  "periodicity": "Periodicity",
+  "limitationsAndComments": "Limitations and comments",
+  "licenseAndCopyrights": "License and copyrights",
+  "datasourceType": "Type of data source",
   "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
@@ -41,5 +51,8 @@
   "educationalIndicators": "Educational indicators",
   "pec": "PEC",
   "ods4": "ODS 4",
+  "goal": {
+    "all": "All"
+  },
   "selectTheCountryYouWantToConsult": "Select the country you want to consult"
 }
