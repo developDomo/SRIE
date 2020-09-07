@@ -54,5 +54,11 @@
   "goal": {
     "all": "All"
   },
-  "selectTheCountryYouWantToConsult": "Select the country you want to consult"
+  "selectTheCountryYouWantToConsult": "Select the country you want to consult",
+  "enterLoginCredentials": "Enter your login credentials",
+  "problemsLoginIn": "Problems loggin in?",
+  "contactAdmin": "contact the administrator",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login"
 }

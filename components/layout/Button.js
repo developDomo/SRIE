@@ -146,7 +146,7 @@ export const TextContainer = styled.div`
   text-overflow: ellipsis;
   line-height: 1.2;
   background-color: ${(props) => (colors[props.color])};
-  text-transform: initial;
+  text-transform: ${(props) => (props.textTransform || 'initial')};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.5em;
   padding: 10px 10px 5px 10px;
@@ -158,9 +158,9 @@ export const TextContainer = styled.div`
 
 
 export const Button = ({
-  children, onClick, color,
+  children, onClick, color, textTransform,
 }) => (
   <ButtonContainer as="button" color={color} onClick={onClick}>
-    <TextContainer color={color}>{children}</TextContainer>
+    <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
   </ButtonContainer>
 );
