@@ -54,5 +54,9 @@
   "goal": {
     "all": "All"
   },
-  "selectTheCountryYouWantToConsult": "Select the country you want to consult"
+  "selectTheCountryYouWantToConsult": "Select the country you want to consult",
+  "copyLink": "Copy link",
+  "shareLink": "Share link",
+  "embedCode": "Embed",
+  "iframeCode": "Iframe code"
 }

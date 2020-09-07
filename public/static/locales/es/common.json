@@ -54,6 +54,9 @@
   "educationalIndicators": "Indicadores educativos",
   "pec": "PEC",
   "ods4": "ODS 4",
-  "selectTheCountryYouWantToConsult": "Seleccione el país que desea consultar"
-
+  "selectTheCountryYouWantToConsult": "Seleccione el país que desea consultar",
+  "copyLink": "Copiar enlace",
+  "shareLink": "Comparta este indicador por",
+  "embedCode": "Incrustar gráfico del indicador en tu sitio o blog",
+  "iframeCode": "Código iframe"
 }
