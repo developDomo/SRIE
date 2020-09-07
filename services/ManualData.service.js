@@ -96,6 +96,42 @@ const addData = async (id, data) => {
   addIndicatorData(id, data);
 };
 
+const updateUisData = (indicator, data, value) => {
+  if (value) {
+    db[indicator.uis_dataset.toLowerCase()].update(data, { obs_value: value });
+  }
+};
+
+const editIndicatorData = async (id, data) => {
+  const indicatorPromise = IndicatorService.findById(id);
+  const indexesPromise = IndicatorIndexService.findByIndicatorId(id);
+  const [indicator, indexes] = await Promise.all([indicatorPromise, indexesPromise]);
+
+  const baseData = getBaseData(indicator.id, data);
+
+  updateUisData(indicator, { ...baseData }, data.total);
+
+  updateUisData(indicator, { ...baseData, sex: MALE_VALUE }, data.male);
+  updateUisData(indicator, { ...baseData, sex: FEMALE_VALUE }, data.female);
+
+  updateUisData(indicator, { ...baseData, location: RURAL_VALUE }, data.rural);
+  updateUisData(indicator, { ...baseData, location: URBAN_VALUE }, data.urban);
+
+  updateUisData(indicator, { ...baseData, wealth_quintile: Q1_VALUE }, data.q1);
+  updateUisData(indicator, { ...baseData, wealth_quintile: Q2_VALUE }, data.q2);
+  updateUisData(indicator, { ...baseData, wealth_quintile: Q3_VALUE }, data.q3);
+  updateUisData(indicator, { ...baseData, wealth_quintile: Q4_VALUE }, data.q4);
+  updateUisData(indicator, { ...baseData, wealth_quintile: Q5_VALUE }, data.q5);
+
+  indexes.forEach((index) => {
+    const indexCode = index.code.toLowerCase();
+
+    if (data[indexCode]) {
+      updateUisData(indicator, { ...baseData, unit_measure: index.code }, data[indexCode]);
+    }
+  });
+};
+
 const buildManualDataByYear = (data, year, unit_measure, indexes) => {
   const total = FilterUtils.filter(data, {
     sex: ['_T', '_Z'], location: ['_T', '_Z'], wealth_quintile: ['_T', '_Z'], unit_measure,
@@ -206,5 +242,6 @@ const findManualDataByIndicatorId = async (id, variationCode, country) => {
 
 export default {
   addData,
+  editIndicatorData,
   findManualDataByIndicatorId,
 };

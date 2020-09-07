@@ -12,20 +12,25 @@ const preventDefault = (f) => (e) => {
 
 
 const AdminDataEdit = ({
-  user, visualizations, indexes, data, variation, year,
+  id, user, visualizations, indexes, data, variation, year,
 }) => {
-  // const router = useRouter();
-  const [formData, setFormData] = useState({});
+  const variationQueryParam = variation ? `variation=${variation}` : '';
+  const postUrl = `/api/indicators/${id}/manual-data/edit`;
+  const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
 
-  const handleSubmit = preventDefault((e) => {
-    console.log('SUBMIT');
-    // fetch(postUrl, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formData),
-    // }).then((res) => {
-    //   if (res.ok) router.push(redirectUrl);
-    // });
+  const router = useRouter();
+  const [formData, setFormData] = useState({});
+  formData.country = user.country;
+  formData.variation = variation;
+
+  const handleSubmit = preventDefault(() => {
+    fetch(postUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    }).then((res) => {
+      if (res.ok) router.push(redirectUrl);
+    });
   });
 
   return (
