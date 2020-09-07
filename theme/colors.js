@@ -15,6 +15,7 @@ export const green = '#009B8A';
 export const blue3 = '#0865BA';
 export const txt = '#1D2D49';
 export const green1 = '#34A53E';
+export const green2 = '#324914';
 export const bordes = '#5E7C8B';
 
 // Paleta Secundaria
