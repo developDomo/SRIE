@@ -24,6 +24,7 @@ const TitlePais = styled.div`
   align-items: center;
   justify-content: center;
   height: 100px;
+  text-align: center;
   & h3 {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -106,7 +107,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
           </div>
         </Row>
       </Container>
-      <Container className="bg-light mt-4 pb-5">
+      <div className="bg-light mt-4 pb-5">
         <Row>
           <Container>
             <Row className="d-flex justify-content-center mt-5 mb-5 ">
@@ -155,7 +156,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
             </Row>
           </Container>
         </Row>
-      </Container>
+      </div>
     </>
   );
 };
