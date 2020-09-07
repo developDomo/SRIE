@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
-  blue1, yellow, green, txt, blueTitle, bordes,
+  blue1, yellow, green, txt, blueTitle, bordes, blue,
 } from '../../styles/colors';
 
 const colors = {
   green,
   blue: blue1,
-  blueTitle,
+  blueTitle: blue,
   yellow,
   black: txt,
   bordes,
