@@ -124,8 +124,6 @@ const DoubleLine = styled.hr`
   border-top:5px double; 
 `;
 
-const title = 'GitHub';
-
 const InfoModal = ({
   onHide, show, translation, indicator,
 }) => (
@@ -233,7 +231,7 @@ const InfoModal = ({
 );
 
 const ShareModal = ({
-  show, onHide, indicator, t, absolutePath, countryCode, variation,
+  show, onHide, indicator, t, absolutePath, countryCode, variation, title,
 }) => (
   <Modal
     show={show}
@@ -328,7 +326,6 @@ const IndicatorChart = ({
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
-
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
   const [absolutePath, setAbsolutePat] = useState();
   const handleInfoModalClose = () => setInfoModalShow(false);
@@ -465,6 +462,7 @@ const IndicatorChart = ({
                 countryCode={country.short_name}
                 onHide={() => setDownloadModalShow(false)}
                 variation={indicatorSource}
+                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}`) : t(`indicators:indicators.${indicator}.name`)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>
