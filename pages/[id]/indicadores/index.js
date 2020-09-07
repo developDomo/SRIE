@@ -12,7 +12,9 @@ import FilterResult from '../../../components/indicadors/FilterResult';
 import CountryHeader from '../../../components/countries/CountryHeader';
 
 import FetchUtils from '../../../utils/Fetch.utils';
-
+import {
+  gray2,
+} from '../../../styles/colors';
 
 const IconImg = styled.img`
   width: 20px;
@@ -24,6 +26,12 @@ const IndicatorTitle = styled.div`
       flex: 0 0 65.666667%;
       max-width: 65.666667%;
   }
+`;
+const LabelFilter = styled.label`
+  font-family: Roboto;
+  font-size: 1em;
+  font-weight: bolder;
+  color: ${gray2};
 `;
 
 const filterPec = (pec, indicator, goals) => {
@@ -109,6 +117,7 @@ const IndicatorListPage = ({
             <form>
               <Row>
                 <div className="form-group col-lg-4">
+                  <LabelFilter htmlFor="form-indicadors-pec">{t('common:filter.goalMeta')}</LabelFilter>
                   <select
                     className="form-control"
                     id="form-indicadors-pec"
@@ -121,6 +130,7 @@ const IndicatorListPage = ({
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
+                  <LabelFilter htmlFor="topic-select">{t('common:filter.topic')}</LabelFilter>
                   <select id="topic-select" className="form-control" onChange={(e) => setTopic(parseInt(e.target.value, 10))}>
                     <option key="topic-default" value={0}>{t('topics.all')}</option>
                     {topics.map((topicItem) => (
@@ -129,6 +139,7 @@ const IndicatorListPage = ({
                   </select>
                 </div>
                 <div className="form-group col-lg-4">
+                  <LabelFilter htmlFor="form-indicadors-level">{t('common:filter.level')}</LabelFilter>
                   <select
                     className="form-control"
                     id="form-indicadors-level"

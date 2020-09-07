@@ -7,12 +7,12 @@ import {
 const TagContainer = styled.h4`
 background-color: ${green1};
 font-family: 'Raleway', sans-serif;
-padding: 10px;
+padding: 5px;
 color: white;
 font-size: 0.9em;
 text-align: center;
 width: max-content;
-margin-top: 15px;
+margin-top: 10px;
 `;
 
 const TopicTag = ({ t, topicCode }) => (
