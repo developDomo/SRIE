@@ -147,10 +147,20 @@ export const TextContainer = styled.div`
   line-height: 1.2;
   background-color: ${(props) => (colors[props.color])};
   text-transform: initial;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto Slab', sans-serif;
   font-size: 1.5em;
   padding: 10px 10px 5px 10px;
   width: 100%;
   display:flex;
   align-items:center;
+  justify-content: center;
 `;
+
+
+export const Button = ({
+  children, onClick, color,
+}) => (
+  <ButtonContainer as="button" color={color} onClick={onClick}>
+    <TextContainer color={color}>{children}</TextContainer>
+  </ButtonContainer>
+);
