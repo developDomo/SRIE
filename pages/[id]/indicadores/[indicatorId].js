@@ -151,7 +151,7 @@ const IndicatorPage = ({
   );
 
   return (
-    <>
+    <Container fluid className="p-0">
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container style={containerTitleStyles}>
         <IndicatorTitle>
@@ -205,7 +205,7 @@ const IndicatorPage = ({
           <RelatedIndicator relatedIndicators={relatedIndicators} countryName={country.short_name} />
         </FooterIndicator>
       </Container>
-    </>
+    </Container>
   );
 };
 

@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import useUser from '../../lib/useUser';
 import fetchJson from '../../lib/fetchJson';
 import LoginForm from '../../components/admin/login/LoginForm';
+import {
+  gray1,
+} from '../../theme/colors';
 
 const Login = () => {
   const { mutateUser } = useUser({
@@ -33,21 +39,16 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <div className="login">
+    <div className="login d-flex flex-grow-1">
+      <Container className="align-self-center justify-content-center pt-5 pb-5">
         <LoginForm isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
-      </div>
+      </Container>
       <style jsx>
         {`
         .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+          background-color: ${gray1}
         }
       `}
-
       </style>
     </div>
   );

@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import {
   yellow,
@@ -145,11 +146,21 @@ export const TextContainer = styled.div`
   text-overflow: ellipsis;
   line-height: 1.2;
   background-color: ${(props) => (colors[props.color])};
-  text-transform: initial;
-  font-family: 'Roboto Slab', serif;
+  text-transform: ${(props) => (props.textTransform || 'initial')};
+  font-family: 'Roboto Slab', sans-serif;
   font-size: 1.5em;
   padding: 10px 10px 5px 10px;
   width: 100%;
   display:flex;
   align-items:center;
+  justify-content: center;
 `;
+
+
+export const Button = ({
+  children, onClick, color, textTransform,
+}) => (
+  <ButtonContainer as="button" color={color} onClick={onClick}>
+    <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
+  </ButtonContainer>
+);
