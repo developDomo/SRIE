@@ -19,7 +19,7 @@ const Home = ({ countries }) => (
       <CountrySelector countries={countries} />
     </Col>
 
-    <Col className="flex-grow d-flex flex-column justify-content-center">
+    <Col className="flex-grow-1 d-flex flex-column justify-content-center">
       <BannerOds />
     </Col>
     <style type="text/css">
@@ -37,9 +37,6 @@ const Home = ({ countries }) => (
       padding-top: 10px;
     }
     
-    .flex-grow{
-    flex: 1
-    }
     `}
     </style>
   </Container>
