@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import Row from 'react-bootstrap/Row';
 import { withTranslation } from '../../i18n';
 import {
   gray1,
@@ -15,7 +16,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  height: 4em;
+  min-height: 4em;
   background-color: ${gray1};
 `;
 const Title = styled.h3`
@@ -45,7 +46,7 @@ const IconContainer = styled.div`
     mask-repeat: no-repeat;
     mask-position: center;
     width: 15px;
-    height: 15px;
+    min-height: 15px;
   }
 
   & img {
@@ -60,31 +61,31 @@ const IconContainer = styled.div`
   }
 `;
 
-const RelatedIndicator = ({ relatedIndicators, countryName, t }) => (
+const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => (
   <>
     {relatedIndicators?.map((indicator) => (
       <Link key={`indicador-${indicator.id}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
-        <div className="col-lg-12 mb-3 p-0">
-          <Container className="d-flex  justify-content-between p-0">
-            <div className="col-lg-11 m-0 py-0 pl-4 pr-2">
+        <Row className="mb-3 p-0">
+          <Container className="d-flex flex-row justify-content-between p-0">
+            <div className="col-md-11 col-8">
               <Title>
-                {t(`indicators.${indicator.code}.name`)}
+                {t(`indicators.${indicator.id}.metadata.title`)}
               </Title>
             </div>
-            <IconContainer className=" ">
+            <IconContainer className="col-md-1 col-2">
               <div />
             </IconContainer>
           </Container>
-        </div>
+        </Row>
       </Link>
     ))}
   </>
 );
 
-RelatedIndicator.getInitialProps = ({ t, countryName }) => ({
+RelatedIndicatorList.getInitialProps = ({ t, countryName }) => ({
   namespacesRequired: ['indicators'],
   t,
   countryName,
 });
 
-export default withTranslation('indicators')(RelatedIndicator);
+export default withTranslation('indicators')(RelatedIndicatorList);

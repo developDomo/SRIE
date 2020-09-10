@@ -157,10 +157,13 @@ export const TextContainer = styled.div`
 `;
 
 
-export const Button = ({
-  children, onClick, color, textTransform,
-}) => (
-  <ButtonContainer as="button" color={color} onClick={onClick}>
-    <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
-  </ButtonContainer>
-);
+export const Button = (props) => {
+  const {
+    children, onClick, color, textTransform,
+  } = props;
+  return (
+    <ButtonContainer {...props} as="button" color={color} onClick={onClick}>
+      <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
+    </ButtonContainer>
+  );
+};
