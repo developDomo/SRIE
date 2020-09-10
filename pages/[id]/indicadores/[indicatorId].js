@@ -12,7 +12,7 @@ import TopicTag from '../../../components/layout/TopicTag';
 import {
   txt,
 } from '../../../theme/colors';
-import RelatedIndicator from '../../../components/layout/RelatedIndicator';
+import RelatedIndicator from '../../../components/layout/RelatedIndicatorList';
 
 const IndicatorTitle = styled.div`
   text-align: center;
