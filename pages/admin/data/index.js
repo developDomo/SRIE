@@ -38,21 +38,19 @@ const AdminData = ({
 
 export const getServerSideProps = needsAuth(async ({ user }) => {
   const countryUrl = `${process.env.API_URL}/api/countries/${user.country}`;
-  const indicatorUrl = `${process.env.API_URL}/api/indicators`;
 
-  const [country, _indicators] = await FetchUtils.multipleFetch([
+  const [country] = await FetchUtils.multipleFetch([
     countryUrl,
-    indicatorUrl,
   ]);
 
-  // TODO: no estoy seguro de donde salen estos datos
+  // TODO: move this hardcoded list to an endpoint. For now it works fine.
+
   const indicators = [
     {
       code: '12',
-      variation: 'b',
+      variation: 'c',
       id: '12',
     },
-
     {
       code: '18',
       id: '18',
@@ -62,6 +60,7 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
       id: '24',
     },
   ];
+
   return {
 
     props: {
