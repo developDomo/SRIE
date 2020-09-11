@@ -64,17 +64,15 @@ const IconContainer = styled.div`
 const IndicatorAdminList = ({ indicators, t }) => (
   <>
     {indicators?.map((indicator) => {
-      let indicatorPath = `/admin/data/${indicator.id}`;
-      if (indicator.variation) {
-        indicatorPath += `?variation=${indicator.variation}`;
-      }
+      const indicatorPath = `/admin/data/${indicator.code}`;
+      const indicatorName = indicator.isVariation ? `variations.${indicator.code}` : `indicators.${indicator.code}.metadata.title`;
       return (
-        <Link key={`indicador-${indicator.id}`} href={indicatorPath} as={indicatorPath}>
+        <Link key={`indicador-${indicator.code}`} href={indicatorPath} as={indicatorPath}>
           <Row className="mb-3 p-0">
             <Container className="d-flex flex-row justify-content-between p-0">
               <div className="col-md-11 col-8">
                 <Title>
-                  {t(`indicators.${indicator.id}.metadata.title`)}
+                  {t(indicatorName)}
                 </Title>
               </div>
               <IconContainer className="col-md-1 col-2">

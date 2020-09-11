@@ -47,17 +47,16 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
 
   const indicators = [
     {
-      code: '12',
-      variation: 'c',
-      id: '12',
+      code: '12-c',
+      isVariation: true,
     },
     {
       code: '18',
-      id: '18',
+      isVariation: false,
     },
     {
       code: '24',
-      id: '24',
+      isVariation: false,
     },
   ];
 
