@@ -1,3 +1,5 @@
+DROP TABLE sdg4_manual;
+
 DELETE FROM indicator_topics WHERE indicator_id = 24; 
 DELETE FROM indicator_education_levels WHERE indicator_id = 24;
 DELETE FROM indicator_pec_goals WHERE indicator_id = 24;

@@ -15,7 +15,7 @@ WHERE id = 23;
 
 -- add indicator 18
 INSERT INTO indicators VALUES
-(18, 'NER.L5T8', '{ "stat_unit": "NER", "edu_level": "L5T8" }'::JSONB, 18, 'SDG4', '', null, 'PT');
+(18, 'NER.L5T8', '{ "stat_unit": "NER", "edu_level": "L5T8" }'::JSONB, 18, 'SDG4_MANUAL', '', null, 'PT');
 
 INSERT INTO indicator_topics VALUES
 (18, 1);
@@ -42,7 +42,7 @@ INSERT INTO indicator_indexes VALUES
 
 -- add indicator 24
 INSERT INTO indicators VALUES
-(24, 'TEACHER_SALARY', '{ "stat_unit": "TSP" }'::JSONB, 24, 'SDG4', '', null, 'PT');
+(24, 'TEACHER_SALARY', '{ "stat_unit": "TSP" }'::JSONB, 24, 'SDG4_MANUAL', '', null, 'PT');
 
 INSERT INTO indicator_topics VALUES
 (24, 5);
@@ -67,3 +67,29 @@ INSERT INTO indicator_indexes VALUES
 (24, 1),
 (24, 2),
 (24, 3);
+
+UPDATE visualizations
+SET code = 'wealth-quintile'
+WHERE id = 4;
+
+-- add new table for manual data
+CREATE TABLE sdg4_manual (
+    stat_unit VARCHAR(25),
+    unit_measure VARCHAR(8),
+    edu_level VARCHAR(8),
+    sex VARCHAR(8),
+    age VARCHAR(16),
+    grade VARCHAR(8),
+    edu_attain VARCHAR(8),
+    subject VARCHAR(8),
+    wealth_quintile VARCHAR(8),
+    infrastr VARCHAR(8),
+    location VARCHAR(8),
+    ref_area VARCHAR(8),
+    time_period SMALLINT,
+    obs_value NUMERIC(8,5),
+    unit_mult SMALLINT,
+    obs_status VARCHAR(8),
+    freq VARCHAR(8),
+    decimals SMALLINT
+);
