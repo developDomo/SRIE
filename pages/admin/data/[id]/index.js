@@ -11,7 +11,7 @@ import FetchUtils from '../../../../utils/Fetch.utils';
 import { Button } from '../../../../components/layout/Button';
 
 const AdminDataDetails = ({
-  t, user, id, visualizations, indexes, data, addDataUrl, country,
+  t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName,
 }) => (
 
 
@@ -33,7 +33,7 @@ const AdminDataDetails = ({
         }}
         >
           <Title type="caption" textCenter className="mb-4">
-            {t(`indicators.${id}.metadata.title`)}
+            {t(indicatorName)}
           </Title>
 
           <ManualDataTable className="table mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
@@ -61,7 +61,7 @@ const AdminDataDetails = ({
 );
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const { id, variation } = query;
+  const [id, variation] = query.id.split('-');
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
@@ -69,6 +69,7 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [country, indicator] = await FetchUtils.multipleFetch([
     countryUrl, indicatorUrl,
   ]);
+  const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return {
     props: {
@@ -78,8 +79,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
       data: indicator.data,
-      variation,
-      addDataUrl: `/admin/data/${id}/add?${variationUrl}`,
+      indicatorName,
+      addDataUrl: `/admin/data/${query.id}/add`,
       country,
     },
   };

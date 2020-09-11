@@ -40,7 +40,6 @@ handler.get(async (req, res) => {
 });
 
 handler.post(async (req, res) => {
-  console.log('post');
   const { id } = req.query;
   if (InputValidatorUtils.validate(inputPostValidator, req.query, res)) {
     await ManualDataService.addData(id, req.body);
