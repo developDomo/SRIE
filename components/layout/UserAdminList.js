@@ -11,6 +11,7 @@ const UserAdminList = ({ users }) => (
         <th>Last Name</th>
         <th>Email</th>
         <th>Rol</th>
+        <th>Last Login</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -22,12 +23,16 @@ const UserAdminList = ({ users }) => (
           <td>{user.last_name}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
+          <td>{user.last_login}</td>
           <td>
             <Link href={`/admin/users/${user.id}/edit`}>
               <a>Edit</a>
             </Link>
             <Link href={`/admin/users/${user.id}/delete`}>
               <a>Delete</a>
+            </Link>
+            <Link href={`/admin/users/${user.id}/change-password`}>
+              <a>Change Password</a>
             </Link>
           </td>
         </tr>

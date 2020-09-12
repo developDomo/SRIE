@@ -40,7 +40,7 @@ const AdminUsers = ({ user, country, users }) => (
           <Link passHref href="/admin/users/new">
             <Button className="btn-add-data" color="blue">
               <a>
-                Add Data &#43;
+                Add User &#43;
               </a>
             </Button>
           </Link>
