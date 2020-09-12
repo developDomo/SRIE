@@ -63,7 +63,7 @@ const Country = ({
   const decimalFormat = (data) => parseInt(data, 10);
 
   return (
-    <div>
+    <Container fluid className="p-0">
       <CountryHeader
         countries={countries}
         country={country}
@@ -227,7 +227,7 @@ const Country = ({
         }
       `}
       </style>
-    </div>
+    </Container>
   );
 };
 
