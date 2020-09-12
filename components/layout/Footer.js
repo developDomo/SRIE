@@ -5,7 +5,7 @@ import Router, { withRouter } from 'next/router';
 import { i18n, withTranslation } from '../../i18n';
 
 const Footer = ({ t, router: { query } }) => (
-  <>
+  <div>
     <Col className="footer" hidden={query.share === 'true'}>
       <Container>
         <Row>
@@ -132,7 +132,7 @@ const Footer = ({ t, router: { query } }) => (
       }
     `}
     </style>
-  </>
+  </div>
 );
 
 Footer.getInitialProps = async () => ({

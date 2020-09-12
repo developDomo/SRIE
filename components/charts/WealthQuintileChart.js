@@ -16,7 +16,7 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const WealthQuintilleChart = ({
+const WealthQuintileChart = ({
   data, t, chartType, unitMeasure,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].latest));
@@ -100,7 +100,7 @@ const WealthQuintilleChart = ({
   );
 };
 
-WealthQuintilleChart.getInitialProps = ({
+WealthQuintileChart.getInitialProps = ({
   t, data, chartType, unitMeasure,
 }) => (
   {
@@ -112,4 +112,4 @@ WealthQuintilleChart.getInitialProps = ({
   }
 );
 
-export default withTranslation('charts')(WealthQuintilleChart);
+export default withTranslation('charts')(WealthQuintileChart);

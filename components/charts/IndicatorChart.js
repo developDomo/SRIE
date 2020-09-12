@@ -6,6 +6,17 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Latex from 'react-latex';
 import { InlineMath, BlockMath } from 'react-katex';
+import {
+  EmailIcon,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+
+} from 'react-share';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes, ChartTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
@@ -14,7 +25,7 @@ import ChartTypeControls from './controls/ChartTypeControls';
 import IndexesChart from './indexesChart';
 import { hasSomeData } from './helpers/ChartDataHelper';
 import GeoChart from './GeoChart';
-import WealthQuintilleChart from './WealthQuintilleChart';
+import WealthQuintileChart from './WealthQuintileChart';
 
 const ChartContent = styled.div`
   width: 100%;
@@ -85,6 +96,10 @@ const IndicatorTitleH3 = styled.h3`
   margin-top: 40px;
 `;
 
+const ShareTitle = styled.p`
+  color: #869DA8;
+`;
+
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
 
 const DataSheetTitle = styled.p`
@@ -100,6 +115,14 @@ const DataSheetParagraph = styled.p`
 `;
 const DataSheetFormula = styled.p`
   color: #007BFF;
+`;
+
+const IframeText = styled.textarea`
+ width: 100%
+`;
+const DoubleLine = styled.hr`
+  width:100%; 
+  border-top:5px double; 
 `;
 
 const InfoModal = ({
@@ -208,7 +231,9 @@ const InfoModal = ({
   </Modal>
 );
 
-const ShareModal = ({ show, onHide, indicator }) => (
+const ShareModal = ({
+  show, onHide, indicator, t, absolutePath, countryCode, variation, title,
+}) => (
   <Modal
     show={show}
     onHide={onHide}
@@ -216,25 +241,82 @@ const ShareModal = ({ show, onHide, indicator }) => (
     aria-labelledby="contained-modal-title-vcenter"
     centered
   >
-    <Modal.Header closeButton>
-      <Modal.Title id="contained-modal-title-vcenter">
-        Share
-      </Modal.Title>
-    </Modal.Header>
+    <Modal.Header closeButton />
     <Modal.Body>
-      <h4>
-        Centered Modal
-        {indicator}
-      </h4>
+      <ShareTitle>
+        {t('common:shareLink')}
+        :
+      </ShareTitle>
+
+      <div>
+        <FacebookShareButton
+          url={absolutePath}
+          quote={title}
+        >
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
+        <TwitterShareButton
+          url={absolutePath}
+          title={title}
+        >
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+
+        <WhatsappShareButton
+          url={absolutePath}
+          title={title}
+          separator=":: "
+        >
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
+        <EmailShareButton
+          url={absolutePath}
+          subject={title}
+          body="body"
+        >
+          <EmailIcon size={32} round />
+        </EmailShareButton>
+      </div>
+      <div>
+        <DoubleLine />
+      </div>
+
+      <ShareTitle>
+        {t('common:copyLink')}
+        :
+      </ShareTitle>
+      <div>
+        <IframeText rows="1" type="text" value={absolutePath} readOnly width="500px" />
+      </div>
+      <Row>
+        <Button
+          className="ml-auto"
+          style={{ marginRight: '1em' }}
+          onClick={() => navigator.clipboard.writeText(absolutePath)}
+        >
+          {t('common:copyLink')}
+        </Button>
+      </Row>
+      <div>
+        <ShareTitle>
+          {t('common:embedCode')}
+          :
+        </ShareTitle>
+      </div>
+
+      <div>
+        {t('common:iframeCode')}
+        :
+      </div>
       <p>
-        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-        consectetur ac, vestibulum at eros.
+        <IframeText
+          rows="4"
+          readOnly
+          // eslint-disable-next-line  max-len
+          value={`<iframe src="${process.env.API_URL}/${countryCode}/indicator-share/${indicator}?share=true&hideSideBar=true&type=table${variation?.code ? `&indicatorVariation=${variation.code}` : ''}" scrolling="no" frameBorder="0" height="100%" width="600"/>`}
+        />
       </p>
     </Modal.Body>
-    <Modal.Footer>
-      <Button onClick={onHide}>Close</Button>
-    </Modal.Footer>
   </Modal>
 );
 
@@ -242,13 +324,17 @@ const IndicatorChart = ({
   t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
-  const [chartData, setChartData] = useState(data[indicatorSource.code]);
+  const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
-  const tabsToShow = [...Object.keys(chartData.visualizations), ...['indexes']];
-
+  const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
+  const [absolutePath, setAbsolutePat] = useState();
   const handleInfoModalClose = () => setInfoModalShow(false);
   const handleInfoModalShow = () => setInfoModalShow(true);
+
+  useEffect(() => {
+    setAbsolutePat(window.location.href);
+  });
 
   const showTotalTab = () => {
     if (tabsToShow.indexOf('total') !== -1) {
@@ -294,12 +380,12 @@ const IndicatorChart = ({
   };
 
   const showSocioeconomicLevelTab = () => {
-    if ((tabsToShow.indexOf('wealth-quintille') !== -1)
-        && chartData.visualizations['wealth-quintille'].historical.length > 0
-        && chartData.visualizations['wealth-quintille'].latest.length > 0) {
+    if ((tabsToShow.indexOf('wealth-quintile') !== -1)
+        && chartData.visualizations['wealth-quintile'].historical.length > 0
+        && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintilleChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -340,7 +426,7 @@ const IndicatorChart = ({
 
   return (
     <>
-      <Container key={chart.code}>
+      <Container key={chart.code} fluid={share}>
         <Row>
           <Col lg="9">
             <VariationTitle isVariation={chart.isVariation} translationKey={chart.translation_key} />
@@ -372,7 +458,12 @@ const IndicatorChart = ({
               <ShareModal
                 show={downloadModalShow}
                 indicator={indicator}
+                t={t}
+                absolutePath={absolutePath}
+                countryCode={country.short_name}
                 onHide={() => setDownloadModalShow(false)}
+                variation={indicatorSource}
+                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}`) : t(`indicators:indicators.${indicator}.name`)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>

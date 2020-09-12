@@ -1,7 +1,9 @@
+import Container from 'react-bootstrap/Container';
+
 const AdminDashboard = () => (
-  <div>
+  <Container>
     Admin Dashboard
-  </div>
+  </Container>
 );
 
 export default AdminDashboard;
