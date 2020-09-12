@@ -22,6 +22,38 @@ const handleOnChange = (setFormData, formData) => (e) => {
   setFormData(formData);
 };
 
+const calculateIndex = (numeratorInputName, denominatorInputName, resultInputName) => {
+  const numerator = document.getElementsByName(numeratorInputName)[0]?.value;
+  if (!numerator) {
+    return;
+  }
+
+  const denominator = document.getElementsByName(denominatorInputName)[0]?.value;
+  if (!denominator) {
+    return;
+  }
+
+  const resultInput = document.getElementsByName(resultInputName)[0];
+  if (!resultInput) {
+    return;
+  }
+
+  const index = Math.round((numerator / denominator) * 100000) / 100000;
+  resultInput.value = index;
+};
+
+const calculateGpi = () => {
+  calculateIndex('female', 'male', 'gpi');
+};
+
+const calculateGlpi = () => {
+  calculateIndex('rural', 'urban', 'glpi');
+};
+
+const calculateSespi = () => {
+  calculateIndex('q1', 'q5', 'sespi');
+};
+
 const YearSelect = React.forwardRef((props, ref) => {
   const {
     excludeYears, setFormData, formData, year, label, sm,
@@ -80,7 +112,7 @@ const YearSelect = React.forwardRef((props, ref) => {
 
 const FormInput = React.forwardRef((props, ref) => {
   const {
-    name, label, value, errors, sm, setFormData, formData,
+    name, label, value, errors, sm, setFormData, formData, onBlur,
   } = props;
   const errorMessage = errors && errors[name] && errors[name].message;
   return (
@@ -98,6 +130,7 @@ const FormInput = React.forwardRef((props, ref) => {
         name={name}
         value={value}
         onChange={handleOnChange(setFormData, formData)}
+        onBlur={onBlur}
       />
 
       <span className="invalid-feedback">
@@ -304,6 +337,7 @@ const ManualDataForm = ({
             validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
+          onBlur={calculateGpi}
 
         />
         <FormInput
@@ -315,8 +349,8 @@ const ManualDataForm = ({
           ref={register({
             validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
           })}
-
           errors={errors}
+          onBlur={calculateGpi}
 
         />
         <FieldGroupIndexes index="GPI" indexes={indexes} setFormData={setFormData} formData={formData} />
@@ -334,6 +368,7 @@ const ManualDataForm = ({
           })}
 
           errors={errors}
+          onBlur={calculateGlpi}
         />
         <FormInput
           name="urban"
@@ -346,15 +381,22 @@ const ManualDataForm = ({
           })}
 
           errors={errors}
+          onBlur={calculateGlpi}
         />
         <FieldGroupIndexes index="GLPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
-      <FieldsGroup visible={visualizations.includes('wealth-quintile')} groupName="wealth-quintile" setFormData={setFormData} formData={formData}>
+      <FieldsGroup
+        visible={visualizations.includes('wealth-quintile')}
+        groupName="wealth-quintile"
+        setFormData={setFormData}
+        formData={formData}
+        onBlur={calculateSespi}
+      >
         <FormInput name="q1" label="Q1" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q2" label="Q2" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q3" label="Q3" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q4" label="Q4" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled />
+        <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled onBlur={calculateSespi} />
         <FieldGroupIndexes index="SESPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
       <Row className="mt-4">
