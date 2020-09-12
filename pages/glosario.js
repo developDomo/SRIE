@@ -16,10 +16,10 @@ const GlossaryItems = ({ t }) => {
   for (let i = 1; i <= 11; i++) {
     items.push(
       <Row>
-        <Col sm={3} className="colStyle d-flex align-items-center">
+        <Col sm={3} className="colStyle d-flex">
           <Text className="text-center"><strong>{t(`item.${i}.label`)}</strong></Text>
         </Col>
-        <Col className="p-2">
+        <Col className="px-2 pb-4">
           <Text>{t(`item.${i}.description`)}</Text>
         </Col>
       </Row>,
