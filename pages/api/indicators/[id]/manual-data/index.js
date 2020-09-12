@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect';
-import ManualDataService from '../../../../services/ManualData.service';
-import InputValidatorUtils from '../../../../utils/InputValidator.utils';
+import ManualDataService from '../../../../../services/ManualData.service';
+import InputValidatorUtils from '../../../../../utils/InputValidator.utils';
 
 const handler = nextConnect();
 

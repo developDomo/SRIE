@@ -54,6 +54,11 @@
   "educationalIndicators": "Indicadores educativos",
   "pec": "PEC",
   "ods4": "ODS 4",
-  "selectTheCountryYouWantToConsult": "Seleccione el país que desea consultar"
-
+  "selectTheCountryYouWantToConsult": "Seleccione el país que desea consultar",
+  "enterLoginCredentials": "Coloque sus credenciales para ingresar al panel de administración",
+  "problemsLoginIn": "¿Problemas para ingresar?",
+  "contactAdmin": "Contacta al administrador",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "login": "Ingresar"
 }

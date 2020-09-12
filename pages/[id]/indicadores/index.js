@@ -99,7 +99,7 @@ const IndicatorListPage = ({
   };
 
   return (
-    <>
+    <Container fluid className="p-0">
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container>
         <Row className="mt-5 mb-5">
@@ -197,7 +197,7 @@ const IndicatorListPage = ({
           {showIndicatorList()}
         </Row>
       </Container>
-    </>
+    </Container>
   );
 };
 

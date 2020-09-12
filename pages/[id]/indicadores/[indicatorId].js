@@ -12,7 +12,7 @@ import TopicTag from '../../../components/layout/TopicTag';
 import {
   txt,
 } from '../../../theme/colors';
-import RelatedIndicator from '../../../components/layout/RelatedIndicator';
+import RelatedIndicator from '../../../components/layout/RelatedIndicatorList';
 
 const IndicatorTitle = styled.div`
   text-align: center;
@@ -151,7 +151,7 @@ const IndicatorPage = ({
   );
 
   return (
-    <>
+    <Container fluid className="p-0">
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container style={containerTitleStyles}>
         <IndicatorTitle>
@@ -205,7 +205,7 @@ const IndicatorPage = ({
           <RelatedIndicator relatedIndicators={relatedIndicators} countryName={country.short_name} />
         </FooterIndicator>
       </Container>
-    </>
+    </Container>
   );
 };
 

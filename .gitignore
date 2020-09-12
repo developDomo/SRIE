@@ -28,4 +28,4 @@ yarn-error.log*
 .npmrc
 .vscode
 package-lock.json
-
+.idea
