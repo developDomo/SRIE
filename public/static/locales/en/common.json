@@ -55,6 +55,10 @@
     "all": "All"
   },
   "selectTheCountryYouWantToConsult": "Select the country you want to consult",
+  "copyLink": "Copy link",
+  "shareLink": "Share link",
+  "embedCode": "Embed",
+  "iframeCode": "Iframe code",
   "enterLoginCredentials": "Enter your login credentials",
   "problemsLoginIn": "Problems loggin in?",
   "contactAdmin": "contact the administrator",

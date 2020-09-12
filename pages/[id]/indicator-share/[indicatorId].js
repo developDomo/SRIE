@@ -4,7 +4,7 @@ import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 
 const IndicatorShare = ({
-  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country,
+  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator,
 }) => (
   <>
     <IndicatorChart
@@ -17,6 +17,8 @@ const IndicatorShare = ({
       period={period}
       indicator={indicatorId}
       country={country.short_name}
+      chart={indicator}
+      countryCode={country.code}
     />
     )
   </>
@@ -26,8 +28,9 @@ IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
   const country = _.find(countries, (c) => c.short_name === query.id);
-  const [data] = await FetchUtils.multipleFetch([
+  const [data, indicator] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/data?country=${country.code}`,
+    `${process.env.API_URL}/api/indicators/${query.indicatorId}`,
   ]);
   return {
     data,
@@ -38,6 +41,7 @@ IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
     tabNumber: query.tabNumber,
     period: query.period,
     indicatorId: query.indicatorId,
+    indicator,
     country,
   };
 };
