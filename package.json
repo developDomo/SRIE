@@ -50,6 +50,7 @@
     "react-katex": "^2.0.2",
     "react-latex": "^2.0.0",
     "react-latex-next": "^1.2.0",
+    "react-share": "^4.2.1",
     "recharts": "^1.8.5",
     "styled-components": "^5.1.1",
     "styled-jsx": "^3.3.0",
