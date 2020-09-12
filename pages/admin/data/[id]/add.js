@@ -11,11 +11,10 @@ const preventDefault = (f) => (e) => {
 };
 
 const AdminDataNewForm = ({
-  id, user, visualizations, indexes, data, variation,
+  id, user, visualizations, indexes, data, variation, code,
 }) => {
-  const variationQueryParam = variation ? `variation=${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data`;
-  const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
+  const redirectUrl = `/admin/data/${code}`;
 
   const router = useRouter();
   const [formData, setFormData] = useState({});
@@ -49,7 +48,7 @@ const AdminDataNewForm = ({
 };
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const { id, variation } = query;
+  const [id, variation] = query.id.split('-');
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const url = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
@@ -64,8 +63,9 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
       data: indicator.data,
-      variation,
+      variation: variation || null,
       id,
+      code: query.id,
     },
   });
 });
