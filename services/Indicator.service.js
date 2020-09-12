@@ -112,10 +112,13 @@ export default {
     const sql = `SELECT i.*
                  FROM indicator_topics it
                  LEFT JOIN indicators i ON (it.indicator_id = i.id)
-                 WHERE topic_id = (
+                 WHERE id <> ${id} 
+                 AND topic_id = (
                      SELECT topic_id
                      FROM indicator_topics
-                     WHERE indicator_id = ${id});`;
+                     WHERE indicator_id = ${id}
+                 )
+                 ORDER BY id ASC;`;
 
     return db.query(sql);
   },
