@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { blue } from '../../../theme/colors';
 
 const TableHeaders = ({ visualizations, indexes }) => (
   <thead>
@@ -36,13 +37,13 @@ const TableHeaders = ({ visualizations, indexes }) => (
     <style jsx>
       {`
       th {
-        padding: 5px 10px;
-        background-color: black;
+        background-color: ${blue};
         color: white;
-      }
-          
+        text-align: center;
+        vertical-align: center;
+        line-height: 2em;
+      }   
     `}
-
     </style>
   </thead>
 );
@@ -87,22 +88,24 @@ const TableRows = ({ visualizations, indexes, data }) => (
     <style jsx>
       {`
       td {
+        text-align: center;
         padding: 5px 10px;
-      }
-          
-    `}
+        line-height: 2em;
 
+      }
+    `}
     </style>
   </tbody>
 );
 
-const ManualDataTable = ({ visualizations, indexes, data }) => (
-  <div>
-    <table>
+const ManualDataTable = (props) => {
+  const { visualizations, indexes, data } = props;
+  return (
+    <table {...props}>
       <TableHeaders visualizations={visualizations} indexes={indexes} />
       <TableRows visualizations={visualizations} indexes={indexes} data={data} />
     </table>
-  </div>
-);
+  );
+};
 
 export default ManualDataTable;

@@ -58,5 +58,11 @@
   "copyLink": "Copy link",
   "shareLink": "Share link",
   "embedCode": "Embed",
-  "iframeCode": "Iframe code"
+  "iframeCode": "Iframe code",
+  "enterLoginCredentials": "Enter your login credentials",
+  "problemsLoginIn": "Problems loggin in?",
+  "contactAdmin": "contact the administrator",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login"
 }

@@ -25,7 +25,7 @@ import ChartTypeControls from './controls/ChartTypeControls';
 import IndexesChart from './indexesChart';
 import { hasSomeData } from './helpers/ChartDataHelper';
 import GeoChart from './GeoChart';
-import WealthQuintilleChart from './WealthQuintilleChart';
+import WealthQuintileChart from './WealthQuintileChart';
 
 const ChartContent = styled.div`
   width: 100%;
@@ -379,12 +379,12 @@ const IndicatorChart = ({
   };
 
   const showSocioeconomicLevelTab = () => {
-    if ((tabsToShow.indexOf('wealth-quintille') !== -1)
-        && chartData.visualizations['wealth-quintille'].historical.length > 0
-        && chartData.visualizations['wealth-quintille'].latest.length > 0) {
+    if ((tabsToShow.indexOf('wealth-quintile') !== -1)
+        && chartData.visualizations['wealth-quintile'].historical.length > 0
+        && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintilleChart data={chartData} chartType={chartType} />
+          <WealthQuintileChart data={chartData} chartType={chartType} />
         </Tab>
       );
     }

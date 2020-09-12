@@ -16,9 +16,9 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const WealthQuintilleChart = ({ data, t, chartType }) => {
-  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].latest));
-  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].historical));
+const WealthQuintileChart = ({ data, t, chartType }) => {
+  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].latest));
+  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
 
@@ -98,7 +98,7 @@ const WealthQuintilleChart = ({ data, t, chartType }) => {
   );
 };
 
-WealthQuintilleChart.getInitialProps = ({ t, data, chartType }) => (
+WealthQuintileChart.getInitialProps = ({ t, data, chartType }) => (
   {
     t,
     data,
@@ -107,4 +107,4 @@ WealthQuintilleChart.getInitialProps = ({ t, data, chartType }) => (
   }
 );
 
-export default withTranslation('charts')(WealthQuintilleChart);
+export default withTranslation('charts')(WealthQuintileChart);

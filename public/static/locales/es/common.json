@@ -58,5 +58,11 @@
   "copyLink": "Copiar enlace",
   "shareLink": "Comparta este indicador por",
   "embedCode": "Incrustar gráfico del indicador en tu sitio o blog",
-  "iframeCode": "Código iframe"
+  "iframeCode": "Código iframe",
+  "enterLoginCredentials": "Coloque sus credenciales para ingresar al panel de administración",
+  "problemsLoginIn": "¿Problemas para ingresar?",
+  "contactAdmin": "Contacta al administrador",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "login": "Ingresar"
 }

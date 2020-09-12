@@ -99,12 +99,12 @@ const IndicatorListPage = ({
   };
 
   return (
-    <>
+    <Container fluid className="p-0">
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
       <Container>
         <Row className="mt-5 mb-5">
           <div className="col-lg-12 pr-0 text-center">
-            <Title color="blueTitle" type="title">
+            <Title color="blueTitleIndicator" type="title">
               {t('common:educationalIndicators')}
             </Title>
           </div>
@@ -197,7 +197,7 @@ const IndicatorListPage = ({
           {showIndicatorList()}
         </Row>
       </Container>
-    </>
+    </Container>
   );
 };
 
