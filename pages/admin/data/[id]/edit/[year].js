@@ -51,7 +51,8 @@ const AdminDataEdit = ({
 };
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const { id, year, variation } = query;
+  const { year } = query;
+  const [id, variation] = query.id.split('-');
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const url = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;

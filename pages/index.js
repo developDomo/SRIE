@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch';
-import { Row } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 import InfoSlider from '../components/homepage/InfoSlider';
 
 import CountrySelector from '../components/homepage/CountrySelector';
@@ -8,21 +9,19 @@ import { withTranslation } from '../i18n';
 import WelcomeText from '../components/layout/WelcomeText';
 
 const Home = ({ countries }) => (
-  <>
-    <div className="home">
-      <Row className="justify-content-md-center m-0">
-        <div className="col-sm-8 px-0">
-          <InfoSlider />
-          <WelcomeText />
-          <CountrySelector countries={countries} />
-        </div>
-      </Row>
-    </div>
-    <div className="row justify-content-md-center slider-box m-0">
-      <div className="col-sm-8">
-        <BannerOds />
-      </div>
-    </div>
+  <Container className="d-flex flex-column p-0">
+
+    <Col sm={{ span: 8, offset: 2 }} className="flex-grow">
+      <InfoSlider />
+    </Col>
+    <Col className="flex-grow m-0 ">
+      <WelcomeText />
+      <CountrySelector countries={countries} />
+    </Col>
+
+    <Col className="flex-grow d-flex flex-column justify-content-center">
+      <BannerOds />
+    </Col>
     <style type="text/css">
       {`
       .fa-times:before, .fa-bars:before {
@@ -37,14 +36,13 @@ const Home = ({ countries }) => (
       border-bottom: 2px solid #fff;
       padding-top: 10px;
     }
-    `}
-    </style>
-    <style jsx>
-      {`
     
+    .flex-grow{
+    flex: 1
+    }
     `}
     </style>
-  </>
+  </Container>
 );
 
 Home.getInitialProps = async ({ pathname: path }) => {
