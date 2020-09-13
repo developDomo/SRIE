@@ -4,13 +4,14 @@ import UserService from '../../../services/User.service';
 const handler = nextConnect();
 
 handler.get(async (req, res) => {
-  UserService.findAll().then((results) => {
+  UserService.findById(req.query.id).then((results) => {
     res.status(200).json(results);
   });
 });
 
 handler.post(async (req, res) => {
-  const result = await UserService.create(req.body);
+  const { id } = req.query;
+  const result = await UserService.update(id, req.body);
   if (result.success) {
     res.status(200).json({});
   } else {
