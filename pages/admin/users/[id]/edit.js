@@ -19,7 +19,7 @@ const initUser = (editedUser, user) => {
   editedUser.country = user.country;
 };
 
-const AdminNewUser = ({ countries, user, userUrl }) => {
+const AdminEditUser = ({ countries, user, userUrl }) => {
   const router = useRouter();
   const redirectUrl = '/admin/users';
   const [editedUser, setEditedUser] = useState({});
@@ -72,4 +72,4 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   };
 });
 
-export default withTranslation('countries')(AdminNewUser);
+export default withTranslation('countries')(AdminEditUser);

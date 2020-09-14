@@ -14,7 +14,7 @@ const findById = async (id) => db.users.findOne({ id });
 
 const findByEmail = async (email) => db.users.findOne({ email: email.toLowerCase() });
 
-const updatePassword = async (userId, newPassword) => db.users.update(userId, { password: PasswordEncodingService.encode(newPassword) });
+const updatePassword = async (id, newPassword) => db.users.update({ id }, { password: await PasswordEncodingService.encode(newPassword) });
 
 const save = async (user) => db.users.save(user);
 
