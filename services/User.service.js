@@ -3,7 +3,12 @@ import PasswordEncodingService from './PasswordEncoding.service';
 
 const db = require('express-http-context').get('db');
 
-const findAll = async () => db.users.find({ });
+const findAll = async () => db.users.find({ }, {
+  order: [{
+    field: 'created_at',
+    direction: 'asc',
+  }],
+});
 
 const findById = async (id) => db.users.findOne({ id });
 
@@ -62,6 +67,8 @@ const update = async (id, user) => {
   return result;
 };
 
+const remove = async (id) => db.users.destroy({ id });
+
 export default {
   findAll,
   findById,
@@ -70,4 +77,5 @@ export default {
   save,
   create,
   update,
+  remove,
 };
