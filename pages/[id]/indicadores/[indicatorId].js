@@ -103,7 +103,6 @@ const IndicatorPage = ({
     { key: 'navigation.pages.indicators', url: `/${country.short_name}/indicadores` },
     { key: `indicators:indicators.${indicator.id}.name` },
   ];
-
   const showIndicators = ({ id, variations }) => {
     if (!isEmpty(variations)) {
       return variations.map((variation) => {
@@ -124,10 +123,19 @@ const IndicatorPage = ({
   };
 
   const PecTooltip = ({ pecGoals }) => (
-    pecGoals.map((pecGoal) => (
-      <p>
+    pecGoals.map((pecGoal, index) => (
+      <p key={`pec-${index}`}>
         <strong>{pecGoal.code}</strong>
         {`: ${t(`pec-goals:pec-goals.${pecGoal.code.toString().replace('.', '-')}.description`)}`}
+      </p>
+    ))
+  );
+
+  const OdsTooltip = ({ ods4Goals }) => (
+    ods4Goals.map((ods4Goal, index) => (
+      <p key={`ods-${index}`}>
+        <strong>{ods4Goal.code}</strong>
+        {`: ${t(`ods-goals:${ods4Goal.code.toString().replace('.', '-')}.description`)}`}
       </p>
     ))
   );
@@ -143,9 +151,7 @@ const IndicatorPage = ({
   const popoverOds = (
     <Popover id="popover-ods">
       <Popover.Content>
-        Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-        Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken.
-        Landjaeger turkey sausage beef. Tongue landjaeger andouille, fatback shank t-bone
+        <OdsTooltip ods4Goals={indicator.ods4_goals} />
       </Popover.Content>
     </Popover>
   );
@@ -220,7 +226,7 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/related`,
   ]);
   return {
-    namespacesRequired: ['common', 'indicators', 'pec-goals'],
+    namespacesRequired: ['common', 'indicators', 'pec-goals', 'ods-goals'],
     countries,
     country,
     indicator,
@@ -229,4 +235,4 @@ IndicatorPage.getInitialProps = async ({ query }) => {
   };
 };
 
-export default withTranslation('common', 'indicators', 'pec-goals')(IndicatorPage);
+export default withTranslation('common', 'indicators', 'pec-goals', 'ods-goals')(IndicatorPage);
