@@ -10,6 +10,7 @@ export const blueTitle = '#007bff';
 export const borders = '#5E7C8B';
 export const bckFlags = '#E6E6E6';
 export const gray1 = '#EAEEF2';
+export const gray2 = '#eee';
 export const greenRoll = '#008471';
 export const green = '#009B8A';
 export const blue3 = '#0865BA';

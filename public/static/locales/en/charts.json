@@ -1,7 +1,7 @@
 {
   "year": "Year",
   "historical": "Historical",
-  "lastYear": "Last year",
+  "lastYear": "Last record",
   "M": "Male",
   "F": "Female",
   "total": "Total",
@@ -18,5 +18,10 @@
       "PNG": "PNG Format",
       "CSV": "CSV Format"
     }
+  },
+  "units": {
+    "PT": "%",
+    "YR": "Years",
+    "PPP_CONST": "constant $"
   }
 }
