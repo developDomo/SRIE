@@ -14,7 +14,6 @@ const AdminDataDetails = ({
   t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName,
 }) => (
 
-
   <Container fluid>
     <AdminMenu user={user} />
 

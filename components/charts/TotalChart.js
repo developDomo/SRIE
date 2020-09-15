@@ -15,7 +15,9 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const TotalChart = ({ data, t, chartType }) => {
+const TotalChart = ({
+  data, t, chartType, unitMeasure,
+}) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.total.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.total.historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
@@ -45,10 +47,10 @@ const TotalChart = ({ data, t, chartType }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis unit="%" />
+          <YAxis unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="_T" fill="#359b8a" name={t('total')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="_T" fill="#359b8a" name={t('total')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
@@ -71,10 +73,13 @@ const TotalChart = ({ data, t, chartType }) => {
   );
 };
 
-TotalChart.getInitialProps = ({ t, data, chartType }) => ({
+TotalChart.getInitialProps = ({
+  t, data, chartType, unitMeasure,
+}) => ({
   t,
   data,
   chartType,
+  unitMeasure,
   namespacesRequired: ['charts'],
 });
 

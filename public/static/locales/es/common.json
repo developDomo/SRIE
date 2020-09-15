@@ -6,7 +6,7 @@
     "without-status": "Un error ha ocurrido en el servidor"
   },
   "definition": "Definición",
-  "purpose": "Proposito",
+  "purpose": "Propósito",
   "method": "Método de Calculo",
   "where": "where",
   "moreIndicatorsBtn": "Ver los indicadores",
@@ -15,7 +15,7 @@
   "periodicity": "Periodicidad",
   "limitationsAndComments": "Limitaciones y comentarios",
   "licenseAndCopyrights": "Licencia y permisos de uso",
-  "datasourceType": "Tipo de fuente de datos",
+  "datasourceType": "Fuente primaria de datos",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
   "numberOfEducationalCenters": "Cantidad de centros educativos",
@@ -64,5 +64,11 @@
   "contactAdmin": "Contacta al administrador",
   "email": "Correo electrónico",
   "password": "Contraseña",
-  "login": "Ingresar"
+  "login": "Ingresar",
+  "year": "Año",
+  "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
+  "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Use \"coma\" (,) como separador",
+  "includesex": "Incluir datos por género",
+  "includelocation": "Incluir datos por género",
+  "includewealth-quintile": "Incluir datos por nivel socioeconómico",
 }

@@ -156,7 +156,6 @@ export const TextContainer = styled.div`
   justify-content: center;
 `;
 
-
 export const Button = (props) => {
   const {
     children, onClick, color, textTransform,

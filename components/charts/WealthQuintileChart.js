@@ -16,9 +16,11 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const WealthQuintileChart = ({ data, t, chartType }) => {
-  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].latest));
-  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].historical));
+const WealthQuintileChart = ({
+  data, t, chartType, unitMeasure,
+}) => {
+  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].latest));
+  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
 
@@ -67,14 +69,14 @@ const WealthQuintileChart = ({ data, t, chartType }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis unit="%" />
+          <YAxis unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Q1" fill={maleBarColor} name={t('Q1')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q2" fill={femaleBarColor} name={t('Q2')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q3" fill={maleBarColor} name={t('Q3')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q4" fill={femaleBarColor} name={t('Q4')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q5" fill={maleBarColor} name={t('Q5')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q1" fill={maleBarColor} name={t('Q1')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="Q2" fill={femaleBarColor} name={t('Q2')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="Q3" fill={maleBarColor} name={t('Q3')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="Q4" fill={femaleBarColor} name={t('Q4')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="Q5" fill={maleBarColor} name={t('Q5')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
@@ -98,11 +100,14 @@ const WealthQuintileChart = ({ data, t, chartType }) => {
   );
 };
 
-WealthQuintileChart.getInitialProps = ({ t, data, chartType }) => (
+WealthQuintileChart.getInitialProps = ({
+  t, data, chartType, unitMeasure,
+}) => (
   {
     t,
     data,
     chartType,
+    unitMeasure,
     namespacesRequired: ['charts'],
   }
 );
