@@ -44,7 +44,7 @@ const Header = ({ router: { pathname, query } }) => {
       >
         <div className="container">
           <Navbar.Toggle aria-controls="basic-navbar-nav" aria-hidden="true" />
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#home" className="flex-grow-1">
             <Logo path={path} />
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

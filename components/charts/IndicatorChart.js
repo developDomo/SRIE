@@ -196,14 +196,6 @@ const InfoModal = ({
       </DataSheetParagraph>
 
       <strong>
-        {translation('common:datasourceType')}
-        :
-      </strong>
-      <DataSheetParagraph>
-        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
-      </DataSheetParagraph>
-
-      <strong>
         {translation('common:periodicity')}
         :
       </strong>
