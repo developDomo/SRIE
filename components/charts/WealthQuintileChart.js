@@ -7,7 +7,9 @@ import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import { charDataFormatHelper } from './helpers/ChartDataHelper';
-import { maleBarColor, femaleBarColor } from '../../theme/colors';
+import {
+  firstQuintille, secondQuintille, thirthQuintille, fourQuintille, fifthQuintille,
+} from '../../theme/colors';
 import ChartControls from './controls/ChartControls';
 import { defaultBarSize } from './Constants';
 
@@ -70,11 +72,11 @@ const WealthQuintileChart = ({ data, t, chartType }) => {
           <YAxis unit="%" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Q1" fill={maleBarColor} name={t('Q1')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q2" fill={femaleBarColor} name={t('Q2')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q3" fill={maleBarColor} name={t('Q3')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q4" fill={femaleBarColor} name={t('Q4')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q5" fill={maleBarColor} name={t('Q5')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q2" fill={secondQuintille} name={t('Q2')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q3" fill={thirthQuintille} name={t('Q3')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q4" fill={fourQuintille} name={t('Q4')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="Q5" fill={fifthQuintille} name={t('Q5')} unit="%" barSize={defaultBarSize} />
         </BarChart>
       );
     }
