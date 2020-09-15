@@ -46,6 +46,7 @@
     "react-bootstrap": "^1.0.0",
     "react-data-table-component": "^6.9.7",
     "react-dom": "16.13.0",
+    "react-hook-form": "^6.8.2",
     "react-i18next": "^11.7.0",
     "react-katex": "^2.0.2",
     "react-latex": "^2.0.0",
