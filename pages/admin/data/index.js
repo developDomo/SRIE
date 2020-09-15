@@ -35,7 +35,6 @@ const AdminData = ({
   </Container>
 );
 
-
 export const getServerSideProps = needsAuth(async ({ user }) => {
   const countryUrl = `${process.env.API_URL}/api/countries/${user.country}`;
 
