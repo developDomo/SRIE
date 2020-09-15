@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Container from 'react-bootstrap/Container';
+import { Col, Row } from 'react-bootstrap';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import ManualDataForm from '../../../../components/admin/data/ManualDataForm';
 import { withTranslation } from '../../../../i18n';
 import needsAuth from '../../../../lib/needsAuth';
-
-const preventDefault = (f) => (e) => {
-  e.preventDefault();
-  f(e);
-};
+import CountryTitle from '../../../../components/countries/CountryTitle';
+import Title from '../../../../components/layout/Title';
+import FetchUtils from '../../../../utils/Fetch.utils';
+import { txt } from '../../../../theme/colors';
 
 const AdminDataNewForm = ({
-  id, user, visualizations, indexes, data, variation,
+  t, id, user, visualizations, indexes, data, variation, code, country, indicatorName,
 }) => {
-  const variationQueryParam = variation ? `variation=${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data`;
-  const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
+  const redirectUrl = `/admin/data/${code}`;
 
   const router = useRouter();
   const [formData, setFormData] = useState({});
   formData.country = user.country;
   formData.variation = variation;
 
-  const handleSubmit = preventDefault(() => {
+  const handleSubmit = () => {
     fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -30,44 +30,71 @@ const AdminDataNewForm = ({
     }).then((res) => {
       if (res.ok) router.push(redirectUrl);
     });
-  });
+  };
 
   return (
-    <div>
+    <Container fluid>
       <AdminMenu user={user} />
-      <ManualDataForm
-        variation={variation}
-        visualizations={visualizations}
-        indexes={indexes}
-        data={data}
-        onSubmit={handleSubmit}
-        setFormData={setFormData}
-        formData={formData}
-      />
-    </div>
+      <Container className="pt-4 pb-4">
+
+        <CountryTitle country={country} />
+        <Row className="justify-content-center mb-4 mt-4">
+          <Title color="blueTitle" type="title">
+            Datos de indicadores
+          </Title>
+        </Row>
+
+        <Row>
+          <Col md={{
+            span: 10,
+            offset: 1,
+          }}
+          >
+            <Title color={txt} type="caption" textCenter className="mb-4">
+              {t(indicatorName)}
+            </Title>
+            <ManualDataForm
+              variation={variation}
+              visualizations={visualizations}
+              indexes={indexes}
+              data={data}
+              onSubmit={handleSubmit}
+              setFormData={setFormData}
+              formData={formData}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </Container>
   );
 };
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const { id, variation } = query;
+  const [id, variation] = query.id.split('-');
+
+  const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
-  const url = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
-
-  const res = await fetch(url);
-  const indicator = await res.json();
+  const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
+  const [country, indicator] = await FetchUtils.multipleFetch([
+    countryUrl, indicatorUrl,
+  ]);
+  const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return ({
     props: {
-      namespacesRequired: ['common'],
+      namespacesRequired: ['indicators', 'common'],
       user,
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
       data: indicator.data,
-      variation,
+      variation: variation || null,
       id,
+      country,
+      indicatorName,
+      code: query.id,
     },
   });
 });
 
-export default withTranslation('common')(AdminDataNewForm);
+export default withTranslation(['indicators', 'common'])(AdminDataNewForm);

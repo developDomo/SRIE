@@ -42,7 +42,6 @@ const Country = ({
   const completionRate = countryInfo.completion_rate;
   const { data: completionRateData } = completionRate;
 
-
   const isFreeValue = free_edu?.obs_value || 0;
   const mandatoryValue = free_edu?.obs_value || 0;
 
@@ -64,7 +63,7 @@ const Country = ({
   const decimalFormat = (data) => parseInt(data, 10);
 
   return (
-    <div>
+    <Container fluid className="p-0">
       <CountryHeader
         countries={countries}
         country={country}
@@ -228,7 +227,7 @@ const Country = ({
         }
       `}
       </style>
-    </div>
+    </Container>
   );
 };
 

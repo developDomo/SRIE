@@ -9,12 +9,12 @@
   "purpose": "Purpose",
   "method": "Calculation method",
   "where": "where",
-  "interpretation": "Interpretación",
+  "interpretation": "Interpretation",
   "primaryDataSource": "Fuente primaria de datos",
   "periodicity": "Periodicity",
   "limitationsAndComments": "Limitations and comments",
   "licenseAndCopyrights": "License and copyrights",
-  "datasourceType": "Type of data source",
+  "datasourceType": "Primary data source",
   "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
@@ -54,5 +54,15 @@
   "goal": {
     "all": "All"
   },
-  "selectTheCountryYouWantToConsult": "Select the country you want to consult"
+  "selectTheCountryYouWantToConsult": "Select the country you want to consult",
+  "copyLink": "Copy link",
+  "shareLink": "Share link",
+  "embedCode": "Embed",
+  "iframeCode": "Iframe code",
+  "enterLoginCredentials": "Enter your login credentials",
+  "problemsLoginIn": "Problems loggin in?",
+  "contactAdmin": "contact the administrator",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login"
 }

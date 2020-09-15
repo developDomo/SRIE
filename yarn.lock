@@ -4400,7 +4400,7 @@ db-migrate@^0.11.6:
     tunnel-ssh "^4.0.0"
     yargs "^15.3.1"
 
-debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
+debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -6942,6 +6942,13 @@ jsonfile@^4.0.0:
   integrity sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
+  integrity sha1-pltPoPEL2nGaBUQep7lMVfPhW64=
+  dependencies:
+    debug "^2.1.3"
 
 jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
   version "2.2.3"
@@ -9536,6 +9543,11 @@ react-helmet-async@^1.0.2:
     react-fast-compare "^3.0.1"
     shallowequal "^1.1.0"
 
+react-hook-form@^6.8.2:
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.8.2.tgz#2a63b3d8578bd4f7965767ae4e205c2c24a1c5bc"
+  integrity sha512-9Xz1uz61fCMtQ0MTTnTIDqUpWWi+livCUsYcIOpUrlJXDHJ7QgDLF3wVKcmLIX727FFyGzesXkVCg8cQuRy8OQ==
+
 react-hotkeys@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-hotkeys/-/react-hotkeys-2.0.0.tgz#a7719c7340cbba888b0e9184f806a9ec0ac2c53f"
@@ -9640,6 +9652,14 @@ react-resize-detector@^2.3.0:
     lodash.throttle "^4.1.1"
     prop-types "^15.6.0"
     resize-observer-polyfill "^1.5.0"
+
+react-share@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-4.2.1.tgz#e699ec4b102b2544843f3fba0cff26e5827f1819"
+  integrity sha512-pHaJqiX9JTrEpK+JNb15eBtm5Z49ARJtFiHyhbIKC/qMq9tJ5JWH5J2RS2sJudyWnZs4+IgSJ8VrSUW8I9gLUA==
+  dependencies:
+    classnames "^2.2.5"
+    jsonp "^0.2.1"
 
 react-sizeme@^2.6.7:
   version "2.6.12"

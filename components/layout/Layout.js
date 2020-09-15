@@ -30,12 +30,20 @@ const Layout = ({ children, path }) => (
         font-family: 'Roboto';
       }
       .content {
-        flex: auto;
+        flex: 1;
+        display: flex;
       }
       h2{
         text-align: center;
       }
     `}
+    </style>
+    <style>
+      {
+          `.changeme{
+          background-color:#cfff04;
+        } `
+      }
     </style>
   </div>
 );

@@ -27,6 +27,7 @@ const TitlePais = styled.div`
   align-items: center;
   justify-content: center;
   height: 100px;
+  text-align: center;
   & h3 {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
