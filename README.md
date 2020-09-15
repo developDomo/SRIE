@@ -88,6 +88,15 @@ Fifth, get the database environment up, by running the following command
 docker-compose up
 ```
 
+Alternatively, if you're not that cool, just add the srie db in your local postgres:
+
+```$bash
+sudo -u postgres psql
+postgres=# create database srie;
+postgres=# create user srie with encrypted password 'srie';
+postgres=# grant all privileges on database srie to srie;
+```
+
 Sixth, run the development server:
 
 ```bash

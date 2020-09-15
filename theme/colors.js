@@ -10,11 +10,13 @@ export const blueTitle = '#007bff';
 export const borders = '#5E7C8B';
 export const bckFlags = '#E6E6E6';
 export const gray1 = '#EAEEF2';
+export const gray2 = '#eee';
 export const greenRoll = '#008471';
 export const green = '#009B8A';
 export const blue3 = '#0865BA';
 export const txt = '#1D2D49';
 export const green1 = '#34A53E';
+export const green2 = '#324914';
 export const bordes = '#5E7C8B';
 
 // Paleta Secundaria

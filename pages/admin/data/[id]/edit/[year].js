@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Container from 'react-bootstrap/Container';
 import { withTranslation } from '../../../../../i18n';
 import AdminMenu from '../../../../../components/admin/AdminMenu';
 import ManualDataForm from '../../../../../components/admin/data/ManualDataForm';
@@ -33,24 +34,28 @@ const AdminDataEdit = ({
   });
 
   return (
-    <div>
+    <Container fluid>
       <AdminMenu user={user} />
-      <ManualDataForm
-        variation={variation}
-        visualizations={visualizations}
-        indexes={indexes}
-        data={data}
-        onSubmit={handleSubmit}
-        setFormData={setFormData}
-        formData={formData}
-        year={year}
-      />
-    </div>
+
+      <Container className="pt-4 pb-4">
+        <ManualDataForm
+          variation={variation}
+          visualizations={visualizations}
+          indexes={indexes}
+          data={data}
+          onSubmit={handleSubmit}
+          setFormData={setFormData}
+          formData={formData}
+          year={year}
+        />
+      </Container>
+    </Container>
   );
 };
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const { id, year, variation } = query;
+  const { year } = query;
+  const [id, variation] = query.id.split('-');
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const url = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
@@ -65,7 +70,7 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
       data: indicator.data.filter((row) => row.year === year),
-      variation,
+      variation: variation || null,
       id,
       year,
     },
