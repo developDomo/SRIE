@@ -32,6 +32,7 @@ const Layout = ({ children, path }) => (
       .content {
         flex: 1;
         display: flex;
+        flex-direction: inherit;
       }
       h2{
         text-align: center;
