@@ -104,7 +104,6 @@ const FormInput = React.forwardRef((props, ref) => {
         {errorMessage}
       </span>
 
-
       <style jsx>
         {`
             .form-control {
@@ -226,9 +225,7 @@ const FieldsGroup = ({
                     } 
               .field-group .col:last-child{         
                      border-left: 1px solid ${txt};
-
            }
-
         `}
     </style>
   </Row>
@@ -352,7 +349,6 @@ const ManualDataForm = ({
         />
         <FieldGroupIndexes index="GLPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
-
       <FieldsGroup visible={visualizations.includes('wealth-quintile')} groupName="wealth-quintile" setFormData={setFormData} formData={formData}>
         <FormInput name="q1" label="Q1" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q2" label="Q2" setFormData={setFormData} formData={formData} disabled />
@@ -361,8 +357,6 @@ const ManualDataForm = ({
         <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled />
         <FieldGroupIndexes index="SESPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
-
-
       <Row className="mt-4">
         <Col sm={{
           span: 4,
@@ -374,7 +368,6 @@ const ManualDataForm = ({
               Add Data &#43;
             </a>
           </Button>
-
         </Col>
       </Row>
     </form>
@@ -384,6 +377,5 @@ const ManualDataForm = ({
 ManualDataForm.getInitialProps = async () => ({
   namespacesRequired: ['common', 'indicators'],
 });
-
 
 export default withTranslation('common')(ManualDataForm);

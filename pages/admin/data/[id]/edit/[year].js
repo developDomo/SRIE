@@ -11,7 +11,6 @@ const preventDefault = (f) => (e) => {
   f(e);
 };
 
-
 const AdminDataEdit = ({
   id, user, visualizations, indexes, data, variation, year,
 }) => {
