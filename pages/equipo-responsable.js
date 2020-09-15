@@ -6,6 +6,9 @@ import { withTranslation } from '../i18n';
 import { txt, bordes, blue4 } from '../styles/colors';
 import CountryHeader from '../components/countries/CountryHeader';
 
+import { ContainerPage } from '../components/layout/ContainerPageContent';
+
+
 const DirectoryContainer = styled.div`
   display: flex;
   align-items: center;
@@ -95,67 +98,76 @@ const ResponsibleTeam = ({ countries, t, path }) => {
   },
   ];
 
+  const breadcrumbPage = {
+    name: 'equipo-responsable',
+    url: 'equipo-responsable',
+  };
+
+
   return (
     <>
-      <Container>
-        <Row>
-          <div className="col-lg-12 pr-0 text-center p-2">
-            <Title color="blue" type="title">
-              {t('title')}
-            </Title>
-          </div>
-        </Row>
-      </Container>
-      <Container className="bg-light mt-4 pb-5">
-        <Row>
-          <Container>
-            <Row className="d-flex justify-content-center mt-5 mb-5 ">
-              <div className="col-sm-8">
-                <p>
-                  {t('p1')}
-                </p>
-                <p>
-                  {t('p2')}
-                </p>
-              </div>
-              <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
-                {contributorsCountries.map((item) => (
-                  <DirectoryContainer>
-                    <TitlePais className="col-lg-3 ">
-                      <h3>{item.country}</h3>
-                    </TitlePais>
-                    <InfoDirectoryContainer className="col-lg-9 ">
-                      <h3>
-                        {item.title}
-                      </h3>
-                      <p>
-                        {`${t('email')}:`}
-                        <a href={`mail:${item.email}`}>
-                          {item.email}
-                        </a>
-                      </p>
-                    </InfoDirectoryContainer>
-                  </DirectoryContainer>
-                ))}
-              </div>
-              <div className="col-sm-8">
-                <p>
-                  {t('p3')}
-                </p>
-                <p>
-                  {t('p4')}
-                </p>
-                <p>
-                  {t('p5')}
-                </p>
-                <p>
-                  {t('p6')}
-                </p>
-              </div>
-            </Row>
-          </Container>
-        </Row>
-      </Container>
+      <CountryHeader
+        page={breadcrumbPage}
+        active="country-data"
+      />
+
+      <Title color="blue" type="title" textCenter>
+        {t('title')}
+      </Title>
+      <ContainerPage className="bg-light">
+        <Container>
+          <Row className="d-sm-flex justify-content-center">
+            <Container>
+              <Row className="d-flex justify-content-center mt-5 mb-5 ">
+                <div className="col-sm-8">
+                  <p>
+                    {t('p1')}
+                  </p>
+                  <p>
+                    {t('p2')}
+                  </p>
+                </div>
+                <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
+                  {contributorsCountries.map((item) => (
+                    <DirectoryContainer>
+                      <TitlePais className="col-lg-3 ">
+                        <h3>{item.country}</h3>
+                      </TitlePais>
+                      <InfoDirectoryContainer className="col-lg-9 ">
+                        <h3>
+                          {item.title}
+                        </h3>
+                        <p>
+                          {`${t('email')}:`}
+                          <a href={`mail:${item.email}`}>
+                            {item.email}
+                          </a>
+                        </p>
+                      </InfoDirectoryContainer>
+                    </DirectoryContainer>
+                  ))}
+                </div>
+                <div className="col-sm-8">
+                  <p>
+                    {t('p3')}
+                  </p>
+                  <p>
+                    {t('p4')}
+                  </p>
+                  <p>
+                    {t('p5')}
+                  </p>
+                  <p>
+                    {t('p6')}
+                  </p>
+                </div>
+              </Row>
+            </Container>
+          </Row>
+        </Container>
+
+      </ContainerPage>
+
     </>
   );
 };

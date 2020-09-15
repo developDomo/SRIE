@@ -1,15 +1,28 @@
 import {
-  Container, Row, Col,
+  Container, Row,
 } from 'react-bootstrap';
-import { i18n, withTranslation } from '../i18n';
+import { withTranslation } from '../i18n';
+
 import Title from '../components/layout/Title';
+import { ContainerPage } from '../components/layout/ContainerPageContent';
+import CountryHeader from '../components/countries/CountryHeader';
+
+
+const breadcrumbPage = {
+  name: 'sobre-srie',
+  url: 'sobre-srie',
+};
 
 const AboutSRIE = ({ t }) => (
   <>
+    <CountryHeader
+      page={breadcrumbPage}
+      active="country-data"
+    />
     <Title color="blue" type="title" textCenter>
       {t('title')}
     </Title>
-    <div className="bg-light">
+    <ContainerPage className="bg-light">
       <Container>
         <Row className="d-sm-flex justify-content-center">
           <div className="col-sm-8 py-2 py-sm-5">
@@ -20,7 +33,7 @@ const AboutSRIE = ({ t }) => (
           </div>
         </Row>
       </Container>
-    </div>
+    </ContainerPage>
   </>
 );
 
