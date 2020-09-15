@@ -16,7 +16,9 @@ const Content = styled.div`
   background-color: #FFFFFF;
 `;
 
-const SexChart = ({ data, t, chartType }) => {
+const SexChart = ({
+  data, t, chartType, unitMeasure,
+}) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.sex.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.sex.historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
@@ -52,11 +54,11 @@ const SexChart = ({ data, t, chartType }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis unit="%" />
+          <YAxis unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="M" fill={maleBarColor} name={t('M')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="F" fill={femaleBarColor} name={t('F')} unit="%" barSize={defaultBarSize} />
+          <Bar dataKey="M" fill={maleBarColor} name={t('M')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar dataKey="F" fill={femaleBarColor} name={t('F')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
@@ -80,11 +82,14 @@ const SexChart = ({ data, t, chartType }) => {
   );
 };
 
-SexChart.getInitialProps = ({ t, data, chartType }) => (
+SexChart.getInitialProps = ({
+  t, data, chartType, unitMeasure,
+}) => (
   {
     t,
     data,
     chartType,
+    unitMeasure,
     namespacesRequired: ['charts'],
   }
 );
