@@ -28,7 +28,6 @@
               "datasourceType": [
                   "<p>The Multiple Indicator Cluster Surveys (MICS) by UNICEF.</p>"
               ],
-              "datasourceType": "Household survey",
               "periodicity": "<p>Quinquennial</p>",
               "limitationsAndCommentsAndComments": [
                   "<p>Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries.</p>"
@@ -70,7 +69,6 @@
                 "datasourceType": [
                     "<p>Household surveys</p>"
                 ],
-                "datasourceType": "Household survey",
                 "periodicity": "TBD",
                 "limitationsAndCommentsAndComments": [
                     "<p>Participation in learning programmes in the early years is not full time for many children, meaning that exposure to learning environments outside of the home will vary in intensity. The indicator measures the percentage of children who are exposed to organized learning but not the intensity or quality of the programme. More work is needed to ensure that the definition of learning programmes is consistent across various surveys and defined in a manner that is easily understood by survey respondents, ideally with complementary information collected on the amount of time children spend in learning programmes.</p>"
@@ -124,7 +122,6 @@
                 "datasourceType": [
                     "<p>Country household surveys</p>"
                 ],
-                "datasourceType": "Household survey",
                 "periodicity": "TBD",
                 "limitationsAndCommentsAndComments": [
                     "<p>There are certain difficulties in some countries in order to achieve good coverage in the measurement of early childhood offers in some countries, due to the diversity of rectories that regulate this offer and the lack of objective criteria translatable into data on how to recognize those specifically educational ones. Participation in early learning and development programs is not, in all countries, full-time for all children, so exposure to educational settings outside the home may vary in intensity. Further development is necessary to ensure that the definition of educational programs is consistent across various surveys and is defined in a way that is easily understandable by respondents, ideally with information collected in a complementary way  in relation to the amount of time that children spend in those programs.</p>"
