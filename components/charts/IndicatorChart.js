@@ -41,6 +41,7 @@ const TapTitle = styled.span`
     margin: 0 10px;
     float: left;
   }
+ 
 `;
 
 const SidebarIcon = styled.span`
@@ -51,7 +52,14 @@ const SidebarIcon = styled.span`
     width: 20px;
     margin: 0 10px;
     float: left;
+    cursor: pointer;
   }
+  &:hover ,:focus{
+    &::before {
+      content: url(${(props) => props.iconHover});
+    }
+  }
+  
 `;
 
 const FooterSource = styled.div`
@@ -438,7 +446,7 @@ const IndicatorChart = ({
           <Col md="auto" lg="3" hidden={hideSideBar === 'true'}>
             <SideBarIcons>
 
-              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" onClick={handleInfoModalShow} />
+              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" iconHover="/img/home/icon_table_1_rollover.svg" onClick={handleInfoModalShow} />
               <InfoModal
                 translation={t}
                 show={infoModalShow}
@@ -446,7 +454,7 @@ const IndicatorChart = ({
                 onHide={handleInfoModalClose}
               />
 
-              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" onClick={() => setDownloadModalShow(true)} />
+              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" iconHover="/img/home/icon_table_2_rollover.svg" onClick={() => setDownloadModalShow(true)} />
               <ShareModal
                 show={downloadModalShow}
                 indicator={indicator}
