@@ -21,8 +21,8 @@ const Content = styled.div`
 const WealthQuintileChart = ({
   data, t, chartType, unitMeasure,
 }) => {
-  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].latest));
-  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintille'].historical));
+  const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].latest));
+  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].historical));
   const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
 
