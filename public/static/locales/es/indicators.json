@@ -1,7 +1,7 @@
 {
     "relatedIndicatorTitle": "Indicadores Relacionados",
     "indicatorTitle": "Indicadores Educativos",
-        "indicators": {
+    "indicators": {
         "1": {
           "name": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo", 
           "metadata": {
@@ -128,7 +128,7 @@
             "title": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
             "purpose": ["Identificar la magnitud de la población del grupo de edades correspondientes al nivel educativo dado que no están matriculados en la escuela, para poder identificarlos y poder implementar políticas apropiadas para asegurarse que tengan acceso a la educación."],
             "definition": ["Niños y jóvenes del grupo de edades correspondiente al nivel educativo dado que no se encuentran matriculados en primaria, secundaria o niveles educativos superiores. Los niños que se encuentran matriculados en la educación preprimaria son considerados fuera de la escuela.La <em>edad correspondiente</em> a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían estar asistiendo al mismo, de acuerdo con la legislación o la política nacional, considerando (a) <em>la edad oficial de ingreso</em> al nivel, y la duración de cada nivel educativo en años. La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo."],
-            "formula": "OSR_{n}=\frac{{SAP_{n}}-{{\textstyle\sum_{i=1}}^8}{E_{i,AGn}}}{SAP_{n}}{\times100}",
+            "formula": "OSR_{n}=\frac{{SAP_{n}}-{{\\textstyle\\sum_{i=1}}^8}{E_{i,AGn}}}{SAP_{n}}{\\times100}",
             "interpretation": ["A mayor número de niños y adolescentes fuera de la escuela, las mayores necesidades de focalizar en la mejora en el acceso a la educación. Algunos niños jamás han asistido o eventualmente se matricularán como ingresantes tardíos. Otros niños pudieron haberse matriculado en un inicio y luego abandonado la escuela antes de alcanzar la edad teórica para completar el nivel dado. Cuando se desagrega por sexo, área, y otras características, este indicador puede identificar a grupos de población excluida."],
             "datasourceType": ["Encuestas de hogar. Datos administrativos de los Ministerios de Educación sobre estructura del sistema educativo."],
             "limitationsAndComments": ["Los datos de encuestas de hogar donde las edades se informan al momento del relevamiento, y que son relevados cuando se encuentra ya avanzado el año escolar, pueden resultar en sobreestimaciones."]
@@ -140,7 +140,7 @@
             "title": "Porcentaje de niños, niñas y adolescentes que superan la edad para el grado (primaria y educación secundaria baja)",
             "purpose": ["The indicator measures progress towards ensuring all girls and boys complete a full cycle of quality primary and secondary education and achieve at least minimum levels of proficiency in reading and mathematics at each level. Children may be over-age for a grade because they started school late and/or they have repeated one or more previous grades."],
             "definition": ["El indicador mide el progreso para garantizar que todas las niñas y niños completen un ciclo completo de educación primaria y secundaria de calidad y logren al menos niveles mínimos de competencia en lectura y matemáticas en cada nivel. Los niños pueden poseer edad mayor a un grado porque comenzaron la escuela tarde y / o han repetido uno o más grados anteriores."],
-            "formula": ["POAG_{n}=\frac{\textstyle\sum_{i=1}^{dn}E_{n,g,AG,1+}}{E_{n}}\times100","POAG_{n,1}=\frac{\textstyle\sum_{i=1}^{dn}E_{n,g,AG,1}}{E_{n}}\times100","POAG_{n,2+}=\frac{\textstyle\sum_{i=1}^{dn}E_{n,g,AG,2+}}{E_{n}}\times100"],
+            "formula": ["POAG_{n}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,1+}}{E_{n}}\times100","POAG_{n,1}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,1}}{E_{n}}\times100","POAG_{n,2+}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,2+}}{E_{n}}\times100"],
             "interpretation": ["Un valor bajo de este indicador mostrará que la mayoría de los estudiantes comienzan la escuela a tiempo y progresan con bajos niveles de repetición de grado. La repetición excesiva y la progresión de estudiantes con más edad que la que requiere el grado deben ser desalentadas ya que ambas se asocian con bajos niveles de logro de aprendizaje de los estudiantes."],
             "datasourceType":["Datos administrativos de las escuelas sobre la inscripción por edad simple y grado; datos administrativos de los ministerios de educación sobre la estructura del sistema educativo."],
             "limitationsAndComments": ["Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador."]
