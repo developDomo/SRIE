@@ -121,7 +121,7 @@ export const ButtonContainer = styled.div`
   color: white;
   & div {
     border-bottom: 10px solid ${(props) => (colors[props.color])};
-
+    text-align: center;
   }
 
   &:hover div {
