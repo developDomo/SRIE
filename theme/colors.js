@@ -39,3 +39,13 @@ export const red = '#BF1922';
 
 export const femaleBarColor = '#2A58AD';
 export const maleBarColor = '#359B8A';
+
+export const firstQuintille = '#359B8A';
+
+export const secondQuintille = '#2A58AD';
+
+export const thirthQuintille = '#FBB03B';
+
+export const fourQuintille = '#FB8080';
+
+export const fifthQuintille = '#22BAD3';

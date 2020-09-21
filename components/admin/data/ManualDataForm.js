@@ -5,6 +5,7 @@ import {
   Col, Container, Form, Row,
 } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import sum from 'lodash/sum';
 import {
   blue, blue1, blue4, borders, gray1, gray2, green, green2, txt, white,
 } from '../../../theme/colors';
@@ -22,6 +23,38 @@ const handleOnChange = (setFormData, formData) => (e) => {
   setFormData(formData);
 };
 
+const calculateIndex = (numeratorInputName, denominatorInputName, resultInputName) => {
+  const numerator = document.getElementsByName(numeratorInputName)[0]?.value;
+  if (!numerator) {
+    return;
+  }
+
+  const denominator = document.getElementsByName(denominatorInputName)[0]?.value;
+  if (!denominator) {
+    return;
+  }
+
+  const resultInput = document.getElementsByName(resultInputName)[0];
+  if (!resultInput) {
+    return;
+  }
+
+  const index = Math.round((numerator / denominator) * 100000) / 100000;
+  resultInput.value = index;
+};
+
+const calculateGpi = () => {
+  calculateIndex('female', 'male', 'gpi');
+};
+
+const calculateGlpi = () => {
+  calculateIndex('rural', 'urban', 'glpi');
+};
+
+const calculateSespi = () => {
+  calculateIndex('q1', 'q5', 'sespi');
+};
+
 const YearSelect = React.forwardRef((props, ref) => {
   const {
     excludeYears, setFormData, formData, year, label, sm,
@@ -32,11 +65,10 @@ const YearSelect = React.forwardRef((props, ref) => {
 
   const options = [];
   for (let i = minYear; i <= maxYear; i++) {
-    if (!excludeYears.includes(i)) {
-      options.push(<option key={i} value={i}>{i}</option>);
-      if (!formData.year) {
-        formData.year = i;
-      }
+    const isDisabled = excludeYears.includes(i);
+    options.push(<option disabled={isDisabled} key={i} value={i}>{i}</option>);
+    if (!formData.year) {
+      formData.year = i;
     }
   }
 
@@ -80,7 +112,7 @@ const YearSelect = React.forwardRef((props, ref) => {
 
 const FormInput = React.forwardRef((props, ref) => {
   const {
-    name, label, value, errors, sm, setFormData, formData,
+    name, label, value, errors, sm, setFormData, formData, onBlur,
   } = props;
   const errorMessage = errors && errors[name] && errors[name].message;
   return (
@@ -98,6 +130,7 @@ const FormInput = React.forwardRef((props, ref) => {
         name={name}
         value={value}
         onChange={handleOnChange(setFormData, formData)}
+        onBlur={onBlur}
       />
 
       <span className="invalid-feedback">
@@ -204,9 +237,9 @@ const CustomCheckbox = (props) => {
 };
 
 const FieldsGroup = ({
-  visible, groupName, children, setFormData, formData,
+  visible, groupName, children, setFormData, formData, expanded,
 }) => {
-  const [fieldsVisible, setFieldsVisible] = useState(false);
+  const [fieldsVisible, setFieldsVisible] = useState(expanded);
   const toggleFields = () => setFieldsVisible(!fieldsVisible);
   const onFieldGroupChecked = () => (e) => {
     toggleFields();
@@ -215,7 +248,7 @@ const FieldsGroup = ({
   return visible && (
   <Row className={`field-group ${groupName} mt-2 pt-3 mb-2`}>
     <Col sm={12}>
-      <CustomCheckbox className="mr-2" name={groupName} value={groupName} onChange={onFieldGroupChecked(setFormData, formData)} />
+      <CustomCheckbox checked={fieldsVisible} className="mr-2" name={groupName} value={groupName} onChange={onFieldGroupChecked(setFormData, formData)} />
     </Col>
     {fieldsVisible && children}
     <style>
@@ -259,8 +292,20 @@ const FieldGroupIndexes = ({
 const ManualDataForm = ({
   t, variation, visualizations, indexes, data, onSubmit, setFormData, formData, year,
 }) => {
-  const { handleSubmit, register, errors } = useForm();
-  const parseSeparator = (val) => parseInt(val.replace(',', '.'), 10);
+  const [defaultData] = data ?? [{}];
+  const defaultValues = { ...defaultData, ...formData, ...year };
+
+  const { handleSubmit, register, errors } = useForm({
+    defaultValues,
+  });
+
+  const parseSeparator = (val) => val.replace(',', '.');
+
+  const totalIsGreater = (total, ...fields) => {
+    const fieldstotal = sum(fields.map((f) => Math.fround(f)));
+    return (Math.fround(fieldstotal) < Math.fround(total));
+  };
+
   return (
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
       <input type="hidden" name="variation" value={variation} />
@@ -293,36 +338,49 @@ const ManualDataForm = ({
         />
       </Row>
 
-      <FieldsGroup visible={visualizations.includes('sex')} groupName="sex" setFormData={setFormData} formData={formData}>
+      <FieldsGroup
+        visible={visualizations.includes('sex')}
+        expanded={defaultValues.female || defaultValues.male}
+        groupName="sex"
+        setFormData={setFormData}
+        formData={formData}
+      >
         <FormInput
           name="male"
-          label="Male"
+          label="Masculino"
           setFormData={setFormData}
           formData={formData}
           disabled={!year}
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
+          onBlur={calculateGpi}
 
         />
         <FormInput
           name="female"
-          label="Female"
+          label="Femenino"
           setFormData={setFormData}
           formData={formData}
           disabled={!year}
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
           })}
-
           errors={errors}
+          onBlur={calculateGpi}
 
         />
         <FieldGroupIndexes index="GPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
 
-      <FieldsGroup visible={visualizations.includes('location')} groupName="location" setFormData={setFormData} formData={formData} t={t}>
+      <FieldsGroup
+        visible={visualizations.includes('location')}
+        expanded={defaultValues.urban || defaultValues.rural}
+        groupName="location"
+        setFormData={setFormData}
+        formData={formData}
+      >
         <FormInput
           name="rural"
           label="Rural"
@@ -330,10 +388,11 @@ const ManualDataForm = ({
           formData={formData}
           disabled
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.urban <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.urban) || 'Datos no pueden sobrepasar el 100%',
           })}
 
           errors={errors}
+          onBlur={calculateGlpi}
         />
         <FormInput
           name="urban"
@@ -342,19 +401,28 @@ const ManualDataForm = ({
           formData={formData}
           disabled
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.rural <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.rural) || 'Datos no pueden sobrepasar el 100%',
           })}
 
           errors={errors}
+          onBlur={calculateGlpi}
         />
         <FieldGroupIndexes index="GLPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
-      <FieldsGroup visible={visualizations.includes('wealth-quintile')} groupName="wealth-quintile" setFormData={setFormData} formData={formData}>
+
+      <FieldsGroup
+        visible={visualizations.includes('wealth-quintile')}
+        expanded={defaultValues.q1 || defaultValues.q2 || defaultValues.q3 || defaultValues.q4 || defaultValues.q5}
+        groupName="wealth-quintile"
+        setFormData={setFormData}
+        formData={formData}
+        onBlur={calculateSespi}
+      >
         <FormInput name="q1" label="Q1" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q2" label="Q2" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q3" label="Q3" setFormData={setFormData} formData={formData} disabled />
         <FormInput name="q4" label="Q4" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled />
+        <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled onBlur={calculateSespi} />
         <FieldGroupIndexes index="SESPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
       <Row className="mt-4">

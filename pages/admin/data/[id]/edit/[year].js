@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
+import { Col, Row } from 'react-bootstrap';
 import { withTranslation } from '../../../../../i18n';
 import AdminMenu from '../../../../../components/admin/AdminMenu';
 import ManualDataForm from '../../../../../components/admin/data/ManualDataForm';
 import needsAuth from '../../../../../lib/needsAuth';
-
-const preventDefault = (f) => (e) => {
-  e.preventDefault();
-  f(e);
-};
+import FetchUtils from '../../../../../utils/Fetch.utils';
+import CountryTitle from '../../../../../components/countries/CountryTitle';
+import Title from '../../../../../components/layout/Title';
+import { txt } from '../../../../../theme/colors';
 
 const AdminDataEdit = ({
-  id, user, visualizations, indexes, data, variation, year,
+  t, id, user, visualizations, indexes, data, variation, year, country, indicatorName, indicatorData,
 }) => {
   const variationQueryParam = variation ? `variation=${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data/edit`;
@@ -23,7 +23,7 @@ const AdminDataEdit = ({
   formData.country = user.country;
   formData.variation = variation;
 
-  const handleSubmit = preventDefault(() => {
+  const handleSubmit = () => {
     fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,23 +31,42 @@ const AdminDataEdit = ({
     }).then((res) => {
       if (res.ok) router.push(redirectUrl);
     });
-  });
+  };
 
   return (
     <Container fluid>
       <AdminMenu user={user} />
 
       <Container className="pt-4 pb-4">
-        <ManualDataForm
-          variation={variation}
-          visualizations={visualizations}
-          indexes={indexes}
-          data={data}
-          onSubmit={handleSubmit}
-          setFormData={setFormData}
-          formData={formData}
-          year={year}
-        />
+
+        <CountryTitle country={country} />
+        <Row className="justify-content-center mb-4 mt-4">
+          <Title color="blueTitle" type="title">
+            Datos de indicadores
+          </Title>
+        </Row>
+
+        <Row>
+          <Col md={{
+            span: 10,
+            offset: 1,
+          }}
+          >
+            <Title color={txt} type="caption" textCenter className="mb-4">
+              {t(indicatorName)}
+            </Title>
+
+            <ManualDataForm
+              variation={variation}
+              visualizations={visualizations}
+              indexes={indexes}
+              data={data}
+              onSubmit={handleSubmit}
+              setFormData={setFormData}
+              formData={formData}
+            />
+          </Col>
+        </Row>
       </Container>
     </Container>
   );
@@ -58,14 +77,18 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [id, variation] = query.id.split('-');
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
-  const url = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
+  const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
+  const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
 
-  const res = await fetch(url);
-  const indicator = await res.json();
+  const [country, indicator] = await FetchUtils.multipleFetch([
+    countryUrl, indicatorUrl,
+  ]);
 
+  const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
+  const indicatorData = 'indicatorData';
   return ({
     props: {
-      namespacesRequired: ['common'],
+      namespacesRequired: ['indicators', 'common'],
       user,
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
@@ -73,8 +96,11 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
       variation: variation || null,
       id,
       year,
+      indicatorName,
+      indicatorData,
+      country,
     },
   });
 });
 
-export default withTranslation('common')(AdminDataEdit);
+export default withTranslation(['indicators', 'common'])(AdminDataEdit);
