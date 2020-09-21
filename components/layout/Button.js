@@ -160,6 +160,7 @@ export const Button = (props) => {
   const {
     children, onClick, color, textTransform,
   } = props;
+
   return (
     <ButtonContainer {...props} as="button" color={color} onClick={onClick}>
       <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
