@@ -66,6 +66,7 @@
   "password": "Contraseña",
   "login": "Ingresar",
   "year": "Año",
+  "indicatorData": "Datos de indicadores",
   "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Use \"coma\" (,) como separador",
   "includesex": "Incluir datos por género",

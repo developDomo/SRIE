@@ -5,6 +5,7 @@ import {
   Col, Container, Form, Row,
 } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import sum from 'lodash/sum';
 import {
   blue, blue1, blue4, borders, gray1, gray2, green, green2, txt, white,
 } from '../../../theme/colors';
@@ -64,11 +65,10 @@ const YearSelect = React.forwardRef((props, ref) => {
 
   const options = [];
   for (let i = minYear; i <= maxYear; i++) {
-    if (!excludeYears.includes(i)) {
-      options.push(<option key={i} value={i}>{i}</option>);
-      if (!formData.year) {
-        formData.year = i;
-      }
+    const isDisabled = excludeYears.includes(i);
+    options.push(<option disabled={isDisabled} key={i} value={i}>{i}</option>);
+    if (!formData.year) {
+      formData.year = i;
     }
   }
 
@@ -237,9 +237,9 @@ const CustomCheckbox = (props) => {
 };
 
 const FieldsGroup = ({
-  visible, groupName, children, setFormData, formData,
+  visible, groupName, children, setFormData, formData, expanded,
 }) => {
-  const [fieldsVisible, setFieldsVisible] = useState(false);
+  const [fieldsVisible, setFieldsVisible] = useState(expanded);
   const toggleFields = () => setFieldsVisible(!fieldsVisible);
   const onFieldGroupChecked = () => (e) => {
     toggleFields();
@@ -248,7 +248,7 @@ const FieldsGroup = ({
   return visible && (
   <Row className={`field-group ${groupName} mt-2 pt-3 mb-2`}>
     <Col sm={12}>
-      <CustomCheckbox className="mr-2" name={groupName} value={groupName} onChange={onFieldGroupChecked(setFormData, formData)} />
+      <CustomCheckbox checked={fieldsVisible} className="mr-2" name={groupName} value={groupName} onChange={onFieldGroupChecked(setFormData, formData)} />
     </Col>
     {fieldsVisible && children}
     <style>
@@ -292,8 +292,20 @@ const FieldGroupIndexes = ({
 const ManualDataForm = ({
   t, variation, visualizations, indexes, data, onSubmit, setFormData, formData, year,
 }) => {
-  const { handleSubmit, register, errors } = useForm();
-  const parseSeparator = (val) => parseInt(val.replace(',', '.'), 10);
+  const [defaultData] = data ?? [{}];
+  const defaultValues = { ...defaultData, ...formData, ...year };
+
+  const { handleSubmit, register, errors } = useForm({
+    defaultValues,
+  });
+
+  const parseSeparator = (val) => val.replace(',', '.');
+
+  const totalIsGreater = (total, ...fields) => {
+    const fieldstotal = sum(fields.map((f) => Math.fround(f)));
+    return (Math.fround(fieldstotal) < Math.fround(total));
+  };
+
   return (
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
       <input type="hidden" name="variation" value={variation} />
@@ -326,15 +338,21 @@ const ManualDataForm = ({
         />
       </Row>
 
-      <FieldsGroup visible={visualizations.includes('sex')} groupName="sex" setFormData={setFormData} formData={formData}>
+      <FieldsGroup
+        visible={visualizations.includes('sex')}
+        expanded={defaultValues.female || defaultValues.male}
+        groupName="sex"
+        setFormData={setFormData}
+        formData={formData}
+      >
         <FormInput
           name="male"
-          label="Male"
+          label="Masculino"
           setFormData={setFormData}
           formData={formData}
           disabled={!year}
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
           onBlur={calculateGpi}
@@ -342,12 +360,12 @@ const ManualDataForm = ({
         />
         <FormInput
           name="female"
-          label="Female"
+          label="Femenino"
           setFormData={setFormData}
           formData={formData}
           disabled={!year}
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.female <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
           onBlur={calculateGpi}
@@ -356,7 +374,13 @@ const ManualDataForm = ({
         <FieldGroupIndexes index="GPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
 
-      <FieldsGroup visible={visualizations.includes('location')} groupName="location" setFormData={setFormData} formData={formData} t={t}>
+      <FieldsGroup
+        visible={visualizations.includes('location')}
+        expanded={defaultValues.urban || defaultValues.rural}
+        groupName="location"
+        setFormData={setFormData}
+        formData={formData}
+      >
         <FormInput
           name="rural"
           label="Rural"
@@ -364,7 +388,7 @@ const ManualDataForm = ({
           formData={formData}
           disabled
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.urban <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.urban) || 'Datos no pueden sobrepasar el 100%',
           })}
 
           errors={errors}
@@ -377,7 +401,7 @@ const ManualDataForm = ({
           formData={formData}
           disabled
           ref={register({
-            validate: (value) => parseSeparator(value) + formData.rural <= formData.total || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.rural) || 'Datos no pueden sobrepasar el 100%',
           })}
 
           errors={errors}
@@ -385,8 +409,10 @@ const ManualDataForm = ({
         />
         <FieldGroupIndexes index="GLPI" indexes={indexes} setFormData={setFormData} formData={formData} />
       </FieldsGroup>
+
       <FieldsGroup
         visible={visualizations.includes('wealth-quintile')}
+        expanded={defaultValues.q1 || defaultValues.q2 || defaultValues.q3 || defaultValues.q4 || defaultValues.q5}
         groupName="wealth-quintile"
         setFormData={setFormData}
         formData={formData}
