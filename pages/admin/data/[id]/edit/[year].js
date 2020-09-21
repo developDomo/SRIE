@@ -11,7 +11,6 @@ import CountryTitle from '../../../../../components/countries/CountryTitle';
 import Title from '../../../../../components/layout/Title';
 import { txt } from '../../../../../theme/colors';
 
-
 const AdminDataEdit = ({
   t, id, user, visualizations, indexes, data, variation, year, country, indicatorName, indicatorData,
 }) => {

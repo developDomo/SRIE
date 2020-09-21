@@ -29,7 +29,9 @@ const ControlContainer = styled.div`
   justify-content: space-around;
 `;
 
-const IndexesChart = ({ data, t, chartType }) => {
+const IndexesChart = ({
+  data, t, chartType, unitMeasure,
+}) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
@@ -62,10 +64,10 @@ const IndexesChart = ({ data, t, chartType }) => {
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis domain={[0, 2]} />
+          <YAxis domain={[0, 2]} unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} />
+          <Bar dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
@@ -93,11 +95,14 @@ const IndexesChart = ({ data, t, chartType }) => {
   );
 };
 
-IndexesChart.getInitialProps = ({ t, data, chartType }) => (
+IndexesChart.getInitialProps = ({
+  t, data, chartType, unitMeasure,
+}) => (
   {
     t,
     data,
     chartType,
+    unitMeasure,
     namespacesRequired: ['charts'],
   }
 );

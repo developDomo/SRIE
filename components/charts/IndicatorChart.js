@@ -41,6 +41,7 @@ const TapTitle = styled.span`
     margin: 0 10px;
     float: left;
   }
+ 
 `;
 
 const SidebarIcon = styled.span`
@@ -51,12 +52,20 @@ const SidebarIcon = styled.span`
     width: 20px;
     margin: 0 10px;
     float: left;
+    cursor: pointer;
   }
+  &:hover ,:focus{
+    &::before {
+      content: url(${(props) => props.iconHover});
+    }
+  }
+  
 `;
 
 const FooterSource = styled.div`
   color: #727EAB;
   padding-top: 1em;
+  font-style: italic;
 `;
 
 const SideBarIcons = styled.div`
@@ -195,14 +204,6 @@ const InfoModal = ({
       </DataSheetParagraph>
 
       <strong>
-        {translation('common:datasourceType')}
-        :
-      </strong>
-      <DataSheetParagraph>
-        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
-      </DataSheetParagraph>
-
-      <strong>
         {translation('common:periodicity')}
         :
       </strong>
@@ -320,7 +321,7 @@ const ShareModal = ({
 );
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
@@ -343,7 +344,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} chartType={chartType} />
+          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -358,7 +359,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} chartType={chartType} />
+          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -371,7 +372,7 @@ const IndicatorChart = ({
         && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <GeoChart data={chartData} chartType={chartType} />
+          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -384,7 +385,7 @@ const IndicatorChart = ({
         && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintileChart data={chartData} chartType={chartType} />
+          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -395,7 +396,7 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
         <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} chartType={chartType} />
+          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
         </Tab>
       );
     }
@@ -445,7 +446,7 @@ const IndicatorChart = ({
           <Col md="auto" lg="3" hidden={hideSideBar === 'true'}>
             <SideBarIcons>
 
-              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" onClick={handleInfoModalShow} />
+              <SidebarIcon iconUrl="/img/home/icon_table_1.svg" iconHover="/img/home/icon_table_1_rollover.svg" onClick={handleInfoModalShow} />
               <InfoModal
                 translation={t}
                 show={infoModalShow}
@@ -453,7 +454,7 @@ const IndicatorChart = ({
                 onHide={handleInfoModalClose}
               />
 
-              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" onClick={() => setDownloadModalShow(true)} />
+              <SidebarIcon iconUrl="/img/home/icon_table_2.svg" iconHover="/img/home/icon_table_2_rollover.svg" onClick={() => setDownloadModalShow(true)} />
               <ShareModal
                 show={downloadModalShow}
                 indicator={indicator}
@@ -512,7 +513,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart, unitMeasure,
 }) => ({
   namespacesRequired: ['charts', 'indicators', 'common'],
   data,
@@ -527,6 +528,7 @@ IndicatorChart.getInitialProps = async ({
   country,
   chart,
   countryCode,
+  unitMeasure,
 });
 
 export default withTranslation('charts', 'indicators', 'common')(IndicatorChart);

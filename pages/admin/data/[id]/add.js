@@ -11,7 +11,6 @@ import Title from '../../../../components/layout/Title';
 import FetchUtils from '../../../../utils/Fetch.utils';
 import { txt } from '../../../../theme/colors';
 
-
 const AdminDataNewForm = ({
   t, id, user, visualizations, indexes, data, variation, code, country, indicatorName,
 }) => {
@@ -72,7 +71,6 @@ const AdminDataNewForm = ({
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [id, variation] = query.id.split('-');
-
 
   const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
 

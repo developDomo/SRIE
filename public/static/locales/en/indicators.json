@@ -3,6 +3,7 @@
     "indicatorTitle": "Education Indicators",
     "indicators": {
         "1": {
+            "name": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
             "metadata": {
               "title": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
               "definition": [
@@ -27,7 +28,6 @@
               "datasourceType": [
                   "<p>The Multiple Indicator Cluster Surveys (MICS) by UNICEF.</p>"
               ],
-              "datasourceType": "Household survey",
               "periodicity": "<p>Quinquennial</p>",
               "limitationsAndCommentsAndComments": [
                   "<p>Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries.</p>"
@@ -69,7 +69,6 @@
                 "datasourceType": [
                     "<p>Household surveys</p>"
                 ],
-                "datasourceType": "Household survey",
                 "periodicity": "TBD",
                 "limitationsAndCommentsAndComments": [
                     "<p>Participation in learning programmes in the early years is not full time for many children, meaning that exposure to learning environments outside of the home will vary in intensity. The indicator measures the percentage of children who are exposed to organized learning but not the intensity or quality of the programme. More work is needed to ensure that the definition of learning programmes is consistent across various surveys and defined in a manner that is easily understood by survey respondents, ideally with complementary information collected on the amount of time children spend in learning programmes.</p>"
@@ -78,6 +77,7 @@
               }
         },
         "3": {
+            "name": "Net enrolment rate, early childhood educational development programmes (CINE 01)",
             "metadata": {
             "title": "Net enrolment rate, early childhood educational development programmes (CINE 01)",
             "purpose": ["The indicator measures children's exposure to activities related to early childhood educational development between 45 days and two years of age."],
@@ -122,7 +122,6 @@
                 "datasourceType": [
                     "<p>Country household surveys</p>"
                 ],
-                "datasourceType": "Household survey",
                 "periodicity": "TBD",
                 "limitationsAndCommentsAndComments": [
                     "<p>There are certain difficulties in some countries in order to achieve good coverage in the measurement of early childhood offers in some countries, due to the diversity of rectories that regulate this offer and the lack of objective criteria translatable into data on how to recognize those specifically educational ones. Participation in early learning and development programs is not, in all countries, full-time for all children, so exposure to educational settings outside the home may vary in intensity. Further development is necessary to ensure that the definition of educational programs is consistent across various surveys and is defined in a way that is easily understandable by respondents, ideally with information collected in a complementary way  in relation to the amount of time that children spend in those programs.</p>"
@@ -131,6 +130,7 @@
               }
         },
         "5": {
+            "name": "Number of years of (a) free and (b) compulsory pre-primary education guaranteed in legal frameworks",
             "metadata": {
             "title": "Number of years of (a) free and (b) compulsory pre-primary education guaranteed in legal frameworks",
             "purpose": ["To measure government commitment to guaranteeing the right to education to children and young people."],
@@ -142,6 +142,7 @@
             }
         },
         "6": {
+            "name": "Proportion of children and young people (a) in Grade 2 or 3; (b) at the end of primary education; and (c) at the end of lower secondary education achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex",
             "metadata": {
             "title": "Proportion of children and young people (a) in Grade 2 or 3; (b) at the end of primary education; and (c) at the end of lower secondary education achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex",
             "purpose": ["Percentage of children and young people achieving at least a minimum proficiency level in (i) reading and (ii) mathematics during primary education (Grade 2 or 3), at the end of primary education, and at the end of lower secondary education. The minimum proficiency level will be measured relative to new common reading and mathematics scales currently in development. Minimum proficiency level is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. As of August 2018 there is no globally agreed definition of minimum proficiency level. As an interim reporting strategy the UIS is reporting according to the minimum proficiency level informed by each assessment."],
@@ -153,6 +154,7 @@
             ]}
         },
         "7": {
+            "name": "Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex",
             "metadata": {
             "title": "Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex",
             "purpose": ["The indicator is a direct measure of the skill levels of youth and adults in the two areas: literacy and numeracy."],
@@ -164,6 +166,7 @@
             ]}
         },
         "8": {
+            "name": "Net rate of admission to primary, lower secondary and upper secondary",
             "metadata": {
             "title": "Net rate of admission to primary, lower secondary and upper secondary",
             "purpose": ["Show the appropriate level of access to the primary, lower secondary and upper secondary levels, and in this way give a summary account of the capacity of the educational system to guarantee access to these levels and transit without interruptions."],
@@ -175,6 +178,7 @@
             ]}
         },
         "9": {
+            "name": "Gross intake ratio to the last grade (primary, lower secondary)",
             "metadata": {
             "title": "Gross intake ratio to the last grade (primary, lower secondary)",
             "purpose": ["This is a proxy measure of primary completion. It reflects how the impact of policies on access to and progression through the early grades of each level of education impact the final grade of that level. It also indicates the capacity of the education system to cater for the completion of the population of the intended entrance age to the last grade of the given level of education. It assumes that pupils entering the last grade for the first time will eventually complete the grade and hence the given level of education."],
@@ -186,6 +190,7 @@
             ]}
         },
         "10": {
+            "name": "Completion rate (primary education, lower secondary education, upper secondary education)",
             "metadata": {
             "title": "Completion rate (primary education, lower secondary education, upper secondary education)",
             "purpose": ["The completion rate indicates how many persons in a given age group have completed the relevant level of education. By choosing an age-group which is slightly older than the theoretical age-group for completing each level of education, the indicator measures how many children and adolescents enter school more or less on time and progress through the education system without excessive delays."],
@@ -197,6 +202,7 @@
             ]}
         },
         "11": {
+            "name": "Out-of-school rate (primary education, lower secondary education, upper secondary education)",
             "metadata": {
             "title": "Out-of-school rate (primary education, lower secondary education, upper secondary education)",
             "purpose": ["To identify the size of the population in the official age range for the given level of education who are not enrolled in school in order that they can be better targeted and appropriate policies can be put in place to ensure they have access to education."],
@@ -208,6 +214,7 @@
             ]}
         },
         "12": {
+            "name": "Percentage of children over-age for grade (primary education, lower secondary education)",
             "metadata": {
             "title": "Percentage of children over-age for grade (primary education, lower secondary education)",
             "purpose": ["The indicator measures progress towards ensuring all girls and boys complete a full cycle of quality primary and secondary education and achieve at least minimum levels of proficiency in reading and mathematics at each level. Children may be over-age for a grade because they started school late and/or they have repeated one or more previous grades."],
@@ -219,6 +226,7 @@
             ]}
         },
         "13": {
+            "name": "Rate of children and adolescents who dropout of school: 1st to 6th grade; 7th to 12th grade",
             "metadata": {
             "title": "Rate of children and adolescents who dropout of school: 1st to 6th grade; 7th to 12th grade",
             "purpose": ["Measure the phenomenon by which students dropout of school before the end of the school year, and its effect on the internal efficiency of educational systems. It also represents one of the key indicators to analyze the flow of students within the educational cycle."],
@@ -230,6 +238,7 @@
             ]}
         },
         "14": {
+            "name": "Percentage of children and adolescents who repeat the grade at the primary level (ISCED 1)",
             "metadata": {
             "title": "Percentage of children and adolescents who repeat the grade at the primary level (ISCED 1)",
             "purpose": ["Measure the patterns and incidence of repetition by grade, and measure through it the internal efficiency of educational systems."],
@@ -241,6 +250,7 @@
             ]}
         },
         "15": {
+            "name": "Number of years of (a) free and (b) compulsory primary and secondary education guaranteed in legal frameworks",
             "metadata": {
             "title": "Number of years of (a) free and (b) compulsory primary and secondary education guaranteed in legal frameworks",
             "purpose": ["To measure government commitment to guaranteeing the right to education to children and young people."],
@@ -252,6 +262,7 @@
             ]}
         },
         "16": {
+            "name": "Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, by sex",
             "metadata": {
             "title": "Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, by sex",
             "purpose": ["To show the level of participation of youth and adults in education and training of all types."],
@@ -263,6 +274,7 @@
             ]}
         },
         "17": {
+            "name": "Gross enrolment ratio for tertiary education, by sex",
             "metadata": {
             "title": "Gross enrolment ratio for tertiary education, by sex",
             "purpose": ["To show the general level of participation in a given level of education. It indicates the capacity of the education system to enrol students of a particular age group."],
@@ -274,6 +286,7 @@
             ]}
         },
         "18": {
+            "name": "Net enrollment rate in tertiary education, disaggregated by sex.",
             "metadata": {
             "title": "Net enrollment rate in tertiary education, disaggregated by sex.",
             "purpose": ["Show the scope of coverage at the tertiary level for the population of a certain age group: young people belonging to the five-year age group immediately above upper secondary education."],
@@ -285,6 +298,7 @@
             ]}
         },
         "19": {
+            "name": "Youth/adult literacy rate",
             "metadata": {
             "title": "Youth/adult literacy rate",
             "purpose": ["The literacy rate indicates the proportion of a given population that has a minimum level of reading and writing skills. The interpretation of the indicator is strongly linked to the method of data collection."],
@@ -296,6 +310,7 @@
             ]}
         },
         "20": {
+            "name": "Youth/adult educational attainment rates by age group, economic activity status and programme orientation",
             "metadata": {
             "title": "Youth/adult educational attainment rates by age group, economic activity status and programme orientation",
             "purpose": ["Educational attainment is a measure of the human capital of individuals and entire nations."],
@@ -307,6 +322,7 @@
             ]}
         },
         "21": {
+            "name": "Parity indices (female/male, rural/urban, bottom/top wealth quintiles and others such as disability status, indigenous peoples and conflict-affected, as data become available) for all education indicators on this list that can be disaggregated",
             "metadata": {
             "title": "Parity indices (female/male, rural/urban, bottom/top wealth quintiles and others such as disability status, indigenous peoples and conflict-affected, as data become available) for all education indicators on this list that can be disaggregated",
             "purpose": ["To measure the general level of disparity between two sub-populations of interest with regard to a given indicator."],
@@ -318,6 +334,7 @@
             ]}
         },
         "22": {
+            "name": "Government expenditure on education per student and by educational level",
             "metadata": {
             "title": "Government expenditure on education per student and by educational level",
             "purpose": ["This indicator reflects the size of government resources invested on average by each student. It is useful to consider a per student basis for comparison, either between educational levels, over time, or between countries. Expressing the indicator as a percentage of GDP per capita, or in PPP $ also favors the comparison between countries, and using constant values ​​when analyzing time series is essential to assess how real resources (eliminating inflationary effects) are evolving throughout weather."],
@@ -329,6 +346,7 @@
             ]}
         },
         "23": {
+            "name": "Proportion of teachers in: (a) pre-primary education; (b) primary education; (c) lower secondary education; and (d) upper secondary education who have received at least the minimum organized teacher training (e.g. pedagogical training) pre-service or in-service required for teaching at the relevant level in a given country, by sex",
             "metadata": {
             "title": "Proportion of teachers in: (a) pre-primary education; (b) primary education; (c) lower secondary education; and (d) upper secondary education who have received at least the minimum organized teacher training (e.g. pedagogical training) pre-service or in-service required for teaching at the relevant level in a given country, by sex",
             "purpose": ["Teachers play a key role in ensuring the quality of education provided. Ideally all teachers should receive adequate, appropriate and relevant pedagogical training to teach at the chosen level of education and be academically well-qualified in the subject(s) they are expected to teach. This indicator measures the share of the teaching work force which is pedagogically well-trained."],
@@ -340,6 +358,7 @@
             ]}
         },
         "24": {
+            "name": "Teacher salary (witness position) in relation to the value of the poverty line",
             "metadata": {
             "title": "Teacher salary (witness position) in relation to the value of the poverty line",
             "purpose": ["It provides an approximation to the working conditions of teachers, compared to a measure linked to the living conditions of the population, and also helps to characterize the relative attractiveness of the teaching profession. The rationale is that if salaries in the teaching profession are attractive, they are more likely to attract quality candidates."],
@@ -351,6 +370,7 @@
             ]}
         },
         "25": {
+            "name": "Extent to which (i) global citizenship education and (ii) education for sustainable development, including gender equality and human rights, are mainstreamed at all levels in: (a) national education policies (b) curricula (c) teacher education and (d) student assessments",
             "metadata": {
             "title": "Extent to which (i) global citizenship education and (ii) education for sustainable development, including gender equality and human rights, are mainstreamed at all levels in: (a) national education policies (b) curricula (c) teacher education and (d) student assessments",
             "purpose": ["The indicator provides important information on the level of national commitment towards the attainment of this target (for example whether political will/decisions and resources available have been translated into concrete policies, curricula, assessment) as well as whether the quality of the programmes provided, can predict the likelihood that desired student outcomes will be achieved."],
@@ -362,6 +382,7 @@
             ]}
         },
         "26": {
+            "name": "Proportion of schools with access to: (a) electricity; (b) the Internet for pedagogical purposes; (c) computers for pedagogical purposes; (d) adapted infrastructure and materials for students with disabilities; (e) basic drinking water; (f) single-sex basic sanitation facilities; and (g) basic handwashing facilities (as per the WASH indicator definitions)",
             "metadata": {
             "title": "Proportion of schools with access to: (a) electricity; (b) the Internet for pedagogical purposes; (c) computers for pedagogical purposes; (d) adapted infrastructure and materials for students with disabilities; (e) basic drinking water; (f) single-sex basic sanitation facilities; and (g) basic handwashing facilities (as per the WASH indicator definitions)",
             "purpose": ["The indicator measures access in schools to key basic services and facilities necessary to ensure a safe and effective learning environment for all students."],

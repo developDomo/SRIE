@@ -42,7 +42,6 @@ const Country = ({
   const completionRate = countryInfo.completion_rate;
   const { data: completionRateData } = completionRate;
 
-
   const isFreeValue = free_edu?.obs_value || 0;
   const mandatoryValue = free_edu?.obs_value || 0;
 
