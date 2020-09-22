@@ -433,7 +433,9 @@ const ManualDataForm = ({
         >
           <Button type="submit" className="btn-add-data" color="blue">
             <a>
-              Add Data &#43;
+              {t('save')}
+              {' '}
+              &#43;
             </a>
           </Button>
         </Col>
