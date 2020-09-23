@@ -71,5 +71,6 @@
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Use \"coma\" (,) como separador",
   "includesex": "Incluir datos por género",
   "includelocation": "Incluir datos por género",
-  "includewealth-quintile": "Incluir datos por nivel socioeconómico"
+  "includewealth-quintile": "Incluir datos por nivel socioeconómico",
+  "save": "Guardar"
 }

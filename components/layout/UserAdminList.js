@@ -1,78 +1,87 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { withTranslation } from '../../i18n';
+import Table from 'react-bootstrap/Table';
+import { useState } from 'react';
+import { ButtonGroup } from 'react-bootstrap';
 import { blue } from '../../theme/colors';
+import { Edit, Delete } from './Icons';
+import ConfirmationModal from './ConfimationModal';
 
 const redirectUrl = '/admin/users';
 
 const UserAdminList = ({ users }) => {
   const router = useRouter();
+  const [userToDelete, setUserToDelete] = useState(null);
 
   const deleteUser = (id) => {
     const deleteUserUrl = `${process.env.API_URL}/api/users/${id}/delete`;
-
     fetch(deleteUserUrl, {
       method: 'POST',
     }).then((res) => {
+      setUserToDelete(null);
       if (res.ok) router.push(redirectUrl);
     });
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Country</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Rol</th>
-          <th>Last Login</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {users.map((user) => (
-          <tr>
-            <td>{user.country}</td>
-            <td>{user.first_name}</td>
-            <td>{user.last_name}</td>
-            <td>{user.email}</td>
-            <td>{user.role}</td>
-            <td>{user.last_login}</td>
-            <td>
-              <Link href={`/admin/users/${user.id}/edit`}>
-                <a>Edit</a>
-              </Link>
-              <button type="button" onClick={() => deleteUser(user.id)}>Delete</button>
-              <Link href={`/admin/users/${user.id}/change-password`}>
-                <a>Change Password</a>
-              </Link>
-            </td>
+    <>
+      <Table className="table-hover-" responsive="lg">
+        <thead>
+          <tr className="align-middle text-center">
+            <th className="w-auto">User</th>
+            <th className="w-50">Name</th>
+            <th className="w-auto">Country</th>
+            <th className="w-auto">Actions</th>
           </tr>
-        ))}
-      </tbody>
-      <style jsx>
-        {`
-      th {
-        background-color: ${blue};
-        color: white;
-        text-align: center;
-        vertical-align: center;
-        line-height: 2em;
-      }
-
-      td {
-        text-align: center;
-        padding: 5px 10px;
-        line-height: 2em;
-
-      }
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td className="align-middle text-center">
+                {user.email}
+              </td>
+              <td className="align-middle text-center">
+                {user.first_name}
+                {' '}
+                {user.last_name}
+              </td>
+              <td className="align-middle text-center">{user.country}</td>
+              <td className="align-middle text-center actions">
+                <ButtonGroup>
+                  <Link href={`/admin/users/${user.id}/edit`}>
+                    <a className="btn btn-light">
+                      <Edit />
+                    </a>
+                  </Link>
+                  <button type="button" className="btn btn-danger" onClick={() => setUserToDelete(user)}>
+                    <Delete />
+                  </button>
+                </ButtonGroup>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <style jsx>
+          {`
+        th {
+          background-color: ${blue};
+          color: white;
+          line-height: 2em;
+        }
     `}
-      </style>
-    </table>
+        </style>
+      </Table>
+      {userToDelete?.id}
+      <ConfirmationModal
+        visible={userToDelete}
+        title={`¿Seguro que desea eliminar el usuario ${userToDelete?.email}?`}
+        onConfirm={() => deleteUser(userToDelete.id)}
+        onCancel={() => setUserToDelete(null)}
+
+      />
+
+    </>
   );
 };
 
-
-export default withTranslation('indicators')(UserAdminList);
+export default UserAdminList;

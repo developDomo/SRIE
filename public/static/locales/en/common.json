@@ -64,5 +64,11 @@
   "contactAdmin": "contact the administrator",
   "email": "Email",
   "password": "Password",
-  "login": "Login"
+  "login": "Login",
+  "dataShouldNotSurpass": "Data should not surpass 100%",
+  "dataShouldNotBeGreater": "Data should not be greater than 100. Use \"comma\" (,) as separator",
+  "includesex": "Include data by genre",
+  "includelocation": "Include data by location",
+  "includewealth-quintile": "Include data by socioeconomic Socioeconomic status",
+  "save": "Save"
 }

@@ -35,7 +35,7 @@ const AdminDataDetails = ({
             {t(indicatorName)}
           </Title>
 
-          <ManualDataTable className="table mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
+          <ManualDataTable className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
         </Col>
       </Row>
       <Row>
@@ -45,7 +45,7 @@ const AdminDataDetails = ({
         }}
         >
           <Link passHref href={addDataUrl}>
-            <Button className="btn-add-data" color="blue">
+            <Button className="btn-add-data mt-4" color="blue">
               <a>
                 Add Data &#43;
               </a>
