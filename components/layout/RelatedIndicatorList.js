@@ -77,12 +77,6 @@ const Title = styled.h3`
 const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => {
   const [onHover, setOnHover] = useState(false);
 
-  const onChangeOnHover = () => {
-    console.log('Hola');
-    setOnHover(!onHover);
-  };
-
-
   return (
     <>
       {relatedIndicators?.map((indicator) => (
