@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -74,36 +74,32 @@ const Title = styled.h3`
 `;
 
 
-const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => {
-  const [onHover, setOnHover] = useState(false);
-
-  return (
-    <>
-      {relatedIndicators?.map((indicator) => (
-        <Link
-          key={`indicador-${indicator.id}`}
-          href={`/${countryName}/indicadores/${indicator.id}`}
-          as={`/${countryName}/indicadores/${indicator.id}`}
-        >
-          <Row className="mb-3 p-0 col-10 center mx-auto">
-            <Container
-              className="d-flex flex-row justify-content-between p-0"
-            >
-              <div className="col-md-11 col-8">
-                <Title>
-                  {t(`indicators.${indicator.id}.metadata.title`)}
-                </Title>
-              </div>
-              <IconContainer className="col-md-1 col-2">
-                <div />
-              </IconContainer>
-            </Container>
-          </Row>
-        </Link>
-      ))}
-    </>
-  );
-};
+const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => (
+  <>
+    {relatedIndicators?.map((indicator) => (
+      <Link
+        key={`indicador-${indicator.id}`}
+        href={`/${countryName}/indicadores/${indicator.id}`}
+        as={`/${countryName}/indicadores/${indicator.id}`}
+      >
+        <Row className="mb-3 p-0 col-10 center mx-auto">
+          <Container
+            className="d-flex flex-row justify-content-between p-0"
+          >
+            <div className="col-md-11 col-8">
+              <Title>
+                {t(`indicators.${indicator.id}.metadata.title`)}
+              </Title>
+            </div>
+            <IconContainer className="col-md-1 col-2">
+              <div />
+            </IconContainer>
+          </Container>
+        </Row>
+      </Link>
+    ))}
+  </>
+);
 
 RelatedIndicatorList.getInitialProps = ({ t, countryName }) => ({
   namespacesRequired: ['indicators'],
