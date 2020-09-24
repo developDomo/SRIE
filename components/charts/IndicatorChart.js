@@ -114,7 +114,7 @@ const DataSheetTitle = styled.p`
   font-family: Raleway, sans-serif;
   font-weight: bold;
   font-size: 1.1em;
-  color: rgb(68, 149, 205)
+  color: rgb(68, 149, 205);
 `;
 
 const DataSheetParagraph = styled.p`
@@ -126,7 +126,7 @@ const DataSheetFormula = styled.p`
 `;
 
 const IframeText = styled.textarea`
- width: 100%
+ width: 100%;
 `;
 const DoubleLine = styled.hr`
   width:100%; 
@@ -504,6 +504,9 @@ const IndicatorChart = ({
       </Container>
       <style jsx>
         {`
+        .nav-tabs .nav-link,.nav-tabs .nav-link.active{
+          border-radius:0!important;
+        }
         .nav-link.active,
         .nav-item.show .nav-link {
           color: red;

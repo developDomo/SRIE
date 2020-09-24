@@ -124,6 +124,7 @@ export const ButtonContainer = styled.div`
   & div {
     transition: all ease-in 0.1s;
     border-bottom: 10px solid ${(props) => (props.outline ? white : colors[props.color])}};
+    text-align: center;
   } 
 
   &:hover{
