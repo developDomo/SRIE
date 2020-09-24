@@ -28,7 +28,7 @@ const AdminMenu = ({ user }) => {
           >
             <Title color="white" type="subtitle">Panel de Administración</Title>
           </Col>
-          <Nav className="justify-content-center justify-content-md-end col-md-2 col-lg-3">
+          <Nav className="justify-content-center  col-md-3 col-lg-3 px-0">
             <ul>
               <li>
                 <Link href="/admin">
@@ -96,6 +96,10 @@ const AdminMenu = ({ user }) => {
 
         li:first-child {
           margin-left: auto;
+        }
+        
+        li:last-child {
+          margin-right: 0;
         }
         
          li:hover {

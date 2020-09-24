@@ -438,8 +438,15 @@ const IndicatorChart = ({
               <ChartTypeControls setChartType={setChartType} activeState={chartType} />
               {showContent()}
               <FooterSource>
-                {t('source')}
-                : Lorem ipsum dolor sit amet.
+                <Row>
+                  <Col lg="1">
+                    {t('source')}
+                    :
+                  </Col>
+                  <Col>
+                    {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
+                  </Col>
+                </Row>
               </FooterSource>
             </ChartContent>
           </Col>
@@ -463,7 +470,7 @@ const IndicatorChart = ({
                 countryCode={country.short_name}
                 onHide={() => setDownloadModalShow(false)}
                 variation={indicatorSource}
-                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}`) : t(`indicators:indicators.${indicator}.name`)}
+                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}.purpose`) : t(`indicators:indicators.${indicator}.name`)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>
@@ -490,9 +497,7 @@ const IndicatorChart = ({
               </div>
             </SideBarDownloadContainer>
             <SideBarDescriptionContainer>
-              Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-              Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken. Landjaeger turkey sausage beef.
-              Tongue landjaeger andouille, fatback shank t-bone
+              {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.purpose`, { joinArrays: '\n' }))}
             </SideBarDescriptionContainer>
           </Col>
         </Row>
