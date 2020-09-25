@@ -28,7 +28,7 @@ const AdminUsers = ({ user, country, users }) => (
           offset: 1,
         }}
         >
-          <UserAdminList className="col-md-8 offset-2" users={users} />
+          <UserAdminList users={users} />
         </Col>
       </Row>
       <Row>
@@ -38,7 +38,7 @@ const AdminUsers = ({ user, country, users }) => (
         }}
         >
           <Link passHref href="/admin/users/new">
-            <Button className="btn-add-data" color="blue">
+            <Button className="btn-add-data  mt-4" color="blue">
               <a>
                 Add User &#43;
               </a>

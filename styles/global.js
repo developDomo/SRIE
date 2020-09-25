@@ -29,6 +29,12 @@ export default css.global`
     background: green;
   }
 
+  .indicatorChartTabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,.nav-tabs .nav-link {
+    border-radius:0;
+    font-size: 0.9em;
+    border-color: white;
+  }
+
   .info-slider > .row {
     height: 435px;
   }

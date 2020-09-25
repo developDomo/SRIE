@@ -114,7 +114,7 @@ const DataSheetTitle = styled.p`
   font-family: Raleway, sans-serif;
   font-weight: bold;
   font-size: 1.1em;
-  color: rgb(68, 149, 205)
+  color: rgb(68, 149, 205);
 `;
 
 const DataSheetParagraph = styled.p`
@@ -126,7 +126,7 @@ const DataSheetFormula = styled.p`
 `;
 
 const IframeText = styled.textarea`
- width: 100%
+ width: 100%;
 `;
 const DoubleLine = styled.hr`
   width:100%; 
@@ -438,8 +438,15 @@ const IndicatorChart = ({
               <ChartTypeControls setChartType={setChartType} activeState={chartType} />
               {showContent()}
               <FooterSource>
-                {t('source')}
-                : Lorem ipsum dolor sit amet.
+                <Row>
+                  <Col lg="1">
+                    {t('source')}
+                    :
+                  </Col>
+                  <Col>
+                    {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
+                  </Col>
+                </Row>
               </FooterSource>
             </ChartContent>
           </Col>
@@ -463,7 +470,7 @@ const IndicatorChart = ({
                 countryCode={country.short_name}
                 onHide={() => setDownloadModalShow(false)}
                 variation={indicatorSource}
-                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}`) : t(`indicators:indicators.${indicator}.name`)}
+                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}.purpose`) : t(`indicators:indicators.${indicator}.name`)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>
@@ -490,15 +497,16 @@ const IndicatorChart = ({
               </div>
             </SideBarDownloadContainer>
             <SideBarDescriptionContainer>
-              Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-              Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken. Landjaeger turkey sausage beef.
-              Tongue landjaeger andouille, fatback shank t-bone
+              {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.purpose`, { joinArrays: '\n' }))}
             </SideBarDescriptionContainer>
           </Col>
         </Row>
       </Container>
       <style jsx>
         {`
+        .nav-tabs .nav-link,.nav-tabs .nav-link.active{
+          border-radius:0!important;
+        }
         .nav-link.active,
         .nav-item.show .nav-link {
           color: red;
