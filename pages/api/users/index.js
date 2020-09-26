@@ -14,7 +14,7 @@ handler.get(async (req, res) => {
 handler.post(withSession(async (req, res) => {
   const user = req.session.get('user');
 
-  if (UserAccessUtils.validateUser(user, res)) {
+  if (UserAccessUtils.validateAdmin(user, res)) {
     const result = await UserService.create(req.body, user);
     if (result.success) {
       res.status(200).json({});

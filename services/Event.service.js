@@ -7,6 +7,28 @@ const findAll = async () => db.events.find({ }, {
   }],
 });
 
+const paginate = async (page, size) => {
+  const options = {
+    offset: (page - 1) * size,
+    limit: size,
+    order: [{
+      field: 'timestamp',
+      direction: 'asc',
+    }],
+  };
+
+  const [totalElements, elements] = await Promise.all([db.events.count({}), db.events.find({ }, options)]);
+  const totalPages = Math.ceil(totalElements / size);
+
+  return {
+    totalElements: parseInt(totalElements, 10),
+    totalPages,
+    page,
+    size,
+    elements,
+  };
+};
+
 const save = async (event) => db.events.insert(event);
 
 const newDataEvent = (user, id, year) => {
@@ -71,6 +93,7 @@ const updateUserPasswordEvent = (loggedUser, user) => {
 
 export default {
   findAll,
+  paginate,
   newDataEvent,
   updateDataEvent,
   newUserEvent,
