@@ -8,7 +8,7 @@ const handler = nextConnect();
 handler.post(withSession(async (req, res) => {
   const user = req.session.get('user');
 
-  if (UserAccessUtils.validateUser(user, res)) {
+  if (UserAccessUtils.validateAdmin(user, res)) {
     const { id } = req.query;
     const result = await UserService.remove(id, user);
     if (result.length > 0) {
