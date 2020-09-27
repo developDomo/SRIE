@@ -70,5 +70,17 @@
   "includesex": "Include data by genre",
   "includelocation": "Include data by location",
   "includewealth-quintile": "Include data by socioeconomic Socioeconomic status",
-  "save": "Save"
+  "save": "Save",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "add": "Add",
+  "user": "User",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "role": "Role",
+  "country": "Country",
+  "fieldRequiredMessage": "This field is required",
+  "userDetail": "User Detail",
+  "name": "Name",
+  "actions": "Actions"
 }

@@ -72,5 +72,17 @@
   "includesex": "Incluir datos por género",
   "includelocation": "Incluir datos por género",
   "includewealth-quintile": "Incluir datos por nivel socioeconómico",
-  "save": "Guardar"
+  "save": "Guardar",
+  "edit": "Editar",
+  "cancel": "Cancelar",
+  "user": "Usuario",
+  "add": "Agregar",
+  "firstName": "Nombre",
+  "lastName": "Apellido",
+  "role": "Rol",
+  "country": "País",
+  "fieldRequiredMessage": "Este campo es obligatorio",
+  "userDetail": "Detalle de Usuarios",
+  "name": "Nombre",
+  "actions": "Acciones"
 }

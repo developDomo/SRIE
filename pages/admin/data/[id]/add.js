@@ -32,6 +32,8 @@ const AdminDataNewForm = ({
     });
   };
 
+  const handleCancel = () => router.back();
+
   return (
     <Container fluid>
       <AdminMenu user={user} />
@@ -76,14 +78,15 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
+
   const [country, indicator] = await FetchUtils.multipleFetch([
     countryUrl, indicatorUrl,
   ]);
+
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return ({
     props: {
-      namespacesRequired: ['indicators', 'common'],
       user,
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,

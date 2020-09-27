@@ -14,6 +14,7 @@ import { Button } from '../../layout/Button';
 import { withTranslation } from '../../../i18n';
 import needsAuth from '../../../lib/needsAuth';
 import FetchUtils from '../../../utils/Fetch.utils';
+import FormInput from '../../layout/FormInput';
 
 const minYear = 2010;
 const maxYear = new Date().getFullYear();
@@ -110,57 +111,6 @@ const YearSelect = React.forwardRef((props, ref) => {
   );
 });
 
-const FormInput = React.forwardRef((props, ref) => {
-  const {
-    name, label, value, errors, sm, setFormData, formData, onBlur,
-  } = props;
-  const errorMessage = errors && errors[name] && errors[name].message;
-  return (
-    <Col className={
-        `col-sm-${sm} form-group`
-    }
-    >
-      <label className="form-label mr-2">
-        {label}
-      </label>
-      <input
-        ref={ref}
-        className={`form-control ${errorMessage && 'is-invalid'}`}
-        type="text"
-        name={name}
-        value={value}
-        onChange={handleOnChange(setFormData, formData)}
-        onBlur={onBlur}
-      />
-
-      <span className="invalid-feedback">
-        {errorMessage}
-      </span>
-
-      <style jsx>
-        {`
-            .form-control {
-                position: relative;
-                box-sizing: border-box;
-                border-color: ${blue1};
-                background-color: ${white};
-                border-radius: 0;
-            }
-            .form-control:focus {
-              z-index: 2;
-            }
-            .form-label{
-                font-size: 1.2em;
-                font-weight: bold;
-                font-family: "Roboto Slab", sans-serif;
-            }
-
-        `}
-
-      </style>
-    </Col>
-  );
-});
 
 const CustomCheckbox = (props) => {
   const { name } = props;
@@ -302,8 +252,8 @@ const ManualDataForm = ({
   const parseSeparator = (val) => val.replace(',', '.');
 
   const totalIsGreater = (total, ...fields) => {
-    const fieldstotal = sum(fields.map((f) => Math.fround(f)));
-    return (Math.fround(fieldstotal) < Math.fround(total));
+    const fieldsTotal = sum(fields.map((f) => Math.fround(f)));
+    return (Math.fround(fieldsTotal) < Math.fround(total));
   };
 
   return (
@@ -328,8 +278,7 @@ const ManualDataForm = ({
           sm={4}
           name="total"
           label="Total"
-          setFormData={setFormData}
-          formData={formData}
+          onChange={handleOnChange(setFormData, formData)}
           ref={register({
             required: true,
             validate: (value) => parseSeparator(value) <= 100 || 'Dato ingresado no puede ser mayor a 100. Use "coma" (,) como separador',
@@ -348,8 +297,8 @@ const ManualDataForm = ({
         <FormInput
           name="male"
           label="Masculino"
-          setFormData={setFormData}
-          formData={formData}
+          onChange={handleOnChange(setFormData, formData)}
+
           disabled={!year}
           ref={register({
             validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
@@ -361,8 +310,8 @@ const ManualDataForm = ({
         <FormInput
           name="female"
           label="Femenino"
-          setFormData={setFormData}
-          formData={formData}
+          onChange={handleOnChange(setFormData, formData)}
+
           disabled={!year}
           ref={register({
             validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
@@ -378,14 +327,12 @@ const ManualDataForm = ({
         visible={visualizations.includes('location')}
         expanded={defaultValues.urban || defaultValues.rural}
         groupName="location"
-        setFormData={setFormData}
-        formData={formData}
+        onChange={handleOnChange(setFormData, formData)}
       >
         <FormInput
           name="rural"
           label="Rural"
-          setFormData={setFormData}
-          formData={formData}
+          onChange={handleOnChange(setFormData, formData)}
           disabled
           ref={register({
             validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.urban) || 'Datos no pueden sobrepasar el 100%',
@@ -397,8 +344,7 @@ const ManualDataForm = ({
         <FormInput
           name="urban"
           label="Urban"
-          setFormData={setFormData}
-          formData={formData}
+          onChange={handleOnChange(setFormData, formData)}
           disabled
           ref={register({
             validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.rural) || 'Datos no pueden sobrepasar el 100%',
@@ -418,12 +364,42 @@ const ManualDataForm = ({
         formData={formData}
         onBlur={calculateSespi}
       >
-        <FormInput name="q1" label="Q1" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q2" label="Q2" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q3" label="Q3" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q4" label="Q4" setFormData={setFormData} formData={formData} disabled />
-        <FormInput name="q5" label="Q5" setFormData={setFormData} formData={formData} disabled onBlur={calculateSespi} />
-        <FieldGroupIndexes index="SESPI" indexes={indexes} setFormData={setFormData} formData={formData} />
+        <FormInput
+          name="q1"
+          label="Q1"
+          onChange={handleOnChange(setFormData, formData)}
+          disabled
+        />
+        <FormInput
+          name="q2"
+          label="Q2"
+          onChange={handleOnChange(setFormData, formData)}
+          disabled
+        />
+        <FormInput
+          name="q3"
+          label="Q3"
+          onChange={handleOnChange(setFormData, formData)}
+          disabled
+        />
+        <FormInput
+          name="q4"
+          label="Q4"
+          onChange={handleOnChange(setFormData, formData)}
+          disabled
+        />
+        <FormInput
+          name="q5"
+          label="Q5"
+          onChange={handleOnChange(setFormData, formData)}
+          disabled
+          onBlur={calculateSespi}
+        />
+        <FieldGroupIndexes
+          index="SESPI"
+          indexes={indexes}
+          onChange={handleOnChange(setFormData, formData)}
+        />
       </FieldsGroup>
       <Row className="mt-4">
         <Col sm={{
