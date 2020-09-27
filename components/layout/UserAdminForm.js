@@ -158,4 +158,8 @@ const UserAdminForm = ({
   );
 };
 
-export default withTranslation('countries')(UserAdminForm);
+UserAdminForm.defaultProps = {
+  i18nNamespaces: ['common', 'countries'],
+};
+
+export default withTranslation(['common', 'countries'])(UserAdminForm);

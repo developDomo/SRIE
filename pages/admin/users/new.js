@@ -58,11 +58,14 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
 
   return {
     props: {
-      namespacesRequired: ['countries'],
       user,
       countries,
     },
   };
 });
+
+AdminNewUser.defaultProps = {
+  i18nNamespaces: ['countries'],
+};
 
 export default withTranslation('countries')(AdminNewUser);

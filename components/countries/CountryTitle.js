@@ -90,4 +90,4 @@ CountryTitle.getInitialProps = async () => ({
   namespacesRequired: ['navigation', 'countries'],
 });
 
-export default withTranslation('navigation', 'countries')(CountryTitle);
+export default withTranslation(['navigation', 'countries'])(CountryTitle);

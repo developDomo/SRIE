@@ -85,4 +85,8 @@ const UserAdminList = ({ t, users }) => {
   );
 };
 
-export default UserAdminList;
+UserAdminList.defaultProps = {
+  i18nNamespaces: ['common'],
+};
+
+export default withTranslation(['common'])(UserAdminList);

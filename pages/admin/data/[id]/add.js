@@ -100,4 +100,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   });
 });
 
+AdminDataNewForm.defaultProps = {
+  i18nNamespaces: ['indicators', 'common'],
+};
+
 export default withTranslation(['indicators', 'common'])(AdminDataNewForm);

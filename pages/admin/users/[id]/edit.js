@@ -64,7 +64,6 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
 
   return {
     props: {
-      namespacesRequired: ['countries'],
       loggedUser: user,
       countries,
       user: existing,
@@ -73,4 +72,9 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   };
 });
 
-export default withTranslation('countries')(AdminEditUser);
+AdminEditUser.defaultProps = {
+  i18nNamespaces: ['common', 'countries'],
+};
+
+
+export default withTranslation(['common', 'countries'])(AdminEditUser);
