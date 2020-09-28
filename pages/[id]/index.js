@@ -171,37 +171,38 @@ const Country = ({
         </Row>
         <Row className="mt-4 mb-4">
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="light_blue" icon={ParticipationIcon}>
+            <ButtonWithIcon color="light_blue" icon={ParticipationIcon} country={country} topic="participation">
               {t('participation')}
             </ButtonWithIcon>
+
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="brown" icon={OfferIcon}>
+            <ButtonWithIcon color="brown" icon={OfferIcon} country={country} topic="offering">
               {t('offering')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="blue" icon={LearningIcon}>
+            <ButtonWithIcon color="blue" icon={LearningIcon} country={country} topic="learning-and-skills">
               {t('learningAndSkills')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="orange" icon={ConclusionIcon}>
+            <ButtonWithIcon color="orange" icon={ConclusionIcon} country={country} topic="completion">
               {t('Completion')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="pink" icon={EnvironmentIcon}>
+            <ButtonWithIcon color="pink" icon={EnvironmentIcon} country={country} topic="educational-environment">
               {t('educationalEnvironment')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="yellow" icon={GoalsIcon}>
+            <ButtonWithIcon color="yellow" icon={GoalsIcon} country={country} topic="cross-cutting-goals">
               {t('CrossCuttingGoals')}
             </ButtonWithIcon>
           </div>
