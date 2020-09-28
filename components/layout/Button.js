@@ -19,6 +19,7 @@ import {
   blue52,
 } from '../../styles/colors';
 import arrow from '../../public/img/home/arrow-more-rollover.svg';
+import { white } from '../../theme/colors';
 
 const colors = {
   blue,
@@ -28,6 +29,7 @@ const colors = {
   brown,
   orange,
   pink,
+  white,
 };
 const colorActive = {
   blue: blueRoll,
@@ -104,10 +106,10 @@ export const ButtonNavIndicadores = styled.button`
     margin-left: 10px;
   }
 `;
+
 export const ButtonContainer = styled.div`
   display: flex;
   outline: 0;
-  border: 0;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
@@ -115,19 +117,22 @@ export const ButtonContainer = styled.div`
   padding: 0;
   font-size: 14px;
   cursor: pointer;
-  background-color: 'transparent';
-  transition: all ease-in 0.9s;
   width: 100%;
-  color: white;
+  color: ${(props) => (props.outline ? colors[props.color] : white)};
+  border: 1px solid ${(props) => (colors[props.color])};
+  
   & div {
-    border-bottom: 10px solid ${(props) => (colors[props.color])};
+    transition: all ease-in 0.1s;
+    border-bottom: 10px solid ${(props) => (props.outline ? white : colors[props.color])}};
+    text-align: center;
+  } 
 
-  }
-
-  &:hover div {
+  &:hover{
+     color: ${(props) => (props.outline ? colors[props.color] : white)};
+   div {
     border-bottom: 10px solid
       ${(props) => (ButtonContainerColors[props.color])};
-  }
+  }}
 `;
 export const IconContainer = styled.div`
   background-color: ${(props) => (colors[props.color])};
@@ -145,7 +150,7 @@ export const TextContainer = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.2;
-  background-color: ${(props) => (colors[props.color])};
+  background-color: ${(props) => (props.outline ? white : colors[props.color])};
   text-transform: ${(props) => (props.textTransform || 'initial')};
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.5em;
@@ -158,11 +163,12 @@ export const TextContainer = styled.div`
 
 export const Button = (props) => {
   const {
-    children, onClick, color, textTransform,
+    children, onClick, color, textTransform, outline,
   } = props;
+
   return (
-    <ButtonContainer {...props} as="button" color={color} onClick={onClick}>
-      <TextContainer color={color} textTransform={textTransform}>{children}</TextContainer>
+    <ButtonContainer {...props} as="button" outline={outline} color={color} onClick={onClick}>
+      <TextContainer color={color} outline={outline} textTransform={textTransform}>{children}</TextContainer>
     </ButtonContainer>
   );
 };

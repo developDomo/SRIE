@@ -4,6 +4,7 @@ import IndicatorDataService from './IndicatorData.service';
 import IndicatorIndexService from './IndicatorIndex.service';
 import IndicatorVizualizationService from './IndicatorVizualization.service';
 import IndicatorVariationService from './IndicatorVariation.service';
+import EventService from './Event.service';
 import FilterUtils from '../utils/Filter.utils';
 
 const db = require('express-http-context').get('db');
@@ -109,8 +110,9 @@ const addIndicatorData = async (id, data) => {
   db[indicator.uis_dataset.toLowerCase()].insert(insertData);
 };
 
-const addData = async (id, data) => {
-  addIndicatorData(id, data);
+const addData = async (id, data, user) => {
+  await addIndicatorData(id, data);
+  EventService.newDataEvent(user, id, data.year);
 };
 
 const updateUisData = (indicator, data, value) => {
@@ -119,7 +121,7 @@ const updateUisData = (indicator, data, value) => {
   }
 };
 
-const editIndicatorData = async (id, data) => {
+const editIndicatorData = async (id, data, user) => {
   const indicatorPromise = IndicatorService.findById(id);
   const indexesPromise = IndicatorIndexService.findByIndicatorId(id);
   const [indicator, indexes] = await Promise.all([indicatorPromise, indexesPromise]);
@@ -147,6 +149,8 @@ const editIndicatorData = async (id, data) => {
       updateUisData(indicator, { ...baseData, unit_measure: index.code }, data[indexCode]);
     }
   });
+
+  EventService.updateDataEvent(user, id, data.year);
 };
 
 const buildManualDataByYear = (data, year, unit_measure, indexes) => {

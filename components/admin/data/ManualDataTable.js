@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Table } from 'react-bootstrap';
 import { blue } from '../../../theme/colors';
 
 const TableHeaders = ({ visualizations, indexes }) => (
@@ -109,10 +110,10 @@ const ManualDataTable = (props) => {
   const { visualizations, indexes, data } = props;
 
   return (
-    <table {...props}>
+    <Table responsive="lg" {...props}>
       <TableHeaders visualizations={visualizations} indexes={indexes} />
       <TableRows visualizations={visualizations} indexes={indexes} data={data} />
-    </table>
+    </Table>
   );
 };
 
