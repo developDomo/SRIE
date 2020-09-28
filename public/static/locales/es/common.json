@@ -84,5 +84,10 @@
   "fieldRequiredMessage": "Este campo es obligatorio",
   "userDetail": "Detalle de Usuarios",
   "name": "Nombre",
-  "actions": "Acciones"
+  "actions": "Acciones",
+  "data": "datos",
+  "female": "Femenino",
+  "male": "Masculino",
+  "urban": "Urbano",
+  "rural": "Rural"
 }

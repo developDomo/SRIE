@@ -31,7 +31,7 @@ const AdminNewUser = ({ t, user, countries }) => {
       <Container className="pt-4 pb-4">
         <Row className="justify-content-center mb-4 mt-4">
           <Title color="blueTitle" type="title">
-              {t('userDetail')}
+            {t('userDetail')}
           </Title>
         </Row>
 

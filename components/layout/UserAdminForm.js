@@ -57,8 +57,8 @@ const UserAdminForm = ({
           ref={register({
             required: t('fieldRequiredMessage'),
           })}
-          errors={errors}
           required
+          errors={errors}
         />
       </Row>
 

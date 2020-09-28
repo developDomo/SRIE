@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-import Card from 'react-bootstrap/Card';
 import React, { useState } from 'react';
 import {
   Col, Container, Form, Row,
@@ -11,18 +10,14 @@ import {
 } from '../../../theme/colors';
 import { grayBck } from '../../../styles/colors';
 import { Button } from '../../layout/Button';
-import { withTranslation } from '../../../i18n';
+import { withTranslation, useTranslation } from '../../../i18n';
 import needsAuth from '../../../lib/needsAuth';
 import FetchUtils from '../../../utils/Fetch.utils';
 import FormInput from '../../layout/FormInput';
+import FormSelect from '../../layout/FormSelect';
 
 const minYear = 2010;
 const maxYear = new Date().getFullYear();
-
-const handleOnChange = (setFormData, formData) => (e) => {
-  formData[e.target.name] = parseFloat(e.target.value);
-  setFormData(formData);
-};
 
 const calculateIndex = (numeratorInputName, denominatorInputName, resultInputName) => {
   const numerator = document.getElementsByName(numeratorInputName)[0]?.value;
@@ -58,7 +53,7 @@ const calculateSespi = () => {
 
 const YearSelect = React.forwardRef((props, ref) => {
   const {
-    excludeYears, setFormData, formData, year, label, sm,
+    excludeYears, year, label, sm, required,
   } = props;
   if (year) {
     return <input ref={ref} name="year" type="hidden" value={year} />;
@@ -68,19 +63,16 @@ const YearSelect = React.forwardRef((props, ref) => {
   for (let i = minYear; i <= maxYear; i++) {
     const isDisabled = excludeYears.includes(i);
     options.push(<option disabled={isDisabled} key={i} value={i}>{i}</option>);
-    if (!formData.year) {
-      formData.year = i;
-    }
   }
-
-  setFormData(formData);
 
   return (
     <Col sm={sm} className="form-group">
       <label className="form-label mr-2">
         {label}
+        {required
+          && <span className="text-danger"> * </span>}
       </label>
-      <select ref={ref} className="form-control" name="year" onChange={handleOnChange(setFormData, formData)}>
+      <select ref={ref} className="form-control" name="year">
         {options}
       </select>
 
@@ -114,12 +106,13 @@ const YearSelect = React.forwardRef((props, ref) => {
 
 const CustomCheckbox = (props) => {
   const { name } = props;
+  const [t] = useTranslation('common');
   return (
     <>
       <label className="label">
         <input {...props} type="checkbox" />
         <span className="checkmark" />
-        {`Include ${name}`}
+        {`${t(`include${name}`)}`}
       </label>
       <style jsx>
         {`
@@ -193,7 +186,6 @@ const FieldsGroup = ({
   const toggleFields = () => setFieldsVisible(!fieldsVisible);
   const onFieldGroupChecked = () => (e) => {
     toggleFields();
-    setFormData(formData);
   };
   return visible && (
   <Row className={`field-group ${groupName} mt-2 pt-3 mb-2`}>
@@ -216,45 +208,53 @@ const FieldsGroup = ({
   );
 };
 
-const IndexInput = ({
-  name, setFormData, formData,
-}) => (
-  <FormInput name={name.toLowerCase()} label={name.toUpperCase()} setFormData={setFormData} formData={formData} />
-);
+const IndexInput = React.forwardRef(({
+  name, register,
+}, ref) => (
+  <FormInput name={name.toLowerCase()} label={name.toUpperCase()} ref={ref} />
+));
 
-const FieldGroupIndexes = ({
-  index, indexes, setFormData, formData, errors,
-}) => {
+const FieldGroupIndexes = React.forwardRef(({
+  index, indexes, errors,
+}, ref) => {
   const adjusted = `${index}A`;
-
   return (
     <>
       {indexes.includes(index.toUpperCase()) && (
-        <IndexInput name={index.toLowerCase()} setFormData={setFormData} formData={formData} errors={errors} />
+        <IndexInput name={index.toLowerCase()} ref={ref} errors={errors} />
       )}
       {indexes.includes(adjusted.toUpperCase()) && (
-        <FormInput className="border-right" name={adjusted.toLowerCase()} setFormData={setFormData} formData={formData} errors={errors} />
+        <FormInput className="border-right" name={adjusted.toLowerCase()} ref={ref} errors={errors} />
       )}
     </>
   );
-};
+});
 
 const ManualDataForm = ({
-  t, variation, visualizations, indexes, data, onSubmit, setFormData, formData, year,
+  t, variation, visualizations, indexes, data, onSubmit, onCancel, year,
 }) => {
   const [defaultData] = data ?? [{}];
-  const defaultValues = { ...defaultData, ...formData, ...year };
-
-  const { handleSubmit, register, errors } = useForm({
+  const defaultValues = { ...defaultData, ...year };
+  const {
+    handleSubmit, register, errors, getValues,
+  } = useForm({
     defaultValues,
   });
 
   const parseSeparator = (val) => val.replace(',', '.');
 
-  const totalIsGreater = (total, ...fields) => {
-    const fieldsTotal = sum(fields.map((f) => Math.fround(f)));
-    return (Math.fround(fieldsTotal) < Math.fround(total));
+  const totalIsGreater = (...fields) => {
+    const total = parseSeparator(getValues('total'));
+    const fieldsTotal = sum(fields.map((f) => {
+      const fieldValue = getValues(f);
+      const parsedFieldvalue = parseSeparator(fieldValue);
+      return Math.fround(parsedFieldvalue);
+    }));
+    return (Math.fround(fieldsTotal) <= Math.fround(total));
   };
+
+  const btnLabelAction = defaultValues.total ? 'edit' : 'add';
+  const btnLabel = `${t(btnLabelAction)} ${t('data')}  +`;
 
   return (
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
@@ -262,14 +262,14 @@ const ManualDataForm = ({
       <Row className="mb-2">
         <YearSelect
           sm={4}
+          name="year"
           label={t('year')}
           excludeYears={data.map((row) => parseInt(row.year, 10))}
-          setFormData={setFormData}
-          formData={formData}
           year={year}
           ref={register({
-            required: true,
+            required: t('fieldRequiredMessage'),
           })}
+          required
         />
       </Row>
 
@@ -278,11 +278,12 @@ const ManualDataForm = ({
           sm={4}
           name="total"
           label="Total"
-          onChange={handleOnChange(setFormData, formData)}
           ref={register({
-            required: true,
+            required: t('fieldRequiredMessage'),
+
             validate: (value) => parseSeparator(value) <= 100 || 'Dato ingresado no puede ser mayor a 100. Use "coma" (,) como separador',
           })}
+          required
           errors={errors}
         />
       </Row>
@@ -291,17 +292,13 @@ const ManualDataForm = ({
         visible={visualizations.includes('sex')}
         expanded={defaultValues.female || defaultValues.male}
         groupName="sex"
-        setFormData={setFormData}
-        formData={formData}
       >
         <FormInput
           name="male"
-          label="Masculino"
-          onChange={handleOnChange(setFormData, formData)}
-
+          label={t('male')}
           disabled={!year}
           ref={register({
-            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater('male', 'female') || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
           onBlur={calculateGpi}
@@ -309,119 +306,155 @@ const ManualDataForm = ({
         />
         <FormInput
           name="female"
-          label="Femenino"
-          onChange={handleOnChange(setFormData, formData)}
-
+          label={t('female')}
           disabled={!year}
           ref={register({
-            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.female) || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater('male', 'female') || 'Datos no pueden sobrepasar el 100%',
           })}
           errors={errors}
           onBlur={calculateGpi}
 
         />
-        <FieldGroupIndexes index="GPI" indexes={indexes} setFormData={setFormData} formData={formData} />
+        <FieldGroupIndexes
+          index="GPI"
+          indexes={indexes}
+          ref={register}
+        />
       </FieldsGroup>
 
       <FieldsGroup
         visible={visualizations.includes('location')}
         expanded={defaultValues.urban || defaultValues.rural}
         groupName="location"
-        onChange={handleOnChange(setFormData, formData)}
       >
         <FormInput
           name="rural"
-          label="Rural"
-          onChange={handleOnChange(setFormData, formData)}
+          label={t('rural')}
           disabled
           ref={register({
-            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.urban) || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater('rural', 'urban') || 'Datos no pueden sobrepasar el 100%',
           })}
-
           errors={errors}
           onBlur={calculateGlpi}
         />
         <FormInput
           name="urban"
-          label="Urban"
-          onChange={handleOnChange(setFormData, formData)}
+          label={t('urban')}
           disabled
           ref={register({
-            validate: (value) => totalIsGreater(defaultValues.total, parseSeparator(value), defaultValues.rural) || 'Datos no pueden sobrepasar el 100%',
+            validate: (value) => totalIsGreater('rural', 'urban') || 'Datos no pueden sobrepasar el 100%',
           })}
-
           errors={errors}
           onBlur={calculateGlpi}
         />
-        <FieldGroupIndexes index="GLPI" indexes={indexes} setFormData={setFormData} formData={formData} />
+        <FieldGroupIndexes
+          index="GLPI"
+          indexes={indexes}
+          ref={register}
+        />
       </FieldsGroup>
 
       <FieldsGroup
         visible={visualizations.includes('wealth-quintile')}
         expanded={defaultValues.q1 || defaultValues.q2 || defaultValues.q3 || defaultValues.q4 || defaultValues.q5}
         groupName="wealth-quintile"
-        setFormData={setFormData}
-        formData={formData}
         onBlur={calculateSespi}
       >
         <FormInput
           name="q1"
           label="Q1"
-          onChange={handleOnChange(setFormData, formData)}
+          ref={register({
+            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+          })}
           disabled
+          errors={errors}
+
         />
         <FormInput
           name="q2"
           label="Q2"
-          onChange={handleOnChange(setFormData, formData)}
+          ref={register({
+            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+          })}
           disabled
+          errors={errors}
+
         />
         <FormInput
           name="q3"
           label="Q3"
-          onChange={handleOnChange(setFormData, formData)}
+          ref={register({
+            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+          })}
           disabled
+          errors={errors}
+
         />
         <FormInput
           name="q4"
           label="Q4"
-          onChange={handleOnChange(setFormData, formData)}
+          ref={register({
+            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+          })}
           disabled
+          errors={errors}
+
         />
         <FormInput
           name="q5"
           label="Q5"
-          onChange={handleOnChange(setFormData, formData)}
           disabled
+          errors={errors}
+
+          ref={register({
+            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+          })}
           onBlur={calculateSespi}
         />
         <FieldGroupIndexes
           index="SESPI"
           indexes={indexes}
-          onChange={handleOnChange(setFormData, formData)}
+          ref={register}
         />
       </FieldsGroup>
       <Row className="mt-4">
-        <Col sm={{
-          span: 4,
-          offset: 4,
-        }}
+        <Col
+          xs={12}
+          sm={{
+            span: 10,
+            offset: 1,
+          }}
+          lg={{
+            span: 8,
+            offset: 2,
+          }}
         >
-          <Button type="submit" className="btn-add-data" color="blue">
-            <a>
-              {t('save')}
-              {' '}
-              &#43;
-            </a>
-          </Button>
+          <Row>
+            <Button
+              type="submit"
+              className="btn-add-data col-12 col-sm-7 mx-sm-1 mb-2 mb-sm-0"
+              color="blue"
+            >
+              {t(btnLabel)}
+            </Button>
+            <Button
+              outline
+              type="button"
+              className="col-12 col-sm-4 mx-sm-1"
+              color="blue"
+              onClick={onCancel}
+            >
+              {t('cancel')}
+            </Button>
+          </Row>
         </Col>
       </Row>
     </form>
   );
 };
 
-ManualDataForm.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'indicators'],
-});
+ManualDataForm.defaultProps = {
+  i18nNamespaces: ['common', 'indicators'],
+};
 
 export default withTranslation('common')(ManualDataForm);
