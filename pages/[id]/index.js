@@ -149,11 +149,11 @@ const Country = ({
       </Container>
       <Container fluid className="bg-verde-oscuro">
         <Row>
-          <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
-            <div className="col-lg-12 p-0 m-0">
-              <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
-            </div>
-          </Link>
+          {/* <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace> */}
+          <div className="col-lg-12 p-0 m-0">
+            <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
+          </div>
+          {/* </Link> */}
         </Row>
       </Container>
       <Container>
