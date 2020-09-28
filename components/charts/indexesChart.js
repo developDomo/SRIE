@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import DataTable from 'react-data-table-component';
 import { charDataFormatHelper } from './helpers/ChartDataHelper';
-import { ChartMetrics, IndexeType, DisplayTypes } from './types/ChartTypes';
+import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
 import IndexesControls from './controls/IndexesControls';
@@ -30,12 +30,12 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, unitMeasure,
+  data, t, chartType, unitMeasure, defaultChartMetrics,
 }) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
-  const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
+  const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
 
   const columns = [
     {
@@ -79,6 +79,9 @@ const IndexesChart = ({
           ? charDataFormatHelper(data.indexes[indexes]?.latest)
           : charDataFormatHelper(data.indexes[indexes]?.historical)}
         striped
+        responsive
+        allowOverflow
+        style={{ maxHeight: '400px', overflowY: 'auto' }}
       />
     );
   };
@@ -96,7 +99,7 @@ const IndexesChart = ({
 };
 
 IndexesChart.getInitialProps = ({
-  t, data, chartType, unitMeasure,
+  t, data, chartType, unitMeasure, defaultChartMetrics,
 }) => (
   {
     t,
@@ -104,6 +107,7 @@ IndexesChart.getInitialProps = ({
     chartType,
     unitMeasure,
     namespacesRequired: ['charts'],
+    defaultChartMetrics,
   }
 );
 

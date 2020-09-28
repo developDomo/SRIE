@@ -19,11 +19,11 @@ const Content = styled.div`
 `;
 
 const WealthQuintileChart = ({
-  data, t, chartType, unitMeasure,
+  data, t, chartType, unitMeasure, defaultChartMetrics,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].historical));
-  const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
+  const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
 
   const columns = [
@@ -88,6 +88,9 @@ const WealthQuintileChart = ({
         columns={columns}
         data={datasource}
         striped
+        responsive
+        allowOverflow
+        style={{ maxHeight: '400px', overflowY: 'auto' }}
       />
     );
   };
@@ -103,7 +106,7 @@ const WealthQuintileChart = ({
 };
 
 WealthQuintileChart.getInitialProps = ({
-  t, data, chartType, unitMeasure,
+  t, data, chartType, unitMeasure, defaultChartMetrics,
 }) => (
   {
     t,
@@ -111,6 +114,7 @@ WealthQuintileChart.getInitialProps = ({
     chartType,
     unitMeasure,
     namespacesRequired: ['charts'],
+    defaultChartMetrics,
   }
 );
 
