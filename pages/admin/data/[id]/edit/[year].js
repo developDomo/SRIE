@@ -26,13 +26,12 @@ const AdminDataEdit = ({
       country: user.country,
       variation,
     };
-    console.log(defaultData);
     const res = await fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(defaultData),
     });
-    console.log(res);
+
     if (res.ok) router.push(redirectUrl);
   };
 

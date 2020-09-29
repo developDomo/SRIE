@@ -4,15 +4,12 @@ import {
   Col, Container, Form, Row,
 } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import sum from 'lodash/sum';
 import {
   blue, blue1, blue4, borders, gray1, gray2, green, green2, txt, white,
 } from '../../../theme/colors';
 import { grayBck } from '../../../styles/colors';
 import { Button } from '../../layout/Button';
 import { withTranslation, useTranslation } from '../../../i18n';
-import needsAuth from '../../../lib/needsAuth';
-import FetchUtils from '../../../utils/Fetch.utils';
 import FormInput from '../../layout/FormInput';
 import FormSelect from '../../layout/FormSelect';
 
@@ -235,23 +232,17 @@ const ManualDataForm = ({
 }) => {
   const [defaultData] = data ?? [{}];
   const defaultValues = { ...defaultData, ...year };
+
   const {
-    handleSubmit, register, errors, getValues,
+    handleSubmit, register, errors,
   } = useForm({
     defaultValues,
   });
 
   const parseSeparator = (val) => val.replace(',', '.');
 
-  const totalIsGreater = (...fields) => {
-    const total = parseSeparator(getValues('total'));
-    const fieldsTotal = sum(fields.map((f) => {
-      const fieldValue = getValues(f);
-      const parsedFieldvalue = parseSeparator(fieldValue);
-      return Math.fround(parsedFieldvalue);
-    }));
-    return (Math.fround(fieldsTotal) <= Math.fround(total));
-  };
+  const validateMaxPercentage = (fieldValue) => parseSeparator(fieldValue) <= 100 || t('dataShouldNotSurpass');
+  const validateTotal = (value) => parseSeparator(value) <= 100 || t('dataShouldNotBeGreater');
 
   const btnLabelAction = defaultValues.total ? 'edit' : 'add';
   const btnLabel = `${t(btnLabelAction)} ${t('data')}  +`;
@@ -280,8 +271,7 @@ const ManualDataForm = ({
           label="Total"
           ref={register({
             required: t('fieldRequiredMessage'),
-
-            validate: (value) => parseSeparator(value) <= 100 || 'Dato ingresado no puede ser mayor a 100. Use "coma" (,) como separador',
+            validate: validateTotal,
           })}
           required
           errors={errors}
@@ -298,22 +288,20 @@ const ManualDataForm = ({
           label={t('male')}
           disabled={!year}
           ref={register({
-            validate: (value) => totalIsGreater('male', 'female') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           errors={errors}
           onBlur={calculateGpi}
-
         />
         <FormInput
           name="female"
           label={t('female')}
           disabled={!year}
           ref={register({
-            validate: (value) => totalIsGreater('male', 'female') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           errors={errors}
           onBlur={calculateGpi}
-
         />
         <FieldGroupIndexes
           index="GPI"
@@ -332,7 +320,7 @@ const ManualDataForm = ({
           label={t('rural')}
           disabled
           ref={register({
-            validate: (value) => totalIsGreater('rural', 'urban') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           errors={errors}
           onBlur={calculateGlpi}
@@ -342,7 +330,7 @@ const ManualDataForm = ({
           label={t('urban')}
           disabled
           ref={register({
-            validate: (value) => totalIsGreater('rural', 'urban') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           errors={errors}
           onBlur={calculateGlpi}
@@ -364,50 +352,45 @@ const ManualDataForm = ({
           name="q1"
           label="Q1"
           ref={register({
-            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           disabled
           errors={errors}
-
         />
         <FormInput
           name="q2"
           label="Q2"
           ref={register({
-            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           disabled
           errors={errors}
-
         />
         <FormInput
           name="q3"
           label="Q3"
           ref={register({
-            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           disabled
           errors={errors}
-
         />
         <FormInput
           name="q4"
           label="Q4"
           ref={register({
-            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           disabled
           errors={errors}
-
         />
         <FormInput
           name="q5"
           label="Q5"
           disabled
           errors={errors}
-
           ref={register({
-            validate: (value) => totalIsGreater('q1', 'q2', 'q3', 'q4', 'q5') || 'Datos no pueden sobrepasar el 100%',
+            validate: validateMaxPercentage,
           })}
           onBlur={calculateSespi}
         />

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import React from 'react';
 import { withTranslation } from '../../../../i18n';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import ManualDataTable from '../../../../components/admin/data/ManualDataTable';
