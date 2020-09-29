@@ -9,7 +9,7 @@ import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorAdminList from '../../../components/layout/IndicatorAdminList';
 
 const AdminData = ({
-  user, country, indicators,
+  t, user, country, indicators,
 }) => (
   <Container fluid>
     <AdminMenu user={user} />
@@ -18,7 +18,8 @@ const AdminData = ({
       <Row className="mt-4 mb-4">
         <div className="col-lg-12 pr-0 text-center">
           <Title color="blueTitle" type="title">
-            Datos de indicadores
+            {t('indicatorData')}
+
           </Title>
         </div>
       </Row>
@@ -62,12 +63,15 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
   return {
 
     props: {
-      namespacesRequired: ['common'],
       user,
       country,
       indicators,
     },
   };
 });
+
+AdminData.defaultProps = {
+  i18nNamespaces: ['common'],
+};
 
 export default withTranslation('common')(AdminData);

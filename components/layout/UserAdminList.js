@@ -6,10 +6,11 @@ import { ButtonGroup } from 'react-bootstrap';
 import { blue } from '../../theme/colors';
 import { Edit, Delete } from './Icons';
 import ConfirmationModal from './ConfimationModal';
+import { withTranslation } from '../../i18n';
 
 const redirectUrl = '/admin/users';
 
-const UserAdminList = ({ users }) => {
+const UserAdminList = ({ t, users }) => {
   const router = useRouter();
   const [userToDelete, setUserToDelete] = useState(null);
 
@@ -28,10 +29,10 @@ const UserAdminList = ({ users }) => {
       <Table className="table-hover-" responsive="lg">
         <thead>
           <tr className="align-middle text-center">
-            <th className="w-auto">User</th>
-            <th className="w-50">Name</th>
-            <th className="w-auto">Country</th>
-            <th className="w-auto">Actions</th>
+            <th className="w-auto">{t('user')}</th>
+            <th className="w-50">{t('name')}</th>
+            <th className="w-auto">{t('country')}</th>
+            <th className="w-auto">{t('actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +54,7 @@ const UserAdminList = ({ users }) => {
                       <Edit />
                     </a>
                   </Link>
-                  <button type="button" className="btn btn-danger" onClick={() => setUserToDelete(user)}>
+                  <button type="button" className="btn btn-light text-danger" onClick={() => setUserToDelete(user)}>
                     <Delete />
                   </button>
                 </ButtonGroup>
@@ -84,4 +85,8 @@ const UserAdminList = ({ users }) => {
   );
 };
 
-export default UserAdminList;
+UserAdminList.defaultProps = {
+  i18nNamespaces: ['common'],
+};
+
+export default withTranslation(['common'])(UserAdminList);
