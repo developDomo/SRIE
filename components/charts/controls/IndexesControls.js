@@ -20,7 +20,7 @@ const IndexesControls = ({ setIndexes, indexesData, t }) => (
             eventKey={index}
             disabled={hasSomeData(indexesData[index].historical) && hasSomeData(indexesData[index].latest)}
           >
-            {t(index)}
+            {t(`indexesLabel.${index}`)}
           </Dropdown.Item>
         )
         )}
@@ -34,6 +34,7 @@ IndexesControls.getInitialProps = ({ setIndexes, indexesData, t }) => (
     setIndexes,
     indexesData,
     namespacesRequired: ['charts'],
+    t,
   }
 );
 
