@@ -100,7 +100,6 @@ const YearSelect = React.forwardRef((props, ref) => {
   );
 });
 
-
 const CustomCheckbox = (props) => {
   const { name } = props;
   const [t] = useTranslation('common');

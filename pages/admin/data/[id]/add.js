@@ -19,7 +19,6 @@ const AdminDataNewForm = ({
 
   const router = useRouter();
 
-
   const handleSubmit = async (d, e) => {
     e.preventDefault();
     const defaultData = {

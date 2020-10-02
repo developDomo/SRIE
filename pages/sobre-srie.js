@@ -7,7 +7,6 @@ import Title from '../components/layout/Title';
 import { ContainerPage } from '../components/layout/ContainerPageContent';
 import CountryHeader from '../components/countries/CountryHeader';
 
-
 const breadcrumbPage = {
   name: 'sobre-srie',
   url: 'sobre-srie',

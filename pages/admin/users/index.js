@@ -73,5 +73,4 @@ AdminUsers.defaultProps = {
   i18nNamespaces: ['common'],
 };
 
-
 export default withTranslation('common')(AdminUsers);

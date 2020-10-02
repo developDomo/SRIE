@@ -15,7 +15,6 @@ import {
 
 import arrow from '../../public/img/home/arrow_indicadores.svg';
 
-
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -72,7 +71,6 @@ const Title = styled.h3`
   padding: 0.1em;
   color: ${txt};
 `;
-
 
 const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => (
   <>
