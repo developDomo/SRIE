@@ -10,7 +10,6 @@ import WelcomeText from '../components/layout/WelcomeText';
 
 const Home = ({ countries }) => (
   <Container className="d-flex flex-column p-0">
-
     <Col sm={{ span: 8, offset: 2 }} className="flex-grow">
       <InfoSlider />
     </Col>
@@ -45,15 +44,17 @@ const Home = ({ countries }) => (
   </Container>
 );
 
-Home.getInitialProps = async ({ pathname: path }) => {
+export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await res.json();
-
   return {
-    namespacesRequired: ['homepage'],
-    countries,
-    path,
+    props: {
+      countries,
+    },
   };
 };
 
+Home.defaultProps = {
+  i18nNamespaces: ['homepage'],
+};
 export default withTranslation('homepage')(Home);

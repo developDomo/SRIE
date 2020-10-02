@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { withTranslation } from '../../../i18n';
 import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 import { ChartMetrics } from '../../../components/charts/types/ChartTypes';
@@ -26,7 +25,7 @@ const IndicatorShare = ({
   </>
 );
 
-IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
+export const getServerSideProps = async ({ query, res: { t } }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
   const country = _.find(countries, (c) => c.short_name === query.id);
@@ -35,17 +34,19 @@ IndicatorShare.getInitialProps = async ({ query, res: { t } }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}`,
   ]);
   return {
-    data,
-    indicatorVariation: query.indicatorVariation || query.indicatorId,
-    share: true,
-    hideSideBar: query.hideSideBar,
-    type: query.type,
-    tabNumber: query.tabNumber,
-    period: query.period,
-    indicatorId: query.indicatorId,
-    indicator,
-    country,
-    defaultChartMetrics: query.defaultChartMetrics,
+    props: {
+      data,
+      indicatorVariation: query.indicatorVariation || query.indicatorId,
+      share: true,
+      hideSideBar: query.hideSideBar,
+      type: query.type,
+      tabNumber: query.tabNumber,
+      period: query.period,
+      indicatorId: query.indicatorId,
+      indicator,
+      country,
+      defaultChartMetrics: query.defaultChartMetrics,
+    },
   };
 };
 

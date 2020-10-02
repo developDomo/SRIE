@@ -1,6 +1,8 @@
+import _ from 'lodash';
 import { Container } from 'react-bootstrap';
 import { withTranslation } from '../../i18n';
 import CountryHeader from '../../components/countries/CountryHeader';
+import FetchUtils from '../../utils/Fetch.utils';
 
 const Progress2021 = ({ t, countries, country }) => {
   const navigation = [
@@ -15,20 +17,21 @@ const Progress2021 = ({ t, countries, country }) => {
   );
 };
 
-Progress2021.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
+  const countryInfo = _.find(countries, (c) => c.short_name === query.id);
 
-  const countryResponse = await fetch(
-    `${process.env.API_URL}/api/countries/${query.id}`,
-  );
-  const country = await countryResponse.json();
-
+  const [country] = await FetchUtils.multipleFetch([
+    `${process.env.API_URL}/api/countries/${countryInfo.code}`,
+  ]);
   return {
-    namespacesRequired: ['common'],
-    countries,
-    country,
+    props: {
+      countries,
+      country,
+    },
   };
 };
+Progress2021.defaultProps = { i18nNamespaces: ['common'] };
 
 export default withTranslation('common')(Progress2021);
