@@ -76,5 +76,4 @@ AdminEditUser.defaultProps = {
   i18nNamespaces: ['common', 'countries'],
 };
 
-
 export default withTranslation(['common', 'countries'])(AdminEditUser);

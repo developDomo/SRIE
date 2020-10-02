@@ -2,7 +2,6 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { blue1, white } from '../../theme/colors';
 
-
 export default React.forwardRef((props, ref) => {
   const {
     name, label, value, errors, sm, onChange, onBlur, type, required, show = true,
