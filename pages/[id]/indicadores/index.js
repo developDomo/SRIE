@@ -201,7 +201,7 @@ const IndicatorListPage = ({
   );
 };
 
-IndicatorListPage.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const [countries, pecGoals, topics, educationLevels, indicators] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/countries`,
     `${process.env.API_URL}/api/pec-goals`,
@@ -213,14 +213,18 @@ IndicatorListPage.getInitialProps = async ({ query }) => {
   const country = _.find(countries, (c) => c.short_name === query.id);
 
   return {
-    namespacesRequired: ['topics', 'education-levels'],
-    countries,
-    country,
-    pecGoals,
-    topics,
-    educationLevels,
-    indicators,
+    props: {
+      requiredNamespaces: ['topics', 'education-levels'],
+      countries,
+      country,
+      pecGoals,
+      topics,
+      educationLevels,
+      indicators,
+    },
   };
 };
+
+IndicatorListPage.defaultProps = { i18nNamespaces: ['topics', 'education-levels'] };
 
 export default withTranslation('topics', 'education-levels', 'common')(IndicatorListPage);

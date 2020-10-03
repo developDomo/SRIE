@@ -65,4 +65,6 @@ const Partners = ({ t }) => (
   </>
 );
 
+Partners.defaultProps = { i18nNamespaces: ['partners'] };
+
 export default withTranslation('partners')(Partners);

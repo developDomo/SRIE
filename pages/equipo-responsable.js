@@ -57,7 +57,7 @@ const InfoDirectoryContainer = styled.div`
   }
 `;
 
-const ResponsibleTeam = ({ countries, t, path }) => {
+const ResponsibleTeam = ({ countries, t }) => {
   const contributorsCountries = [{
     country: 'Belice',
     title: t('policyAndPlanningUnit'),
@@ -184,15 +184,15 @@ const ResponsibleTeam = ({ countries, t, path }) => {
   );
 };
 
-ResponsibleTeam.getInitialProps = async ({ pathname: path }) => {
+export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await res.json();
 
   return {
-    namespacesRequired: ['responsibleTeam'],
-    countries,
-    path,
+    props: { countries },
   };
 };
+
+ResponsibleTeam.defaultProps = { i18nNamespaces: ['responsibleTeam'] };
 
 export default withTranslation('responsibleTeam')(ResponsibleTeam);

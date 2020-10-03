@@ -35,5 +35,7 @@ const AboutSRIE = ({ t }) => (
     </ContainerPage>
   </>
 );
+AboutSRIE.defaultProps = { i18nNamespaces: ['about-srie'] };
+
 
 export default withTranslation('about-srie')(AboutSRIE);

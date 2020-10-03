@@ -37,5 +37,6 @@ const Faqs = ({ t }) => (
     </div>
   </>
 );
+Faqs.defaultProps = { i18nNamespaces: ['faqs'] };
 
 export default withTranslation('faqs')(Faqs);

@@ -231,7 +231,7 @@ const Country = ({
   );
 };
 
-Country.getInitialProps = async ({ query, pathname: path }) => {
+export const getServerSideProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -242,12 +242,14 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   ]);
 
   return {
-    namespacesRequired: ['common'],
-    countries,
-    country,
-    countryInfo,
-    path,
+    props: {
+      countries,
+      country,
+      countryInfo,
+    },
   };
 };
+
+Country.defaultProps = { i18nNamespaces: ['common'] };
 
 export default withTranslation('common')(Country);
