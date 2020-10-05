@@ -17,11 +17,11 @@ const Content = styled.div`
 `;
 
 const GeoChart = ({
-  data, t, chartType, unitMeasure,
+  data, t, chartType, unitMeasure, defaultChartMetrics,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.location.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.location.historical));
-  const [chartMetrics, setChartMetrics] = useState(ChartMetrics.LAST_YEAR);
+  const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
 
   const columns = [
@@ -68,6 +68,9 @@ const GeoChart = ({
         columns={columns}
         data={datasource}
         striped
+        responsive
+        allowOverflow
+        style={{ maxHeight: '400px', overflowY: 'auto' }}
       />
     );
   };
@@ -83,7 +86,7 @@ const GeoChart = ({
 };
 
 GeoChart.getInitialProps = ({
-  t, data, chartType, unitMeasure,
+  t, data, chartType, unitMeasure, defaultChartMetrics,
 }) => (
   {
     t,
@@ -91,6 +94,7 @@ GeoChart.getInitialProps = ({
     chartType,
     unitMeasure,
     namespacesRequired: ['charts'],
+    defaultChartMetrics,
   }
 );
 

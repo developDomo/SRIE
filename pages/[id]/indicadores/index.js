@@ -56,11 +56,19 @@ const filterEducationLevel = (educationLevel, indicator, educationLevels) => {
 };
 
 const IndicatorListPage = ({
-  t, countries, country, pecGoals, topics, educationLevels, indicators, query,
+  t,
+  props,
 }) => {
+  const {
+    countries, country, pecGoals, topics, educationLevels, indicators, query,
+  } = props;
+
   const queryTopic = query.topic && topics.filter((item) => item.code === query.topic)[0];
+
   const [pec, setPec] = useState(0);
+
   const [topic, setTopic] = useState(queryTopic ? queryTopic.id : 0);
+
   const [educationLevel, setEducationLevel] = useState(0);
 
   const navigation = [
@@ -203,7 +211,7 @@ const IndicatorListPage = ({
   );
 };
 
-IndicatorListPage.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const [countries, pecGoals, topics, educationLevels, indicators] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/countries`,
     `${process.env.API_URL}/api/pec-goals`,
@@ -215,15 +223,19 @@ IndicatorListPage.getInitialProps = async ({ query }) => {
   const country = _.find(countries, (c) => c.short_name === query.id);
 
   return {
-    namespacesRequired: ['topics', 'education-levels'],
-    countries,
-    country,
-    pecGoals,
-    topics,
-    educationLevels,
-    indicators,
-    query,
+    props: {
+      requiredNamespaces: ['topics', 'education-levels'],
+      countries,
+      country,
+      pecGoals,
+      topics,
+      educationLevels,
+      indicators,
+      query,
+    },
   };
 };
+
+IndicatorListPage.defaultProps = { i18nNamespaces: ['topics', 'education-levels'] };
 
 export default withTranslation('topics', 'education-levels', 'common')(IndicatorListPage);

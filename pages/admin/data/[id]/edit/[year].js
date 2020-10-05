@@ -19,19 +19,23 @@ const AdminDataEdit = ({
   const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
 
   const router = useRouter();
-  const [formData, setFormData] = useState({});
-  formData.country = user.country;
-  formData.variation = variation;
 
-  const handleSubmit = () => {
-    fetch(postUrl, {
+  const handleSubmit = async (d) => {
+    const defaultData = {
+      ...d,
+      country: user.country,
+      variation,
+    };
+    const res = await fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    }).then((res) => {
-      if (res.ok) router.push(redirectUrl);
+      body: JSON.stringify(defaultData),
     });
+
+    if (res.ok) router.push(redirectUrl);
   };
+
+  const handleCancel = () => router.back();
 
   return (
     <Container fluid>
@@ -62,8 +66,7 @@ const AdminDataEdit = ({
               indexes={indexes}
               data={data}
               onSubmit={handleSubmit}
-              setFormData={setFormData}
-              formData={formData}
+              onCancel={handleCancel}
             />
           </Col>
         </Row>
