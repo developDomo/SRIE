@@ -56,13 +56,8 @@ const filterEducationLevel = (educationLevel, indicator, educationLevels) => {
 };
 
 const IndicatorListPage = ({
-  t,
-  props,
+  t, countries, country, pecGoals, topics, educationLevels, indicators, query,
 }) => {
-  const {
-    countries, country, pecGoals, topics, educationLevels, indicators, query,
-  } = props;
-
   const queryTopic = query.topic && topics.filter((item) => item.code === query.topic)[0];
 
   const [pec, setPec] = useState(0);
