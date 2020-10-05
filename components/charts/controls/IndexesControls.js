@@ -10,7 +10,7 @@ const Content = styled.div`
 const IndexesControls = ({ setIndexes, indexesData, t }) => (
   <Content>
     <Dropdown onSelect={(e) => setIndexes(e)}>
-      <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown">
+      <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown dropdown-toggle">
         {t('indexes')}
       </Dropdown.Toggle>
       <Dropdown.Menu className="indicator-dropdown-menu">
