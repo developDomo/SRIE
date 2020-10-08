@@ -147,7 +147,9 @@ const Country = ({
           </div>
         </Row>
       </Container>
-      {/* <Container fluid className="bg-verde-oscuro">
+      {/*
+      Descomentar para volver activar el banner
+      <Container fluid className="bg-verde-oscuro">
         <Row>
            <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
           <div className="col-lg-12 p-0 m-0">
