@@ -6,6 +6,18 @@ import { withTranslation } from '../../../i18n';
 const Content = styled.div`
   padding: 1.2em;
   margin-left: auto;
+  & .indicator-indexes-dropdown {
+    width: 350px;
+    border-radius: 0;
+    text-align: left;
+    background-color: #3784c4 !important;
+    border-color: transparent;
+  }
+  & .dropdown-toggle::after{
+    float: right;
+    margin-top: .6em;
+  }
+
 `;
 const IndexesControls = ({ setIndexes, indexesData, t }) => (
   <Content>
