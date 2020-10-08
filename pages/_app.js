@@ -22,4 +22,26 @@ class SrieApp extends App {
   }
 }
 
+SrieApp.getInitialProps = async (appContext) => {
+  const recursiveNamespaces = (component, acc = []) => {
+    const ns = component.defaultProps?.i18nNamespaces;
+    const a = (typeof ns === 'string') ? [...acc, ns] : [...acc, ...(ns || [])];
+    const wrappedComponent = component.WrappedComponent;
+    if (wrappedComponent) {
+      return recursiveNamespaces(wrappedComponent, a);
+    } return a;
+  };
+
+  const appProps = await App.getInitialProps(appContext);
+  const namespaces = recursiveNamespaces(appContext.Component);
+  return {
+    ...appProps,
+    pageProps: {
+      namespacesRequired: [
+        ...(appProps.pageProps.namespacesRequired || []),
+        ...namespaces],
+    },
+  };
+};
+
 export default appWithTranslation(SrieApp);

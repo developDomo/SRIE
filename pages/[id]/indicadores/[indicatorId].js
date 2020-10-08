@@ -216,7 +216,7 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
   const countries = await countriesResponse.json();
 
@@ -227,13 +227,17 @@ IndicatorPage.getInitialProps = async ({ query }) => {
     `${process.env.API_URL}/api/indicators/${query.indicatorId}/related`,
   ]);
   return {
-    namespacesRequired: ['common', 'indicators', 'pec-goals', 'ods-goals'],
-    countries,
-    country,
-    indicator,
-    data,
-    relatedIndicators,
+    props: {
+      countries,
+      country,
+      indicator,
+      data,
+      relatedIndicators,
+    },
   };
 };
+
+IndicatorPage.defaultProps = { i18nNamespaces: ['common', 'indicators', 'pec-goals', 'ods-goals'] };
+
 
 export default withTranslation('common', 'indicators', 'pec-goals', 'ods-goals')(IndicatorPage);

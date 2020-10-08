@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import React from 'react';
 import { withTranslation } from '../../../../i18n';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import ManualDataTable from '../../../../components/admin/data/ManualDataTable';
@@ -21,7 +22,7 @@ const AdminDataDetails = ({
       <CountryTitle country={country} />
       <Row className="justify-content-center mb-4 mt-4">
         <Title color="blueTitle" type="title">
-          Datos de indicadores
+          {t('indicatorData')}
         </Title>
       </Row>
 
@@ -32,7 +33,7 @@ const AdminDataDetails = ({
         }}
         >
           <Title type="caption" textCenter className="mb-4">
-            {t(indicatorName)}
+            {t(`indicators:${indicatorName}`)}
           </Title>
 
           <ManualDataTable className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
@@ -47,7 +48,7 @@ const AdminDataDetails = ({
           <Link passHref href={addDataUrl}>
             <Button className="btn-add-data mt-4" color="blue">
               <a>
-                Add Data &#43;
+                {`${t('add')} ${t('data')}  +`}
               </a>
             </Button>
           </Link>
@@ -72,7 +73,6 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
 
   return {
     props: {
-      namespacesRequired: ['indicators'],
       user,
       id,
       visualizations: indicator.visualizations,
@@ -85,4 +85,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   };
 });
 
-export default withTranslation('indicators')(AdminDataDetails);
+AdminDataDetails.defaultProps = {
+  i18nNamespaces: ['common', 'countries', 'indicators'],
+};
+
+export default withTranslation(['common', 'indicators'])(AdminDataDetails);
