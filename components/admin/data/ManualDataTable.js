@@ -1,25 +1,31 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Table } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 import { blue } from '../../../theme/colors';
+import { Edit } from '../../layout/Icons';
+import { withTranslation } from '../../../i18n';
 
-const TableHeaders = ({ visualizations, indexes }) => (
-  <thead>
-    <tr>
-      <th>Year</th>
-      {visualizations.includes('total') && <th>Total</th>}
-      {visualizations.includes('sex') && (
+const TableHeaders = ({ visualizations, indexes }) => {
+  const [t] = useTranslation('common');
+  return (
+    <thead>
+      <tr>
+        <th>{t('year')}</th>
+        {visualizations.includes('total') && <th>Total</th>}
+        {visualizations.includes('sex') && (
         <>
-          <th>Masculino</th>
-          <th>Femenino</th>
+          <th>{t('male')}</th>
+          <th>{t('female')}</th>
         </>
-      )}
-      {visualizations.includes('location') && (
+        )}
+        {visualizations.includes('location') && (
         <>
-          <th>Rural</th>
-          <th>Urbano</th>
+          <th>{t('rural')}</th>
+          <th>{t('urban')}</th>
         </>
-      )}
-      {visualizations.includes('wealth-quintile') && (
+        )}
+        {visualizations.includes('wealth-quintile') && (
         <>
           <th>Q1</th>
           <th>Q2</th>
@@ -27,16 +33,16 @@ const TableHeaders = ({ visualizations, indexes }) => (
           <th>Q4</th>
           <th>Q5</th>
         </>
-      )}
-      {indexes.map((index) => (
-        <>
-          <th>{index}</th>
-        </>
-      ))}
-      <th>Actions</th>
-    </tr>
-    <style jsx>
-      {`
+        )}
+        {indexes.map((index) => (
+          <>
+            <th key={index}>{index}</th>
+          </>
+        ))}
+        <th>{t('actions')}</th>
+      </tr>
+      <style jsx>
+        {`
       th {
         background-color: ${blue};
         color: white;
@@ -45,48 +51,52 @@ const TableHeaders = ({ visualizations, indexes }) => (
         line-height: 2em;
       }   
     `}
-    </style>
-  </thead>
-);
+      </style>
+    </thead>
+  );
+};
 
 const TableRows = (props) => {
   const { visualizations, indexes, data } = props;
   const router = useRouter();
 
   const { id } = router.query;
+  const fix = (i) => i && parseInt(i, 10).toFixed(2);
   return (
     <tbody>
       {data.map((row) => (
-        <tr>
+        <tr key={row.year}>
           <td>{row.year}</td>
-          {visualizations.includes('total') && <td>{row.total}</td>}
+          {visualizations.includes('total') && <td>{fix(row.total)}</td>}
           {visualizations.includes('sex') && (
           <>
-            <td>{row.male}</td>
-            <td>{row.female}</td>
+            <td>{fix(row.male)}</td>
+            <td>{fix(row.female)}</td>
           </>
           )}
           {visualizations.includes('location') && (
           <>
-            <td>{row.rural}</td>
-            <td>{row.urban}</td>
+            <td>{fix(row.rural)}</td>
+            <td>{fix(row.urban)}</td>
           </>
           )}
           {visualizations.includes('wealth-quintile') && (
           <>
-            <td>{row.q1}</td>
-            <td>{row.q2}</td>
-            <td>{row.q3}</td>
-            <td>{row.q4}</td>
-            <td>{row.q5}</td>
+            <td>{fix(row.q1)}</td>
+            <td>{fix(row.q2)}</td>
+            <td>{fix(row.q3)}</td>
+            <td>{fix(row.q4)}</td>
+            <td>{fix(row.q5)}</td>
           </>
           )}
           {indexes.map((index) => (
             <td>{row[index.toLowerCase()]}</td>
           ))}
           <td>
-            <Link href={`/admin/data/${id}/edit/${row.year}`} replace>
-              <a>Edit</a>
+            <Link href={`/admin/data/${id}/edit/${row.year}`}>
+              <a className="btn btn-light">
+                <Edit />
+              </a>
             </Link>
           </td>
         </tr>
@@ -109,11 +119,15 @@ const ManualDataTable = (props) => {
   const { visualizations, indexes, data } = props;
 
   return (
-    <table {...props}>
+    <Table responsive="lg" {...props}>
       <TableHeaders visualizations={visualizations} indexes={indexes} />
       <TableRows visualizations={visualizations} indexes={indexes} data={data} />
-    </table>
+    </Table>
   );
 };
 
-export default ManualDataTable;
+ManualDataTable.defaultProps = {
+  i18nNamespaces: ['common', 'indicators'],
+};
+
+export default withTranslation(['common', 'indicators'])(ManualDataTable);

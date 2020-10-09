@@ -56,10 +56,14 @@ const filterEducationLevel = (educationLevel, indicator, educationLevels) => {
 };
 
 const IndicatorListPage = ({
-  t, countries, country, pecGoals, topics, educationLevels, indicators,
+  t, countries, country, pecGoals, topics, educationLevels, indicators, query,
 }) => {
+  const queryTopic = query.topic && topics.filter((item) => item.code === query.topic)[0];
+
   const [pec, setPec] = useState(0);
-  const [topic, setTopic] = useState(0);
+
+  const [topic, setTopic] = useState(queryTopic ? queryTopic.id : 0);
+
   const [educationLevel, setEducationLevel] = useState(0);
 
   const navigation = [
@@ -134,7 +138,8 @@ const IndicatorListPage = ({
                   <select id="topic-select" className="form-control" onChange={(e) => setTopic(parseInt(e.target.value, 10))}>
                     <option key="topic-default" value={0}>{t('topics.all')}</option>
                     {topics.map((topicItem) => (
-                      <option key={`topic-${topicItem.id}`} value={topicItem.id}>{t(`topics.${topicItem.code}`)}</option>
+                      // eslint-disable-next-line max-len
+                      <option key={`topic-${topicItem.id}`} value={topicItem.id} selected={queryTopic?.id === topicItem.id}>{t(`topics.${topicItem.code}`)}</option>
                     ))}
                   </select>
                 </div>
@@ -201,7 +206,7 @@ const IndicatorListPage = ({
   );
 };
 
-IndicatorListPage.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const [countries, pecGoals, topics, educationLevels, indicators] = await FetchUtils.multipleFetch([
     `${process.env.API_URL}/api/countries`,
     `${process.env.API_URL}/api/pec-goals`,
@@ -213,14 +218,19 @@ IndicatorListPage.getInitialProps = async ({ query }) => {
   const country = _.find(countries, (c) => c.short_name === query.id);
 
   return {
-    namespacesRequired: ['topics', 'education-levels'],
-    countries,
-    country,
-    pecGoals,
-    topics,
-    educationLevels,
-    indicators,
+    props: {
+      requiredNamespaces: ['topics', 'education-levels'],
+      countries,
+      country,
+      pecGoals,
+      topics,
+      educationLevels,
+      indicators,
+      query,
+    },
   };
 };
+
+IndicatorListPage.defaultProps = { i18nNamespaces: ['topics', 'education-levels'] };
 
 export default withTranslation('topics', 'education-levels', 'common')(IndicatorListPage);

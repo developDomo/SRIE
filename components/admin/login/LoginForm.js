@@ -9,7 +9,7 @@ import Title from '../../layout/Title';
 import { withTranslation } from '../../../i18n';
 
 const LoginForm = ({ t, errorMessage, onSubmit }) => (
-  <Card>
+  <Card className="col-12">
     <Card.Body className="d-flex m-1 justify-content-center">
       <form onSubmit={onSubmit} className="login-form col-md-9 text-center">
         <Title type="subtitle" color="blue" className="mb-4  p-0">

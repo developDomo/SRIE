@@ -11,6 +11,7 @@ const TitleContainer = styled.div`
   align-items: center;
   width: 100%;
 `;
+
 const IconContainer = styled.div`
   width: 12%;
   margin-right: 10px;
@@ -18,6 +19,7 @@ const IconContainer = styled.div`
     width: 100%;
   }
 `;
+
 const TextContainer = styled.div`
   font-family: 'Roboto Slab', sans-serif;
   font-weight: bold;
@@ -25,6 +27,7 @@ const TextContainer = styled.div`
   text-transform: uppercase;
   color: ${blue1};
 `;
+
 const Divider = styled.span`
   display: block;
   width: 100%;
@@ -86,8 +89,8 @@ const CountryTitle = ({ t, country, active }) => (
   </Container>
 );
 
-CountryTitle.getInitialProps = async () => ({
-  namespacesRequired: ['navigation', 'countries'],
-});
+CountryTitle.defaultProps = {
+  i18nNamespaces: ['navigation', 'countries'],
+};
 
-export default withTranslation('navigation', 'countries')(CountryTitle);
+export default withTranslation(['navigation', 'countries'])(CountryTitle);

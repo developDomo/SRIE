@@ -18,19 +18,25 @@ const AdminDataNewForm = ({
   const redirectUrl = `/admin/data/${code}`;
 
   const router = useRouter();
-  const [formData, setFormData] = useState({});
-  formData.country = user.country;
-  formData.variation = variation;
 
-  const handleSubmit = () => {
-    fetch(postUrl, {
+  const handleSubmit = async (d, e) => {
+    e.preventDefault();
+    const defaultData = {
+      ...d,
+      country: user.country,
+      variation,
+    };
+
+    const res = await fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    }).then((res) => {
-      if (res.ok) router.push(redirectUrl);
+      body: JSON.stringify(defaultData),
     });
+
+    if (res.ok) router.push(redirectUrl);
   };
+
+  const handleCancel = () => router.back();
 
   return (
     <Container fluid>
@@ -39,8 +45,8 @@ const AdminDataNewForm = ({
 
         <CountryTitle country={country} />
         <Row className="justify-content-center mb-4 mt-4">
-          <Title color="blueTitle" type="title">
-            Datos de indicadores
+          <Title color="blue" type="title">
+            {t('indicatorData')}
           </Title>
         </Row>
 
@@ -51,16 +57,15 @@ const AdminDataNewForm = ({
           }}
           >
             <Title color={txt} type="caption" textCenter className="mb-4">
-              {t(indicatorName)}
+              {t(`indicators:${indicatorName}`)}
             </Title>
             <ManualDataForm
               variation={variation}
               visualizations={visualizations}
               indexes={indexes}
-              data={data}
+              data={[]}
               onSubmit={handleSubmit}
-              setFormData={setFormData}
-              formData={formData}
+              onCancel={handleCancel}
             />
           </Col>
         </Row>
@@ -76,14 +81,15 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
 
   const variationUrl = (variation) ? `variation=${variation}` : '';
   const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
+
   const [country, indicator] = await FetchUtils.multipleFetch([
     countryUrl, indicatorUrl,
   ]);
+
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return ({
     props: {
-      namespacesRequired: ['indicators', 'common'],
       user,
       visualizations: indicator.visualizations,
       indexes: indicator.indexes,
@@ -97,4 +103,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   });
 });
 
-export default withTranslation(['indicators', 'common'])(AdminDataNewForm);
+AdminDataNewForm.defaultProps = {
+  i18nNamespaces: ['common', 'indicators', 'countries'],
+};
+
+export default withTranslation(['common', 'indicators'])(AdminDataNewForm);

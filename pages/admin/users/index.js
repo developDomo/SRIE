@@ -10,7 +10,9 @@ import needsAuth from '../../../lib/needsAuth';
 import UserAdminList from '../../../components/layout/UserAdminList';
 import { Button } from '../../../components/layout/Button';
 
-const AdminUsers = ({ user, country, users }) => (
+const AdminUsers = ({
+  t, user, country, users,
+}) => (
   <Container fluid>
     <AdminMenu user={user} />
     <Container className="pt-4 pb-4">
@@ -18,7 +20,7 @@ const AdminUsers = ({ user, country, users }) => (
       <Row className="mt-4 mb-4">
         <div className="col-lg-12 pr-0 text-center">
           <Title color="blueTitle" type="title">
-            Usuarios
+            {t('userDetail')}
           </Title>
         </div>
       </Row>
@@ -28,7 +30,7 @@ const AdminUsers = ({ user, country, users }) => (
           offset: 1,
         }}
         >
-          <UserAdminList className="col-md-8 offset-2" users={users} />
+          <UserAdminList users={users} />
         </Col>
       </Row>
       <Row>
@@ -38,10 +40,8 @@ const AdminUsers = ({ user, country, users }) => (
         }}
         >
           <Link passHref href="/admin/users/new">
-            <Button className="btn-add-data" color="blue">
-              <a>
-                Add User &#43;
-              </a>
+            <Button className="btn-add-data  mt-4" color="blue">
+              {`${t('add')} ${t('user')}  +` }
             </Button>
           </Link>
 
@@ -62,12 +62,15 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
 
   return {
     props: {
-      namespacesRequired: ['common'],
       user,
       country,
       users,
     },
   };
 });
+
+AdminUsers.defaultProps = {
+  i18nNamespaces: ['common'],
+};
 
 export default withTranslation('common')(AdminUsers);

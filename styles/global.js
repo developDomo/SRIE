@@ -29,6 +29,12 @@ export default css.global`
     background: green;
   }
 
+  .indicatorChartTabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,.nav-tabs .nav-link {
+    border-radius:0;
+    font-size: 0.9em;
+    border-color: white;
+  }
+
   .info-slider > .row {
     height: 435px;
   }
@@ -67,7 +73,10 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-
+  .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus{
+    box-shadow: none;
+  }
+  
   @media (max-width: 576px) { 
     .country-selector{
       
