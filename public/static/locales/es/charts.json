@@ -25,5 +25,14 @@
     "PPP_CONST": "$ constantes",
     "PER": "?"
   },
-  "source": "Fuente"
+  "source": "Fuente",
+  "indexesLabel": {
+    "GPI": "Índice de Paridad de Género",
+    "GPIA": "Índice de Paridad de Género Ajustado",
+    "GLPI": "Índice de Paridad de Ubicación Geográfica",
+    "GLPIA": "Índice de Paridad de Ubicación Geográfica Ajustado",
+    "SESPI": "Índice de Paridad de Nivel Socieconómico",
+    "SESPIA": "Índice de Paridad de Nivel Socieconómico Ajustado"
+  }
+ 
 }
