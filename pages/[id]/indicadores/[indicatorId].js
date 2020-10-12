@@ -239,5 +239,4 @@ export const getServerSideProps = async ({ query }) => {
 
 IndicatorPage.defaultProps = { i18nNamespaces: ['common', 'indicators', 'pec-goals', 'ods-goals'] };
 
-
 export default withTranslation('common', 'indicators', 'pec-goals', 'ods-goals')(IndicatorPage);
