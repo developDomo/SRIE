@@ -18,7 +18,7 @@
   "datasourceType": "Fuente primaria de datos",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
-  "numberOfEducationalCenters": "Cantidad de centros educativos",
+  "governmentExpenditurePerStudentPerYear": "Gasto gubernamental por estudiante al año",
   "tuitionFeesByLevel" : "Tasas de matrícula, por nivel",
   "completionRateByLevel": "Tasa de finalización, por nivel",
   "girlsBoysAndAdolescentsOutsideOfSchool": "Niñas, niños y adolescentes fuera de la escuela",

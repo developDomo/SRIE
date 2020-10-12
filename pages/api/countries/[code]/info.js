@@ -18,6 +18,10 @@ handler.get(async (req, res) => {
     country,
   );
 
+  const government_expenditure_promise = await IndicatorDataService.getGovernmentExpenditureByCountry(
+    country,
+  );
+
   const net_enrollment_rate_promise = await IndicatorDataService.getNetEnrollmentRateByCountry(
     country,
   );
@@ -34,6 +38,7 @@ handler.get(async (req, res) => {
     free_edu,
     comp_edu,
     literacy_rate,
+    government_expenditure,
     net_enrollment_rate,
     completion_rate,
     out_of_school_rate,
@@ -41,6 +46,7 @@ handler.get(async (req, res) => {
     free_edu_promise,
     comp_edu_promise,
     literacy_rate_promise,
+    government_expenditure_promise,
     net_enrollment_rate_promise,
     completion_rate_promise,
     out_of_school_rate_promise,
@@ -50,6 +56,7 @@ handler.get(async (req, res) => {
     free_edu,
     comp_edu,
     literacy_rate,
+    government_expenditure,
     net_enrollment_rate,
     completion_rate,
     out_of_school_rate,
