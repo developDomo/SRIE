@@ -89,5 +89,8 @@
   "male": "Male",
   "urban": "Urban",
   "rural": "Rural",
-  "year": "Year"
+  "year": "Year",
+  "systemLogbook": "System Log Book",
+  "timestamp": "Day / Time",
+  "actionsDone": "Actions done"
 }
