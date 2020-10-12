@@ -9,10 +9,23 @@
             "purpose": ["Este indicador es una medida amplia sobre el desarrollo de los niños y su preparación para comenzar la escuela. Los datos disponibles para un seguimiento internacional son relevados a nivel individual mediante la encuesta MICS, son informados por las madres/cuidadores."],
             "definition": "El Índice de Desarrollo de la Primera Infancia (ECDI) de la Encuesta de Indicadores Múltiples (MICS) de UNICEF define actualmente este indicador como el porcentaje de niños de 36 a 59 meses que están en desarrollo en al menos tres de los siguientes cuatro dominios: (i) escritura y matemática, (ii) desarrollo físico, (iii) desarrollo socioemocional y (iv) Aprendizaje. La encuesta define si un niño está “bien encaminado” en su desarrollo en escritura y matemática si puede identificar al menos 10 letras del alfabeto, leer 4 simples palabras y reconocer y nombrar todos los números de 1 a 10. Un niño está “bien encaminado” en su desarrollo físico, si puede recoger objetos pequeños fácil y generalmente están lo suficientemente bien para jugar. Un niño está “bien encaminado” en su desarrollo socio-emocional, si es capaz de realizar actividades simples de manera independiente, llevarse bien con otros niños y no patear, morder o golpear otros niños o adultos de manera usual. Un niño está “bien encaminado” en el aprendizaje, si participa en cualquier tipo de aprendizaje organizado que incluye la educación de la primera infancia, jardín de infancia o cuidado comunitario.",
             "formula": "PCDT_{3t4}=\frac{CDT_{3t4}\times 100}{P_{3t4}}",
-            "formulaExplanation": ["PCDT_{3t4} = \text{porcentaje de niños de 3a 4 años de edad que, en términos de desarrollo, se encuentran bien encaminados en las áreas de salud, aprendizaje y bienestar psicosocial}","CDT_{3t4} = \text{niños de 3-4 años de edad que, en términos de desarrollo, se encuentran bien encaminados en las áreas de salud, aprendizaje y bienestar psicosocial}","P_{3t4} = \text{población de 3-4 años de edad}"],
+            "formulaExplanation": [
+              "PCDT_{3t4}",
+              "CDT_{3t4}",
+              "{P_{3t4}}"
+            ],
+            "formulaExplanationText": [
+              "= percentage of children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+              "= children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+              "= population aged 3-4 years (36-59 months)"
+            ],
+            "method": [
+              "<p>In the MICS ECDI, the indicator is calculated as the percentage of children aged 36-59 months demonstrating age-appropriate levels of development in the areas being measured, according to the items used in the MICS. One commonly-accepted definition of ‘on track’ has not yet been developed using national and regionally-developed standards for children’s learning and development.</p>"
+            ],
             "interpretation": "Un alto valor indica un gran número de niños pequeños que están preparados para comenzar la escuela primaria en las áreas de salud, aprendizaje y bienestar psicosocial.",
             "datasourceType": "La Encuesta de Indicadores Múltiples por Conglomerados (MICS), de UNICEF.",
-            "limitationsAndComments": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países."
+            "limitationsAndComments": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países.",
+            "licenseAndCopyrights": "<p>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)</p>"
           }
         },
         "2": {
