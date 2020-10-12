@@ -89,5 +89,8 @@
   "female": "Femenino",
   "male": "Masculino",
   "urban": "Urbano",
-  "rural": "Rural"
+  "rural": "Rural",
+  "systemLogbook": "Registro de acciones realizadas en el sistema",
+  "timestamp": "Día / Hora",
+  "actionsDone": "Acciones realizadas"
 }
