@@ -6,11 +6,23 @@ import { withTranslation } from '../../../i18n';
 const Content = styled.div`
   padding: 1.2em;
   margin-left: auto;
+  & .indicator-indexes-dropdown {
+    width: 350px;
+    border-radius: 0;
+    text-align: left;
+    background-color: #3784c4 !important;
+    border-color: transparent;
+  }
+  & .dropdown-toggle::after{
+    float: right;
+    margin-top: .6em;
+  }
+
 `;
 const IndexesControls = ({ setIndexes, indexesData, t }) => (
   <Content>
     <Dropdown onSelect={(e) => setIndexes(e)}>
-      <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown">
+      <Dropdown.Toggle id="dropdown-basic" className="indicator-indexes-dropdown dropdown-toggle">
         {t('indexes')}
       </Dropdown.Toggle>
       <Dropdown.Menu className="indicator-dropdown-menu">
@@ -20,7 +32,7 @@ const IndexesControls = ({ setIndexes, indexesData, t }) => (
             eventKey={index}
             disabled={hasSomeData(indexesData[index].historical) && hasSomeData(indexesData[index].latest)}
           >
-            {t(index)}
+            {t(`indexesLabel.${index}`)}
           </Dropdown.Item>
         )
         )}
@@ -34,6 +46,7 @@ IndexesControls.getInitialProps = ({ setIndexes, indexesData, t }) => (
     setIndexes,
     indexesData,
     namespacesRequired: ['charts'],
+    t,
   }
 );
 

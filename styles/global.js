@@ -73,7 +73,10 @@ export default css.global`
     background-color: transparent;
     border: 0;
   }
-
+  .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus{
+    box-shadow: none;
+  }
+  
   @media (max-width: 576px) { 
     .country-selector{
       
