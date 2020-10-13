@@ -15,6 +15,11 @@ import FetchUtils from '../../../utils/Fetch.utils';
 import {
   gray2,
 } from '../../../styles/colors';
+import CountryService from '../../../services/Country.service';
+import PecGoalService from '../../../services/PecGoal.service';
+import TopicService from '../../../services/Topic.service';
+import EducationLevelService from '../../../services/EducativeLevel.service';
+import IndicatorService from '../../../services/Indicator.service';
 
 const IconImg = styled.img`
   width: 20px;
@@ -207,19 +212,23 @@ const IndicatorListPage = ({
 };
 
 export const getServerSideProps = async ({ query }) => {
-  const [countries, pecGoals, topics, educationLevels, indicators] = await FetchUtils.multipleFetch([
-    `${process.env.API_URL}/api/countries`,
-    `${process.env.API_URL}/api/pec-goals`,
-    `${process.env.API_URL}/api/topics`,
-    `${process.env.API_URL}/api/education-levels`,
-    `${process.env.API_URL}/api/indicators`,
-  ]);
+  const countriesService = CountryService.findAll();
+  const pecGoalsService = PecGoalService.getAll();
+  const topicsService = TopicService.getAll();
+  const educationLevelsService = EducationLevelService.findAll();
+  const indicatorsService = IndicatorService.search();
+
+  const [countries, pecGoals, topics, educationLevels, indicators] = await Promise.all([
+    countriesService,
+    pecGoalsService,
+    topicsService,
+    educationLevelsService,
+    indicatorsService]);
 
   const country = _.find(countries, (c) => c.short_name === query.id);
 
   return {
     props: {
-      requiredNamespaces: ['topics', 'education-levels'],
       countries,
       country,
       pecGoals,
@@ -233,4 +242,4 @@ export const getServerSideProps = async ({ query }) => {
 
 IndicatorListPage.defaultProps = { i18nNamespaces: ['topics', 'education-levels'] };
 
-export default withTranslation('topics', 'education-levels', 'common')(IndicatorListPage);
+export default withTranslation(['topics', 'education-levels', 'common'])(IndicatorListPage);

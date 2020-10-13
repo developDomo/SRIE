@@ -7,6 +7,7 @@ import CountrySelector from '../components/homepage/CountrySelector';
 import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';
 import WelcomeText from '../components/layout/WelcomeText';
+import CountryService from '../services/Country.service';
 
 const Home = ({ countries }) => (
   <Container className="d-flex flex-column p-0">
@@ -45,8 +46,7 @@ const Home = ({ countries }) => (
 );
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await res.json();
+  const countries = await CountryService.findAll();
   return {
     props: {
       countries,

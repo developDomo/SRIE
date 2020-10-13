@@ -7,6 +7,7 @@ import { txt, bordes, blue4 } from '../styles/colors';
 import CountryHeader from '../components/countries/CountryHeader';
 
 import { ContainerPage } from '../components/layout/ContainerPageContent';
+import CountryService from '../services/Country.service';
 
 const DirectoryContainer = styled.div`
   display: flex;
@@ -185,9 +186,7 @@ const ResponsibleTeam = ({ countries, t }) => {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await res.json();
-
+  const countries = await CountryService.findAll();
   return {
     props: { countries },
   };

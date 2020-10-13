@@ -7,6 +7,7 @@ import Title from '../../../components/layout/Title';
 import CountryTitle from '../../../components/countries/CountryTitle';
 import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorAdminList from '../../../components/layout/IndicatorAdminList';
+import CountryService from '../../../services/Country.service';
 
 const AdminData = ({
   t, user, country, indicators,
@@ -37,11 +38,7 @@ const AdminData = ({
 );
 
 export const getServerSideProps = needsAuth(async ({ user }) => {
-  const countryUrl = `${process.env.API_URL}/api/countries/${user.country}`;
-
-  const [country] = await FetchUtils.multipleFetch([
-    countryUrl,
-  ]);
+  const country = await CountryService.findByCode(user.country);
 
   // TODO: move this hardcoded list to an endpoint. For now it works fine.
 

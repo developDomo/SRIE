@@ -2,6 +2,9 @@ import _ from 'lodash';
 import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 import { ChartMetrics } from '../../../components/charts/types/ChartTypes';
+import IndicatorService from '../../../services/Indicator.service';
+import IndicatorDataService from '../../../services/IndicatorData.service';
+import CountryService from '../../../services/Country.service';
 
 const IndicatorShare = ({
   data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator, defaultChartMetrics,
@@ -26,13 +29,17 @@ const IndicatorShare = ({
 );
 
 export const getServerSideProps = async ({ query, res: { t } }) => {
-  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await countriesResponse.json();
+  const countries = await CountryService.findAll();
   const country = _.find(countries, (c) => c.short_name === query.id);
-  const [data, indicator] = await FetchUtils.multipleFetch([
-    `${process.env.API_URL}/api/indicators/${query.indicatorId}/data?country=${country.code}`,
-    `${process.env.API_URL}/api/indicators/${query.indicatorId}`,
-  ]);
+  const indicatorService = await IndicatorService.findFullDetailsById(query.indicatorId);
+
+  const dataService = await IndicatorDataService.findByIndicatorId(
+    query.indicatorId,
+    country.code,
+  );
+
+  const [indicator, data] = await Promise.all([indicatorService, dataService]);
+
   return {
     props: {
       data,

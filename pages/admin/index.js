@@ -1,12 +1,16 @@
 import { Container } from 'react-bootstrap';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { DateTime } from 'luxon';
 import needsAuth from '../../lib/needsAuth';
-import { withTranslation } from '../../i18n';
+import { withTranslation, I18nContext } from '../../i18n';
 import AdminDashboard from '../../components/admin/index/AdminDashboard';
 import CountryAdminDashboard from '../../components/admin/index/CountryAdminDashboard';
 import AdminMenu from '../../components/admin/AdminMenu';
-import FetchUtils from '../../utils/Fetch.utils';
+import EventService from '../../services/Event.service';
+
+DateTime.local();
+
 
 const AdminHome = (props) => {
   const { user } = props;
@@ -43,14 +47,12 @@ const AdminHome = (props) => {
   );
 };
 
-export const getServerSideProps = needsAuth(async ({ user, query }) => {
+export const getServerSideProps = needsAuth(async (context) => {
+  const { user, query } = context;
   const page = query.page || 1;
 
-  const eventsUrl = `${process.env.API_URL}/api/events?page=${page}`;
-
-  const [events] = await FetchUtils.multipleFetch([
-    eventsUrl,
-  ]);
+  const events = await EventService.paginate(page, 20);
+  events.elements.map((e) => { e.timestamp = e.timestamp.toISOString(); return e; });
 
   return {
     props: {
