@@ -9,6 +9,9 @@ import needsAuth from '../../../../lib/needsAuth';
 import UserAdminForm from '../../../../components/layout/UserAdminForm';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import Title from '../../../../components/layout/Title';
+import CountryService from '../../../../services/Country.service';
+import UserService from '../../../../services/User.service';
+import { Serialize } from '../../../../utils/Serializer.utils';
 
 const AdminEditUser = ({
   t, countries, user, userUrl, loggedUser,
@@ -54,14 +57,10 @@ const AdminEditUser = ({
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const { id } = query;
-  const countriesUrl = `${process.env.API_URL}/api/countries`;
   const userUrl = `${process.env.API_URL}/api/users/${id}`;
-
-  const [countries, existing] = await FetchUtils.multipleFetch([
-    countriesUrl,
-    userUrl,
-  ]);
-
+  const countries = await CountryService.findAll();
+  const existingUser = await UserService.findById(id);
+  const existing = Serialize(existingUser);
   return {
     props: {
       loggedUser: user,

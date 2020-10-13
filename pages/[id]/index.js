@@ -29,6 +29,7 @@ import ConclusionIcon from '../../public/img/home/icon_conclusion_indicador.svg'
 import EnvironmentIcon from '../../public/img/home/icon_entorno_indicador.svg';
 import GoalsIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
+import CountryService from '../../services/Country.service';
 
 const Country = ({
   t, countries, country, countryInfo,
@@ -248,8 +249,7 @@ const Country = ({
 };
 
 export const getServerSideProps = async ({ query }) => {
-  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await countriesResponse.json();
+  const countries = await CountryService.findAll();
 
   const country = _.find(countries, (c) => c.short_name === query.id);
 

@@ -7,6 +7,7 @@ import needsAuth from '../../../lib/needsAuth';
 import UserAdminForm from '../../../components/layout/UserAdminForm';
 import AdminMenu from '../../../components/admin/AdminMenu';
 import Title from '../../../components/layout/Title';
+import CountryService from '../../../services/Country.service';
 
 const AdminNewUser = ({ t, user, countries }) => {
   const router = useRouter();
@@ -50,11 +51,7 @@ const AdminNewUser = ({ t, user, countries }) => {
 };
 
 export const getServerSideProps = needsAuth(async ({ user }) => {
-  const countriesUrl = `${process.env.API_URL}/api/countries`;
-
-  const [countries] = await FetchUtils.multipleFetch([
-    countriesUrl,
-  ]);
+  const countries = await CountryService.findAll();
 
   return {
     props: {
@@ -65,7 +62,7 @@ export const getServerSideProps = needsAuth(async ({ user }) => {
 });
 
 AdminNewUser.defaultProps = {
-  i18nNamespaces: ['countries'],
+  i18nNamespaces: ['common', 'countries'],
 };
 
-export default withTranslation('countries')(AdminNewUser);
+export default withTranslation(['common', 'countries'])(AdminNewUser);
