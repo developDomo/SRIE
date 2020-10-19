@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import PasswordEncodingService from './PasswordEncoding.service';
+import EventService from './Event.service';
 
 const db = require('express-http-context').get('db');
 
@@ -14,7 +15,14 @@ const findById = async (id) => db.users.findOne({ id });
 
 const findByEmail = async (email) => db.users.findOne({ email: email.toLowerCase() });
 
-const updatePassword = async (id, newPassword) => db.users.update({ id }, { password: await PasswordEncodingService.encode(newPassword) });
+const updatePassword = async (id, newPassword, loggedUser) => {
+  const response = await db.users.update({ id }, { password: await PasswordEncodingService.encode(newPassword) });
+  const [user] = response;
+
+  EventService.updateUserPasswordEvent(loggedUser, user);
+
+  return response;
+};
 
 const save = async (user) => db.users.save(user);
 
@@ -26,7 +34,7 @@ const validateUser = (user) => {
   return true;
 };
 
-const create = async (user) => {
+const create = async (user, loggedUser) => {
   const result = {
     success: false,
   };
@@ -44,13 +52,15 @@ const create = async (user) => {
 
   user.email = user.email.toLowerCase();
   user.password = await PasswordEncodingService.encode(user.password);
-  result.user = db.users.insert(user);
+  result.user = await db.users.insert(user);
   result.success = true;
+
+  EventService.newUserEvent(loggedUser, result.user);
 
   return result;
 };
 
-const update = async (id, user) => {
+const update = async (id, user, loggedUser) => {
   const result = {
     success: false,
   };
@@ -61,13 +71,22 @@ const update = async (id, user) => {
   }
 
   user.email = user.email.toLowerCase();
-  result.user = db.users.update({ id }, user);
+  const response = await db.users.update({ id }, user);
+  [result.user] = response;
   result.success = true;
+
+  EventService.updateUserEvent(loggedUser, result.user);
 
   return result;
 };
 
-const remove = async (id) => db.users.destroy({ id });
+const remove = async (id, loggedUser) => {
+  const result = await db.users.destroy({ id });
+
+  EventService.deleteUserEvent(loggedUser, result[0]);
+
+  return result;
+};
 
 export default {
   findAll,

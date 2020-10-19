@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import React from 'react';
 import { withTranslation } from '../../../../i18n';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import ManualDataTable from '../../../../components/admin/data/ManualDataTable';
@@ -9,6 +10,9 @@ import CountryTitle from '../../../../components/countries/CountryTitle';
 import Title from '../../../../components/layout/Title';
 import FetchUtils from '../../../../utils/Fetch.utils';
 import { Button } from '../../../../components/layout/Button';
+import CountryService from '../../../../services/Country.service';
+import ManualDataService from '../../../../services/ManualData.service';
+import { Serialize } from '../../../../utils/Serializer.utils';
 
 const AdminDataDetails = ({
   t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName,
@@ -21,7 +25,7 @@ const AdminDataDetails = ({
       <CountryTitle country={country} />
       <Row className="justify-content-center mb-4 mt-4">
         <Title color="blueTitle" type="title">
-          Datos de indicadores
+          {t('indicatorData')}
         </Title>
       </Row>
 
@@ -32,10 +36,10 @@ const AdminDataDetails = ({
         }}
         >
           <Title type="caption" textCenter className="mb-4">
-            {t(indicatorName)}
+            {t(`indicators:${indicatorName}`)}
           </Title>
 
-          <ManualDataTable className="table mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
+          <ManualDataTable className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} />
         </Col>
       </Row>
       <Row>
@@ -45,9 +49,9 @@ const AdminDataDetails = ({
         }}
         >
           <Link passHref href={addDataUrl}>
-            <Button className="btn-add-data" color="blue">
+            <Button className="btn-add-data mt-4" color="blue">
               <a>
-                Add Data &#43;
+                {`${t('add')} ${t('data')}  +`}
               </a>
             </Button>
           </Link>
@@ -61,23 +65,25 @@ const AdminDataDetails = ({
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [id, variation] = query.id.split('-');
+  const countryService = CountryService.findByCode(user.country.toLowerCase());
 
-  const variationUrl = (variation) ? `variation=${variation}` : '';
-  const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
-  const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
-  const [country, indicator] = await FetchUtils.multipleFetch([
-    countryUrl, indicatorUrl,
-  ]);
+  const indicatorService = ManualDataService.findManualDataByIndicatorId(
+    id,
+    variation,
+    user.country,
+  );
+  const [country, indicator] = await Promise.all([countryService, indicatorService]);
+  const serializedIndicator = Serialize(indicator);
+
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return {
     props: {
-      namespacesRequired: ['indicators'],
       user,
       id,
-      visualizations: indicator.visualizations,
-      indexes: indicator.indexes,
-      data: indicator.data,
+      visualizations: serializedIndicator.visualizations,
+      indexes: serializedIndicator.indexes,
+      data: serializedIndicator.data,
       indicatorName,
       addDataUrl: `/admin/data/${query.id}/add`,
       country,
@@ -85,4 +91,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   };
 });
 
-export default withTranslation('indicators')(AdminDataDetails);
+AdminDataDetails.defaultProps = {
+  i18nNamespaces: ['common', 'countries', 'indicators'],
+};
+
+export default withTranslation(['common', 'indicators'])(AdminDataDetails);

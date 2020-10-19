@@ -281,6 +281,38 @@ export default {
     return data || {};
   },
 
+  getGovernmentExpenditureByCountry: async (country) => {
+    const rawData = await db.edu_finance.find(
+      {
+        stat_unit: 'XUNIT',
+        unit_measure: 'PPP_CONST',
+        fund_flow: 'FFNTP',
+        source_fund: 'GOV',
+        or: [{ edu_level: 'L02' }, { edu_level: 'L1' }, { edu_level: 'L2_3' }],
+        ref_area: country,
+      },
+      {
+        fields: _.union(['edu_level'], fields),
+        limit: 3,
+        order,
+      },
+    );
+
+    if (!rawData || !rawData.length) {
+      return {};
+    }
+
+    const data = {};
+    data.time_period = _.maxBy(rawData, 'time_period').time_period;
+    data.data = splitByEducationalLevel(
+      rawData,
+      ['L02', 'L1', 'L2_3'],
+      data.time_period,
+    );
+
+    return data || {};
+  },
+
   getNetEnrollmentRateByCountry: async (country) => {
     const rawData = await db.edu_non_finance.find(
       {

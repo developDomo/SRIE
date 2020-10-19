@@ -1,68 +1,68 @@
 /* eslint-disable no-param-reassign */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Container from 'react-bootstrap/Container';
+import { Col, Row } from 'react-bootstrap';
 import { withTranslation } from '../../../../i18n';
 import FetchUtils from '../../../../utils/Fetch.utils';
 import needsAuth from '../../../../lib/needsAuth';
 import UserAdminForm from '../../../../components/layout/UserAdminForm';
+import AdminMenu from '../../../../components/admin/AdminMenu';
+import Title from '../../../../components/layout/Title';
+import CountryService from '../../../../services/Country.service';
+import UserService from '../../../../services/User.service';
+import { Serialize } from '../../../../utils/Serializer.utils';
 
-const preventDefault = (f) => (e) => {
-  e.preventDefault();
-  f(e);
-};
-
-const initUser = (editedUser, user) => {
-  editedUser.first_name = user.first_name;
-  editedUser.last_name = user.last_name;
-  editedUser.email = user.email;
-  editedUser.role = user.role;
-  editedUser.country = user.country;
-};
-
-const AdminEditUser = ({ countries, user, userUrl }) => {
+const AdminEditUser = ({
+  t, countries, user, userUrl, loggedUser,
+}) => {
   const router = useRouter();
   const redirectUrl = '/admin/users';
-  const [editedUser, setEditedUser] = useState({});
-  initUser(editedUser, user);
 
-  const validateUser = () => {
-    // TODO: validate user info
-    console.log('Validating...');
-    return true;
-  };
-
-  const onSave = preventDefault(() => {
-    if (!validateUser()) {
-      return;
-    }
-
+  const handleSubmit = (data) => {
     fetch(userUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(editedUser),
+      body: JSON.stringify(data),
     }).then((res) => {
       if (res.ok) router.push(redirectUrl);
     });
-  });
+  };
+
+  const handleCancel = () => router.back();
 
   return (
-    <UserAdminForm editing user={editedUser} countries={countries} onSave={onSave} setUser={setEditedUser} />
+    <Container fluid>
+      <AdminMenu user={loggedUser} />
+      <Container className="pt-4 pb-4">
+        <Row className="justify-content-center mb-4 mt-4">
+          <Title color="blueTitle" type="title">
+            {t('userDetail')}
+          </Title>
+        </Row>
+
+        <Row>
+          <Col md={{
+            span: 8,
+            offset: 2,
+          }}
+          >
+            <UserAdminForm editing user={user} countries={countries} onSubmit={handleSubmit} onCancel={handleCancel} />
+          </Col>
+        </Row>
+      </Container>
+    </Container>
   );
 };
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const { id } = query;
-  const countriesUrl = `${process.env.API_URL}/api/countries`;
   const userUrl = `${process.env.API_URL}/api/users/${id}`;
-
-  const [countries, existing] = await FetchUtils.multipleFetch([
-    countriesUrl,
-    userUrl,
-  ]);
-
+  const countries = await CountryService.findAll();
+  const existingUser = await UserService.findById(id);
+  const existing = Serialize(existingUser);
   return {
     props: {
-      namespacesRequired: ['countries'],
       loggedUser: user,
       countries,
       user: existing,
@@ -71,4 +71,8 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   };
 });
 
-export default withTranslation('countries')(AdminEditUser);
+AdminEditUser.defaultProps = {
+  i18nNamespaces: ['common', 'countries'],
+};
+
+export default withTranslation(['common', 'countries'])(AdminEditUser);

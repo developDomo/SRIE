@@ -1,31 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+
 import Row from 'react-bootstrap/Row';
 import { withTranslation } from '../../i18n';
 import {
   gray1,
+  grayBck,
   txt,
   orangeLink,
   bordes,
   bckBanderas,
 } from '../../styles/colors';
-import arrow from '../../public/img/home/arrow_indicadores.svg';
 
-const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  min-height: 4em;
-  background-color: ${gray1};
-`;
-const Title = styled.h3`
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  font-size: 1.1em;
-  padding: 0.1em
-  color: ${txt};
-`;
+import arrow from '../../public/img/home/arrow_indicadores.svg';
 
 const IconContainer = styled.div`
   display: flex;
@@ -53,20 +41,49 @@ const IconContainer = styled.div`
     width: 15px;
   }
 
+  
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  min-height: 4em;
+  background-color: ${gray1};
+  cursor: pointer;
+
   &:hover {
+    background-color: ${grayBck};
+  }
+  
+  &:hover ${IconContainer} {
     background-color: ${orangeLink};
     & > div {
       background-color: ${bckBanderas};
     }
   }
 `;
+const Title = styled.h3`
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0.1em;
+  color: ${txt};
+`;
 
 const RelatedIndicatorList = ({ relatedIndicators, countryName, t }) => (
   <>
     {relatedIndicators?.map((indicator) => (
-      <Link key={`indicador-${indicator.id}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
-        <Row className="mb-3 p-0">
-          <Container className="d-flex flex-row justify-content-between p-0">
+      <Link
+        key={`indicador-${indicator.id}`}
+        href={`/${countryName}/indicadores/${indicator.id}`}
+        as={`/${countryName}/indicadores/${indicator.id}`}
+      >
+        <Row className="mb-3 p-0 col-10 center mx-auto">
+          <Container
+            className="d-flex flex-row justify-content-between p-0"
+          >
             <div className="col-md-11 col-8">
               <Title>
                 {t(`indicators.${indicator.id}.metadata.title`)}

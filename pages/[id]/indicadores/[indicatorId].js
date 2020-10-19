@@ -13,6 +13,9 @@ import {
   txt,
 } from '../../../theme/colors';
 import RelatedIndicator from '../../../components/layout/RelatedIndicatorList';
+import CountryService from '../../../services/Country.service';
+import IndicatorService from '../../../services/Indicator.service';
+import IndicatorDataService from '../../../services/IndicatorData.service';
 
 const IndicatorTitle = styled.div`
   text-align: center;
@@ -216,24 +219,33 @@ const IndicatorPage = ({
   );
 };
 
-IndicatorPage.getInitialProps = async ({ query }) => {
-  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await countriesResponse.json();
+export const getServerSideProps = async ({ query }) => {
+  const countries = await CountryService.findAll();
 
   const country = _.find(countries, (c) => c.short_name === query.id);
-  const [indicator, data, relatedIndicators] = await FetchUtils.multipleFetch([
-    `${process.env.API_URL}/api/indicators/${query.indicatorId}`,
-    `${process.env.API_URL}/api/indicators/${query.indicatorId}/data?country=${country.code}`,
-    `${process.env.API_URL}/api/indicators/${query.indicatorId}/related`,
-  ]);
+
+  const indicatorService = IndicatorService.findFullDetailsById(query.indicatorId);
+
+  const dataService = IndicatorDataService.findByIndicatorId(
+    query.indicatorId,
+    country.code,
+  );
+
+  const relatedIndicatorsService = IndicatorService.findRelated(query.indicatorId);
+
+  const [indicator, data, relatedIndicators] = await Promise.all([indicatorService, dataService, relatedIndicatorsService]);
+
   return {
-    namespacesRequired: ['common', 'indicators', 'pec-goals', 'ods-goals'],
-    countries,
-    country,
-    indicator,
-    data,
-    relatedIndicators,
+    props: {
+      countries,
+      country,
+      indicator,
+      data,
+      relatedIndicators,
+    },
   };
 };
 
-export default withTranslation('common', 'indicators', 'pec-goals', 'ods-goals')(IndicatorPage);
+IndicatorPage.defaultProps = { i18nNamespaces: ['common', 'indicators', 'pec-goals', 'ods-goals'] };
+
+export default withTranslation(['common', 'indicators', 'pec-goals', 'ods-goals'])(IndicatorPage);

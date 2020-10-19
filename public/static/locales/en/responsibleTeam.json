@@ -1,11 +1,11 @@
 {
   "title": "RESPONSIBLE TEAM",
   "email": "email",
-  "p1": "The development of the Regional Series of Educational Indicators began in 2009 with the institutional and political leadership of CECC / SICA and the technical coordination of the Civil Association Education For All, for the establishment of the indicators, the integration and review of contributions from the national teams, design and development of the web platform. During 2012, a new work process was carried out and the site's functionalities were improved, as well as the production of national reports.",
-  "p2": "Statistical information is provided and updated institutionally by technical teams from the statistical areas of the Ministries of Education of the CECC / SICA member countries whose contributions are crucial to the content of the site. Over the years, different people have been part of the national teams, which have made valuable and fundamental contributions. The institutional dependencies of the Ministries of Education that participate in this process are the following:",
-  "p3": "The support of the CECC / SICA management team has been a support throughout the process, particularly with the technical tasks of Fressie Aguilar and Alejandra Sanchez, and the administrative support of Nidia Abarca, and Giselle Barboza.",
-  "p4": "The team of the Civil Association Education For All is coordinated in the technical and institutional aspects by Irene Kit and Sergio Spain.",
-  "p5": "In the conceptual design of indicators and communicational definition, the task was coordinated by Martín Scasso, with the cooperation at different times of Verónica Marino, Verona Batiuk, Lujan Vago, Irene Butcher and Daniela Cura.",
+  "p1": "This Series of Indicators was developed under the leadership of the General Secretariat of the CECC / SICA with the contribution of UNICEF and the valuable technical coordination by the UNESCO Institute for Statistics of UNESCO.",
+  "p2": "The support of the CECC / SICA management team has been a support throughout the process, particularly with the technical tasks of Mrs. Raquel Núñez Elizondo and the coordination of Mrs. Anny González and Mr. Carlos Staff Sánchez as Executive Secretary of the CECC / SICA.",
+  "p3": "The team of the UNESCO Institute for Statistics is coordinated in technical and institutional aspects by Mr. Juan Cruz Perusia, who was in charge of defining the indicators.",
+  "p4": "Statistical information is provided to the UIS by technical teams from the statistical areas of the Ministries of Education of the CECC / SICA member countries.",
+  "p5": "The design and development of the Computing Platform was in charge of El Domo Comunicación.",
   "p6": "The development of the Computer Platform was in charge of Pablo De Vas with the cooperation of Ernesto Soler and Andrés Suárez. The graphic proposals are contributed by Flavia Cebrian, Miriam Sátollo and Gabriella Tenner.",
   "policyAndPlanningUnit": "Policy and Planning Unit",
   "institutionalPlanningDirectorateStatisticalAnalysisDepartment":"Institutional Planning Directorate - Statistical Analysis Department",
@@ -14,5 +14,6 @@
   "managementPlanningAndEvaluationUnitInfotechnologyUnit": "Management Planning and Evaluation Unit - Infotechnology Unit",
   "generalPlanningDirectorateStatisticsDirectorate": "General Planning Directorate - Statistics Directorate",
   "nationalDirectorateOfEducationalPlanningStatisticsDepartment": "National Directorate of Educational Planning. Statistics Department",
-  "officeOfEducationalPlanningAndDevelopmentDepartmentOfStatistics": "Office of Educational Planning and Development - Department of Statistics"
+  "officeOfEducationalPlanningAndDevelopmentDepartmentOfStatistics": "Office of Educational Planning and Development - Department of Statistics",
+  "contact": "contact"
 }

@@ -10,6 +10,9 @@ import FetchUtils from '../../../../../utils/Fetch.utils';
 import CountryTitle from '../../../../../components/countries/CountryTitle';
 import Title from '../../../../../components/layout/Title';
 import { txt } from '../../../../../theme/colors';
+import CountryService from '../../../../../services/Country.service';
+import ManualDataService from '../../../../../services/ManualData.service';
+import { Serialize } from '../../../../../utils/Serializer.utils';
 
 const AdminDataEdit = ({
   t, id, user, visualizations, indexes, data, variation, year, country, indicatorName, indicatorData,
@@ -19,19 +22,23 @@ const AdminDataEdit = ({
   const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
 
   const router = useRouter();
-  const [formData, setFormData] = useState({});
-  formData.country = user.country;
-  formData.variation = variation;
 
-  const handleSubmit = () => {
-    fetch(postUrl, {
+  const handleSubmit = async (d) => {
+    const defaultData = {
+      ...d,
+      country: user.country,
+      variation,
+    };
+    const res = await fetch(postUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    }).then((res) => {
-      if (res.ok) router.push(redirectUrl);
+      body: JSON.stringify(defaultData),
     });
+
+    if (res.ok) router.push(redirectUrl);
   };
+
+  const handleCancel = () => router.back();
 
   return (
     <Container fluid>
@@ -62,8 +69,7 @@ const AdminDataEdit = ({
               indexes={indexes}
               data={data}
               onSubmit={handleSubmit}
-              setFormData={setFormData}
-              formData={formData}
+              onCancel={handleCancel}
             />
           </Col>
         </Row>
@@ -75,24 +81,25 @@ const AdminDataEdit = ({
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const { year } = query;
   const [id, variation] = query.id.split('-');
+  const countryService = CountryService.findByCode(user.country);
 
-  const variationUrl = (variation) ? `variation=${variation}` : '';
-  const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
-  const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
+  const indicatorService = ManualDataService.findManualDataByIndicatorId(
+    id,
+    variation,
+    user.country,
+  );
 
-  const [country, indicator] = await FetchUtils.multipleFetch([
-    countryUrl, indicatorUrl,
-  ]);
-
+  const [country, indicator] = await Promise.all([countryService, indicatorService]);
+  const serializedIndicator = Serialize(indicator);
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
   const indicatorData = 'indicatorData';
   return ({
     props: {
       namespacesRequired: ['indicators', 'common'],
       user,
-      visualizations: indicator.visualizations,
-      indexes: indicator.indexes,
-      data: indicator.data.filter((row) => row.year === year),
+      visualizations: serializedIndicator.visualizations,
+      indexes: serializedIndicator.indexes,
+      data: serializedIndicator.data.filter((row) => row.year === year),
       variation: variation || null,
       id,
       year,

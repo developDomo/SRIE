@@ -7,6 +7,7 @@ import { txt, bordes, blue4 } from '../styles/colors';
 import CountryHeader from '../components/countries/CountryHeader';
 
 import { ContainerPage } from '../components/layout/ContainerPageContent';
+import CountryService from '../services/Country.service';
 
 const DirectoryContainer = styled.div`
   display: flex;
@@ -39,12 +40,14 @@ const InfoDirectoryContainer = styled.div`
     font-weight: 400;
     font-size: 1.1em;
     color: ${txt};
+    margin: 0 0 2px 0;
   }
   & p {
     font-family: 'Raleway', sans-serif;
     font-style: italic;
     font-size: 1.1em;
     color: ${bordes};
+    line-height: 20px;
   }
   & a {
     font-family: 'Raleway', sans-serif;
@@ -55,46 +58,54 @@ const InfoDirectoryContainer = styled.div`
   }
 `;
 
-const ResponsibleTeam = ({ countries, t, path }) => {
+const ResponsibleTeam = ({ countries, t }) => {
   const contributorsCountries = [{
     country: 'Belice',
     title: t('policyAndPlanningUnit'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'yvonne.flowers@moe.gov.bz',
+    contact: 'Yvonne Flowers',
   },
   {
     country: 'Costa Rica',
     title: t('institutionalPlanningDirectorateStatisticalAnalysisDepartment'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'dixie.brenes.vindas@mep.go.cr',
+    contact: 'Dixie Brenes',
   },
   {
     country: 'El Salvador',
     title: t('planningDirectorateStatisticsDepartment'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'carla.martinez@mined.gob.sv',
+    contact: 'Carla Martínez',
   },
   {
     country: 'Guatemala',
     title: t('educationalPlanningDirectorateStatisticsDepartment'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'jcorellana@mineduc.gob.gt',
+    contact: 'Julio Cesar Orellana Orantes',
   },
   {
     country: 'Honduras',
     title: t('managementPlanningAndEvaluationUnitInfotechnologyUnit'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'kathia.funes@se.gob.hn',
+    contact: 'Kathia Funes',
   },
   {
     country: 'Nicaragua',
     title: t('generalPlanningDirectorateStatisticsDirectorate'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'mendietav@mined.gob.ni',
+    contact: 'Ruth Valeria Mendieta',
   },
   {
     country: 'Panamá',
     title: t('nationalDirectorateOfEducationalPlanningStatisticsDepartment'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'carmen.forero@meduca.gob.pa',
+    contact: 'Carmen Forero',
   },
   {
     country: 'República Dominicana',
     title: t('officeOfEducationalPlanningAndDevelopmentDepartmentOfStatistics'),
-    email: 'lore_ipsu@dolorsit.com',
+    email: 'henry.mercedes@minerd.gob.do',
+    contact: 'Henry Mercedes Vales',
   },
   ];
 
@@ -125,6 +136,12 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                   <p>
                     {t('p2')}
                   </p>
+                  <p>
+                    {t('p3')}
+                  </p>
+                  <p>
+                    {t('p4')}
+                  </p>
                 </div>
                 <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
                   {contributorsCountries.map((item) => (
@@ -137,6 +154,9 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                           {item.title}
                         </h3>
                         <p>
+                          {`${t('contact')}: `}
+                          {item.contact}
+                          <br />
                           {`${t('email')}:`}
                           <a href={`mail:${item.email}`}>
                             {item.email}
@@ -148,16 +168,7 @@ const ResponsibleTeam = ({ countries, t, path }) => {
                 </div>
                 <div className="col-sm-8">
                   <p>
-                    {t('p3')}
-                  </p>
-                  <p>
-                    {t('p4')}
-                  </p>
-                  <p>
                     {t('p5')}
-                  </p>
-                  <p>
-                    {t('p6')}
                   </p>
                 </div>
               </Row>
@@ -171,15 +182,13 @@ const ResponsibleTeam = ({ countries, t, path }) => {
   );
 };
 
-ResponsibleTeam.getInitialProps = async ({ pathname: path }) => {
-  const res = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await res.json();
-
+export const getServerSideProps = async () => {
+  const countries = await CountryService.findAll();
   return {
-    namespacesRequired: ['responsibleTeam'],
-    countries,
-    path,
+    props: { countries },
   };
 };
+
+ResponsibleTeam.defaultProps = { i18nNamespaces: ['responsibleTeam'] };
 
 export default withTranslation('responsibleTeam')(ResponsibleTeam);

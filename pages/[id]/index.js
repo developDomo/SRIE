@@ -18,7 +18,7 @@ import { withTranslation } from '../../i18n';
 import EducationIcon from '../../public/img/home/icon_datos_educ.svg';
 import LiteracyIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
 
-import SchoolsIcon from '../../public/img/home/icon_datos_centroseduc.svg';
+import GovernmentExpenditureIcon from '../../public/img/home/icon_gasto_gubernamental.svg';
 import DataChildIcon from '../../public/img/home/icono_datos_ninos.svg';
 import ParticipationIcon from '../../public/img/home/icon_participacion_indicador.svg';
 
@@ -29,38 +29,63 @@ import ConclusionIcon from '../../public/img/home/icon_conclusion_indicador.svg'
 import EnvironmentIcon from '../../public/img/home/icon_entorno_indicador.svg';
 import GoalsIcon from '../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../components/countries/CountryHeader';
+import CountryService from '../../services/Country.service';
 
 const Country = ({
   t, countries, country, countryInfo,
 }) => {
   const navigation = [{ key: 'navigation.pages.country-data' }];
-  const { free_edu, literacy_rate, out_of_school_rate } = countryInfo;
+  const {
+    free_edu, comp_edu, literacy_rate, out_of_school_rate,
+  } = countryInfo;
 
-  const enrollment = countryInfo.net_enrollment_rate;
-  const { data: enrollmentData } = enrollment;
+  const governmentExpenditure = countryInfo.government_expenditure.data;
+  const enrollmentData = countryInfo.net_enrollment_rate.data;
+  const completionRateData = countryInfo.completion_rate.data;
 
-  const completionRate = countryInfo.completion_rate;
-  const { data: completionRateData } = completionRate;
-
-  const isFreeValue = free_edu?.obs_value || 0;
-  const mandatoryValue = free_edu?.obs_value || 0;
+  const freeEducationValue = free_edu?.obs_value || 0;
+  const mandatoryEducationValue = comp_edu?.obs_value || 0;
 
   const alphabetizationRateValue = literacy_rate?.obs_value || 0;
 
-  const numberOfEducationalCentersValue = 0;
+  const governmentExpenditurePreschoolValue = governmentExpenditure?.L02?.obs_value || 0;
+  const governmentExpenditurePrimaryValue = governmentExpenditure?.L1?.obs_value || 0;
+  const governmentExpenditureHighSchoolValue = governmentExpenditure?.L2_3?.obs_value || 0;
 
-  const tuitionFeesByLevelPreschoolValue = enrollmentData?.L1?.obs_value || 0;
-  const tuitionFeesByLevelHighSchoolValue = enrollmentData?.L02?.obs_value || 0;
-  const tuitionFeesByLevelPrimarySchoolValue = enrollmentData?.L2_3?.obs_value || 0;
+  const tuitionFeePreschoolValue = enrollmentData?.L02?.obs_value || 0;
+  const tuitionFeePrimaryValue = enrollmentData?.L1?.obs_value || 0;
+  const tuitionFeeHighSchoolValue = enrollmentData?.L2_3?.obs_value || 0;
 
-  const RateByLevelPrimaryValue = completionRateData?.L3?.obs_value || 0;
-  const RateByLevelHighValue = completionRateData?.L1?.obs_value || 0;
+  const completionRatePrimaryValue = completionRateData?.L1?.obs_value || 0;
+  const completionRateHighSchoolValue = completionRateData?.L3?.obs_value || 0;
 
   const girlsBoysAndAdolescentsOutsideOfSchoolValue = out_of_school_rate?.obs_value || 0;
 
   const percentFormat = (data) => `${parseFloat(data).toFixed(2)}%`;
 
   const decimalFormat = (data) => parseInt(data, 10);
+
+  const educationValues = [
+    { value: decimalFormat(freeEducationValue), title: t('freeAndCompulsoryEducation'), color: 'yellow' },
+    { value: decimalFormat(mandatoryEducationValue), title: t('ObligatoryEducation'), color: 'green' },
+  ];
+
+  const governmentExpenditureValues = [
+    { value: `$${decimalFormat(governmentExpenditurePreschoolValue)}`, title: t('preschool'), color: 'yellow' },
+    { value: `$${decimalFormat(governmentExpenditurePrimaryValue)}`, title: t('primary'), color: 'blue' },
+    { value: `$${decimalFormat(governmentExpenditureHighSchoolValue)}`, title: t('highSchool'), color: 'green' },
+  ];
+
+  const tuitionFeeValues = [
+    { value: percentFormat(tuitionFeePreschoolValue), title: t('preschool'), color: 'yellow' },
+    { value: percentFormat(tuitionFeePrimaryValue), title: t('primary'), color: 'blue' },
+    { value: percentFormat(tuitionFeeHighSchoolValue), title: t('highSchool'), color: 'green' },
+  ];
+
+  const completionRateValues = [
+    { value: percentFormat(completionRatePrimaryValue), title: t('primary'), color: 'blue' },
+    { value: percentFormat(completionRateHighSchoolValue), title: t('highSchool'), color: 'green' },
+  ];
 
   return (
     <Container fluid className="p-0">
@@ -92,10 +117,7 @@ const Country = ({
               iconImg={EducationIcon}
               title={t('numberOfYears')}
               color="blue"
-              isFree={decimalFormat(isFreeValue)}
-              isFreeTitle={t('freeAndCompulsoryEducation')}
-              mandatory={decimalFormat(mandatoryValue)}
-              mandatoryTitle={t('ObligatoryEducation')}
+              containers={educationValues}
             />
           </div>
           <div className="col-lg-4 mb-4">
@@ -109,32 +131,24 @@ const Country = ({
 
           <div className="col-lg-4 mb-4">
             <Box
-              iconImg={SchoolsIcon}
-              title={t('numberOfEducationalCenters')}
-              subtitle={numberOfEducationalCentersValue}
+              iconImg={GovernmentExpenditureIcon}
+              title={t('governmentExpenditurePerStudentPerYear')}
               color="orange"
+              containers={governmentExpenditureValues}
             />
           </div>
 
           <div className="col-lg-4">
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
-              preschoolValue={percentFormat(tuitionFeesByLevelPreschoolValue)}
-              primarySchoolValue={percentFormat(tuitionFeesByLevelPrimarySchoolValue)}
-              highSchoolValue={percentFormat(tuitionFeesByLevelHighSchoolValue)}
-              preschoolText={t('preschool')}
-              primarySchoolText={t('highSchool')}
-              highSchoolText={t('primary')}
+              containers={tuitionFeeValues}
             />
           </div>
 
           <div className="col-lg-4">
             <BoxIndicador
               title={t('completionRateByLevel')}
-              primarySchoolValue={percentFormat(RateByLevelPrimaryValue)}
-              highSchoolValue={percentFormat(RateByLevelHighValue)}
-              primarySchoolText={t('highSchool')}
-              highSchoolText={t('primary')}
+              containers={completionRateValues}
             />
           </div>
           <div className="col-lg-4">
@@ -147,15 +161,17 @@ const Country = ({
           </div>
         </Row>
       </Container>
+      {/*
+      Descomentar para volver activar el banner
       <Container fluid className="bg-verde-oscuro">
         <Row>
-          <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
-            <div className="col-lg-12 p-0 m-0">
-              <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
-            </div>
+           <Link href="/[id]/avance-2021" as={`/${country.short_name}/avance-2021`} replace>
+          <div className="col-lg-12 p-0 m-0">
+            <Banner text1={t('seeTheProgressIn')} text2={t('complianceWithGoalsCentralAmericanEducationalPolicy')} />
+          </div>
           </Link>
         </Row>
-      </Container>
+      </Container> */}
       <Container>
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
@@ -171,37 +187,38 @@ const Country = ({
         </Row>
         <Row className="mt-4 mb-4">
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="light_blue" icon={ParticipationIcon}>
+            <ButtonWithIcon color="light_blue" icon={ParticipationIcon} country={country} topic="participation">
               {t('participation')}
             </ButtonWithIcon>
+
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="brown" icon={OfferIcon}>
+            <ButtonWithIcon color="brown" icon={OfferIcon} country={country} topic="offering">
               {t('offering')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4 mb-3">
-            <ButtonWithIcon color="blue" icon={LearningIcon}>
+            <ButtonWithIcon color="blue" icon={LearningIcon} country={country} topic="learning-and-skills">
               {t('learningAndSkills')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="orange" icon={ConclusionIcon}>
+            <ButtonWithIcon color="orange" icon={ConclusionIcon} country={country} topic="completion">
               {t('Completion')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="pink" icon={EnvironmentIcon}>
+            <ButtonWithIcon color="pink" icon={EnvironmentIcon} country={country} topic="educational-environment">
               {t('educationalEnvironment')}
             </ButtonWithIcon>
           </div>
 
           <div className="col-lg-4">
-            <ButtonWithIcon color="yellow" icon={GoalsIcon}>
+            <ButtonWithIcon color="yellow" icon={GoalsIcon} country={country} topic="cross-cutting-goals">
               {t('CrossCuttingGoals')}
             </ButtonWithIcon>
           </div>
@@ -231,9 +248,8 @@ const Country = ({
   );
 };
 
-Country.getInitialProps = async ({ query, pathname: path }) => {
-  const countriesResponse = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await countriesResponse.json();
+export const getServerSideProps = async ({ query }) => {
+  const countries = await CountryService.findAll();
 
   const country = _.find(countries, (c) => c.short_name === query.id);
 
@@ -242,12 +258,14 @@ Country.getInitialProps = async ({ query, pathname: path }) => {
   ]);
 
   return {
-    namespacesRequired: ['common'],
-    countries,
-    country,
-    countryInfo,
-    path,
+    props: {
+      countries,
+      country,
+      countryInfo,
+    },
   };
 };
+
+Country.defaultProps = { i18nNamespaces: ['common'] };
 
 export default withTranslation('common')(Country);

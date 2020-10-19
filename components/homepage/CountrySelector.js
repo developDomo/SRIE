@@ -1,7 +1,8 @@
 import { Row } from 'react-bootstrap';
 import CountryItem from './CountryItem';
 
-export default function CountrySelector({ countries }) {
+export default function CountrySelector(props) {
+  const { countries } = props;
   return (
     <div className="country-selector">
       <Row className="py-2">

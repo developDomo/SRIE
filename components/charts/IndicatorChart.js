@@ -110,11 +110,19 @@ const ShareTitle = styled.p`
 
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
 
+const explanationInline = (formula, text) => formula.split('\n').map((c, index) => (
+  <>
+    <strong><InlineMath math={c} /></strong>
+    {text.split('\n')[index]}
+    <br />
+  </>
+));
+
 const DataSheetTitle = styled.p`
   font-family: Raleway, sans-serif;
   font-weight: bold;
   font-size: 1.1em;
-  color: rgb(68, 149, 205)
+  color: rgb(68, 149, 205);
 `;
 
 const DataSheetParagraph = styled.p`
@@ -126,7 +134,7 @@ const DataSheetFormula = styled.p`
 `;
 
 const IframeText = styled.textarea`
- width: 100%
+ width: 100%;
 `;
 const DoubleLine = styled.hr`
   width:100%; 
@@ -182,7 +190,10 @@ const InfoModal = ({
             :
           </DataSheetParagraph>
           <DataSheetParagraph>
-            {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.formulaExplanation`, { joinArrays: '\n' }))}
+            {explanationInline(
+              translation(`indicators:indicators.${indicator}.metadata.formulaExplanation`, { joinArrays: '\n' }),
+              translation(`indicators:indicators.${indicator}.metadata.formulaExplanationText`, { joinArrays: '\n' }),
+            )}
           </DataSheetParagraph>
         </Col>
       </Row>
@@ -224,7 +235,7 @@ const InfoModal = ({
         :
       </strong>
       <DataSheetParagraph>
-        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.licenseAndCopyrights`, { joinArrays: '\n' }))}
+        {separateParagraphs(translation('indicators:copyright'))}
       </DataSheetParagraph>
 
     </Modal.Body>
@@ -321,7 +332,7 @@ const ShareModal = ({
 );
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure, defaultChartMetrics,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
@@ -344,7 +355,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} />
         </Tab>
       );
     }
@@ -436,10 +447,19 @@ const IndicatorChart = ({
           <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
               <ChartTypeControls setChartType={setChartType} activeState={chartType} />
-              {showContent()}
+              <div>
+                {showContent()}
+              </div>
               <FooterSource>
-                {t('source')}
-                : Lorem ipsum dolor sit amet.
+                <Row>
+                  <Col lg="1">
+                    {t('source')}
+                    :
+                  </Col>
+                  <Col>
+                    {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
+                  </Col>
+                </Row>
               </FooterSource>
             </ChartContent>
           </Col>
@@ -463,7 +483,7 @@ const IndicatorChart = ({
                 countryCode={country.short_name}
                 onHide={() => setDownloadModalShow(false)}
                 variation={indicatorSource}
-                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}`) : t(`indicators:indicators.${indicator}.name`)}
+                title={chart.isVariation ? t(`indicators:variations.${chart.translation_key}.purpose`) : t(`indicators:indicators.${indicator}.name`)}
               />
             </SideBarIcons>
             <SideBarDownloadContainer>
@@ -484,21 +504,20 @@ const IndicatorChart = ({
 
               </div>
               <div>
-                {' '}
                 <a href={`${process.env.API_URL}/api/indicators/csv?country=${countryCode.toUpperCase()}&code=${chart.code}`}>{t('sideBar.formats.CSV')}</a>
-                {' '}
               </div>
             </SideBarDownloadContainer>
             <SideBarDescriptionContainer>
-              Spicy jalapeno bacon ipsum dolor amet leberkas venison drumstick pork loin meatball, ham salami swine prosciutto.
-              Sirloin biltong buffalo, spare ribs chicken alcatra short loin andouille meatball turducken. Landjaeger turkey sausage beef.
-              Tongue landjaeger andouille, fatback shank t-bone
+              {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.purpose`, { joinArrays: '\n' }))}
             </SideBarDescriptionContainer>
           </Col>
         </Row>
       </Container>
       <style jsx>
         {`
+        .nav-tabs .nav-link,.nav-tabs .nav-link.active{
+          border-radius:0!important;
+        }
         .nav-link.active,
         .nav-item.show .nav-link {
           color: red;
@@ -513,7 +532,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart, unitMeasure,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart, unitMeasure, defaultChartMetrics,
 }) => ({
   namespacesRequired: ['charts', 'indicators', 'common'],
   data,
@@ -529,6 +548,7 @@ IndicatorChart.getInitialProps = async ({
   chart,
   countryCode,
   unitMeasure,
+  defaultChartMetrics,
 });
 
 export default withTranslation('charts', 'indicators', 'common')(IndicatorChart);
