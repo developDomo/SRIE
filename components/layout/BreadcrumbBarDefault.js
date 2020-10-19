@@ -1,7 +1,7 @@
 import { Container, Breadcrumb } from 'react-bootstrap';
 import { withTranslation } from '../../i18n';
 
-const BreadcrumbBar = ({ t, page, navigation }) => (
+const BreadcrumbBarDefault = ({ t, page, navigation }) => (
   <Container className="p-0 pb-0 mb-0 mt-2 w-100">
     <Breadcrumb className="bg-white-ol mb-0">
       <Breadcrumb.Item key="home" className="bg-white  breadcrum-item mb-0" href="/">
@@ -34,8 +34,5 @@ const BreadcrumbBar = ({ t, page, navigation }) => (
   </Container>
 );
 
-BreadcrumbBar.getInitialProps = async () => ({
-  namespacesRequired: ['navigation', 'countries'],
-});
 
-export default withTranslation(['navigation', 'countries', 'indicators'])(BreadcrumbBar);
+export default withTranslation(['navigation', 'countries', 'indicators'])(BreadcrumbBarDefault);
