@@ -6,7 +6,7 @@ import isEmpty from 'lodash/isEmpty';
 import styled from 'styled-components';
 import { withTranslation } from '../../../i18n';
 import CountryHeader from '../../../components/countries/CountryHeader';
-import FetchUtils from '../../../utils/Fetch.utils';
+import { Serialize } from '../../../utils/Serializer.utils';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 import TopicTag from '../../../components/layout/TopicTag';
 import {
@@ -241,7 +241,7 @@ export const getServerSideProps = async ({ query }) => {
       country,
       indicator,
       data,
-      relatedIndicators,
+      relatedIndicators: Serialize(relatedIndicators),
     },
   };
 };
