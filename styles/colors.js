@@ -47,3 +47,5 @@ export const pinkRose = '#fdcccc';
 export const pinkWatermelon = '#fc9999';
 export const red = '#BF1922';
 export const gray2 = '#333';
+export const blueButton = '#0B89CE';
+export const blueButtonRoll = '#166A99';

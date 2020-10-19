@@ -26,6 +26,7 @@ import IndexesChart from './indexesChart';
 import { hasSomeData } from './helpers/ChartDataHelper';
 import GeoChart from './GeoChart';
 import WealthQuintileChart from './WealthQuintileChart';
+import { blueButton, blueButtonRoll } from '../../styles/colors';
 
 const ChartContent = styled.div`
   width: 100%;
@@ -105,7 +106,15 @@ const IndicatorTitleH3 = styled.h3`
 `;
 
 const ShareTitle = styled.p`
-  color: #869DA8;
+ 
+`;
+
+const ButtonSubmit = styled(Button)`
+  border-radius: 0;
+  background: ${blueButton};
+  & :hover{
+    background: ${blueButtonRoll};
+  }
 `;
 
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
@@ -135,6 +144,7 @@ const DataSheetFormula = styled.p`
 
 const IframeText = styled.textarea`
  width: 100%;
+ 
 `;
 const DoubleLine = styled.hr`
   width:100%; 
@@ -258,36 +268,43 @@ const ShareModal = ({
         {t('common:shareLink')}
         :
       </ShareTitle>
+      <Row>
+        <Col className="col-sm-1 pr-0 d-flex justify-content-center">
+          <FacebookShareButton
+            url={absolutePath}
+            quote={title}
+          >
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+        </Col>
+        <Col className="col-sm-1 p-0 d-flex justify-content-center">
+          <TwitterShareButton
+            url={absolutePath}
+            title={title}
+          >
+            <TwitterIcon size={32} round />
+          </TwitterShareButton>
+        </Col>
+        <Col className="col-sm-1 p-0 d-flex justify-content-center">
+          <WhatsappShareButton
+            url={absolutePath}
+            title={title}
+            separator=":: "
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </Col>
+        <Col className="col-sm-1 p-0 d-flex justify-content-center">
+          <EmailShareButton
+            url={absolutePath}
+            subject={title}
+            body="body"
+          >
+            <EmailIcon size={32} round />
+          </EmailShareButton>
+        </Col>
+      </Row>
 
-      <div>
-        <FacebookShareButton
-          url={absolutePath}
-          quote={title}
-        >
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
-        <TwitterShareButton
-          url={absolutePath}
-          title={title}
-        >
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
-
-        <WhatsappShareButton
-          url={absolutePath}
-          title={title}
-          separator=":: "
-        >
-          <WhatsappIcon size={32} round />
-        </WhatsappShareButton>
-        <EmailShareButton
-          url={absolutePath}
-          subject={title}
-          body="body"
-        >
-          <EmailIcon size={32} round />
-        </EmailShareButton>
-      </div>
       <div>
         <DoubleLine />
       </div>
@@ -300,13 +317,13 @@ const ShareModal = ({
         <IframeText rows="1" type="text" value={absolutePath} readOnly width="500px" />
       </div>
       <Row>
-        <Button
+        <ButtonSubmit
           className="ml-auto"
           style={{ marginRight: '1em' }}
           onClick={() => navigator.clipboard.writeText(absolutePath)}
         >
           {t('common:copyLink')}
-        </Button>
+        </ButtonSubmit>
       </Row>
       <div>
         <ShareTitle>
