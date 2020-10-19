@@ -7,10 +7,10 @@ import CountrySelector from '../components/homepage/CountrySelector';
 import BannerOds from '../components/homepage/BannerOds';
 import { withTranslation } from '../i18n';
 import WelcomeText from '../components/layout/WelcomeText';
+import CountryService from '../services/Country.service';
 
 const Home = ({ countries }) => (
   <Container className="d-flex flex-column p-0">
-
     <Col sm={{ span: 8, offset: 2 }} className="flex-grow">
       <InfoSlider />
     </Col>
@@ -45,15 +45,16 @@ const Home = ({ countries }) => (
   </Container>
 );
 
-Home.getInitialProps = async ({ pathname: path }) => {
-  const res = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await res.json();
-
+export const getServerSideProps = async () => {
+  const countries = await CountryService.findAll();
   return {
-    namespacesRequired: ['homepage'],
-    countries,
-    path,
+    props: {
+      countries,
+    },
   };
 };
 
+Home.defaultProps = {
+  i18nNamespaces: ['homepage'],
+};
 export default withTranslation('homepage')(Home);

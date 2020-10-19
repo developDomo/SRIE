@@ -18,7 +18,7 @@
   "moreIndicatorsBtn": "See the indicators",
   "alphabetizationRate": "Alphabetization rate",
   "numberOfYears" : "Number of years",
-  "numberOfEducationalCenters": "Number of educational centers",
+  "governmentExpenditurePerStudentPerYear": "Government expenditure per student per year",
   "tuitionFeesByLevel" : "Tuition fees, by level",
   "completionRateByLevel": "Completion rate, by level",
   "girlsBoysAndAdolescentsOutsideOfSchool": "Girls, boys and adolescents outside of school",
@@ -89,5 +89,8 @@
   "male": "Male",
   "urban": "Urban",
   "rural": "Rural",
-  "year": "Year"
+  "year": "Year",
+  "systemLogbook": "System Log Book",
+  "timestamp": "Day / Time",
+  "actionsDone": "Actions done"
 }

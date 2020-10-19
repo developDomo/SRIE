@@ -150,40 +150,28 @@ export const Box = ({
   iconImg,
   title,
   subtitle,
-  isFree,
-  isFreeTitle,
-  mandatory,
-  mandatoryTitle,
+  containers,
   color,
 }) => {
-  if (isFree && mandatory) {
+  if (containers && containers.length > 0) {
     return (
       <>
         <ContainerIndicadorStyled>
           <IconContainer>{getIcon(iconImg || icon, color)}</IconContainer>
           <Title className="m-0 mb-1">{title}</Title>
 
-          {isFree ? (
+          {containers.map((container) => (
             <IndicadorContainer
-              color="yellow"
+              color={container.color}
               height="82"
               padding="6px 6px 5px 6px"
+              ml="10px"
+              mr="0"
             >
-              <h3>{isFree}</h3>
-              <p>{isFreeTitle}</p>
+              <h3>{container.value}</h3>
+              <p>{container.title}</p>
             </IndicadorContainer>
-          ) : undefined}
-
-          <IndicadorContainer
-            color="green"
-            height="82"
-            padding="6px 6px 5px 6px"
-            ml="10px"
-            mr="0"
-          >
-            <h3>{mandatory}</h3>
-            <p>{mandatoryTitle}</p>
-          </IndicadorContainer>
+          ))}
         </ContainerIndicadorStyled>
       </>
     );
@@ -200,23 +188,16 @@ export const Box = ({
 };
 
 export const BoxIndicador = ({
-  title, preschoolValue, primarySchoolValue, highSchoolValue, preschoolText, primarySchoolText, highSchoolText,
+  title, containers,
 }) => (
   <ContainerIndicadorStyled>
     <Title>{title}</Title>
-    {preschoolValue ? (
-      <IndicadorContainer color="yellow">
-        <h3>{preschoolValue}</h3>
-        <p>{preschoolText}</p>
+    {containers.map((container) => (
+      <IndicadorContainer color={container.color}>
+        <h3>{container.value}</h3>
+        <p>{container.title}</p>
       </IndicadorContainer>
-    ) : undefined}
-    <IndicadorContainer color="blue">
-      <h3>{highSchoolValue}</h3>
-      <p>{highSchoolText}</p>
-    </IndicadorContainer>
-    <IndicadorContainer color="green">
-      <h3>{primarySchoolValue}</h3>
-      <p>{primarySchoolText}</p>
-    </IndicadorContainer>
+    ))}
+
   </ContainerIndicadorStyled>
 );

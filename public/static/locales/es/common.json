@@ -18,7 +18,7 @@
   "datasourceType": "Fuente primaria de datos",
   "alphabetizationRate": "Tasa de alfabetización",
   "numberOfYears" : "Número de años:",
-  "numberOfEducationalCenters": "Cantidad de centros educativos",
+  "governmentExpenditurePerStudentPerYear": "Gasto gubernamental por estudiante al año",
   "tuitionFeesByLevel" : "Tasas de matrícula, por nivel",
   "completionRateByLevel": "Tasa de finalización, por nivel",
   "girlsBoysAndAdolescentsOutsideOfSchool": "Niñas, niños y adolescentes fuera de la escuela",
@@ -89,5 +89,8 @@
   "female": "Femenino",
   "male": "Masculino",
   "urban": "Urbano",
-  "rural": "Rural"
+  "rural": "Rural",
+  "systemLogbook": "Registro de acciones realizadas en el sistema",
+  "timestamp": "Día / Hora",
+  "actionsDone": "Acciones realizadas"
 }

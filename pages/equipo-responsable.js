@@ -7,6 +7,7 @@ import { txt, bordes, blue4 } from '../styles/colors';
 import CountryHeader from '../components/countries/CountryHeader';
 
 import { ContainerPage } from '../components/layout/ContainerPageContent';
+import CountryService from '../services/Country.service';
 
 const DirectoryContainer = styled.div`
   display: flex;
@@ -57,7 +58,7 @@ const InfoDirectoryContainer = styled.div`
   }
 `;
 
-const ResponsibleTeam = ({ countries, t, path }) => {
+const ResponsibleTeam = ({ countries, t }) => {
   const contributorsCountries = [{
     country: 'Belice',
     title: t('policyAndPlanningUnit'),
@@ -184,15 +185,13 @@ const ResponsibleTeam = ({ countries, t, path }) => {
   );
 };
 
-ResponsibleTeam.getInitialProps = async ({ pathname: path }) => {
-  const res = await fetch(`${process.env.API_URL}/api/countries`);
-  const countries = await res.json();
-
+export const getServerSideProps = async () => {
+  const countries = await CountryService.findAll();
   return {
-    namespacesRequired: ['responsibleTeam'],
-    countries,
-    path,
+    props: { countries },
   };
 };
+
+ResponsibleTeam.defaultProps = { i18nNamespaces: ['responsibleTeam'] };
 
 export default withTranslation('responsibleTeam')(ResponsibleTeam);

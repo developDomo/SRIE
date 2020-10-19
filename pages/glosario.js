@@ -52,4 +52,6 @@ const Glossary = ({ t }) => (
   </>
 );
 
+Glossary.defaultProps = { i18nNamespaces: ['glossary'] };
+
 export default withTranslation('glossary')(Glossary);

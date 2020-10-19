@@ -39,10 +39,10 @@ const Login = () => {
   }
 
   return (
-    <div className="container-fluid login d-flex flex-column">
+    <div className="container-fluid login d-flex flex-grow-1 flex-column">
       <AdminMenu />
       <Container className="justify-content-center flex-grow-1 d-flex">
-        <Row className="align-self-center  pt-5 pb-5">
+        <Row className="align-self-center col-12 col-md-8 pt-5 pb-5">
           <LoginForm isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
         </Row>
       </Container>

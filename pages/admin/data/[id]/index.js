@@ -10,6 +10,9 @@ import CountryTitle from '../../../../components/countries/CountryTitle';
 import Title from '../../../../components/layout/Title';
 import FetchUtils from '../../../../utils/Fetch.utils';
 import { Button } from '../../../../components/layout/Button';
+import CountryService from '../../../../services/Country.service';
+import ManualDataService from '../../../../services/ManualData.service';
+import { Serialize } from '../../../../utils/Serializer.utils';
 
 const AdminDataDetails = ({
   t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName,
@@ -62,22 +65,25 @@ const AdminDataDetails = ({
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [id, variation] = query.id.split('-');
+  const countryService = CountryService.findByCode(user.country.toLowerCase());
 
-  const variationUrl = (variation) ? `variation=${variation}` : '';
-  const indicatorUrl = `${process.env.API_URL}/api/indicators/${id}/manual-data?country=${user.country}&${variationUrl}`;
-  const countryUrl = `${process.env.API_URL}/api/countries/${user.country.toLowerCase()}`;
-  const [country, indicator] = await FetchUtils.multipleFetch([
-    countryUrl, indicatorUrl,
-  ]);
+  const indicatorService = ManualDataService.findManualDataByIndicatorId(
+    id,
+    variation,
+    user.country,
+  );
+  const [country, indicator] = await Promise.all([countryService, indicatorService]);
+  const serializedIndicator = Serialize(indicator);
+
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
 
   return {
     props: {
       user,
       id,
-      visualizations: indicator.visualizations,
-      indexes: indicator.indexes,
-      data: indicator.data,
+      visualizations: serializedIndicator.visualizations,
+      indexes: serializedIndicator.indexes,
+      data: serializedIndicator.data,
       indicatorName,
       addDataUrl: `/admin/data/${query.id}/add`,
       country,

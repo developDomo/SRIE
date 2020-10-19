@@ -110,6 +110,14 @@ const ShareTitle = styled.p`
 
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
 
+const explanationInline = (formula, text) => formula.split('\n').map((c, index) => (
+  <>
+    <strong><InlineMath math={c} /></strong>
+    {text.split('\n')[index]}
+    <br />
+  </>
+));
+
 const DataSheetTitle = styled.p`
   font-family: Raleway, sans-serif;
   font-weight: bold;
@@ -182,7 +190,10 @@ const InfoModal = ({
             :
           </DataSheetParagraph>
           <DataSheetParagraph>
-            {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.formulaExplanation`, { joinArrays: '\n' }))}
+            {explanationInline(
+              translation(`indicators:indicators.${indicator}.metadata.formulaExplanation`, { joinArrays: '\n' }),
+              translation(`indicators:indicators.${indicator}.metadata.formulaExplanationText`, { joinArrays: '\n' }),
+            )}
           </DataSheetParagraph>
         </Col>
       </Row>
