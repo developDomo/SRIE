@@ -136,6 +136,12 @@ const ResponsibleTeam = ({ countries, t }) => {
                   <p>
                     {t('p2')}
                   </p>
+                  <p>
+                    {t('p3')}
+                  </p>
+                  <p>
+                    {t('p4')}
+                  </p>
                 </div>
                 <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
                   {contributorsCountries.map((item) => (
@@ -162,16 +168,7 @@ const ResponsibleTeam = ({ countries, t }) => {
                 </div>
                 <div className="col-sm-8">
                   <p>
-                    {t('p3')}
-                  </p>
-                  <p>
-                    {t('p4')}
-                  </p>
-                  <p>
                     {t('p5')}
-                  </p>
-                  <p>
-                    {t('p6')}
                   </p>
                 </div>
               </Row>
