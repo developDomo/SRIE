@@ -235,7 +235,7 @@ const InfoModal = ({
         :
       </strong>
       <DataSheetParagraph>
-        {separateParagraphs(translation(`indicators:indicators.${indicator}.metadata.licenseAndCopyrights`, { joinArrays: '\n' }))}
+        {separateParagraphs(translation('indicators:copyright'))}
       </DataSheetParagraph>
 
     </Modal.Body>
