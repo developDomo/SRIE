@@ -60,11 +60,6 @@ const CountryTitle = ({ t, country, active }) => (
               <ButtonNav color="blue" active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
             </Link>
           </div>
-          {/* <div className="col-lg-3 pr-0">
-            <Link href={`/${country.short_name}/avance-2021`} as={`/${country.short_name}/avance-2021`}>
-              <ButtonNav color="green" active={active === 'progress-2021'}>{t('navigation.pages.progress2021')}</ButtonNav>
-            </Link>
-          </div> */}
         </Row>
       )}
       <Divider />
