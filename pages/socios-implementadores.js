@@ -7,6 +7,7 @@ import Title from '../components/layout/Title';
 import {
   blue1, grayBck,
 } from '../styles/colors';
+import CountryHeader from '../components/countries/CountryHeader';
 
 const LinkUrl = styled.a`
   color: ${blue1};
@@ -48,22 +49,32 @@ const PartnerItem = ({ t }) => {
   return table;
 };
 
-const Partners = ({ t }) => (
-  <>
-    <Title color="blue" type="title" textCenter>
-      {t('title')}
-    </Title>
-    <div className="bg-light">
-      <Container>
-        <Row className="d-sm-flex justify-content-center">
-          <div className="col-sm-8 py-2 py-sm-5">
-            <PartnerItem t={t} />
-          </div>
-        </Row>
-      </Container>
-    </div>
-  </>
-);
+const Partners = ({ t }) => {
+  const breadcrumbPage = {
+    name: t('title'),
+    url: 'partners',
+  };
+  return (
+    <>
+      <CountryHeader
+        page={breadcrumbPage}
+        active="country-data"
+      />
+      <Title color="blue" type="title" textCenter>
+        {t('title')}
+      </Title>
+      <div className="bg-light">
+        <Container>
+          <Row className="d-sm-flex justify-content-center">
+            <div className="col-sm-8 py-2 py-sm-5">
+              <PartnerItem t={t} />
+            </div>
+          </Row>
+        </Container>
+      </div>
+    </>
+  );
+};
 
 Partners.defaultProps = { i18nNamespaces: ['partners'] };
 

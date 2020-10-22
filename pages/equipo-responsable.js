@@ -110,7 +110,7 @@ const ResponsibleTeam = ({ countries, t }) => {
   ];
 
   const breadcrumbPage = {
-    name: 'equipo-responsable',
+    name: t('responsibleTeam'),
     url: 'equipo-responsable',
   };
 

@@ -1,9 +1,12 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import { i18n, withTranslation } from '../i18n';
+
 import Title from '../components/layout/Title';
 import { theme } from '../styles/theme';
 import { txt } from '../theme/colors';
+
+import CountryHeader from '../components/countries/CountryHeader';
 
 const Text = styled.p`
   margin-bottom: 0;
@@ -28,29 +31,40 @@ const GlossaryItems = ({ t }) => {
   return items;
 };
 
-const Glossary = ({ t }) => (
-  <>
-    <Title color="blue" type="title" textCenter>
-      {t('title')}
-    </Title>
-    <div className="bg-light">
-      <Container>
-        <Row className="d-sm-flex justify-content-center">
-          <div className="col-sm-8 py-2 py-sm-5">
-            <GlossaryItems t={t} />
-          </div>
-        </Row>
-      </Container>
-    </div>
-    <style global jsx>
-      {`
+
+const Glossary = ({ t }) => {
+  const breadcrumbPage = {
+    name: t('title'),
+    url: 'glosario',
+  };
+  return (
+    <>
+      <CountryHeader
+        page={breadcrumbPage}
+        active="country-data"
+      />
+      <Title color="blue" type="title" textCenter>
+        {t('title')}
+      </Title>
+      <div className="bg-light">
+        <Container>
+          <Row className="d-sm-flex justify-content-center">
+            <div className="col-sm-8 py-2 py-sm-5">
+              <GlossaryItems t={t} />
+            </div>
+          </Row>
+        </Container>
+      </div>
+      <style global jsx>
+        {`
         .colStyle{
           border-right: 0.5px solid;
           }
       `}
-    </style>
-  </>
-);
+      </style>
+    </>
+  );
+};
 
 Glossary.defaultProps = { i18nNamespaces: ['glossary'] };
 
