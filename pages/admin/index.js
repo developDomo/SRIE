@@ -11,7 +11,6 @@ import EventService from '../../services/Event.service';
 
 DateTime.local();
 
-
 const AdminHome = (props) => {
   const { user } = props;
   const router = useRouter();
