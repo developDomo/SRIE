@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
+import _ from 'lodash';
 import { withTranslation } from '../../../../i18n';
 import FetchUtils from '../../../../utils/Fetch.utils';
 import needsAuth from '../../../../lib/needsAuth';
@@ -12,9 +13,10 @@ import Title from '../../../../components/layout/Title';
 import CountryService from '../../../../services/Country.service';
 import UserService from '../../../../services/User.service';
 import { Serialize } from '../../../../utils/Serializer.utils';
+import CountryTitle from '../../../../components/countries/CountryTitle';
 
 const AdminEditUser = ({
-  t, countries, user, userUrl, loggedUser,
+  t, countries, user, userUrl, loggedUser, country,
 }) => {
   const router = useRouter();
   const redirectUrl = '/admin/users';
@@ -61,12 +63,14 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const countries = await CountryService.findAll();
   const existingUser = await UserService.findById(id);
   const existing = Serialize(existingUser);
+  const country = _.find(countries, (c) => c.code === user.country.toLowerCase());
   return {
     props: {
       loggedUser: user,
       countries,
       user: existing,
       userUrl,
+      country,
     },
   };
 });
