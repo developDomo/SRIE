@@ -90,7 +90,7 @@ const AdminMenu = ({ user }) => {
         li {
           margin-right: 1rem;
           display: flex;
-          border-bottom: solid 1px transparent;
+          border-bottom: solid 3px transparent;
 
         }
 
@@ -103,7 +103,7 @@ const AdminMenu = ({ user }) => {
         }
         
          li:hover {
-         border-bottom: solid 1px ${yellow};
+         border-bottom: solid 3px ${yellow};
         }
 
         a {
