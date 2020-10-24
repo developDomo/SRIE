@@ -92,6 +92,8 @@
   "rural": "Rural",
   "systemLogbook": "Registro de acciones realizadas en el sistema",
   "timestamp": "Día / Hora",
+  "roleAdmin": "Administrador",
+  "roleCountryAdmin": "Administrador - País",
   "actionsDone": "Acciones realizadas",
   "noData": "No hay datos disponibles",
   "goBack": "Regresar"
