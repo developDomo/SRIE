@@ -70,7 +70,7 @@
   "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Use \"coma\" (,) como separador.",
   "includesex": "Incluir datos por género",
-  "includelocation": "Incluir datos por género",
+  "includelocation": "Incluir datos por zona geográfica",
   "includewealth-quintile": "Incluir datos por nivel socioeconómico",
   "save": "Guardar",
   "edit": "Editar",
