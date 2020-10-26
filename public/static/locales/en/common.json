@@ -92,5 +92,7 @@
   "year": "Year",
   "systemLogbook": "System Log Book",
   "timestamp": "Day / Time",
-  "actionsDone": "Actions done"
+  "actionsDone": "Actions done",
+  "noData": "No data available",
+  "goBack": "Back"
 }

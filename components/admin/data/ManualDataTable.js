@@ -116,12 +116,29 @@ const TableRows = (props) => {
 };
 
 const ManualDataTable = (props) => {
-  const { visualizations, indexes, data } = props;
+  const {
+    visualizations, indexes, data, t,
+  } = props;
+
+  const TableBody = () => {
+    if (!visualizations || !indexes) {
+      return (
+        <tr>
+          <td>{t('noData')}</td>
+        </tr>
+      );
+    }
+    return (
+      <>
+        <TableHeaders visualizations={visualizations} indexes={indexes} />
+        <TableRows visualizations={visualizations} indexes={indexes} data={data} />
+      </>
+    );
+  };
 
   return (
     <Table responsive="lg" {...props}>
-      <TableHeaders visualizations={visualizations} indexes={indexes} />
-      <TableRows visualizations={visualizations} indexes={indexes} data={data} />
+      <TableBody />
     </Table>
   );
 };
