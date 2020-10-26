@@ -65,8 +65,7 @@ const AdminDataDetails = ({
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
   const [id, variation] = query.id.split('-');
-  const countryService = CountryService.findByCode(user.country.toLowerCase());
-
+  const countryService = CountryService.findByCode(user.country);
   const indicatorService = ManualDataService.findManualDataByIndicatorId(
     id,
     variation,
@@ -74,19 +73,15 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   );
   const [country, indicator] = await Promise.all([countryService, indicatorService]);
   const serializedIndicator = Serialize(indicator);
-
   const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
-
   return {
     props: {
       user,
       id,
-      visualizations: serializedIndicator.visualizations,
-      indexes: serializedIndicator.indexes,
-      data: serializedIndicator.data,
       indicatorName,
       addDataUrl: `/admin/data/${query.id}/add`,
       country,
+      ...serializedIndicator,
     },
   };
 });

@@ -92,5 +92,7 @@
   "rural": "Rural",
   "systemLogbook": "Registro de acciones realizadas en el sistema",
   "timestamp": "Día / Hora",
-  "actionsDone": "Acciones realizadas"
+  "actionsDone": "Acciones realizadas",
+  "noData": "No hay datos disponibles",
+  "goBack": "Regresar"
 }

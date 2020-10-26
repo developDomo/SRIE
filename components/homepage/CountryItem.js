@@ -34,7 +34,7 @@ const CountryItem = ({ t, country }) => (
           background-repeat: no-repeat;
           background-position: 90%;
           background-size: 15px;
-          padding: 5px 35px;
+          padding: 5px 35px 5px 10px;
           border-radius: 15px;
           text-transform: uppercase;
           font-family: 'Raleway', sans-serif;
