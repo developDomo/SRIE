@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
@@ -13,6 +13,7 @@ import { txt } from '../../../../../theme/colors';
 import CountryService from '../../../../../services/Country.service';
 import ManualDataService from '../../../../../services/ManualData.service';
 import { Serialize } from '../../../../../utils/Serializer.utils';
+import BackButton from '../../../../../components/layout/BackButton';
 
 const AdminDataEdit = ({
   t, id, user, visualizations, indexes, data, variation, year, country, indicatorName, indicatorData,
@@ -47,6 +48,9 @@ const AdminDataEdit = ({
       <Container className="pt-4 pb-4">
 
         <CountryTitle country={country} />
+        <Row className="container mt-4">
+          <BackButton onClick={handleCancel} />
+        </Row>
         <Row className="justify-content-center mb-4 mt-4">
           <Title color="blueTitle" type="title">
             Datos de indicadores
