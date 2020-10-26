@@ -92,6 +92,8 @@
   "year": "Year",
   "systemLogbook": "System Log Book",
   "timestamp": "Day / Time",
+  "roleAdmin": "Admin",
+  "roleCountryAdmin": "Country Admin",
   "actionsDone": "Actions done",
   "noData": "No data available",
   "goBack": "Back"
