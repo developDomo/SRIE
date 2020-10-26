@@ -532,6 +532,10 @@ const IndicatorChart = ({
       </Container>
       <style jsx>
         {`
+          .nav-link {
+            display: block;
+            padding: .5rem 0.95rem;
+          }
         .nav-tabs .nav-link,.nav-tabs .nav-link.active{
           border-radius:0!important;
         }
