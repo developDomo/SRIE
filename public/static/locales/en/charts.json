@@ -32,5 +32,11 @@
     "GLPIA": "Índice de Paridad de Ubicación Geográfica Ajustado",
     "SESPI": "Índice de Paridad de Nivel Socieconómico",
     "SESPIA": "Índice de Paridad de Nivel Socieconómico Ajustado"
+  },
+  "yAxisLabel": {
+    "PT": "Percentage",
+    "YR": "Years",
+    "PPP_CONST": "Constant Dollars",
+    "PER": "?"
   }
 }
