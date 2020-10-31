@@ -38,11 +38,11 @@ const UserAdminForm = ({
   const roleOptions = [
     {
       value: 'admin',
-      label: 'Admin',
+      label: t('roleAdmin'),
     },
     {
       value: 'country-admin',
-      label: 'Country Admin',
+      label: t('roleCountryAdmin'),
     },
   ];
 
