@@ -20,7 +20,7 @@ module.exports = (phase) => ({
   env: (phase === PHASE_DEVELOPMENT_SERVER) ? dotenv.parsed : envs,
   webpack(config) {
     config.module.rules.push({
-      test: /\.(png|jpg|gif|svg)$/i,
+      test: /\.(png|jpg|gif|svg|pdf)$/i,
       use: [
         {
           loader: 'url-loader',

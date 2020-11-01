@@ -20,7 +20,6 @@ const AdminData = ({
         <div className="col-lg-12 pr-0 text-center">
           <Title color="blueTitle" type="title">
             {t('indicatorData')}
-
           </Title>
         </div>
       </Row>
