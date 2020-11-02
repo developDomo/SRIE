@@ -17,7 +17,7 @@ const navData = {
       },
       {
         id: null,
-        href: '#',
+        href: 'how-to-use',
         label: '¿Cómo usar el sistema?',
         isCountry: false,
       },
@@ -122,7 +122,7 @@ const navData = {
       },
       {
         id: null,
-        href: '#',
+        href: 'how-to-use',
         label: 'How to use the system?',
         isCountry: false,
       },
