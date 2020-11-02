@@ -2,20 +2,21 @@ import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import React from 'react';
-import { withTranslation } from '../../../../i18n';
+import { i18n, withTranslation } from '../../../../i18n';
 import AdminMenu from '../../../../components/admin/AdminMenu';
 import ManualDataTable from '../../../../components/admin/data/ManualDataTable';
 import needsAuth from '../../../../lib/needsAuth';
 import CountryTitle from '../../../../components/countries/CountryTitle';
 import Title from '../../../../components/layout/Title';
 import FetchUtils from '../../../../utils/Fetch.utils';
-import { Button } from '../../../../components/layout/Button';
+import { Button, ButtonContainer } from '../../../../components/layout/Button';
 import CountryService from '../../../../services/Country.service';
 import ManualDataService from '../../../../services/ManualData.service';
 import { Serialize } from '../../../../utils/Serializer.utils';
 
+
 const AdminDataDetails = ({
-  t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName,
+  t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName, indicatorId,
 }) => (
 
   <Container fluid>
@@ -28,7 +29,23 @@ const AdminDataDetails = ({
           {t('indicatorData')}
         </Title>
       </Row>
-
+      <Row>
+        <Col
+          md={{
+            span: 10,
+            offset: 1,
+          }}
+          className="text-right"
+        >
+          <a
+            className="btn btn-outline-primary btn-sm rounded-0"
+            download
+            href={`/static/metadata-pdf/${i18n.language || 'es'}/metadatos-srie-ind${indicatorId}.pdf`}
+          >
+            {t('downloadIndicatorMetadata')}
+          </a>
+        </Col>
+      </Row>
       <Row>
         <Col md={{
           span: 10,
@@ -64,7 +81,8 @@ const AdminDataDetails = ({
 );
 
 export const getServerSideProps = needsAuth(async ({ user, query }) => {
-  const [id, variation] = query.id.split('-');
+  const indicatorId = query.id;
+  const [id, variation] = indicatorId.split('-');
   const countryService = CountryService.findByCode(user.country);
   const indicatorService = ManualDataService.findManualDataByIndicatorId(
     id,
@@ -73,13 +91,16 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
   );
   const [country, indicator] = await Promise.all([countryService, indicatorService]);
   const serializedIndicator = Serialize(indicator);
-  const indicatorName = (variation) ? `variations.${query.id}` : `indicators.${query.id}.metadata.title`;
+  const indicatorName = (variation) ? `variations.${indicatorId}` : `indicators.${indicatorId}.metadata.title`;
+  const addDataUrl = `/admin/data/${indicatorId}/add`;
+
   return {
     props: {
       user,
       id,
       indicatorName,
-      addDataUrl: `/admin/data/${query.id}/add`,
+      indicatorId,
+      addDataUrl,
       country,
       ...serializedIndicator,
     },
