@@ -44,6 +44,7 @@ const TotalChart = ({
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
+          isAnimationActive={false}
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
