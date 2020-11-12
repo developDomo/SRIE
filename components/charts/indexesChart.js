@@ -67,7 +67,7 @@ const IndexesChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 2]} unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }
