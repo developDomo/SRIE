@@ -31,8 +31,10 @@ const Content = styled.div`
   margin-bottom: 1em;
 `;
 
-const ChartTypeControls = ({ setChartType, activeState, t }) => (
-  <Content>
+const ChartTypeControls = ({
+  setChartType, activeState, t, share,
+}) => (
+  <Content style={{ display: share ? 'none' : '' }}>
     <Button
       iconUrl="/img/home/icon_grafico_linea_table.svg"
       onClick={() => setChartType(DisplayTypes.CHART)}
@@ -50,9 +52,10 @@ const ChartTypeControls = ({ setChartType, activeState, t }) => (
   </Content>
 );
 
-ChartTypeControls.getInitialProps = ({ t }) => ({
+ChartTypeControls.getInitialProps = ({ t, share }) => ({
   namespacesRequired: ['charts'],
   t,
+  share,
 });
 
 export default withTranslation('charts')(ChartTypeControls);
