@@ -57,8 +57,8 @@ const GeoChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="URB" fill={maleBarColor} name={t('URB')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
-          <Bar dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="URB" fill={maleBarColor} name={t('URB')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
         </BarChart>
       );
     }

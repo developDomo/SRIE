@@ -74,11 +74,11 @@ const WealthQuintileChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} unit={t(`units.${unitMeasure}`)} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q2" fill={secondQuintille} name={t('Q2')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q3" fill={thirthQuintille} name={t('Q3')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q4" fill={fourQuintille} name={t('Q4')} unit="%" barSize={defaultBarSize} />
-          <Bar dataKey="Q5" fill={fifthQuintille} name={t('Q5')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q2" fill={secondQuintille} name={t('Q2')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q3" fill={thirthQuintille} name={t('Q3')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q4" fill={fourQuintille} name={t('Q4')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q5" fill={fifthQuintille} name={t('Q5')} unit="%" barSize={defaultBarSize} />
         </BarChart>
       );
     }
