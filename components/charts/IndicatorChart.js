@@ -349,7 +349,7 @@ const ShareModal = ({
 );
 
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure, defaultChartMetrics,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
@@ -463,7 +463,7 @@ const IndicatorChart = ({
         <Row>
           <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
-              <ChartTypeControls setChartType={setChartType} activeState={chartType} />
+              <ChartTypeControls setChartType={setChartType} activeState={chartType} share={share} />
               <div>
                 {showContent()}
               </div>
@@ -553,7 +553,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart, unitMeasure, defaultChartMetrics,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, countryCode, chart, unitMeasure, defaultChartMetrics,
 }) => ({
   namespacesRequired: ['charts', 'indicators', 'common'],
   data,
@@ -564,7 +564,6 @@ IndicatorChart.getInitialProps = async ({
   hideSideBar,
   type,
   tabNumber,
-  period,
   country,
   chart,
   countryCode,

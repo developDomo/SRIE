@@ -96,5 +96,6 @@
   "roleCountryAdmin": "Administrador - País",
   "actionsDone": "Acciones realizadas",
   "noData": "No hay datos disponibles",
-  "goBack": "Regresar"
+  "goBack": "Regresar",
+  "downloadIndicatorMetadata": "Descargar metadatos de este indicador"
 }

@@ -96,5 +96,7 @@
   "roleCountryAdmin": "Country Admin",
   "actionsDone": "Actions done",
   "noData": "No data available",
-  "goBack": "Back"
+  "goBack": "Back",
+  "downloadIndicatorMetadata": "Download metadata for this indicator"
+
 }
