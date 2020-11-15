@@ -318,9 +318,9 @@
           }    
         },
         "13": {
-          "name": "Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador.",
+          "name": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
           "metadata": {
-            "title": "Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador.",
+            "title": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
             "purpose": ["Medir el fenómeno por el que los alumnos abandonan la escuela antes de finalizar el ciclo escolar, y su efecto en la eficiencia interna de los sistemas educativos. También representa uno de los indicadores clave para analizar el flujo de alumnos dentro del ciclo educativo."],
             "definition": ["Estudiantes matriculados en un grado escolar entre 1º a 6º grado o entre 7º a 12º grado en un año escolar dado, que abandonan antes de la finalización del ciclo escolar, expresados como porcentaje sobre el total de matriculados en ese mismo grado en ese año."],
             "method":["La tasa de deserción escolar se calcula restando a 100% la suma del porcentaje de estudiantes promovidos y el porcentaje de estudiantes no promovidos en un año escolar. "],
