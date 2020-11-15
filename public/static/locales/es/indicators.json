@@ -1,7 +1,7 @@
 {
     "relatedIndicatorTitle": "Indicadores Relacionados",
     "indicatorTitle": "Indicadores Educativos",
-    "copyright": "<a href='https://www.google.com/url?q=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES'>Reconocimiento-NoComercial-Compartir Igual 4.0 Internacional</a>",
+    "copyright": "<a target='_blank' href='https://www.google.com/url?q=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES'>Reconocimiento-NoComercial-Compartir Igual 4.0 Internacional</a>",
     "indicators": {
         "1": {
           "name": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo", 
@@ -27,7 +27,7 @@
             "interpretation": "Un alto valor indica un gran número de niños pequeños que están preparados para comenzar la escuela primaria en las áreas de salud, aprendizaje y bienestar psicosocial.",
             "datasourceType": "La Encuesta de Indicadores Múltiples por Conglomerados (MICS), de UNICEF.",
             "limitationsAndComments": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países.",
-            "licenseAndCopyrights": "<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>"
+            "licenseAndCopyrights": "<a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>"
           }
         },
         "2": {

@@ -1,7 +1,7 @@
 {
     "relatedIndicatorTitle": "Related Indicators",
     "indicatorTitle": "Education Indicators",
-    "copyright": "<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>",
+    "copyright": "<a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>",
     "indicators": {
         "1": {
             "name": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
