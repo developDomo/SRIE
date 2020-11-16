@@ -17,7 +17,7 @@ const LinksMainNav = ({ path }) => {
         key={item.label}
       >
         {item.items.map((itemNavbar, index) => (
-          <NavbarLink item={itemNavbar} />
+          <NavbarLink item={itemNavbar} index={index} />
         ))}
       </NavDropdown>
     ));

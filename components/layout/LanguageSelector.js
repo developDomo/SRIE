@@ -9,7 +9,7 @@ const Button = styled.button`
     background-color: #E59E2C;
   }
   height: 2em;
-  width: 2em;
+  width: 100%;
   border-radius: 50%;
   color: white;
   border: none;
@@ -20,12 +20,16 @@ const Button = styled.button`
 `;
 
 const Container = styled.div`
+  display:flex;
   margin: 0.8em;
 `;
 
 const LanguageSelector = ({ t, path }) => {
   const Span = styled.span`
-  padding: 2px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   font-weight: bold;
   color: ${path === '/' ? `${theme.navbar.primaryFontColor}` : `${theme.navbar.secondaryFontColor}`};
   `;
