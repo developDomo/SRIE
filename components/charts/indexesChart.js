@@ -30,7 +30,7 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share,
 }) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
@@ -64,7 +64,7 @@ const IndexesChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 2]} unit={t(`units.${unitMeasure}`)} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
           <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
@@ -88,7 +88,7 @@ const IndexesChart = ({
   return (
     <Content>
       <ControlContainer>
-        <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+        <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} share={share} />
         <IndexesControls setIndexes={setIndexes} indexesData={data.indexes} />
       </ControlContainer>
       <ResponsiveContainer width="100%" height={400}>
@@ -99,7 +99,7 @@ const IndexesChart = ({
 };
 
 IndexesChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share,
 }) => (
   {
     t,
@@ -108,6 +108,7 @@ IndexesChart.getInitialProps = ({
     unitMeasure,
     namespacesRequired: ['charts'],
     defaultChartMetrics,
+    share,
   }
 );
 
