@@ -19,9 +19,11 @@ const NavbarLink = ({ item, index }) => {
     );
   }
   return (
-    <Link href={`/${item.href}`} key={item.href}>
-      <a className={`${path === `/${item.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item.label}</a>
-    </Link>
+    <NavDropdown.Item eventKey={index}>
+      <Link href={`/${item.href}`} key={item.href}>
+        <a className={`${path === `/${item.href}` ? 'nav-item-drop active-link' : 'nav-item-drop'}`}>{item.label}</a>
+      </Link>
+    </NavDropdown.Item>
   );
 };
 
