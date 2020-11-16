@@ -372,7 +372,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} />
+          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} share={share} />
         </Tab>
       );
     }
@@ -387,7 +387,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -400,7 +400,7 @@ const IndicatorChart = ({
         && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -413,7 +413,7 @@ const IndicatorChart = ({
         && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -424,7 +424,7 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
         <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
