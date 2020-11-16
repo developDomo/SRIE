@@ -103,15 +103,19 @@ const Header = ({ router: { pathname, query } }) => {
 
       .dropdown-item{
         color: ${theme.navbar.primaryFontColor};
+        padding: 0;
+        margin:0;
       }
-
+      .dropdown-item:focus, .dropdown-item:hover,.dropdown-item.active, .dropdown-item:active{
+        background-color: ${theme.navbar.dropdownMenuColor};
+      }
       a.nav-item-drop {
         color: ${theme.navbar.primaryFontColor} !important;
         display: block;
         padding: 5px 10px;
         width: 210px;
         margin: 0 15px;
-        }
+      }
       .show.dropdown.nav-item > a {
         border-bottom: 2px solid ${theme.navbar.underlineMenuColor};
       }
