@@ -1,7 +1,7 @@
 {
     "relatedIndicatorTitle": "Indicadores Relacionados",
     "indicatorTitle": "Indicadores Educativos",
-    "copyright": "<a href='https://www.google.com/url?q=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES'>Reconocimiento-NoComercial-Compartir Igual 4.0 Internacional</a>",
+    "copyright": "<a target='_blank' href='https://www.google.com/url?q=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES'>Reconocimiento-NoComercial-Compartir Igual 4.0 Internacional</a>",
     "indicators": {
         "1": {
           "name": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo", 
@@ -10,6 +10,7 @@
             "purpose": ["Este indicador es una medida amplia sobre el desarrollo de los niños y su preparación para comenzar la escuela. Los datos disponibles para un seguimiento internacional son relevados a nivel individual mediante la encuesta MICS, son informados por las madres/cuidadores."],
             "definition": "El Índice de Desarrollo de la Primera Infancia (ECDI) de la Encuesta de Indicadores Múltiples (MICS) de UNICEF define actualmente este indicador como el porcentaje de niños de 36 a 59 meses que están en desarrollo en al menos tres de los siguientes cuatro dominios: (i) escritura y matemática, (ii) desarrollo físico, (iii) desarrollo socioemocional y (iv) Aprendizaje. La encuesta define si un niño está “bien encaminado” en su desarrollo en escritura y matemática si puede identificar al menos 10 letras del alfabeto, leer 4 simples palabras y reconocer y nombrar todos los números de 1 a 10. Un niño está “bien encaminado” en su desarrollo físico, si puede recoger objetos pequeños fácil y generalmente están lo suficientemente bien para jugar. Un niño está “bien encaminado” en su desarrollo socio-emocional, si es capaz de realizar actividades simples de manera independiente, llevarse bien con otros niños y no patear, morder o golpear otros niños o adultos de manera usual. Un niño está “bien encaminado” en el aprendizaje, si participa en cualquier tipo de aprendizaje organizado que incluye la educación de la primera infancia, jardín de infancia o cuidado comunitario.",
             "formula": "PCDT_{3t4}=\frac{CDT_{3t4}\times 100}{P_{3t4}}",
+            "periodicity": "Variable según país",
             "formulaExplanation": [
               "PCDT_{3t4}",
               "CDT_{3t4}",
@@ -26,7 +27,7 @@
             "interpretation": "Un alto valor indica un gran número de niños pequeños que están preparados para comenzar la escuela primaria en las áreas de salud, aprendizaje y bienestar psicosocial.",
             "datasourceType": "La Encuesta de Indicadores Múltiples por Conglomerados (MICS), de UNICEF.",
             "limitationsAndComments": "Un mayor desarrollo metodológico será necesario para asegurar que la medida propuesta refleje un acuerdo común sobre la definición “bien encaminado” que esté alineada con los estándares nacionales, y sea relevante para los niños en todas las partes del mundo y que refleje adecuadamente “bien encaminado en su desarrollo” en todos los países. Lo anterior requiere patrones normativos de desarrollo, lo que no ha tenido lugar en la mayoría de países.",
-            "licenseAndCopyrights": "<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>"
+            "licenseAndCopyrights": "<a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>"
           }
         },
         "2": {
@@ -37,6 +38,7 @@
             "definition": ["Porcentaje de niños en el rango de edad determinado que participan en uno o más programas de aprendizaje organizado, incluyendo programas que ofrecen la combinación de educación y cuidado. Incluye la participación en educación de la primera infancia y en la educación primaria. El rango de edad varía según el país en función de la edad oficial de ingreso a la educación primaria. Un programa de aprendizaje organizado es aquel que consiste en un conjunto o secuencia coherente de actividades educativas diseñadas con la intención de lograr resultados de aprendizaje predeterminados o la realización de un conjunto específico de tareas educativas. Los programas de la primera infancia y de educación primaria son ejemplos de programas de aprendizaje organizados. La educación en la primera infancia y la educación primaria se definen en la revisión de 2011 de la Clasificación Internacional Normalizada de la Educación (CINE 2011). La educación en la primera infancia es típicamente diseñada con un enfoque holístico para apoyar el desarrollo temprano cognitivo, físico, social y emocional de los niños e introducir y para introducir a los niños en la instrucción organizada fuera del contexto familiar. La educación primaria ofrece actividades educativas y de aprendizaje diseñadas para desarrollar en los estudiantes habilidades básicas de lectura, escritura y matemáticas y establecer sólidas bases para el aprendizaje y la comprensión de las áreas fundamentales del conocimiento y el desarrollo personal. Se centra en el aprendizaje en el nivel básico de la complejidad con escasa especialización, si la hubiese. La edad oficial de ingreso a la primaria es la edad en que los niños se ven obligados a comenzar la enseñanza primaria, de acuerdo con la legislación o la política nacional."],
             "method": ["El número de niños del grupo de edad correspondiente que participa en un programa educativo organizado se expresa como un porcentaje del total de la población del mismo grupo de edad. Para el cálculo de este indicador, se utilizan estimaciones derivadas de las encuestas de hogar, donde se indaga la asistencia escolar a partir de preguntas directas al informante clave del hogar."],
             "formula": "PROL_{0t1,AG(a-1)}=\frac{E_{0t1,AG(a-1) }}{SAP_{AG(a-1)}}\times 100",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "PROL_{0t1,AG(a-1)}",
               "E_{0t1,AG(a-1)}",
@@ -60,6 +62,7 @@
             "definition": ["Matrícula total del grupo de edad correspondiente teóricamente a los Programas de Desarrollo Educacional de la Primera Infancia, expresado como porcentaje de los niños de la misma edad en la población total, incluyendo programas que ofrecen la combinación de educación y cuidado. El rango de edad considerado se define en la revisión de 2011 de la Clasificación Internacional Normalizada de la Educación (CINE 2011), donde se encuentra fijado entre los 45 días a los 2 años de edad. Los Programas de Desarrollo Educacional de la Primera Infancia comprenden un entorno de aprendizaje que es visualmente estimulante y verbalmente variado. Estos programas además promueven la autoexpresión con énfasis en la adquisición de lenguaje y su uso para lograr una comunicación significativa. Los niños tienen la oportunidad de participar en actividades lúdicas que les permiten desarrollar sus destrezas motoras y de coordinación a través de la interacción con el personal docente y bajo su supervisión. No se deben considerar los programas destinados solamente al cuidado del niño (cuidado, nutrición y salud)."],
             "method": ["El número de niños del grupo de edad correspondiente que participa en un Programas de Desarrollo Educacional de la Primera Infancia se expresa como un porcentaje del total de la población del mismo grupo de edad. Para el cálculo de este indicador, se utilizan estimaciones derivadas de las encuestas de hogar, donde se indaga la asistencia a partir de preguntas directas al informante clave del hogar."],
             "formula": "NER_{01}=\frac{E_{01,a}}{P_{01,a}}\times 100",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "NER_{01}",
               "E_{01,a}",
@@ -83,6 +86,7 @@
             "definition": ["Porcentaje de niños en el rango de edad determinado que participan en uno o más programas de Educación Pre-primaria, incluyendo programas que ofrecen la combinación de educación y cuidado. El rango de edad varía según el país en función de la edad oficial de ingreso a la educación primaria. La Educación Pre-primaria se define en la revisión de 2011 de la Clasificación Internacional Normalizada de la Educación (CINE 2011). Es típicamente diseñada con un enfoque holístico para apoyar el desarrollo temprano cognitivo, físico, social y emocional de los niños y para introducirlos en la instrucción organizada fuera del contexto familiar.  Comprende la interacción con pares y educadores, a través de la cual los niños aprenden a mejorar la utilización del lenguaje y sus habilidades sociales y comienzan a desarrollar sus destrezas de lógica y raciocinio y a articular sus procesos de reflexión. En este nivel se les expone por primera vez a conceptos alfabéticos y matemáticos. Asimismo, se promueve la exploración del mundo que los rodea y del entorno inmediato. Las actividades diseñadas para mejorar la motricidad gruesa (ejercicios, juegos, etc.) y otras actividades lúdicas supervisadas se pueden utilizar como oportunidades para promover el desarrollo de la interacción social, destrezas, autonomía y preparación para la escuela. Los programas de educación preprimaria se orientan a niños de entre los 3 años hasta un año antes de la edad oficial de ingreso a la primaria. La edad oficial de ingreso a la primaria es la edad en que los niños se ven obligados a comenzar la enseñanza primaria, de acuerdo con la legislación o la política nacional."],
             "method": ["El número de niños del grupo de edad correspondiente a Educación Pre-Primaria (CINE 02) que participa en un programa educativo organizado se expresa como un porcentaje del total de la población del mismo grupo de edad. Para el cálculo de este indicador, se utilizan estimaciones derivadas de las encuestas de hogar, donde se indaga la asistencia escolar a partir de preguntas directas al informante clave del hogar."],
             "formula": "NER_{02}=\frac{E_{02,a}}{P_{02,a}}\times 100",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "NER_{02}",
               "E_{02,a}",
@@ -111,6 +115,7 @@
               "AG_{02}",
               "AO_{02}"
             ],
+            "periodicity": "Anual",
             "formulaExplanationText": [
               "= cantidad de años de educación preescolar gratuita.",
               "= cantidad de años de educación preescolar obligatoria."
@@ -124,10 +129,11 @@
           "name": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo",
           "metadata": {
             "title": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo",
-            "purpose": ["Percentage of children and young people achieving at least a minimum proficiency level in (i) reading and (ii) mathematics during primary education (Grade 2 or 3), at the end of primary education, and at the end of lower secondary education. The minimum proficiency level will be measured relative to new common reading and mathematics scales currently in development. Minimum proficiency level is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. As of August 2018 there is no globally agreed definition of minimum proficiency level. As an interim reporting strategy the UIS is reporting according to the minimum proficiency level informed by each assessment."],
+            "purpose": ["El indicador es una medida directa de los resultados de aprendizaje alcanzados en las dos asignaturas en un grado de estudio intermedio de la educación primaria."],
             "definition": ["Porcentaje de niños y niñas en los grados 2/3 de la educación primaria que han alcanzado al menos el dominio mínimo requerido de (a) lectura y (b) matemáticas. El dominio mínimo requerido se define a partir de la utilización de los resultados de las evaluaciones ERCE, desarrolladas por el Laboratorio Latinoamericano de Evaluación de la Calidad de la Educación (OREALC/UNESCO), medido en relación con las escalas de desempeño propias de este instrumento. El nivel mínimo de competencia es el referente del conocimiento básico en un dominio (matemáticas o lectura) medido a través de evaluación de aprendizaje. Los estudios ERCE definen cuatro niveles de competencias, denominados I, II, III y IV. Los niveles II, III y IV son considerados como los niveles mínimos de competencia para cada área y etapa de educación."],
             "method":["El indicador es calculado como el porcentaje de niños y niñas que asisten a los grados 2 o 3 alcanzando/superando un cierto nivel de dominio predefinido en una asignatura dada."],
             "formula": "MINPR3_{t,s}=\frac{MINP3_{t,s}\times 100}{E3_{t}}",
+            "periodicity": "Variable según país",
             "formulaExplanation": [
               "MINPR3_{t,s}",
               "MINP3_{t,s}",
@@ -153,6 +159,7 @@
             "definition": ["Porcentaje de niños y niñas que al final de la educación primaria han alcanzado al menos el dominio mínimo requerido de (a) lectura y (b) matemáticas. El dominio mínimo requerido se define a partir de la utilización de los resultados de las evaluaciones ERCE, desarrolladas por el Laboratorio Latinoamericano de Evaluación de la Calidad de la Educación (OREALC/UNESCO), medido en relación con escalas de desempeño. El nivel mínimo de competencia es el referente del conocimiento básico en un dominio (matemáticas o lectura) medido a través de evaluación de aprendizaje. Los estudios ERCE definen cuatro niveles de competencias, denominados I, II, III y IV. Los niveles II, III y IV son considerados como los niveles mínimos de competencia para cada área y etapa de educación."],
             "method":["El indicador es calculado como el porcentaje de niños y niñas que asisten al final de la educación primaria (grado 6) alcanzando/superando un cierto nivel de dominio predefinido en una asignatura dada."],
             "formula": "MINPR6_{t,s}=\frac{MINP6_{t,s}\times 100}{E6_{t}}",
+            "periodicity": "Variable segun país y nivel educativo",
             "formulaExplanation": [
               "MINPR6_{t,s}",
               "MINP6_{t,s}",
@@ -178,6 +185,7 @@
             "definition": ["Número de alumnos matriculados por primera vez en el primer grado de un nivel educativo dado, que tienen la edad oficial de ingreso al mismo, expresado en porcentaje de la población de la misma edad. Se calcula para el nivel primario, secundaria baja y alta.La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo, de acuerdo con la legislación o la política nacional. La edad de ingreso a secundaria baja y alta está determinada por la edad de ingreso a la primaria y la duración de cada nivel educativo en años."],
             "method":["Dividir la cantidad de estudiantes matriculados que pertenecen a la edad oficial para ingresar a un nivel de educación determinado por la población para el mismo grupo de edad y multiplicar el resultado por 100."],
             "formula": "{NIR_{n}}^{t}=\frac{{N_{a,n}}^t\times 100}{{P_{a,n}}^t}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "NIR_{n}}^{t}",
               "N_{a,n}}^t",
@@ -203,6 +211,7 @@
             "definition": ["Número total de nuevos ingresantes en el último grado de educación primaria o educación secundaria baja, independientemente de su edad, expresado como un porcentaje de la población en la edad de ingreso prevista al último grado de educación primaria o educación secundaria baja.La edad de ingreso al último grado es la edad a la que los alumnos ingresarían al grado si hubieran comenzado la escuela a la edad oficial de inicio de la escuela primaria, si hubieran estudiado sin interrupciones, y hubieran progresado sin repetir ni saltarse un grado."],
             "method":["El número de nuevos ingresantes en el último grado del nivel de educación dado, independientemente de su edad. Se expresa como un porcentaje de la población con la edad de ingreso al último grado de ese nivel de educación."],
             "formula": "GIRLG_{n}=\frac{{NE_{l,n}}\times 100}{{P_{n,a}}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "GIRLG_{n}",
               "NE_{l,n}",
@@ -228,6 +237,7 @@
             "definition": ["El porcentaje de una cohorte de niños o jóvenes de edades comprendidas entre los 3 y 5 años por encima de la edad prevista para el último grado de cada nivel de educación, que hayan completado ese grado.La edad prevista para el último grado de cada nivel de educación es la edad a la que los alumnos entrarían en el grado si hubieran comenzado la escuela a la edad oficial de ingreso a la primaria, si hubieran estudiado a tiempo completo y si hubieran progresado sin repetir ni saltearse ningún grado."],
             "method":["El número de personas en el grupo de edad pertinente que han completado el último grado de un nivel dado de educación se expresa como un porcentaje de la población total del mismo grupo de edad."],
             "formula": "CR_{n}=\frac{{EAP_{n,AG(a+3t5)}}\times 100}{{PAG_{n,AG(a+3t5)}}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "CR_{n}",
               "EAP_{n,AG(a+3t5)}",
@@ -253,6 +263,7 @@
             "definition": ["Niños y jóvenes del grupo de edades correspondiente al nivel educativo dado que no se encuentran matriculados en primaria, secundaria o niveles educativos superiores. Los niños que se encuentran matriculados en la educación preprimaria son considerados fuera de la escuela.La <em>edad correspondiente</em> a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían estar asistiendo al mismo, de acuerdo con la legislación o la política nacional, considerando (a) <em>la edad oficial de ingreso</em> al nivel, y la duración de cada nivel educativo en años. La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo."],
             "method":["El número de estudiantes con la edad teórica para el nivel educativo dado, matriculados en primaria, secundaria o niveles educativos superiores, se obtiene del total de la población de la misma edad. Para el cálculo de este indicador, se utilizan las estimaciones derivadas de las encuestas de hogar, donde asistencia y población se recogen al mismo tiempo."],
             "formula": "OSR_{n}=\frac{{SAP_{n}}-{{\textstyle\\sum_{i=1}}^8}{E_{i,AGn}}}{SAP_{n}}{\times100}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "OSR_{n}",
               "SAP_{n}",
@@ -278,6 +289,7 @@
             "definition": ["El indicador mide el progreso para garantizar que todas las niñas y niños completen un ciclo completo de educación primaria y secundaria de calidad y logren al menos niveles mínimos de competencia en lectura y matemáticas en cada nivel. Los niños pueden poseer edad mayor a un grado porque comenzaron la escuela tarde y / o han repetido uno o más grados anteriores."],
             "method":["La suma de los inscriptos en todos los grados en el nivel de educación dado que tienen uno o más años de edad respecto de aquella prevista para el grado dado. Se expresa como un porcentaje del total de inscriptos en el nivel de educación dado, separando a quienes tienen un año más respecto del grado, y quienes tienen dos o más años."],
             "formula": ["POAG_{n}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,1+}}{E_{n}}\times100","POAG_{n,1}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,1}}{E_{n}}\times100","POAG_{n,2+}=\frac{\textstyle\\sum_{i=1}^{dn}E_{n,g,AG,2+}}{E_{n}}\times100"],
+            "periodicity": "Anual",
             "formulaExplanation": [
               "POAG_{n}",
               "POAG_{n,1}",
@@ -306,13 +318,14 @@
           }    
         },
         "13": {
-          "name": "Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador.",
+          "name": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
           "metadata": {
-            "title": "Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador.",
+            "title": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
             "purpose": ["Medir el fenómeno por el que los alumnos abandonan la escuela antes de finalizar el ciclo escolar, y su efecto en la eficiencia interna de los sistemas educativos. También representa uno de los indicadores clave para analizar el flujo de alumnos dentro del ciclo educativo."],
             "definition": ["Estudiantes matriculados en un grado escolar entre 1º a 6º grado o entre 7º a 12º grado en un año escolar dado, que abandonan antes de la finalización del ciclo escolar, expresados como porcentaje sobre el total de matriculados en ese mismo grado en ese año."],
             "method":["La tasa de deserción escolar se calcula restando a 100% la suma del porcentaje de estudiantes promovidos y el porcentaje de estudiantes no promovidos en un año escolar. "],
             "formula": "ADR_{g}^t=\frac{E_{g}^t-FE_{g}^t\times100}{E_{g}^t}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "ADR_{g}^t",
               "E_{g}^t",
@@ -338,6 +351,7 @@
             "definition": ["Proporción de alumnos matriculados en los grados 1º a 6º durante un año escolar que estuvo matriculado en el mismo grado el año escolar anterior."],
             "method":["Dividir el número de alumnos que repiten un grado específico en una escuela determinada por el número de alumnos matriculados en el mismo grado en el mismo año escolar. Este indicador se puede calcular para todo el nivel dividiendo el número total de repetidores de todos los grados de un nivel educativo específico por la matrícula total de ese nivel y multiplicar el resultado por 100."],
             "formula": "RR_{g}^t=\frac{RR_{g}^{t+1}\times100}{E_{g}^t}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "RR_{g}^t",
               "RR_{g}^{t+1",
@@ -362,6 +376,7 @@
             "purpose": ["Medir el compromiso de los gobiernos en garantizar el derecho a la educación de los niños y jóvenes."],
             "definition": ["Número de años de educación primaria y secundaria a los que los niños y jóvenes tienen legítimo derecho que son gratuitos u obligatorios, o ambos.La mayoría de los países cuenta con legislación que especifica acerca de las edades y el nivel de educación (por lo general educación preescolar o primaria) en la que los niños deben comenzar la escuela. Dicha legislación también especifica ya sea el número de años de educación que están garantizados o la edad en la cual los jóvenes deberían completar su educación o, en algunos casos, ambos.","El <em>número</em> de años de educación primaria y secundaria que los niños legalmente tienen derecho a recibir debería idealmente ser el número de grados de educación primaria y secundaria que se espera que los jóvenes hayan completado antes de alcanzar la edad legal para dejar la escuela. Los años de educación preprimaria cubiertos por el derecho legal deberían ser excluidos de este indicador."],
             "method":["Registrar el número de grados de educación primaria y secundaria que están garantizados. En caso de utilizar edades en lugar de grados, a la edad superior se le debe restar la edad inferior si se trata de una edad en la que el niño debiera estar en la escuela primaria, o bien restar la edad normativa de ingreso a la escuela primaria. Si la edad superior es aquella en la cual se inicia el último año de educación gratuita u obligatoria, será necesario agregar 1 al resultado."],
+            "periodicity": "Anual",
             "formulaExplanation": [
               "YY_{123}",
               "YY_{123}"
@@ -383,6 +398,7 @@
             "definition": ["Porcentaje de jóvenes y adultos de un grupo de edad dado (por ejemplo 15 a 24 años de edad, 25-64 años, etc.) participando en programas de educación y formación, formal o no formal, en un momento determinado.La educación y formación formal se define como la educación que imparte el sistema de escuelas, colegios, universidades y otras instituciones de educación formal que usualmente constituyen una “escalera” continua de educación a tiempo completo para niños y jóvenes, por lo general a partir de la edad de 5 a 7 y continua hasta los 20 o 25 años de edad. En algunos países, en las etapas superiores de esta escalera están los programas organizados de empleo a tiempo parcial y la participación en el sistema escolar y universitario regular a tiempo parcial.La educación y la formación no formal se definen como cualquier actividad de aprendizaje organizada y sostenida que no se corresponde exactamente con la definición anterior de educación formal. La educación no formal puede tener lugar tanto dentro como fuera de las instituciones educativas y atender a personas de todas las edades. En función de los contextos nacionales, puede abarcar programas educativos para impartir a los adultos alfabetización, habilidades para la vida, capacitación laboral y cultura general."],
             "method":["El número de personas de grupos de edad seleccionados que asiste a programas de educación y formación, formal o no formal, es expresado como el porcentaje de la población de la misma edad."],
             "formula": "PR_{AGi}=\frac{E_{AGi}\times100}{P_{AGi}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "PR_{AGi}",
               "E_{AGi}",
@@ -408,6 +424,7 @@
             "definition": ["Matrícula total en educación terciaria, independientemente de su edad, expresada como el porcentaje de población en el grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
             "method":["El número de población que asiste a educación terciaria está expresado como el porcentaje del grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
             "formula": "GER_{5678}=\frac{E_{5678}\times100}{SAP_{5678,a}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "GER_{5678}",
               "E_{5678}",
@@ -431,6 +448,7 @@
             "definition": ["Número total de estudiantes en el grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta, expresado como un porcentaje de la población total en ese grupo de edad."],
             "method":["El número de población del grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta que asiste a la educación terciaria, expresado como el porcentaje de la población de ese mismo grupo de edad."],
             "formula": "NER_{5678}=\frac{E_{5678}}{SAP_{5678,a}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "NER_{5678}",
               "E_{5678}",
@@ -454,6 +472,7 @@
             "definition": ["Número de personas alfabetizadas, jóvenes (entre 15 y 24 años) y adultas (15 años y más), expresado en porcentaje de la población total de ese grupo de edad. Se considera que una persona está alfabetizada cuando puede leer, escribir y comprender un texto sencillo y corto sobre su vida cotidiana."],
             "method":["Dividir el número de personas alfabetizadas por el total de la población del mismo grupo de edad, y multiplicar el resultado por 100."],
             "formula": "LIT_{AGi}^t=\frac{L_{AGi}^t\times100}{P_{AGi}^t}",
+            "periodicity": "Variable según país",
             "formulaExplanation": [
               "LIT_{AGi}^t",
               "L_{15-24}^t",
@@ -479,6 +498,7 @@
             "definition": ["Los indicadores de logro expresan la distribución porcentual de la población de un cierto grupo de edad de acuerdo al máximo nivel educativo alcanzado. Este indicador se presenta habitualmente para grupos de edad de por lo menos 25 años y más, para poder asegurar que la mayoría de la población haya completado su educación. Los grupos de edades más jóvenes normalmente siguen matriculados en el sistema educativo. El indicador también se puede calcular exclusivamente para la población joven (de 15 a 24 años)."],
             "method":["El número de personas de un grupo de edad determinado que haya completado por lo menos el nivel de educación dado se expresa como un porcentaje del total de población del mismo grupo de edad, en la distribución de población por máximo nivel educativo, excluyendo a las personas sobre las que no se cuente con la información sobre su logro educativo."],
             "formula": "EA_{nt8,AGi}=\frac{EAP_{nt8,AGi}\times100}{P_{AGi}}",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "EA_{nt8,AGi}",
               "EAP_{nt8,AGi}",
@@ -504,6 +524,7 @@
             "definition": ["Los índices de paridad necesitan de datos de grupos específicos de interés. Representan la relación entre el valor del indicador para dos grupo de población definidos por una característica. Por lo general, el grupo probablemente más desfavorecido es el numerador. El valor 1 indica la paridad entre los dos grupos."],
             "method":["El valor del indicador del grupo probablemente desfavorecido se divide por el valor del indicador de la otra subpoblación de interés."],
             "formula": "DIP=\frac{[Ind_{i}]_{d}\times100}{[Ind_{i}]_{a}}",
+            "periodicity": "Variable según indicador y país",
             "formulaExplanation": [
               "DPI",
               "Ind_{i}",
@@ -527,6 +548,7 @@
             "definition": ["Gasto total del gobierno (central, regional, municipal) para cierto nivel educativo (preprimaria, primaria, secundaria baja, secundaria alta, postsecundaria no terciaria, y terciaria) por estudiante matriculado en dicho nivel en un determinado año. Los resultados se expresarse en valores comparables, utilizando dos mediciones: como porcentaje del PBI per cápita y en PPP$ (constantes). A excepción que se proponga una desagregación adicional, este indicador considera el gasto de instituciones públicas y privadas en su conjunto."],
             "method":["El indicador se calcula dividiendo el gasto total del gobierno (central, regional, municipal) para un determinado nivel educativo (preprimaria, primaria, secundaria baja, secundaria alta, postsecundaria no terciaria, y terciaria), por el número de estudiantes matriculados en dicho nivel en determinado año, y de nuevo dividiéndolo (i) por el PBI per cápita y (ii) por el factor de conversión PPP$."],
             "formula": ["XGDPpc_{n}=\frac{XE_{n}}{E_{n}\times{GDP_{pc}}}","XPPPconst_{n}=\frac{XE_{n}}{E_{n}\times{PPPconst}}"],
+            "periodicity": "Anual",
             "formulaExplanation": [
               "XGDPpc_{n}",
               "XPPPconst_{n}",
@@ -556,6 +578,7 @@
             "definition": ["El porcentaje de docentes certificados por nivel educativo en que enseñan (preprimaria, primaria, secundaria baja y secundaria alta). Un docente certificado es aquel que ha cumplido los requisitos mínimos de formación docente (formación inicial o en servicio) para enseñar en un nivel específico de educación con acuerdo a la política o legislación nacional aplicable. Normalmente, estos requisitos incluyen conocimientos pedagógicos (principios y estrategias amplias de gestión y organización del aula que van más allá de las asignaturas que se enseñan, tales como enfoques, métodos y técnicas de enseñanza) y profesionales (conocimientos de instrumentos reglamentarios y otros marcos legales que rigen la profesión docente). Es posible que algunos programas también cubran conocimientos de contenidos (conocimientos del currículo y de la asignatura que se enseñará, así como el uso de materiales pertinentes)."],
             "method":["El número de docentes certificados en un nivel educativo se expresa como un porcentaje del total de los docentes en dicho nivel educativo."],
             "formula": "PTT_{n}=\frac{TT_{n}}{T_{n}}\times100",
+            "periodicity": "Anual",
             "formulaExplanation": [
               "PTT_{n}",
               "TT_{n}",
@@ -618,6 +641,7 @@
             "definition": ["El porcentaje de establecimientos educativos por nivel educativo (primaria, secundaria baja y secundaria alta) que proporcionan el servicio dado.Electricidad: Se refiere a fuentes de energía accesibles fácilmente y con regularidad (por ejemplo, cajas o conexiones principales de electricidad, energía eólica, energía solar, y generador permanente de energía que funciona con combustible, etc.) que permiten un uso adecuado y sostenible de infraestructura de las TIC para Descripción cortas educativos.Internet con Descripción cortas pedagógicos: Internet que está disponible para fomentar la enseñanza y el aprendizaje y es accesible por los alumnos. Internet se define como una red de computadoras interconectados en todo el mundo, que proporciona acceso de los alumnos a una serie de servicios de comunicación incluyendo el World Wide Web, y permite el intercambio de archivos de correo electrónico, noticias, entretenimiento y datos, con independencia del dispositivo utilizado (es decir, no se supone que es sólo a través de un computador) y por lo tanto puede ser accesible mediante teléfono móvil, tableta, PDA, consola de juegos, TV digital, etc.).","El acceso puede ser a través de conexión de banda estrecha, banda ancha, o a través de red móvil.Computadoras con Descripción cortas pedagógicos: Se refiere al uso de computadoras para apoyar las clases que se imparten o las necesidades de enseñanza y aprendizaje. Esto puede incluir actividades que hacen uso de computadoras o Internet para subsanar las necesidades de información con Descripción cortas de investigación, desarrollo de presentaciones, realización de ejercicios prácticos y experimentos, para compartir información y para participar en foros de discusión en línea con Descripción cortas educativos. Una computadora es un dispositivo electrónico programable en el cual se puede guardar, extraer y procesar datos, como también a través del cual se puede compartir información en una manera altamente estructurada. Lleva a cabo operaciones matemáticas y lógicas a alta velocidad de acuerdo a un conjunto de instrucciones o algoritmos. Las computadoras incluyen los siguientes tipos:","<ul><li>Una computadora de escritorio por lo general permanece fija en un solo lugar; normalmente el usuario se coloca en frente de ella, detrás del teclado;</li><li>Una computadora portátil es lo suficientemente pequeña para transportar y por lo general permite ejecutar las mismas operaciones o tareas que una computadora de escritorio. Estas incluyen computadoras portátiles de peso ligero conocidas como notebooks y netbooks, pero no incluye las tabletas y los dispositivos de mano similares; y;</li><li>Una tableta (o computadora portátil de mano) es una computadora integrada en una pantalla táctil plana con la que se interactúa principalmente con los dedos o un estilete (pasivo o activo), sin necesidad de utilizar un teclado físico. </li></ul>","Agua potable: se define como una fuente de agua potable funcional en, o cerca de, el edificio escolar, y puntos de agua accesibles para todos los usuarios durante las horas escolares.Servicios sanitarios: se definen como las instalaciones sanitarias funcionales separados para varones y mujeres en o cerca del edificio escolar.Servicios básicos de lavado de manos: se definen como las instalaciones básicas para lavado de manos, con agua y jabón, disponible para todas las niñas y niños."],
             "method":["El número de establecimientos en un nivel educativo dado con acceso a los servicios correspondientes es expresado como un porcentaje sobre todas las escuelas en ese nivel educativo."],
             "formula": "PS_{n,f}=\frac{S_{n,f}}{S_{n}}\times100",
+            "periodicity": "Variable según país",
             "formulaExplanation": [
               "PS_{n,f}",
               "S_{n,f}",
