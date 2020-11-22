@@ -30,3 +30,5 @@ export const hasSomeData = (data) => {
   });
   return shouldHide;
 };
+
+export const dataFormatter = (value) => new Intl.NumberFormat('es').format(value);

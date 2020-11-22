@@ -365,7 +365,7 @@ const IndicatorChart = ({
   const [activeTab, setActiveTab] = useState(tabsToShow[tabNumber - 1 || 0]);
   const handleInfoModalClose = () => setInfoModalShow(false);
   const handleInfoModalShow = () => setInfoModalShow(true);
-  console.log(indicatorSource);
+
   useEffect(() => {
     setAbsolutePat(window.location.href);
   });

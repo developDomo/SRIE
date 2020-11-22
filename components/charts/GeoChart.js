@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import DataTable from 'react-data-table-component';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { maleBarColor, femaleBarColor } from '../../theme/colors';
 import ChartControls from './controls/ChartControls';
 import { defaultBarSize } from './Constants';
@@ -57,8 +57,24 @@ const GeoChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey="URB" fill={maleBarColor} name={t('URB')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar
+            isAnimationActive={false}
+            dataKey="URB"
+            fill={maleBarColor}
+            name={t('URB')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
+          <Bar
+            isAnimationActive={false}
+            dataKey="RUR"
+            fill={femaleBarColor}
+            name={t('RUR')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }

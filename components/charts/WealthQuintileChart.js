@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import {
   firstQuintille, secondQuintille, thirthQuintille, fourQuintille, fifthQuintille,
 } from '../../theme/colors';
@@ -74,11 +74,11 @@ const WealthQuintileChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="Q2" fill={secondQuintille} name={t('Q2')} unit="%" barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="Q3" fill={thirthQuintille} name={t('Q3')} unit="%" barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="Q4" fill={fourQuintille} name={t('Q4')} unit="%" barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="Q5" fill={fifthQuintille} name={t('Q5')} unit="%" barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey="Q2" fill={secondQuintille} name={t('Q2')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey="Q3" fill={thirthQuintille} name={t('Q3')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey="Q4" fill={fourQuintille} name={t('Q4')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey="Q5" fill={fifthQuintille} name={t('Q5')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
         </BarChart>
       );
     }
