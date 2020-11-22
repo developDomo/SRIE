@@ -348,6 +348,11 @@ const ShareModal = ({
   </Modal>
 );
 
+const getpdfUrl = (activeTab) => {
+
+
+};
+
 const IndicatorChart = ({
   t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics,
 }) => {
@@ -357,9 +362,10 @@ const IndicatorChart = ({
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
   const [absolutePath, setAbsolutePat] = useState();
+  const [activeTab, setActiveTab] = useState(tabsToShow[tabNumber - 1 || 0]);
   const handleInfoModalClose = () => setInfoModalShow(false);
   const handleInfoModalShow = () => setInfoModalShow(true);
-
+  console.log(indicatorSource);
   useEffect(() => {
     setAbsolutePat(window.location.href);
   });
@@ -432,7 +438,7 @@ const IndicatorChart = ({
   };
 
   const showContent = () => (
-    <Tabs defaultActiveKey={tabsToShow[tabNumber - 1 || 0] || ''} className="indicatorChartTabs">
+    <Tabs defaultActiveKey={tabsToShow[tabNumber - 1 || 0] || ''} className="indicatorChartTabs" onSelect={(e) => setActiveTab(e)}>
       {showTotalTab()}
       {showSexTab()}
       {showGeoZoneTab()}
@@ -510,14 +516,30 @@ const IndicatorChart = ({
               </h5>
               <div>
                 <a
-                  href="/#"
+                  href={
+                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
+                      ? indicatorSource.code.replace(`${indicator}.`, '-')
+                      : ''}.pdf`
+                  }
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <a>{t('sideBar.formats.PDF')}</a>
                 </a>
               </div>
               <div>
 
-                <a href="/#">{t('sideBar.formats.PNG')}</a>
+                <a
+                  href={
+                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
+                      ? indicatorSource.code.replace(`${indicator}.`, '-')
+                      : ''}.png`
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t('sideBar.formats.PNG')}
+                </a>
 
               </div>
               <div>
