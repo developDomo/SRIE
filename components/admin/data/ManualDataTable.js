@@ -137,9 +137,11 @@ const ManualDataTable = (props) => {
   };
 
   return (
-    <Table responsive="lg" {...props}>
-      <TableBody />
-    </Table>
+    <div>
+      <Table responsive="lg" {...props}>
+        <TableBody />
+      </Table>
+    </div>
   );
 };
 

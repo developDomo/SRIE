@@ -7,7 +7,7 @@ import DataTable from 'react-data-table-component';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { defaultBarSize } from './Constants';
 import { maleBarColor, femaleBarColor } from '../../theme/colors';
 
@@ -54,11 +54,27 @@ const SexChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} formatter={dataFormatter} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey="M" fill={maleBarColor} name={t('M')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
-          <Bar isAnimationActive={false} dataKey="F" fill={femaleBarColor} name={t('F')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar
+            isAnimationActive={false}
+            dataKey="M"
+            fill={maleBarColor}
+            name={t('M')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
+          <Bar
+            isAnimationActive={false}
+            dataKey="F"
+            fill={femaleBarColor}
+            name={t('F')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }

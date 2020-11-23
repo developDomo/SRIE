@@ -11,7 +11,7 @@ import {
   YAxis,
 } from 'recharts';
 import DataTable from 'react-data-table-component';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
@@ -67,7 +67,7 @@ const IndexesChart = ({
           <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} formatter={dataFormatter} />
         </BarChart>
       );
     }
