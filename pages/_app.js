@@ -7,20 +7,14 @@ import { appWithTranslation } from '../i18n';
 import globalStyles from '../styles/global';
 import 'katex/dist/katex.min.css';
 
-class SrieApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
-      <Layout>
-        <Component {...pageProps} />
-        <style jsx global>
-          {globalStyles}
-        </style>
-      </Layout>
-    );
-  }
-}
+const SrieApp = ({ Component, pageProps }) => (
+  <Layout>
+    <Component {...pageProps} />
+    <style jsx global>
+      {globalStyles}
+    </style>
+  </Layout>
+);
 
 SrieApp.getInitialProps = async (appContext) => {
   const recursiveNamespaces = (component, acc = []) => {
@@ -37,11 +31,11 @@ SrieApp.getInitialProps = async (appContext) => {
   return {
     ...appProps,
     pageProps: {
-      namespacesRequired: [
-        ...(appProps.pageProps.namespacesRequired || []),
-        ...namespaces],
+      namespacesRequired: [...namespaces],
     },
   };
 };
+
+SrieApp.getInitialProps = async (appContext) => ({ ...await App.getInitialProps(appContext) });
 
 export default appWithTranslation(SrieApp);

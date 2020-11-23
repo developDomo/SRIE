@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../../i18n';
 import { Back } from './Icons';
 
-export default (props) => {
+const BackButton = (props) => {
   const [t] = useTranslation();
   return (
     <>
@@ -24,3 +24,5 @@ export default (props) => {
     </>
   );
 };
+
+export default BackButton;
