@@ -30,7 +30,7 @@ import { blueButton, blueButtonRoll } from '../../styles/colors';
 
 const ChartContent = styled.div`
   width: 100%;
-  height: 700px;
+  min-height: 700px;
   // background-color: #EAEEF2;
 `;
 
@@ -190,7 +190,10 @@ const InfoModal = ({
       <Row className="h-100">
         <Col className="col-sm-5 my-auto">
           <DataSheetFormula>
-            <BlockMath math={JSON.stringify(translation(`indicators:indicators.${indicator}.metadata.formula`)).slice(1, -1)} />
+            {translation(`indicators:indicators.${indicator}.metadata.formula`, { joinArrays: '\n' }).split('\n').map((formula) => (
+              <BlockMath math={formula} />
+            ))}
+
           </DataSheetFormula>
 
         </Col>
