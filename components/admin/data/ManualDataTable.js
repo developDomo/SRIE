@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Table } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
 import { blue } from '../../../theme/colors';
 import { Edit } from '../../layout/Icons';
-import { withTranslation } from '../../../i18n';
+import { withTranslation, useTranslation } from '../../../i18n';
 
 const TableHeaders = ({ visualizations, indexes }) => {
   const [t] = useTranslation('common');
@@ -116,8 +115,10 @@ const TableRows = (props) => {
 };
 
 const ManualDataTable = (props) => {
+  const [t] = useTranslation('common');
+
   const {
-    visualizations, indexes, data, t,
+    visualizations, indexes, data,
   } = props;
 
   const TableBody = () => {
@@ -145,8 +146,4 @@ const ManualDataTable = (props) => {
   );
 };
 
-ManualDataTable.defaultProps = {
-  i18nNamespaces: ['common', 'indicators'],
-};
-
-export default withTranslation(['common', 'indicators'])(ManualDataTable);
+export default ManualDataTable;

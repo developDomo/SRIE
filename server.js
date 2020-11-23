@@ -3,7 +3,6 @@ const express = require('express');
 const httpContext = require('express-http-context');
 
 const nextjs = require('next');
-const nextI18NextMiddleware = require('next-i18next/middleware').default;
 
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
@@ -41,7 +40,6 @@ const massive = require('./db');
     });
 
     await nextI18next.initPromise;
-    server.use(nextI18NextMiddleware(nextI18next));
 
     if (!dev) {
     // Enforce SSL & HSTS in production

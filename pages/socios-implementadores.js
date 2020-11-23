@@ -76,6 +76,8 @@ const Partners = ({ t }) => {
   );
 };
 
-Partners.defaultProps = { i18nNamespaces: ['partners'] };
+Partners.getInitialProps = async () => ({
+  namespacesRequired: ['partners'],
+});
 
 export default withTranslation('partners')(Partners);

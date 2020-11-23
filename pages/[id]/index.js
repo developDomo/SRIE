@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import fetch from 'isomorphic-unfetch';
 import { Container, Row } from 'react-bootstrap';
 
 import Link from 'next/link';
@@ -10,7 +9,6 @@ import { ButtonNavIndicadores } from '../../components/layout/Button';
 import Title from '../../components/layout/Title';
 import { BoxIndicador, Box } from '../../components/layout/Box';
 
-import Banner from '../../components/layout/Banner';
 import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
 import { green } from '../../styles/colors';
 
