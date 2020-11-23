@@ -7,7 +7,7 @@ import DataTable from 'react-data-table-component';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { defaultBarSize } from './Constants';
 
 const Content = styled.div`
@@ -16,7 +16,7 @@ const Content = styled.div`
 `;
 
 const TotalChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.total.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.total.historical));
@@ -44,13 +44,22 @@ const TotalChart = ({
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
+          isAnimationActive={false}
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} unit={t(`units.${unitMeasure}`)} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="_T" fill="#359b8a" name={t('total')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar
+            isAnimationActive={false}
+            dataKey="_T"
+            fill="#359b8a"
+            name={t('total')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }
@@ -68,7 +77,7 @@ const TotalChart = ({
   };
   return (
     <Content>
-      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} share={share} />
       <ResponsiveContainer width="100%" height={400}>
         {showContent()}
       </ResponsiveContainer>
@@ -77,7 +86,7 @@ const TotalChart = ({
 };
 
 TotalChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share,
 }) => ({
   t,
   data,
@@ -85,6 +94,7 @@ TotalChart.getInitialProps = ({
   unitMeasure,
   defaultChartMetrics,
   namespacesRequired: ['charts'],
+  share,
 });
 
 export default withTranslation('charts')(TotalChart);

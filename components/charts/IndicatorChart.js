@@ -30,7 +30,7 @@ import { blueButton, blueButtonRoll } from '../../styles/colors';
 
 const ChartContent = styled.div`
   width: 100%;
-  height: 700px;
+  min-height: 700px;
   // background-color: #EAEEF2;
 `;
 
@@ -190,7 +190,10 @@ const InfoModal = ({
       <Row className="h-100">
         <Col className="col-sm-5 my-auto">
           <DataSheetFormula>
-            <BlockMath math={JSON.stringify(translation(`indicators:indicators.${indicator}.metadata.formula`)).slice(1, -1)} />
+            {translation(`indicators:indicators.${indicator}.metadata.formula`, { joinArrays: '\n' }).split('\n').map((formula) => (
+              <BlockMath math={formula} />
+            ))}
+
           </DataSheetFormula>
 
         </Col>
@@ -348,8 +351,13 @@ const ShareModal = ({
   </Modal>
 );
 
+const getpdfUrl = (activeTab) => {
+
+
+};
+
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, period, country, chart, countryCode, unitMeasure, defaultChartMetrics,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
@@ -357,6 +365,7 @@ const IndicatorChart = ({
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
   const [absolutePath, setAbsolutePat] = useState();
+  const [activeTab, setActiveTab] = useState(tabsToShow[tabNumber - 1 || 0]);
   const handleInfoModalClose = () => setInfoModalShow(false);
   const handleInfoModalShow = () => setInfoModalShow(true);
 
@@ -372,7 +381,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} />
+          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} share={share} />
         </Tab>
       );
     }
@@ -387,7 +396,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -400,7 +409,7 @@ const IndicatorChart = ({
         && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -413,7 +422,7 @@ const IndicatorChart = ({
         && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -424,7 +433,7 @@ const IndicatorChart = ({
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
         <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} />
+          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
         </Tab>
       );
     }
@@ -432,7 +441,7 @@ const IndicatorChart = ({
   };
 
   const showContent = () => (
-    <Tabs defaultActiveKey={tabsToShow[tabNumber - 1 || 0] || ''} className="indicatorChartTabs">
+    <Tabs defaultActiveKey={tabsToShow[tabNumber - 1 || 0] || ''} className="indicatorChartTabs" onSelect={(e) => setActiveTab(e)}>
       {showTotalTab()}
       {showSexTab()}
       {showGeoZoneTab()}
@@ -463,7 +472,7 @@ const IndicatorChart = ({
         <Row>
           <Col xs lg={hideSideBar === 'true' ? 12 : 9}>
             <ChartContent>
-              <ChartTypeControls setChartType={setChartType} activeState={chartType} />
+              <ChartTypeControls setChartType={setChartType} activeState={chartType} share={share} />
               <div>
                 {showContent()}
               </div>
@@ -510,14 +519,30 @@ const IndicatorChart = ({
               </h5>
               <div>
                 <a
-                  href="/#"
+                  href={
+                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
+                      ? indicatorSource.code.replace(`${indicator}.`, '-')
+                      : ''}.pdf`
+                  }
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <a>{t('sideBar.formats.PDF')}</a>
                 </a>
               </div>
               <div>
 
-                <a href="/#">{t('sideBar.formats.PNG')}</a>
+                <a
+                  href={
+                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
+                      ? indicatorSource.code.replace(`${indicator}.`, '-')
+                      : ''}.png`
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t('sideBar.formats.PNG')}
+                </a>
 
               </div>
               <div>
@@ -553,7 +578,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, period, countryCode, chart, unitMeasure, defaultChartMetrics,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, countryCode, chart, unitMeasure, defaultChartMetrics,
 }) => ({
   namespacesRequired: ['charts', 'indicators', 'common'],
   data,
@@ -564,7 +589,6 @@ IndicatorChart.getInitialProps = async ({
   hideSideBar,
   type,
   tabNumber,
-  period,
   country,
   chart,
   countryCode,

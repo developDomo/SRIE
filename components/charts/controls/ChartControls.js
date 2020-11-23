@@ -35,34 +35,47 @@ const Content = styled.div`
   padding: 1.2em;
   justify-content: flex-start;
 `;
+const ShowContent = ({
+  share, chartMetrics, t, setChartMetrics,
+}) => {
+  if (!share) {
+    return (
+      <Content>
+        <Span>
+          <Button
+            iconUrl="/img/home/icono_historico_line.svg"
+            onClick={() => setChartMetrics(ChartMetrics.LAST_YEAR)}
+            className={chartMetrics.description === ChartMetrics.LAST_YEAR.description ? 'active' : ''}
+          >
+            {t('lastYear')}
+          </Button>
+        </Span>
+        <Span>
+          <Button
+            iconUrl="/img/home/icono_historico_line.svg"
+            onClick={() => setChartMetrics(ChartMetrics.HISTORICAL)}
+            className={chartMetrics.description === ChartMetrics.HISTORICAL.description ? 'active' : ''}
+          >
+            {t('historical')}
+          </Button>
+        </Span>
+      </Content>
+    );
+  }
+  return <> </>;
+};
 
-const ChartControls = ({ setChartMetrics, t, chartMetrics }) => (
-  <Content>
-    <Span>
-      <Button
-        iconUrl="/img/home/icono_historico_line.svg"
-        onClick={() => setChartMetrics(ChartMetrics.LAST_YEAR)}
-        className={chartMetrics.description === ChartMetrics.LAST_YEAR.description ? 'active' : ''}
-      >
-        {t('lastYear')}
-      </Button>
-    </Span>
-    <Span>
-      <Button
-        iconUrl="/img/home/icono_historico_line.svg"
-        onClick={() => setChartMetrics(ChartMetrics.HISTORICAL)}
-        className={chartMetrics.description === ChartMetrics.HISTORICAL.description ? 'active' : ''}
-      >
-        {t('historical')}
-      </Button>
-    </Span>
-  </Content>
+const ChartControls = ({
+  setChartMetrics, t, chartMetrics, share,
+}) => (
+  <ShowContent share={share} setChartMetrics={setChartMetrics} t={t} chartMetrics={chartMetrics} />
 );
 
-ChartControls.getInitialProps = ({ t, chartMetrics }) => ({
+ChartControls.getInitialProps = ({ t, chartMetrics, share }) => ({
   namespacesRequired: ['charts'],
   t,
   chartMetrics,
+  share,
 });
 
 export default withTranslation('charts')(ChartControls);

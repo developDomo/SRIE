@@ -204,6 +204,7 @@ const IndicatorPage = ({
             key={indicatorSource.code}
             chart={indicatorSource}
             countryCode={country.code}
+            share={false}
           />
         ))}
       </Container>

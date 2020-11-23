@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import DataTable from 'react-data-table-component';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { maleBarColor, femaleBarColor } from '../../theme/colors';
 import ChartControls from './controls/ChartControls';
 import { defaultBarSize } from './Constants';
@@ -17,7 +17,7 @@ const Content = styled.div`
 `;
 
 const GeoChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.location.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.location.historical));
@@ -54,11 +54,27 @@ const GeoChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} unit={t(`units.${unitMeasure}`)} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="URB" fill={maleBarColor} name={t('URB')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
-          <Bar dataKey="RUR" fill={femaleBarColor} name={t('RUR')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar
+            isAnimationActive={false}
+            dataKey="URB"
+            fill={maleBarColor}
+            name={t('URB')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
+          <Bar
+            isAnimationActive={false}
+            dataKey="RUR"
+            fill={femaleBarColor}
+            name={t('RUR')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }
@@ -77,7 +93,7 @@ const GeoChart = ({
 
   return (
     <Content>
-      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} share={share} />
       <ResponsiveContainer width="100%" height={400}>
         {showContent()}
       </ResponsiveContainer>
@@ -86,7 +102,7 @@ const GeoChart = ({
 };
 
 GeoChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share,
 }) => (
   {
     t,
@@ -95,6 +111,7 @@ GeoChart.getInitialProps = ({
     unitMeasure,
     namespacesRequired: ['charts'],
     defaultChartMetrics,
+    share,
   }
 );
 

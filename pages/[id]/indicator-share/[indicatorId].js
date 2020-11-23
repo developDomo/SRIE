@@ -1,15 +1,50 @@
 import _ from 'lodash';
-import FetchUtils from '../../../utils/Fetch.utils';
+import styled from 'styled-components';
 import IndicatorChart from '../../../components/charts/IndicatorChart';
 import { ChartMetrics } from '../../../components/charts/types/ChartTypes';
 import IndicatorService from '../../../services/Indicator.service';
 import IndicatorDataService from '../../../services/IndicatorData.service';
 import CountryService from '../../../services/Country.service';
+import { withTranslation } from '../../../i18n';
+
+const IndicatorTitle = styled.div`
+  text-align: center;
+  width: 100%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  font-weight: bold;
+`;
+const Title = styled.h3`
+    color: #4495CD;
+    font-family: "Roboto Slab";
+    font-size: 1.5em;
+`;
+
+const TitleComponent = ({ t, indicator, variation }) => {
+  if (indicator.id.toString() === variation.toString()) {
+    return (
+      <>
+        <IndicatorTitle>
+          <Title>{t(`indicators.${indicator.id}.name`)}</Title>
+        </IndicatorTitle>
+      </>
+    );
+  }
+  return (
+    <>
+      <IndicatorTitle>
+        <Title>{t(`indicators:variations.${variation.replace('.', '-')}`)}</Title>
+      </IndicatorTitle>
+    </>
+  );
+};
 
 const IndicatorShare = ({
-  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator, defaultChartMetrics,
+  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator, defaultChartMetrics, t,
 }) => (
   <>
+    <TitleComponent indicator={indicator} t={t} variation={indicatorVariation} />
     <IndicatorChart
       data={data}
       indicatorSource={indicatorVariation}
@@ -18,7 +53,6 @@ const IndicatorShare = ({
       hideSideBar={hideSideBar}
       type={type}
       tabNumber={tabNumber}
-      period={period}
       indicator={indicatorId}
       country={country.short_name}
       chart={indicator}
@@ -39,7 +73,6 @@ export const getServerSideProps = async ({ query, res: { t } }) => {
   );
 
   const [indicator, data] = await Promise.all([indicatorService, dataService]);
-
   return {
     props: {
       data,
@@ -48,7 +81,6 @@ export const getServerSideProps = async ({ query, res: { t } }) => {
       hideSideBar: query.hideSideBar,
       type: query.type,
       tabNumber: query.tabNumber,
-      period: query.period,
       indicatorId: query.indicatorId,
       indicator,
       country,
@@ -57,4 +89,6 @@ export const getServerSideProps = async ({ query, res: { t } }) => {
   };
 };
 
-export default IndicatorShare;
+IndicatorShare.defaultProps = { i18nNamespaces: ['indicators'] };
+
+export default withTranslation('indicators')(IndicatorShare);

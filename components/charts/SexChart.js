@@ -7,7 +7,7 @@ import DataTable from 'react-data-table-component';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
-import { charDataFormatHelper } from './helpers/ChartDataHelper';
+import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
 import { defaultBarSize } from './Constants';
 import { maleBarColor, femaleBarColor } from '../../theme/colors';
 
@@ -17,7 +17,7 @@ const Content = styled.div`
 `;
 
 const SexChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.sex.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.sex.historical));
@@ -54,11 +54,27 @@ const SexChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} unit={t(`units.${unitMeasure}`)} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} formatter={dataFormatter} />
           <Tooltip />
           <Legend />
-          <Bar dataKey="M" fill={maleBarColor} name={t('M')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
-          <Bar dataKey="F" fill={femaleBarColor} name={t('F')} unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} />
+          <Bar
+            isAnimationActive={false}
+            dataKey="M"
+            fill={maleBarColor}
+            name={t('M')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
+          <Bar
+            isAnimationActive={false}
+            dataKey="F"
+            fill={femaleBarColor}
+            name={t('F')}
+            unit={t(`units.${unitMeasure}`)}
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }
@@ -77,7 +93,7 @@ const SexChart = ({
 
   return (
     <Content>
-      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} />
+      <ChartControls setChartMetrics={setChartMetrics} chartMetrics={chartMetrics} share={share} />
       <ResponsiveContainer width="100%" height={400}>
         {showContent()}
       </ResponsiveContainer>
@@ -86,7 +102,7 @@ const SexChart = ({
 };
 
 SexChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share,
 }) => (
   {
     t,
@@ -95,6 +111,7 @@ SexChart.getInitialProps = ({
     unitMeasure,
     defaultChartMetrics,
     namespacesRequired: ['charts'],
+    share,
   }
 );
 
