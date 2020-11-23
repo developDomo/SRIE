@@ -1,0 +1,1 @@
+DELETE FROM indicator_visualizations WHERE indicator_id = 20 AND visualization_id = 2; 
