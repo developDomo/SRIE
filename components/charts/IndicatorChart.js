@@ -30,7 +30,7 @@ import { blueButton, blueButtonRoll } from '../../styles/colors';
 
 const ChartContent = styled.div`
   width: 100%;
-  height: 700px;
+  height: auto;
   // background-color: #EAEEF2;
 `;
 
@@ -114,6 +114,21 @@ const ButtonSubmit = styled(Button)`
   background: ${blueButton};
   & :hover{
     background: ${blueButtonRoll};
+  }
+`;
+const ShowMoreContainer = styled.div`
+  position:relative;
+  & .show, .hide {
+    position: absolute;
+    bottom: -1em;
+    z-index: 100;
+    text-align: center;
+  }
+  & .hide {display: none;}
+  & .show:target {display: none;}
+  & .show:target ~ .hide {display: block;}
+  & .show:target ~ .panel {
+   max-height: 2000px; 
   }
 `;
 
@@ -353,6 +368,7 @@ const IndicatorChart = ({
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
+  const [showMore, setShowMore] = useState(false);
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
@@ -452,6 +468,11 @@ const IndicatorChart = ({
     return (<></>);
   };
 
+
+  const getRenderedItems = (text) => (showMore ? text : text.slice(0, 3));
+
+  const toggleShowMore = () => setShowMore(!showMore);
+
   return (
     <>
       <Container key={chart.code} fluid={share}>
@@ -474,7 +495,9 @@ const IndicatorChart = ({
                     :
                   </Col>
                   <Col>
+
                     {separateParagraphs(t(`indicators:indicators.${indicator}.metadata.datasourceType`, { joinArrays: '\n' }))}
+
                   </Col>
                 </Row>
               </FooterSource>
