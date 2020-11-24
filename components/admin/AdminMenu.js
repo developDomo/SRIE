@@ -7,9 +7,10 @@ import {
 import Title from '../layout/Title';
 import fetchJson from '../../lib/fetchJson';
 import useUser from '../../lib/useUser';
+import { withTranslation } from '../../i18n';
 import { blue1, yellow } from '../../theme/colors';
 
-const AdminMenu = ({ user }) => {
+const AdminMenu = ({ user, t }) => {
   const { mutateUser } = useUser();
   const router = useRouter();
   return (
@@ -26,28 +27,26 @@ const AdminMenu = ({ user }) => {
               span: 8,
             }}
           >
-            <Title color="white" type="subtitle">Panel de Administración</Title>
+            <Title color="white" type="subtitle">{t('administrationPanel')}</Title>
           </Col>
           <Nav className="justify-content-center  col-md-3 col-lg-3 px-0">
             <ul>
               <li>
                 <Link href="/admin">
-                  <a>Dashboard</a>
+                  <a>{t('options.dashboard')}</a>
                 </Link>
               </li>
               {!user?.isLoggedIn && (
                 <li>
                   <Link href="/admin/login">
-                    <a>Login</a>
+                    <a>{t('options.login')}</a>
                   </Link>
                 </li>
               )}
               {user?.isLoggedIn && user?.role === 'admin' && (
                 <li>
                   <Link href="/admin/users">
-                    <a>
-                      Users
-                    </a>
+                    <a>{t('options.users')}</a>
                   </Link>
                 </li>
                             )}
@@ -55,7 +54,7 @@ const AdminMenu = ({ user }) => {
                 <>
                   <li>
                     <Link href="/admin/data">
-                      <a>Data</a>
+                      <a>{t('options.data')}</a>
                     </Link>
                   </li>
                   <li>
@@ -67,7 +66,7 @@ const AdminMenu = ({ user }) => {
                         router.push('/admin/login');
                       }}
                     >
-                      Logout
+                      {t('options.logout')}
                     </a>
                   </li>
                 </>
@@ -133,4 +132,8 @@ const AdminMenu = ({ user }) => {
   );
 };
 
-export default AdminMenu;
+AdminMenu.defaultProps = {
+  i18nNamespaces: ['admin'],
+};
+
+export default withTranslation('admin')(AdminMenu);
