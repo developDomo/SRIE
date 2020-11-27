@@ -48,7 +48,7 @@ const TotalChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
           <Tooltip />
           <Legend />
           <Bar

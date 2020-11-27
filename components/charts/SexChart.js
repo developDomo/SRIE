@@ -54,7 +54,7 @@ const SexChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} formatter={dataFormatter} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} formatter={dataFormatter} domain={[0, 100]} />
           <Tooltip />
           <Legend />
           <Bar
