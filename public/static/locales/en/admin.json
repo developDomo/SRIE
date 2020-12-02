@@ -1,0 +1,10 @@
+{
+    "administrationPanel": "Administration Panel",
+    "options": {
+        "dashboard": "Dashboard",
+        "users": "Users",
+        "data": "Data",
+        "login": "Login",
+        "logout": "Logout"
+    }
+}
