@@ -190,7 +190,19 @@
             "title": "Proportion of children and young people (a) in Grade 2 or 3; (b) at the end of primary education; and (c) at the end of lower secondary education achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex",
             "purpose": ["The indicator aims to measure the percentage of children and young people who have achieved the minimum learning outcomes in reading and mathematics during or at the end of the relevant stages of education."],
             "definition": ["Percentage of children and young people achieving at least a minimum proficiency level in (i) reading and (ii) mathematics during primary education (Grade 2 or 3), at the end of primary education, and at the end of lower secondary education. The minimum proficiency level will be measured relative to new common reading and mathematics scales currently in development. Minimum proficiency level is the benchmark of basic knowledge in a domain (mathematics, reading, etc.) measured through learning assessments. As of August 2018 there is no globally agreed definition of minimum proficiency level. As an interim reporting strategy the UIS is reporting according to the minimum proficiency level informed by each assessment."],
-            "formula": "",
+            "formula": ["MINPR3_{t,s}=\\frac{MINP3_{t,s}\\times 100}{E3_{t}}"],
+            "formulaExplanation": [
+                "MINPR3_{t,s}",
+                "MINP3_{t,s}",
+                "E3_{t}",
+                "s"
+              ],
+              "formulaExplanationText": [
+                "= Proportion of boys and girls in grade 3 who have reached at least a minimum level of proficiency in area s in year t",
+                "= Total number of boys and girls in grade 3 who have reached at least a minimum level of proficiency in area s in year t",
+                "= Total students enrolled in 3rd grade in year t",
+                "= assessed area (reading, math)"
+              ],
             "method":["The number of children and/or young people at the relevant stage of education n in year t achieving or exceeding the pre-defined proficiency level in subject s expressed as a percentage of the number of children and/or young people at stage of education n, in year t, in any proficiency level in subject s."],
             "periodicity": "Variable according to country",
             "interpretation": ["ERCE studies define that 3rd grade students who achieve results above Level I in Reading are those who, in literary narratives, lyrics, letters, news posters and instructional texts, show evidence of being able to: Locate and relate explicit information (causal relation), repeated literally or by means of synonyms, found in the body of a text, which must be distinguished from other nearby information. Infer information from connections suggested by the text (not necessarily obvious). Make connections that demonstrate understanding of the overall meaning of the text (for example, distinguish the central theme), based on explicit information recognized and reiterated in the text. Recognize the short communicative description of a non-literary text. 3rd grade students who score above Level I in Mathematics are those who show evidence of being able to: Read and write natural numbers. Interpret simple fractions. Identify the most appropriate units of measurement or instruments to measure attributes of a known object. Identify relative positions of objects on maps. Identify elements in geometric figures or flat representations of geometric bodies. Extract information delivered in tables and graphs."],
@@ -204,7 +216,19 @@
             "title": "Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex",
             "purpose": ["The indicator is a direct measure of the skill levels of youth and adults in the two areas: literacy and numeracy."],
             "definition": ["Percentage of youth (aged 15-24 years) and of adults (aged 15 years and above) who have achieved or exceeded a given level of proficiency in (a) literacy and (b) numeracy. The fixed or minimum level of proficiency will be measured relative to literacy and numeracy scales defined according to national, regional and international learning assessments. The fixed level of proficiency is the minimum benchmark of basic knowledge in a domain (literacy or numeracy) measured through learning assessments. Currently, there are no common standards to determine the fixed level of proficiency that have been validated by the international community or countries. The indicator shows data published by each of the agencies and organizations specialised in cross-national household-based assessment surveys of youth and adult populations. The concepts of functional literacy and functional numeracy are based on the UNESCO definitions which cover a continuum of proficiency levels rather than a dichotomy. A person is functionally literate if they can engage in all those activities in which literacy is required for the effective functioning of their group and community and also which enables them to continue to use reading, writing and calculation for their own and the community’s development."],
-            "formula": "",
+            "method":["The indicator is calculated as the percentage of boys and girls who attend the end of primary education (grade 6) reaching / exceeding a certain predefined mastery level in a given subject."],
+            "formula": ["MINPR6_{t,s}=\\frac{MINP6_{t,s}\\times 100}{E6_{t}}"], "formulaExplanation": [
+                "MINPR6_{t,s}",
+                "MINP6_{t,s}",
+                "E6_{t}",
+                "s"
+              ],
+              "formulaExplanationText": [
+                "= proportion of boys and girls in grade 6 who have reached at least a minimum level of proficiency in area s in year t",
+                "= Total number of boys and girls in 6th grade who have reached at least a minimum level of proficiency in area s in year t",
+                "= Total students enrolled in 6th grade in year t",
+                "=assessed area (reading, math)"
+              ],
             "periodicity": "Variable according to country and educational level",
             "interpretation": ["ERCE studies define that the 6th grade students who obtained results above Level I in Reading are those who, in literary narratives (predominantly), letters, notes, news and stories, show evidence of being able to: Locate and relate explicit information (causal and temporal sequence relationships), repeated literally or by means of synonyms (paraphrased), which is found predominantly in the body of the text and which must be distinguished from other information that compose it. Infer information from connections suggested by the text and supported by knowledge of the world. Infer the meaning of familiar words from the keys provided by the text. Make relations that shows an understanding of the overall meaning of the text, such as distinguishing the central theme, main idea, and main characteristics of characters, from explicit and implicit information in the texts. Recognize functions of discontinuous texts present in various texts. Recognize sender and receiver, and short communicative description in various texts. Relate two texts, according to their characteristics and the information they both provide. Replace connectors according to their meaning in the text. 6th grade students who score above Level I in Mathematics are those who show evidence of being able to: Solve simple problems involving natural numbers, decimal numbers, and fractions and proportional variations. Relate different spatial views.Determine missing terms or continue graphic or numerical sequences. Identify acute, right, and obtuse angles, and solve simple problems involving angles. Determine measures of length or mass of objects, using graduated instruments. Calculate perimeters and areas of polygons."],
             "datasourceType": ["Regional Comparative and Explanatory Study (ERCE). Latin-American Laboratory for Assessment of the Quality of Education (OREALC / UNESCO)."],
@@ -217,7 +241,20 @@
             "title": "Net rate of admission to primary, lower secondary and upper secondary",
             "purpose": ["Show the appropriate level of access to the primary, lower secondary and upper secondary levels, and in this way give a summary account of the capacity of the educational system to guarantee access to these levels and transit without interruptions."],
             "definition": ["Number of students enrolled for the first time in the first grade of a given educational level, who have the official age of entry to it, expressed as a percentage of the population of the same age. It is calculated for the primary, lower and upper secondary. The official entry age at each educational level is the age at which children and adolescents should start the same, in accordance with national legislation or policy. The age of entry to lower and upper secondary is determined by the age of entry to primary and the duration of each educational level in years."], 
-            "formula": "",
+            "method":["Divide the number of enrolled students who are of the official age to enter a certain level of education by the population for the same age group and multiply the result by 100."],
+            "formula": ["NIR_{n}^{t}==\\frac{N_{a,n}^t\\times 100}{P_{a,n}^t}"],
+            "formulaExplanation": [
+                "NIR_{n}^t",
+                "N_{a,n}^t",
+                "P_{a,n}^t",
+                "n"
+              ],
+              "formulaExplanationText": [
+                "= Net entry rate in school year t for educational level n",
+                "= Number of children of official age a to enter the educational level n who attend the first grade for the first time, in the school year t",
+                "= Population of official age a to enter educational level n, in school year t",
+                "= primary, lower secondary, upper secondary"
+              ],
             "periodicity": "Annual",
             "interpretation": ["A high Net Income Rate jointly denotes a high degree of coverage for the official school-age population, and particularly for the secondary level, an opportune transit through the previous educational level. The theoretical maximum value is 100%. Increasing trends can be considered to reflect better coverage at the specified level of education. When the Net Income Rate is compared with the Gross Rate, the difference between the two highlights the incidence of enrollment of minors and adults."],
             "datasourceType": ["Administrative data from the Ministries of Education on enrollment by year of simple age, population censuses and surveys for estimates of population by simple age (in case of using Administrative data on enrollment)."],
@@ -230,7 +267,20 @@
             "title": "Gross intake ratio to the last grade (primary, lower secondary)",
             "purpose": ["This is a proxy measure of primary completion. It reflects how the impact of policies on access to and progression through the early grades of each level of education impact the final grade of that level. It also indicates the capacity of the education system to cater for the completion of the population of the intended entrance age to the last grade of the given level of education. It assumes that pupils entering the last grade for the first time will eventually complete the grade and hence the given level of education."],
             "definition": ["Total number of new entrants into the last grade of primary education or lower secondary general education, regardless of age, expressed as a percentage of the population at the intended entrance age to the last grade of primary education or lower secondary general education. The intended entrance age to the last grade is the age at which pupils would enter the grade if they had started school at the official primary entrance age, had studied full-time and had progressed without repeating or skipping a grade."],
-            "formula": "",
+            "method":["The number of new entrants in the last grade of the given level of education, regardless of age. It is expressed as a percentage of the population with the age of entry to the last grade of that level of education."],
+            "formula": ["GIRLG_{n}=\\frac{NE_{l,n}\\times 100}{P_{n,a}}"],
+            "formulaExplanation": [
+                "GIRLG_{n}",
+                "NE_{l,n}",
+                "P_{n,a}",
+                "n"
+              ],
+              "formulaExplanationText": [
+                "= gross entry rate to last grade l of educational level n",
+                "= new entrants to the last grade l of educational level n",
+                "= Population with theoretical age a for entering the last grade of educational level n",
+                "= primary, lower secondary, upper secondary"
+              ],
             "periodicity": "Annual",
             "interpretation": ["A high ratio indicates a high degree of primary or lower secondary education completion."],
             "datasourceType": ["Administrative data from schools on enrolment and repeaters or new entrants by grade; population censuses and surveys for population estimates by single year of age; administrative data from ministries of education on the structure of the education system."],
@@ -243,7 +293,20 @@
             "title": "Completion rate (primary education, lower secondary education, upper secondary education)",
             "purpose": ["The completion rate indicates how many persons in a given age group have completed the relevant level of education. By choosing an age-group which is slightly older than the theoretical age-group for completing each level of education, the indicator measures how many children and adolescents enter school more or less on time and progress through the education system without excessive delays."],
             "definition": ["Percentage of a cohort of children or young people aged 3-5 years above the intended age for the last grade of each level of education who have completed that grade. The intended age for the last grade of each level of education is the age at which pupils would enter the grade if they had started school at the official primary entrance age, had studied full-time and had progressed without repeating or skipping a grade."],
-            "formula": "",
+            "method":["The number of people in the relevant age group who have completed the last grade of a given level of education is expressed as a percentage of the total population of the same age group."],
+            "formula": ["CR_{n}=\\frac{{EAP_{n,AG(a+3t5)}}\\times 100}{{PAG_{n,AG(a+3t5)}}}"],
+            "formulaExplanation": [
+                "CR_{n}",
+                "EAP_{n,AG(a+3t5)}",
+                "PAG_{n,AG(a+3t5)}",
+                "n"
+              ],
+              "formulaExplanationText": [
+                "= completion rate for educational level n",
+                "= population aged 3 to 5 years older than the theoretical age a for entering the last grade of educational level n, who completed educational level n",
+                "= population aged 3 to 5 years older than the theoretical age a for entering the last grade of educational level n",
+                "= primary, lower secondary, upper secondary"
+              ],
             "periodicity": "Annual",
             "interpretation": ["A completion rate at or near 100% indicates that most or all children and adolescents have completed a level of education by the time they are 3 to 5 years older than the official age of entry into the last grade of the given level of education. A low completion rate indicates low or delayed entry into a given level of education, high drop-out, high repetition, late completion, or a combination of these factors. To identify the causes of low completion rates, it is necessary to examine other indicators, for example the out-of-school rate, the gross intake ratio to the last grade, and the percentage of over-age children. When disaggregated by sex, location and other characteristics, this indicator can identify excluded population groups."],
             "datasourceType": ["Population censuses, household surveys"],
