@@ -8,20 +8,25 @@
             "metadata": {
               "title": "Proportion of children under 5 years of age who are developmentally on track in health, learning and psychosocial well-being, by sex",
               "definition": [
-                  "<p>There is not yet a globally-accepted definition of ‘developmentally on track’. The Multiple Indicator Cluster Survey’s Early Childhood Development Index (ECDI) presently defines ‘on track’ as the percentage of children aged 36-59 months who are developmentally on-track in at least three of the following four domains: literacy-numeracy, physical, socio-emotional and learning. Other measures use different definitions, with varying empirically- and conceptually-driven perspectives on how best to define ‘on track’. Methodological work is ongoing to define commonly agreed terms and methods for more comprehensively assessing each of the domains of early childhood development (i.e. health, learning and psychosocial well-being).</p>",
-                  "<p>ECDI defines children as being developmentally on track in literacy-numeracy if they can do at least two of the following tasks: identify/name at least 10 letters of the alphabet; read at least 4 simple, popular words; and/or recognise and name all numbers from 1 to 10. Children are developmentally on-track physically if they can pick up small objects easily and are generally well enough to play. Children are developmentally on-track in socio-emotional development if at least two of the following are true: they get along with other children; do not usually kick, bite or hit other children; and they are not easily distracted. Children are developmentally on-track in learning if they can follow simple instructions correctly on how to do something and/or when given something to do, and they are able to do it independently.</p>"
+                  "There is not yet a globally-accepted definition of ‘developmentally on track’. The Multiple Indicator Cluster Survey’s Early Childhood Development Index (ECDI) presently defines ‘on track’ as the percentage of children aged 36-59 months who are developmentally on-track in at least three of the following four domains: literacy-numeracy, physical, socio-emotional and learning. Other measures use different definitions, with varying empirically- and conceptually-driven perspectives on how best to define ‘on track’. Methodological work is ongoing to define commonly agreed terms and methods for more comprehensively assessing each of the domains of early childhood development (i.e. health, learning and psychosocial well-being).",
+                  "ECDI defines children as being developmentally on track in literacy-numeracy if they can do at least two of the following tasks: identify/name at least 10 letters of the alphabet; read at least 4 simple, popular words; and/or recognise and name all numbers from 1 to 10. Children are developmentally on-track physically if they can pick up small objects easily and are generally well enough to play. Children are developmentally on-track in socio-emotional development if at least two of the following are true: they get along with other children; do not usually kick, bite or hit other children; and they are not easily distracted. Children are developmentally on-track in learning if they can follow simple instructions correctly on how to do something and/or when given something to do, and they are able to do it independently."
               ],
               "purpose": [
                   "<p>The indicator is a broad measure of children’s development and their preparedness to begin school. Available data for global tracking are typically collected in regional or national-level surveys and assessments from individual-level data through direct assessment of children or reported by mothers/primary caregivers or teachers, which are then used to calculate an indicator that represents a composite measure across a range of agreed characteristics in the areas of health, learning and psychosocial well-being.</p>"
               ],
               "method": [
-                  "<p>In the MICS ECDI, the indicator is calculated as the percentage of children aged 36-59 months demonstrating age-appropriate levels of development in the areas being measured, according to the items used in the MICS. One commonly-accepted definition of ‘on track’ has not yet been developed using national and regionally-developed standards for children’s learning and development.</p>"
+                  "In the MICS ECDI, the indicator is calculated as the percentage of children aged 36-59 months demonstrating age-appropriate levels of development in the areas being measured, according to the items used in the MICS. One commonly-accepted definition of ‘on track’ has not yet been developed using national and regionally-developed standards for children’s learning and development."
               ],
-              "formula": "PCDT_{3t4}=\frac{CDT_{3t4}}{P_{3t4}}",
+              "formula": ["PCDT_{3t4}=\\frac{CDT_{3t4}\\times 100}{P_{3t4}}"],
               "formulaExplanation": [
-                  "<p><strong>PCDT3t4</strong> = percentage of children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being</p>",
-                  "<p><strong>CDT3t4</strong> = children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being</p>",
-                  "<p><strong>P3t4</strong>  = population aged 3-4 years (36-59 months)</p>"
+                "PCDT_{3t4}",
+                "CDT_{3t4}",
+                "{P_{3t4}}"
+              ],
+              "formulaExplanationText": [
+                "= percentage of children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                "= children aged 3-4 years (36-59 months) who are developmentally on track in health, learning and psychosocial well-being",
+                "= population aged 3-4 years (36-59 months)"
               ],
               "interpretation": [
                   "<p>A high value indicates a large number of young children are well-prepared for starting primary school in the areas of health, learning and psychosocial well-being.</p>"
@@ -30,9 +35,9 @@
                   "<p>The Multiple Indicator Cluster Surveys (MICS) by UNICEF.</p>"
               ],
               "periodicity": "Variable according to country",
-              "limitationsAndCommentsAndComments": [
-                  "<p>Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries.</p>"
-              ],
+              "limitationsAndComments": 
+                  "Further methodological developmental work will be needed to ensure that the proposed measure reflects a commonly-agreed upon definition of ‘on track’ that is aligned with national standards, is relevant to children in all parts of the world and accurately reflects ‘developmentally on track’ in all countries. This requires establishment of normative developmental patterns, which has not yet taken place in most countries."
+              ,
               "licenseAndCopyrights": "<p>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)</p>"
             }
         },
@@ -47,10 +52,10 @@
             "metadata": {
                 "title": "Participation rate in organized learning (one year before the official primary entry age), by sex",
                 "definition": [
-                    "<p>Percentage of children in the given age range who participate in one or more organized learning programme, including programmes which offer a combination of education and care. Participants in early childhood education and in primary education are both included. The age range will vary by country depending on the official age for entry to primary education.</p>",
-                    "<p>An organized learning programme is one which consists of a coherent set or sequence of educational activities designed with the intention of achieving pre-determined learning outcomes or the accomplishment of a specific set of educational tasks. Early childhood and primary education programmes are examples of organized learning programmes.</p>",
-                    "<p>Early childhood and primary education are defined in the 2011 revision of the International Standard Classification of Education (ISCED 2011). Early childhood education is typically designed with a holistic approach to support children’s early cognitive, physical, social and emotional development and to introduce young children to organized instruction outside the family context. Primary education offers learning and educational activities designed to provide students with fundamental skills in reading, writing and mathematics and establish a solid foundation for learning and understanding core areas of knowledge and personal development. It focuses on learning at a basic level of complexity with little, if any, specialisation.</p>",
-                    "<p>The official primary entry age is the age at which children are expected to start primary education according to national legislation or policies. Where more than one age is specified, for example, in different parts of a country, the most common official entry age (i.e. the age at which most children in the country are expected to start primary) is used for the calculation of this indicator at the global level.</p>"
+                    "Percentage of children in the given age range who participate in one or more organized learning programme, including programmes which offer a combination of education and care. Participants in early childhood education and in primary education are both included. The age range will vary by country depending on the official age for entry to primary education.",
+                    "An organized learning programme is one which consists of a coherent set or sequence of educational activities designed with the intention of achieving pre-determined learning outcomes or the accomplishment of a specific set of educational tasks. Early childhood and primary education programmes are examples of organized learning programmes.",
+                    "Early childhood and primary education are defined in the 2011 revision of the International Standard Classification of Education (ISCED 2011). Early childhood education is typically designed with a holistic approach to support children’s early cognitive, physical, social and emotional development and to introduce young children to organized instruction outside the family context. Primary education offers learning and educational activities designed to provide students with fundamental skills in reading, writing and mathematics and establish a solid foundation for learning and understanding core areas of knowledge and personal development. It focuses on learning at a basic level of complexity with little, if any, specialisation.",
+                    "The official primary entry age is the age at which children are expected to start primary education according to national legislation or policies. Where more than one age is specified, for example, in different parts of a country, the most common official entry age (i.e. the age at which most children in the country are expected to start primary) is used for the calculation of this indicator at the global level.</p>"
                 ],
                 "purpose": [
                     "The indicator measures children’s exposure to organized learning activities in the year prior to the start of primary school."
@@ -58,12 +63,17 @@
                 "method": [
                     "The number of children in the relevant age group who participate in an organized learning programme is expressed as a percentage of the total population in the same age range."
                 ],
-                "formula": "PROL_{0t1,AG(a-1)}=\frac{E_{0t1,AG(a-1) }}{SAP_{AG(a-1)}}\times 100",
+                "formula":["PROL_{0t1,AG(a-1)}=\\frac{E_{0t1,AG(a-1) }}{SAP_{AG(a-1)}}\\times 100"],
                 "formulaExplanation": [
-                    "<p><strong>PROL0t1,AG(a-1)</strong> = participation rate in organized learning one year before the official entry age a to primary education.</p>",
-                    "<p><strong>E0t1,AG(a-1)</strong> = enrolment in early childhood or primary education (ISCED levels 0 and 1) aged one year below the official entry age a to primary education.</p>",
-                    "<p><strong>SAPAG(a-1)</strong>  = population aged one year below the official entry age a to primary education.</p>"
-                ],
+                    "PROL_{0t1,AG(a-1)}",
+                    "E_{0t1,AG(a-1)}",
+                    "SAP_{AG(a-1)}"
+                  ],
+                "formulaExplanationText": [
+                    "= participation rate in organized learning one year before the official entry age a to primary education.",
+                    "= enrolment in early childhood or primary education (ISCED levels 0 and 1) aged one year below the official entry age a to primary education.",
+                    "= population aged one year below the official entry age a to primary education."
+                  ],
                 "interpretation": [
                     "<p>A high value of the indicator, at or near 100%, indicates that all or most children are participating in organized learning immediately before the official entrance age to primary education. A low value of the indicator indicates low or delayed entry into organized learning programmes.</p>"
                 ],
@@ -71,9 +81,9 @@
                     "<p>Household surveys</p>"
                 ],
                 "periodicity": "Annual",
-                "limitationsAndCommentsAndComments": [
-                    "<p>Participation in learning programmes in the early years is not full time for many children, meaning that exposure to learning environments outside of the home will vary in intensity. The indicator measures the percentage of children who are exposed to organized learning but not the intensity or quality of the programme. More work is needed to ensure that the definition of learning programmes is consistent across various surveys and defined in a manner that is easily understood by survey respondents, ideally with complementary information collected on the amount of time children spend in learning programmes.</p>"
-                ],
+                "limitationsAndComments": 
+                    "Participation in learning programmes in the early years is not full time for many children, meaning that exposure to learning environments outside of the home will vary in intensity. The indicator measures the percentage of children who are exposed to organized learning but not the intensity or quality of the programme. More work is needed to ensure that the definition of learning programmes is consistent across various surveys and defined in a manner that is easily understood by survey respondents, ideally with complementary information collected on the amount of time children spend in learning programmes."
+                ,
                 "licenseAndCopyrights": "<p>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)</p>"
               }
         },
@@ -83,7 +93,22 @@
             "title": "Net enrolment rate, early childhood educational development programmes (CINE 01)",
             "purpose": ["The indicator measures children's exposure to activities related to early childhood educational development between 45 days and two years of age."],
             "definition": ["Total enrollment of the age group theoretically corresponds to the Early Childhood Educational Development Programs, expressed as a percentage of children of the same age in the total population, including programs that offer the combination of education and caring. The age range considered is defined in the 2011 revision of the International Standard Classification of Education (ISCED 2011), where it is set between 45 days and 2 years of age. Early Childhood Educational Development Programs comprise a learning environment that is visually stimulating and verbally varied. These programs also promote self-expression with an emphasis on language acquisition and its use to achieve meaningful communication. Children have the opportunity to participate in playful activities that allow them to develop their motor and coordination skills through interaction with and under the supervision of the teaching staff. Programs intended only for child care (care, nutrition and health) should not be considered."],
-            "formula": "NER_{01}=\frac{E_{01,a}}{P_{01,a}}\times 100",
+            "formula": ["NER_{01}=\\frac{E_{01,a}}{P_{01,a}}\\times 100"],
+            "formulaExplanation": [
+                "NER_{01}",
+                "E_{01,a}",
+                "P_{01,a}"
+              ],
+            "formulaExplanationText": [
+                "= Tasa Neta de Cobertura a los Programas de Desarrollo Educacional de la Primera Infancia (CINE 01)",
+                "= Población del grupo de edad a (45 días a 2 años) que asiste a Programas de Desarrollo Educacional de la Primera Infancia (CINE 01)",
+                "= Población del grupo de edad a (45 días a 2 años)"
+              ],
+              "formulaExplanationText": [
+                "= Net Rate of Coverage for Early Childhood Educational Development Programs (ISCED 01)",
+                "= Population of the age group a (45 days to 2 years) that attends Early Childhood Educational Development Programs (ISCED 01)",
+                "= Population of age group a (45 days to 2 years)"
+              ],
             "periodicity": "Annual",
             "interpretation": "A high net enrolment rate is indicative of good coverage of the population at these ages. Its maximum theoretical value is 100%. An increase in the percentage reflects a progressive improvement in the coverage of Early Childhood Development Programs. If the value of the net enrolment rate is less than 100%, its complement, that is, the difference between it and 100, provides a measure of the proportion of boys and girls that aren’t enrolled in these offers.",
             "source": "Country household surveys",
@@ -94,7 +119,7 @@
             "name": " Net Enrolment Rate for Pre-Primary Education Programmes (ISCED 02)",
             "purpose": "The indicator measures children's exposure to organized learning activities in Pre-Primary Education Programs (ISCED 02).",
             "definition": "",
-            "formula": "<p>Percentage of children in the given age range participating in one or more Pre-Primary Education programs, including programs that offer the combination of education and caring. The age range varies by country depending on the official entry age to primary education.</p><p>Pre-primary education is defined in the 2011 revision of the International Standard Classification of Education (ISCED 2011). It is typically designed with a holistic approach to support children's early cognitive, physical, social, and emotional development and to introduce them to organized instruction outside of the family context. It includes the interaction with peers and educators, by which children learn to improve the use of language and their social skills and begin to develop their logic and reasoning skills and to articulate their reflection processes. At this level they are exposed to alphabetical and mathematical concepts for the first time. Likewise, exploration of the world around them and the immediate environment is promoted. Activities designed to improve gross motor skills (exercises, games, etc.) and other supervised play activities can be used as opportunities to promote the development of social interaction, skills, autonomy, and school readiness.</p><p>Pre-primary education programs are aimed at children between the ages of 3 years and up to one year before the official age for entering primary school. The official age for entering primary school is the age at which children are forced to start primary school, in accordance with national law or policy.</p>",
+            "formula": "",
             "interpretation": "A high net enrolment rate is indicative of good coverage of the population at these ages. Its maximum theoretical value is 100%. An increase in the percentage reflects a progressive improvement in the coverage of Pre-primary Education. If the value of the net enrolment  rate is less than 100%, its complement, that is, the difference between it and 100, provides a measure of the proportion of boys and girls not enrolled in these offers.",
             "source": "Country household surveys",
             "limitationsAndComments": "There are certain difficulties in some countries in order to achieve good coverage in the measurement of early childhood offers in some countries, due to the diversity of rectories that regulate this offer and the lack of objective criteria translatable into data on how to recognize those specifically educational ones. Participation in early learning and development programs is not, in all countries, full-time for all children, so exposure to educational settings outside the home may vary in intensity. Further development is necessary to ensure that the definition of educational programs is consistent across various surveys and is defined in a way that is easily understandable by respondents, ideally with information collected in a complementary way  in relation to the amount of time that children spend in those programs.",
@@ -111,13 +136,19 @@
                 "method": [
                     "<p>The number of children in the age group corresponding to Pre-Primary Education (ISCED 02) participating in an organized educational program is expressed as a percentage of the total population of the same age group. To calculate this indicator, are used derived estimations from household surveys are used, where school attendance is investigated from direct questions to the key household informant.</p>"
                 ],
-                "formula": "NER_{02}=\frac{E_{02,a}}{P_{02,a}}\times 100",
+                "formula":  ["NER_{02}=\\frac{E_{02,a}}{P_{02,a}}\\times 100"],
                 "formulaExplanation": [
-                    "<p><strong>NER02</strong> = Net Enrolment Rate for Pre-Primary Education Programs (ISCED 02).</p>",
-                    "<p><strong>E02,a</strong> = Population of the age group a that attends Pre-Primary Education Programs (ISCED 02).</p>",
-                    "<p><strong>P02,a</strong>  = Population of the age group a, which corresponds officially to the Pre-Primary Education Programs (ISCED 02).</p>",
-                    "<p><strong>a</strong> = Age officially corresponding to the Pre-Primary Education Programs (ISCED 02).</p>"
-                ],
+                    "NER_{02}",
+                    "E_{02,a}",
+                    "P_{02,a}",
+                    "a"
+                  ],
+                  "formulaExplanationText": [
+                    "=  Net Enrolment Rate for Pre-Primary Education Programs (ISCED 02).",
+                    "= opulation of the age group a that attends Pre-Primary Education Programs (ISCED 02).",
+                    "= Population of the age group a, which corresponds officially to the Pre-Primary Education Programs (ISCED 02).",
+                    "= Age officially corresponding to the Pre-Primary Education Programs (ISCED 02)."
+                  ],
                 "interpretation": [
                     "<p>A high net enrolment rate is indicative of good coverage of the population at these ages. Its maximum theoretical value is 100%. An increase in the percentage reflects a progressive improvement in the coverage of Pre-primary Education. If the value of the net enrolment  rate is less than 100%, its complement, that is, the difference between it and 100, provides a measure of the proportion of boys and girls not enrolled in these offers.</p>"
                 ],
@@ -125,8 +156,8 @@
                     "<p>Country household surveys</p>"
                 ],
                 "periodicity": "Annual",
-                "limitationsAndCommentsAndComments": [
-                    "<p>There are certain difficulties in some countries in order to achieve good coverage in the measurement of early childhood offers in some countries, due to the diversity of rectories that regulate this offer and the lack of objective criteria translatable into data on how to recognize those specifically educational ones. Participation in early learning and development programs is not, in all countries, full-time for all children, so exposure to educational settings outside the home may vary in intensity. Further development is necessary to ensure that the definition of educational programs is consistent across various surveys and is defined in a way that is easily understandable by respondents, ideally with information collected in a complementary way  in relation to the amount of time that children spend in those programs.</p>"
+                "limitationsAndComments": [
+                    "There are certain difficulties in some countries in order to achieve good coverage in the measurement of early childhood offers in some countries, due to the diversity of rectories that regulate this offer and the lack of objective criteria translatable into data on how to recognize those specifically educational ones. Participation in early learning and development programs is not, in all countries, full-time for all children, so exposure to educational settings outside the home may vary in intensity. Further development is necessary to ensure that the definition of educational programs is consistent across various surveys and is defined in a way that is easily understandable by respondents, ideally with information collected in a complementary way  in relation to the amount of time that children spend in those programs."
                 ],
                 "licenseAndCopyrights": "<p>Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) (con enlace a https://creativecommons.org/licenses/by-nc-sa/4.0/)</p>"
               }
@@ -137,7 +168,16 @@
             "title": "Number of years of (a) free and (b) compulsory pre-primary education guaranteed in legal frameworks",
             "purpose": ["To measure government commitment to guaranteeing the right to education to children and young people."],
             "definition": ["<p>Number of years of pre-primary education to which children are legally entitled that are either free from tuition fees or compulsory or both.</p><p>Most countries have legislation specifying the ages and the level of education (typically pre-primary or primary education) at which children should start school. Such legislation usually also specifies either the number of years of education that are guaranteed or the age at which young people may leave education or, in some cases, both.</p><p>The number of years of pre-primary education to which children are legally entitled should ideally be the number of grades of pre-primary education which children are expected to have completed before entering primary education."],
-            "formula": "NER_{02}=\frac{E_{02,a}}{P_{02,a}}\times 100",
+            "method":["The number of preschool degrees that are free and those that are compulsory are recorded. If information is available on ages instead of grades, the lowest age for entering preschool is subtracted from the official primary school entry age. If the result is 0 or negative, there are no guaranteed preschool years."],
+            "formula": [],
+            "formulaExplanation": [
+                "AG_{02}",
+                "AO_{02}"
+              ],
+              "formulaExplanationText": [
+                "= number of years of free preschool education.",
+                "= number of years of compulsory preschool education."
+              ],
             "periodicity": "Annual",
             "interpretation": "The existence of national legislation guaranteeing the right to education at given ages and/or grades demonstrates the government's commitment to ensuring that children and young people attend school regularly. The greater the number of years of pre-primary education that are guaranteed, the more likely children will be well-prepared for entry to primary education at the appropriate time.",
             "source": "National legislation and formal education standards and norms on access to schooling and, in particular, the legal entitlement or obligation to attend school; and administrative data from ministries of education on the structure of the education system.",
