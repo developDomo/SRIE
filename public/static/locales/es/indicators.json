@@ -31,7 +31,7 @@
           }
         },
         "2": {
-          "name": "Tasa de participación en la enseñanza organiza da un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
+          "name": "Tasa de participación en la enseñanza organizada un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
           "metadata": {
             "title": "Tasa de participación en la enseñanza organiza da un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
             "purpose": ["El indicador mide la exposición de los niños a las actividades de aprendizaje organizado durante el año anterior al ingreso a la escuela primaria."],
@@ -51,7 +51,7 @@
             ],
             "interpretation": ["Un alto valor del indicador muestra un alto grado de participación en programas educativos inmediatamente antes de la edad normativa de ingreso a la educación primaria."],
             "datasourceType": ["Encuestas de hogar"],
-            "limitationsAndComments": ["La participación en programas de aprendizaje en edades tempranas no es, en todos los países, a tiempo completo para todos los niños, de modo que la exposición a los ambientes educativos por fuera del hogar puede variar en intensidad. El indicador mide el porcentaje de niños que están expuestos a programas educativos, pero no la intensidad de los programas, que limita la posibilidad de realizar conclusiones en relación al grado de cumplimiento de este objetivo. Es necesario un desarrollo mayor para asegurar que la definición sobre programas educativos sea consistente a lo largo de diversas encuestas y esté definido en una manera que sea fácilmente comprensible por los respondientes, idealmente con información recolectada de manera complementaria en relación a la cantidad de tiempo que los niños pasan en esos programas educativos."]
+            "limitationsAndComments": "La participación en programas de aprendizaje en edades tempranas no es, en todos los países, a tiempo completo para todos los niños, de modo que la exposición a los ambientes educativos por fuera del hogar puede variar en intensidad. El indicador mide el porcentaje de niños que están expuestos a programas educativos, pero no la intensidad de los programas, que limita la posibilidad de realizar conclusiones en relación al grado de cumplimiento de este objetivo. Es necesario un desarrollo mayor para asegurar que la definición sobre programas educativos sea consistente a lo largo de diversas encuestas y esté definido en una manera que sea fácilmente comprensible por los respondientes, idealmente con información recolectada de manera complementaria en relación a la cantidad de tiempo que los niños pasan en esos programas educativos."
           }
         },
         "3": {
