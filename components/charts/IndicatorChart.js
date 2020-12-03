@@ -549,6 +549,7 @@ const IndicatorChart = ({
                   }
                   target="_blank"
                   rel="noreferrer"
+                  download
                 >
                   <a>{t('sideBar.formats.PDF')}</a>
                 </a>
@@ -563,6 +564,7 @@ const IndicatorChart = ({
                   }
                   target="_blank"
                   rel="noreferrer"
+                  download
                 >
                   {t('sideBar.formats.PNG')}
                 </a>
