@@ -1,5 +1,5 @@
 {
-  "emptyData": "No existen datos de este indicador para el país seleccionado",
+  "emptyData": "Data is not available for this indicator and the selected country",
   "year": "Year",
   "historical": "Historical",
   "lastYear": "Last record",
