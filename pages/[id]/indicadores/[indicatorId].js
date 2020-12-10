@@ -209,6 +209,7 @@ const IndicatorPage = ({
         ))}
       </Container>
       <Container>
+
         <FooterIndicator>
           <FooterTitle>
             {t('indicators:relatedIndicatorTitle')}
