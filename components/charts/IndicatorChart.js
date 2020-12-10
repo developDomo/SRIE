@@ -167,6 +167,19 @@ const DoubleLine = styled.hr`
   border-top:5px double; 
 `;
 
+const showFormula = (formula) => {
+  if (!isEmpty(formula)) {
+    return (
+      <DataSheetFormula>
+        {formula.split('\n').map((f) => (
+          <BlockMath math={f} />
+        ))}
+      </DataSheetFormula>
+    );
+  }
+  return (<></>);
+};
+
 const InfoModal = ({
   onHide, show, translation, indicator,
 }) => (
@@ -205,12 +218,7 @@ const InfoModal = ({
 
       <Row className="h-100">
         <Col className="col-sm-5 my-auto">
-          <DataSheetFormula>
-            {translation(`indicators:indicators.${indicator}.metadata.formula`, { joinArrays: '\n' }).split('\n').map((formula) => (
-              <BlockMath math={formula} />
-            ))}
-
-          </DataSheetFormula>
+          {showFormula(translation(`indicators:indicators.${indicator}.metadata.formula`, { joinArrays: '\n' }))}
         </Col>
         <Col>
           <DataSheetParagraph>
