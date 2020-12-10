@@ -47,6 +47,7 @@ const IndexesChart = ({
       name: t(indexes),
       selector: indexes,
       sortable: true,
+      format: (row) => `${dataFormatter(row.indexes)}`,
     },
   ];
 

@@ -34,11 +34,13 @@ const SexChart = ({
       name: t('M'),
       selector: 'M',
       sortable: true,
+      format: (row) => `${dataFormatter(row.M)}`,
     },
     {
       name: t('F'),
       selector: 'F',
       sortable: true,
+      format: (row) => `${dataFormatter(row.F)}`,
     },
   ];
 

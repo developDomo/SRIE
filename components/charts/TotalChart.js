@@ -33,6 +33,8 @@ const TotalChart = ({
       name: t('total'),
       selector: '_T',
       sortable: true,
+      /* eslint no-underscore-dangle: ["warn", { "allowAfterThis": true }] */
+      format: (row) => `${dataFormatter(row._T)}`,
     },
   ];
 

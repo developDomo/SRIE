@@ -34,11 +34,13 @@ const GeoChart = ({
       name: t('RUR'),
       selector: 'RUR',
       sortable: true,
+      format: (row) => `${dataFormatter(row.RUR)}`,
     },
     {
       name: t('URB'),
       selector: 'URB',
       sortable: true,
+      format: (row) => `${dataFormatter(row.URB)}`,
     },
   ];
 
