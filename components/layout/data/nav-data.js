@@ -29,12 +29,6 @@ const navData = {
       },
       {
         id: null,
-        href: 'preguntas-frecuentes',
-        label: 'Preguntas frecuentes',
-        isCountry: false,
-      },
-      {
-        id: null,
         href: 'equipo-responsable',
         label: 'Equipo responsable',
         isCountry: false,
@@ -130,12 +124,6 @@ const navData = {
         id: null,
         href: 'glosario',
         label: 'Glossary',
-        isCountry: false,
-      },
-      {
-        id: null,
-        href: 'preguntas-frecuentes',
-        label: 'Frequently asked questions',
         isCountry: false,
       },
       {
