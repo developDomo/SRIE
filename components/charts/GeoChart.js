@@ -4,6 +4,7 @@ import {
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import DataTable from 'react-data-table-component';
+import isEmpty from 'lodash/isEmpty';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
@@ -34,16 +35,25 @@ const GeoChart = ({
       name: t('RUR'),
       selector: 'RUR',
       sortable: true,
+      format: (row) => `${dataFormatter(row.RUR)}`,
     },
     {
       name: t('URB'),
       selector: 'URB',
       sortable: true,
+      format: (row) => `${dataFormatter(row.URB)}`,
     },
   ];
 
   const showContent = () => {
     if (chartType === DisplayTypes.CHART) {
+      if (isEmpty(historicalData)) {
+        return (
+          <div>
+            {t('charts:emptyData')}
+          </div>
+        );
+      }
       return (
         <BarChart
           data={datasource}

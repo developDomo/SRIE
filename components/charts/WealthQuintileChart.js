@@ -4,6 +4,7 @@ import {
 import DataTable from 'react-data-table-component';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import isEmpty from 'lodash/isEmpty';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
@@ -36,31 +37,43 @@ const WealthQuintileChart = ({
       name: t('Q1'),
       selector: 'Q1',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q1)}`,
     },
     {
       name: t('Q2'),
       selector: 'Q2',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q2)}`,
     },
     {
       name: t('Q3'),
       selector: 'Q3',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q3)}`,
     },
     {
       name: t('Q4'),
       selector: 'Q4',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q4)}`,
     },
     {
       name: t('Q5'),
       selector: 'Q5',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q5)}`,
     },
   ];
 
   const showContent = () => {
     if (chartType === DisplayTypes.CHART) {
+      if (isEmpty(historicalData)) {
+        return (
+          <div>
+            {t('charts:emptyData')}
+          </div>
+        );
+      }
       return (
         <BarChart
           data={datasource}
