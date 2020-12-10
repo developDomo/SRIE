@@ -37,26 +37,31 @@ const WealthQuintileChart = ({
       name: t('Q1'),
       selector: 'Q1',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q1)}`,
     },
     {
       name: t('Q2'),
       selector: 'Q2',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q2)}`,
     },
     {
       name: t('Q3'),
       selector: 'Q3',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q3)}`,
     },
     {
       name: t('Q4'),
       selector: 'Q4',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q4)}`,
     },
     {
       name: t('Q5'),
       selector: 'Q5',
       sortable: true,
+      format: (row) => `${dataFormatter(row.Q5)}`,
     },
   ];
 
