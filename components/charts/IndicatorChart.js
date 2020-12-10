@@ -17,6 +17,7 @@ import {
   EmailShareButton,
 
 } from 'react-share';
+import { isEmpty } from 'lodash';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes, ChartTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
@@ -210,7 +211,6 @@ const InfoModal = ({
             ))}
 
           </DataSheetFormula>
-
         </Col>
         <Col>
           <DataSheetParagraph>

@@ -185,10 +185,10 @@
             "purpose": ["Muestra el nivel de acceso oportuno a los niveles primario, secundaria baja y secundaria alta, y de esta forma da cuenta en forma sintética de la capacidad del sistema educativo para garantizar el acceso a dichos niveles y el tránsito sin interrupciones.", "Nota: Para este indicador se cuenta solo con datos para el nivel educativo Primaria"],
             "definition": ["Número de alumnos matriculados por primera vez en el primer grado de un nivel educativo dado, que tienen la edad oficial de ingreso al mismo, expresado en porcentaje de la población de la misma edad. Se calcula para el nivel primario, secundaria baja y alta.La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo, de acuerdo con la legislación o la política nacional. La edad de ingreso a secundaria baja y alta está determinada por la edad de ingreso a la primaria y la duración de cada nivel educativo en años."],
             "method":["Dividir la cantidad de estudiantes matriculados que pertenecen a la edad oficial para ingresar a un nivel de educación determinado por la población para el mismo grupo de edad y multiplicar el resultado por 100."],
-            "formula": ["NIR_{n}^{t}==\\frac{N_{a,n}^t\\times 100}{P_{a,n}^t}"],
+            "formula": ["{NIR_{n}}^{t}=\\frac{N_{a,n}^t\\times 100}{P_{a,n}^t}"],
             "periodicity": "Anual",
             "formulaExplanation": [
-              "NIR_{n}^t",
+              "{NIR_{n}}^{t}",
               "N_{a,n}^t",
               "P_{a,n}^t",
               "n"
