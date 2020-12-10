@@ -4,6 +4,7 @@ import {
 import DataTable from 'react-data-table-component';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import isEmpty from 'lodash/isEmpty';
 import { withTranslation } from '../../i18n';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import { charDataFormatHelper, dataFormatter } from './helpers/ChartDataHelper';
@@ -66,6 +67,13 @@ const WealthQuintileChart = ({
 
   const showContent = () => {
     if (chartType === DisplayTypes.CHART) {
+      if (isEmpty(historicalData)) {
+        return (
+          <div>
+            {t('charts:emptyData')}
+          </div>
+        );
+      }
       return (
         <BarChart
           data={datasource}

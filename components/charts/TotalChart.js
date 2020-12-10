@@ -4,6 +4,7 @@ import {
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import DataTable from 'react-data-table-component';
+import isEmpty from 'lodash/isEmpty';
 import { ChartMetrics, DisplayTypes } from './types/ChartTypes';
 import ChartControls from './controls/ChartControls';
 import { withTranslation } from '../../i18n';
@@ -40,6 +41,13 @@ const TotalChart = ({
 
   const showContent = () => {
     if (chartType === DisplayTypes.CHART) {
+      if (isEmpty(historicalData)) {
+        return (
+          <div>
+            {t('charts:emptyData')}
+          </div>
+        );
+      }
       return (
         <BarChart
           data={datasource}
