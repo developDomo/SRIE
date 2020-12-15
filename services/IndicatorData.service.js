@@ -255,7 +255,12 @@ export default {
   },
   getCompulsoryEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'COMP_EDU', unit_measure: 'YR', ref_area: country },
+      {
+        stat_unit: 'COMP_EDU',
+        unit_measure: 'YR',
+        ref_area: country,
+        edu_level: 'L02T3',
+      },
       {
         fields,
         order,
@@ -271,6 +276,9 @@ export default {
         unit_measure: 'PT',
         ref_area: country,
         age: 'Y_GE15',
+        sex: '_T',
+        wealth_quintile: '_Z',
+        location: '_T',
       },
       {
         fields,
