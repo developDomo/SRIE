@@ -43,21 +43,33 @@ const Country = ({
 
   const freeEducationValue = free_edu?.obs_value || 0;
   const mandatoryEducationValue = comp_edu?.obs_value || 0;
+  const educationYearsYear = free_edu?.time_period || comp_edu?.time_period || '?';
 
   const alphabetizationRateValue = literacy_rate?.obs_value || 0;
+  const alphabetizationRateYear = literacy_rate?.time_period || '?';
 
   const governmentExpenditurePreschoolValue = governmentExpenditure?.L02?.obs_value || 0;
   const governmentExpenditurePrimaryValue = governmentExpenditure?.L1?.obs_value || 0;
   const governmentExpenditureHighSchoolValue = governmentExpenditure?.L2_3?.obs_value || 0;
+  const governmentExpenditureYear = governmentExpenditure?.L02?.time_period
+                                    || governmentExpenditure?.L02?.time_period
+                                    || governmentExpenditure?.L02?.time_period
+                                    || '?';
 
   const tuitionFeePreschoolValue = enrollmentData?.L02?.obs_value || 0;
   const tuitionFeePrimaryValue = enrollmentData?.L1?.obs_value || 0;
   const tuitionFeeHighSchoolValue = enrollmentData?.L2_3?.obs_value || 0;
+  const tuitionYear = enrollmentData?.L02?.time_period
+                      || enrollmentData?.L1?.time_period
+                      || enrollmentData?.L2_3?.time_period
+                      || '?';
 
   const completionRatePrimaryValue = completionRateData?.L1?.obs_value || 0;
   const completionRateHighSchoolValue = completionRateData?.L3?.obs_value || 0;
+  const completionRateYear = completionRateData?.L1?.time_period || completionRateData?.L1?.time_period || '?';
 
   const girlsBoysAndAdolescentsOutsideOfSchoolValue = out_of_school_rate?.obs_value || 0;
+  const outsideOfSchoolYear = out_of_school_rate?.time_period || '?';
 
   const percentFormat = (data) => `${parseFloat(data).toFixed(2)}%`;
 
@@ -116,6 +128,7 @@ const Country = ({
               title={t('numberOfYears')}
               color="blue"
               containers={educationValues}
+              year={educationYearsYear}
             />
           </div>
           <div className="col-lg-4 mb-4">
@@ -124,6 +137,7 @@ const Country = ({
               title={t('alphabetizationRate')}
               subtitle={percentFormat(alphabetizationRateValue)}
               color="green"
+              year={alphabetizationRateYear}
             />
           </div>
 
@@ -133,6 +147,7 @@ const Country = ({
               title={t('governmentExpenditurePerStudentPerYear')}
               color="orange"
               containers={governmentExpenditureValues}
+              year={governmentExpenditureYear}
             />
           </div>
 
@@ -140,6 +155,7 @@ const Country = ({
             <BoxIndicador
               title={t('tuitionFeesByLevel')}
               containers={tuitionFeeValues}
+              year={tuitionYear}
             />
           </div>
 
@@ -147,6 +163,7 @@ const Country = ({
             <BoxIndicador
               title={t('completionRateByLevel')}
               containers={completionRateValues}
+              year={completionRateYear}
             />
           </div>
           <div className="col-lg-4">
@@ -155,6 +172,7 @@ const Country = ({
               title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
               subtitle={percentFormat(girlsBoysAndAdolescentsOutsideOfSchoolValue)}
               color="light_blue"
+              year={outsideOfSchoolYear}
             />
           </div>
         </Row>

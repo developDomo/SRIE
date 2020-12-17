@@ -97,6 +97,9 @@
   "actionsDone": "Actions done",
   "noData": "No data available",
   "goBack": "Back",
-  "downloadIndicatorMetadata": "Download metadata for this indicator"
+  "downloadIndicatorMetadata": "Download metadata for this indicator",
+  "dashboard": {
+    "data": "Data"
+  }
 
 }

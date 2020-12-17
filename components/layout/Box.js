@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from '../../i18n';
 import {
   gray1,
   blue,
@@ -52,9 +53,9 @@ const ContainerStyled = styled.div`
   flex-wrap: wrap;
   text-align: center;
   background-color: ${gray1};
-  padding: 30px 20px;
+  padding: 20px 20px 10px;
   width: 100%;
-  height: 250px;
+  height: 275px;
 `;
 
 const ContainerIndicadorStyled = styled.div`
@@ -63,9 +64,9 @@ const ContainerIndicadorStyled = styled.div`
   flex-wrap: wrap;
   text-align: center;
   background-color: ${gray1};
-  padding: 10px 11px;
+  padding: 20px 20px 10px;
   width: 100%;
-  height: 250px;
+  height: 275px;
 `;
 
 const TextContainer = styled.div`
@@ -139,6 +140,12 @@ const IndicadorContainer = styled.div`
   }
 `;
 
+const IndicatorYear = styled.span`
+  width: 100%;
+  font-size: 12px;
+  align-self: flex-end;
+`;
+
 const getIcon = (iconImg, icon, color) => (iconImg ? (
   <IconImgStyled src={iconImg} alt="icon" />
 ) : (
@@ -152,7 +159,9 @@ export const Box = ({
   subtitle,
   containers,
   color,
+  year,
 }) => {
+  const [t] = useTranslation();
   if (containers && containers.length > 0) {
     return (
       <>
@@ -172,6 +181,9 @@ export const Box = ({
               <p>{container.title}</p>
             </IndicadorContainer>
           ))}
+          <IndicatorYear>
+            {`(${t('common:dashboard.data')}: ${year})`}
+          </IndicatorYear>
         </ContainerIndicadorStyled>
       </>
     );
@@ -183,21 +195,29 @@ export const Box = ({
         <Title>{title}</Title>
         <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
       </TextContainer>
+      <IndicatorYear>
+        {`(${t('common:dashboard.data')}: ${year})`}
+      </IndicatorYear>
     </ContainerStyled>
   );
 };
 
 export const BoxIndicador = ({
-  title, containers,
-}) => (
-  <ContainerIndicadorStyled>
-    <Title>{title}</Title>
-    {containers.map((container) => (
-      <IndicadorContainer color={container.color}>
-        <h3>{container.value}</h3>
-        <p>{container.title}</p>
-      </IndicadorContainer>
-    ))}
-
-  </ContainerIndicadorStyled>
-);
+  title, containers, year,
+}) => {
+  const [t] = useTranslation();
+  return (
+    <ContainerIndicadorStyled>
+      <Title>{title}</Title>
+      {containers.map((container) => (
+        <IndicadorContainer color={container.color}>
+          <h3>{container.value}</h3>
+          <p>{container.title}</p>
+        </IndicadorContainer>
+      ))}
+      <IndicatorYear>
+        {`(${t('common:dashboard.data')}: ${year})`}
+      </IndicatorYear>
+    </ContainerIndicadorStyled>
+  );
+};
