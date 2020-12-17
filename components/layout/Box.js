@@ -52,9 +52,9 @@ const ContainerStyled = styled.div`
   flex-wrap: wrap;
   text-align: center;
   background-color: ${gray1};
-  padding: 30px 20px;
+  padding: 20px 20px 10px;
   width: 100%;
-  height: 250px;
+  height: 275px;
 `;
 
 const ContainerIndicadorStyled = styled.div`
@@ -63,9 +63,9 @@ const ContainerIndicadorStyled = styled.div`
   flex-wrap: wrap;
   text-align: center;
   background-color: ${gray1};
-  padding: 10px 11px;
+  padding: 20px 20px 10px;
   width: 100%;
-  height: 250px;
+  height: 275px;
 `;
 
 const TextContainer = styled.div`
@@ -139,6 +139,12 @@ const IndicadorContainer = styled.div`
   }
 `;
 
+const IndicatorYear = styled.span`
+  width: 100%;
+  font-size: 12px;
+  align-self: flex-end;
+`;
+
 const getIcon = (iconImg, icon, color) => (iconImg ? (
   <IconImgStyled src={iconImg} alt="icon" />
 ) : (
@@ -152,6 +158,7 @@ export const Box = ({
   subtitle,
   containers,
   color,
+  year,
 }) => {
   if (containers && containers.length > 0) {
     return (
@@ -172,6 +179,12 @@ export const Box = ({
               <p>{container.title}</p>
             </IndicadorContainer>
           ))}
+          <IndicatorYear>
+            (Dato:
+            {' '}
+            {year}
+            )
+          </IndicatorYear>
         </ContainerIndicadorStyled>
       </>
     );
@@ -183,12 +196,18 @@ export const Box = ({
         <Title>{title}</Title>
         <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
       </TextContainer>
+      <IndicatorYear>
+        (Dato:
+        {' '}
+        {year}
+        )
+      </IndicatorYear>
     </ContainerStyled>
   );
 };
 
 export const BoxIndicador = ({
-  title, containers,
+  title, containers, year,
 }) => (
   <ContainerIndicadorStyled>
     <Title>{title}</Title>
@@ -198,6 +217,11 @@ export const BoxIndicador = ({
         <p>{container.title}</p>
       </IndicadorContainer>
     ))}
-
+    <IndicatorYear>
+      (Dato:
+      {' '}
+      {year}
+      )
+    </IndicatorYear>
   </ContainerIndicadorStyled>
 );
