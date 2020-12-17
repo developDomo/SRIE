@@ -97,5 +97,8 @@
   "actionsDone": "Acciones realizadas",
   "noData": "No hay datos disponibles",
   "goBack": "Regresar",
-  "downloadIndicatorMetadata": "Descargar metadatos de este indicador"
+  "downloadIndicatorMetadata": "Descargar metadatos de este indicador",
+  "dashboard": {
+    "data": "Dato"
+  }
 }

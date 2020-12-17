@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from '../../i18n';
 import {
   gray1,
   blue,
@@ -160,6 +161,7 @@ export const Box = ({
   color,
   year,
 }) => {
+  const [t] = useTranslation();
   if (containers && containers.length > 0) {
     return (
       <>
@@ -180,10 +182,7 @@ export const Box = ({
             </IndicadorContainer>
           ))}
           <IndicatorYear>
-            (Dato:
-            {' '}
-            {year}
-            )
+            {`(${t('common:dashboard.data')}: ${year})`}
           </IndicatorYear>
         </ContainerIndicadorStyled>
       </>
@@ -197,10 +196,7 @@ export const Box = ({
         <ColorSubtitle color={color}>{subtitle}</ColorSubtitle>
       </TextContainer>
       <IndicatorYear>
-        (Dato:
-        {' '}
-        {year}
-        )
+        {`(${t('common:dashboard.data')}: ${year})`}
       </IndicatorYear>
     </ContainerStyled>
   );
@@ -208,20 +204,20 @@ export const Box = ({
 
 export const BoxIndicador = ({
   title, containers, year,
-}) => (
-  <ContainerIndicadorStyled>
-    <Title>{title}</Title>
-    {containers.map((container) => (
-      <IndicadorContainer color={container.color}>
-        <h3>{container.value}</h3>
-        <p>{container.title}</p>
-      </IndicadorContainer>
-    ))}
-    <IndicatorYear>
-      (Dato:
-      {' '}
-      {year}
-      )
-    </IndicatorYear>
-  </ContainerIndicadorStyled>
-);
+}) => {
+  const [t] = useTranslation();
+  return (
+    <ContainerIndicadorStyled>
+      <Title>{title}</Title>
+      {containers.map((container) => (
+        <IndicadorContainer color={container.color}>
+          <h3>{container.value}</h3>
+          <p>{container.title}</p>
+        </IndicadorContainer>
+      ))}
+      <IndicatorYear>
+        {`(${t('common:dashboard.data')}: ${year})`}
+      </IndicatorYear>
+    </ContainerIndicadorStyled>
+  );
+};
