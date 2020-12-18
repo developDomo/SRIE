@@ -76,6 +76,9 @@ export default css.global`
   .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus{
     box-shadow: none;
   }
+  .dropdown-item:focus, .dropdown-item:hover, .dropdown-item.active, .dropdown-item:active{
+    color:white;
+  }
   
   @media (max-width: 576px) { 
     .country-selector{
