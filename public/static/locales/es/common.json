@@ -50,14 +50,14 @@
   },
   "goal": {
     "all": "Todos",
-    "22": "2.2 Enseñanza primaria y secundaria inicial, gratuita, equitativa y de calidad",
-    "31": "3.1 Enseñanza secundaria completa, gratuita, equitativa y de calidad",
-    "32": "3.2 Acceso a formación técnica profesional en condiciones de igualdad para hombres y mujeres",
-    "33": "3.3 Competencias de lectura, escritura y aritmética en jóvenes y adultos",
-    "34": "3.4 Competencias técnicas y profesionales, para acceder al empleo, el trabajo decente y el emprendimiento",
-    "41": "4.1 Acceso en condiciones de igualdad a la enseñanza y la formación profesional, para poblaciones vulnerables",
-    "51": "5.1 Calidad en el desempeño de docentes actualizados profesionalmente",
-    "61": "6.1 Políticas educativas que promuevan educación para el desarrollo sostenible, estilos de vida sostenibles, derechos humanos, igualdad, cultura de paz, ciudadanía mundial y diversidad cultural"
+    "2-2": "2.2 Enseñanza primaria y secundaria inicial, gratuita, equitativa y de calidad",
+    "3-1": "3.1 Enseñanza secundaria completa, gratuita, equitativa y de calidad",
+    "3-2": "3.2 Acceso a formación técnica profesional en condiciones de igualdad para hombres y mujeres",
+    "3-3": "3.3 Competencias de lectura, escritura y aritmética en jóvenes y adultos",
+    "3-4": "3.4 Competencias técnicas y profesionales, para acceder al empleo, el trabajo decente y el emprendimiento",
+    "4-1": "4.1 Acceso en condiciones de igualdad a la enseñanza y la formación profesional, para poblaciones vulnerables",
+    "5-1": "5.1 Calidad en el desempeño de docentes actualizados profesionalmente",
+    "6-1": "6.1 Políticas educativas que promuevan educación para el desarrollo sostenible, estilos de vida sostenibles, derechos humanos, igualdad, cultura de paz, ciudadanía mundial y diversidad cultural"
   },
   "educationalIndicators": "Indicadores educativos",
   "pec": "PEC",

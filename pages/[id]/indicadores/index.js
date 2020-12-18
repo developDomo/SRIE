@@ -135,7 +135,7 @@ const IndicatorListPage = ({
                     <option key="goal-default" value={0}>{t('common:goal.all')}</option>
                     {pecGoals.map((goal) => (
                       <option key={`goal-${goal.id}`} value={goal.id}>
-                        {t(`common:goal.${goal.code.replace(/[. ,:-]+/g, '')}`)}
+                        {t(`common:goal.${goal.translation_key}`)}
                       </option>
                     ))}
                   </select>
