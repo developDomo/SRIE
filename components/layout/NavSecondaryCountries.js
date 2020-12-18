@@ -13,6 +13,9 @@ const NavLabel = styled.p`
   margin: 0;
   text-align:right;
   font-family: 'Roboto Slab', serif;
+  @media (max-width: 768px) {
+    text-align:center;
+  }
 `;
 
 const NavSecondaryCountries = ({ t, countries, countryCode }) => (
@@ -20,15 +23,19 @@ const NavSecondaryCountries = ({ t, countries, countryCode }) => (
     <div className="box_linkC">
       <Container>
         <Row>
-          <Col sm={5}>
+          <Col xs={12} sm={4} md={5}>
             <NavLabel>
               {t('selectAnotherCountryThatYouWantToConsult')}
             </NavLabel>
           </Col>
-          <Col sm={7} className="d-flex">
-            {countries.map((country) => (
-              <NavSecondaryCountry key={country.code} country={country} selected={countryCode} />
-            ))}
+          <Col xs={12} md={7} className="d-sm-flex d-inline-flex">
+            <Container fluid>
+              <Row>
+                {countries.map((country) => (
+                  <NavSecondaryCountry key={country.code} country={country} selected={countryCode} />
+                ))}
+              </Row>
+            </Container>
           </Col>
         </Row>
       </Container>
