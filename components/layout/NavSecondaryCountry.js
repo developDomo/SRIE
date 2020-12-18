@@ -1,8 +1,18 @@
 import Link from 'next/link';
+import { Col } from 'react-bootstrap';
+import styled from 'styled-components';
+
 import { withTranslation } from '../../i18n';
 
+const CountryItem = styled(Col)`
+  padding:0;
+  @media (max-width: 768px) {
+    padding-bottom: 15px;
+  }
+`;
+
 const NavSecondaryCountry = ({ t, country, selected }) => (
-  <div>
+  <CountryItem xs={4} lg={1} className="d-flex justify-content-center">
     <Link href="/[id]" as={`/${country.short_name}`} key={country.short_name}>
       <a
         title={t(`countries.${country.code}`)}
@@ -14,14 +24,12 @@ const NavSecondaryCountry = ({ t, country, selected }) => (
     </Link>
     <style jsx>
       {`
-
         a.country-link {
             font-size: 0;
             width: 45px;
             display: block;
             height: 45px;
             background-size: 100%;
-            margin: 0 5px;
             border-radius: 50%;
             border: 2px solid white;
             transition: 0.2s;
@@ -41,7 +49,7 @@ const NavSecondaryCountry = ({ t, country, selected }) => (
             `}
 
     </style>
-  </div>
+  </CountryItem>
 );
 
 export default withTranslation('countries')(NavSecondaryCountry);
