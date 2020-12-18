@@ -244,7 +244,12 @@ export default {
 
   getFreeEducationYearsByCountry: async (country) => {
     const data = await db.sdg4.findOne(
-      { stat_unit: 'FREE_EDU', unit_measure: 'YR', ref_area: country },
+      {
+        stat_unit: 'FREE_EDU',
+        unit_measure: 'YR',
+        ref_area: country,
+        edu_level: 'L02T3',
+      },
       {
         fields,
         order,
