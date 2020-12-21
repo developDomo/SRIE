@@ -57,10 +57,11 @@ const IndexesChart = ({
       if (isEmpty(data.indexes[indexes]?.historical)) {
         return (
           <div>
-            no hay datos
+            No hay datos
           </div>
         );
       }
+
       return (
         <BarChart
           data={chartMetrics === ChartMetrics.LAST_YEAR
@@ -73,10 +74,10 @@ const IndexesChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
+          <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" unit={t(`units.${unitMeasure}`)} barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
         </BarChart>
       );
     }

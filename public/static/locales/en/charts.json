@@ -23,7 +23,8 @@
   "units": {
     "PT": "%",
     "YR": "Years",
-    "PPP_CONST": "constant $"
+    "PPP_CONST": "constant $",
+    "PP": "Proportion"
   },
   "source": "Source",
   "indexesLabel": {
@@ -39,6 +40,7 @@
     "PT": "Percentage",
     "YR": "Years",
     "PPP_CONST": "Constant Dollars",
-    "PER": "?"
+    "PER": "?",
+    "PP": "Proportion"
   }
 }

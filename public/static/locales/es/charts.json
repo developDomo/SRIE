@@ -24,7 +24,8 @@
     "PT": "%",
     "YR": "Años",
     "PPP_CONST": "$ constantes",
-    "PER": "?"
+    "PER": "?",
+    "PP": "Proporción"
   },
   "source": "Fuente",
   "indexesLabel": {
@@ -40,6 +41,7 @@
     "PT": "Porcentaje",
     "YR": "Años",
     "PPP_CONST": "Dólares Constantes",
-    "PER": "?"
+    "PER": "?",
+    "PP": "Proporción"
   }
 }
