@@ -35,8 +35,10 @@ const Divider = styled.span`
   margin-top: 20px;
 `;
 
-const CountryTitle = ({ t, country, active }) => (
-  <Container className="p-0">
+const CountryTitle = ({
+  t, country, active, share,
+}) => (
+  <Container className="p-0" fluid={share}>
     <Row className="d-flex justify-content-between m-0 w-100">
       <div className="col-lg-6 p-0">
         <TitleContainer>
@@ -50,14 +52,14 @@ const CountryTitle = ({ t, country, active }) => (
         <Row className="col-lg-6 d-flex justify-content-end p-0 m-0">
           <div className="col-lg-3 pr-0">
             <Link href="/[id]" as={`/${country.short_name}`}>
-              <ButtonNav color="yellow" active={active === 'country-data'}>
+              <ButtonNav color="yellow" active={active === 'country-data'} hidden={share}>
                 {t('navigation.pages.country-data')}
               </ButtonNav>
             </Link>
           </div>
           <div className="col-lg-5 pr-0 m-0">
             <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
-              <ButtonNav color="blue" active={active === 'indicators'}>{t('navigation.pages.indicators')}</ButtonNav>
+              <ButtonNav color="blue" active={active === 'indicators'} hidden={share}>{t('navigation.pages.indicators')}</ButtonNav>
             </Link>
           </div>
         </Row>
