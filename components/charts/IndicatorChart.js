@@ -454,10 +454,11 @@ const IndicatorChart = ({
   };
 
   const showIndexesTab = () => {
+    const scale = t(`indicators:indicators.${indicator}.scale`);
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
         <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
+          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale || 20} />
         </Tab>
       );
     }

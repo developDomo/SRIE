@@ -31,13 +31,12 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
-
   const columns = [
     {
       name: t('year'),
@@ -74,7 +73,7 @@ const IndexesChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
+          <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, domain]} />
           <Tooltip />
           <Legend />
           <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
@@ -109,7 +108,7 @@ const IndexesChart = ({
 };
 
 IndexesChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => (
   {
     t,
@@ -119,6 +118,7 @@ IndexesChart.getInitialProps = ({
     namespacesRequired: ['charts'],
     defaultChartMetrics,
     share,
+    domain,
   }
 );
 
