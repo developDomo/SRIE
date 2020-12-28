@@ -177,6 +177,15 @@ const Country = ({
             />
           </div>
         </Row>
+        <Row className="mb-5">
+          <div className="col-lg-12 d-flex justify-content-end">
+            <ButtonNavIndicadores color="blue">
+              <a href={`/indicators/${country.code}/dashboard/${country.code}.pdf`} download>
+                { t('dashboard.download') }
+              </a>
+            </ButtonNavIndicadores>
+          </div>
+        </Row>
       </Container>
       {/*
       Descomentar para volver activar el banner
