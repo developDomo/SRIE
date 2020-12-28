@@ -23,7 +23,7 @@
   "units": {
     "PT": "%",
     "YR": "Años",
-    "PPP_CONST": "$ constantes",
+    "PPP_CONST": " $ constantes",
     "PER": "?",
     "PP": "Proporción"
   },
