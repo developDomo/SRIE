@@ -107,6 +107,7 @@
   "goBack": "Regresar",
   "downloadIndicatorMetadata": "Descargar metadatos de este indicador",
   "dashboard": {
-    "data": "Dato"
+    "data": "Dato",
+    "download": "Descargar Dashboard (PDF)"
   }
 }
