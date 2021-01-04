@@ -37,7 +37,6 @@ const IndexesChart = ({
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
-
   const columns = [
     {
       name: t('year'),
@@ -57,7 +56,7 @@ const IndexesChart = ({
       if (isEmpty(data.indexes[indexes]?.historical)) {
         return (
           <div>
-            No hay datos
+            {t('charts:emptyData')}
           </div>
         );
       }

@@ -18,6 +18,7 @@ import {
 
 } from 'react-share';
 import { isEmpty } from 'lodash';
+import { instanceOf } from 'prop-types';
 import { withTranslation } from '../../i18n';
 import { DisplayTypes, ChartTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
@@ -392,7 +393,7 @@ const IndicatorChart = ({
   const [activeTab, setActiveTab] = useState(tabsToShow[tabNumber - 1 || 0]);
   const handleInfoModalClose = () => setInfoModalShow(false);
   const handleInfoModalShow = () => setInfoModalShow(true);
-
+  const scale = t(`indicators:indicators.${indicator}.scale`);
   useEffect(() => {
     setAbsolutePat(window.location.href);
   });
@@ -405,7 +406,14 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.total)}
           title={<TapTitle iconUrl="/img/home/ico-total.svg">{t('total')}</TapTitle>}
         >
-          <TotalChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} defaultChartMetrics={defaultChartMetrics} share={share} />
+          <TotalChart
+            data={chartData}
+            chartType={chartType}
+            unitMeasure={unitMeasure}
+            defaultChartMetrics={defaultChartMetrics}
+            share={share}
+            domain={scale}
+          />
         </Tab>
       );
     }
@@ -420,7 +428,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
+          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
         </Tab>
       );
     }
@@ -433,7 +441,7 @@ const IndicatorChart = ({
         && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
+          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
         </Tab>
       );
     }
@@ -446,7 +454,7 @@ const IndicatorChart = ({
         && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
+          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
         </Tab>
       );
     }

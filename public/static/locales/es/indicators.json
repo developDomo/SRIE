@@ -4,7 +4,8 @@
     "copyright": "<a target='_blank' href='https://www.google.com/url?q=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES'>Reconocimiento-NoComercial-Compartir Igual 4.0 Internacional</a>",
     "indicators": {
         "1": {
-          "name": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo", 
+          "scale": 100,
+          "name": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo",
           "metadata": {
             "title": "Proporción de niños menores de 5 años cuyo desarrollo se encuentra bien encauzado en cuanto a la salud, el aprendizaje y el bienestar psicosocial, desglosado por sexo",
             "purpose": ["Este indicador es una medida amplia sobre el desarrollo de los niños y su preparación para comenzar la escuela. Los datos disponibles para un seguimiento internacional son relevados a nivel individual mediante la encuesta MICS, son informados por las madres/cuidadores."],
@@ -31,6 +32,7 @@
           }
         },
         "2": {
+          "scale": 100,
           "name": "Tasa de participación en la enseñanza organizada un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
           "metadata": {
             "title": "Tasa de participación en la enseñanza organiza da un año antes de la edad oficial de ingreso en la educación primaria, desglosada por sexo",
@@ -55,6 +57,7 @@
           }
         },
         "3": {
+          "scale": 100,
           "name": "Tasa Neta de Cobertura de los Programas de Desarrollo Educacional de la Primera Infancia (CINE 01)",
           "metadata": {
             "title": "Tasa Neta de Cobertura de los Programas de Desarrollo Educacional de la Primera Infancia (CINE 01)",
@@ -76,9 +79,10 @@
             "interpretation": ["Una elevada tasa neta de cobertura es indicativa de una buena cobertura de la población en estas edades. Su valor teórico máximo es 100%. Un aumento en el porcentaje refleja un progresivo mejoramiento de la cobertura de los Programas de Desarrollo de la Primera Infancia. Si el valor de la tasa neta de cobertura es inferior al 100%, su complemento, es decir, la diferencia entre éste y 100, entrega una medición de la proporción de niños y niñas no matriculados en estas ofertas."],
             "datasourceType": ["Encuestas de hogar de los países."],
             "limitationsAndComments": ["Se presentan en algunos países ciertas dificultades para poder alcanzar buena cobertura en la medición de las ofertas de primera infancia en algunos países, por la diversidad de rectorías que regulan esta oferta y la falta de criterios objetivos traducibles a datos sobre cómo reconocer aquellas específicamente educativas. La participación en programas de aprendizaje y desarrollo en edades tempranas no es, en todos los países, a tiempo completo para todos los niños, de modo que la exposición a los ambientes educativos por fuera del hogar puede variar en intensidad. Es necesario un desarrollo mayor para asegurar que la definición sobre programas educativos y/o de desarrollo de la primera infancia sea consistente a lo largo de diversas encuestas y esté definido en una manera que sea fácilmente comprensible por los respondientes, idealmente con información recolectada de manera complementaria en relación a la cantidad de tiempo que los niños pasan en esos programas."]
-          }    
+          }
         },
         "4": {
+          "scale": 100,
           "name": "Tasa Neta de Cobertura de los Programas de Educación Pre-Primaria (CINE 02)",
           "metadata": {
             "title": "Tasa Neta de Cobertura de los Programas de Educación Pre-Primaria (CINE 02)",
@@ -102,9 +106,10 @@
             "interpretation": ["Una elevada tasa neta de cobertura es indicativa de una buena cobertura de la población en estas edades. Su valor teórico máximo es 100%. Un aumento en el porcentaje refleja un progresivo mejoramiento de la cobertura de la Educación Pre-primaria. Si el valor de la tasa neta de cobertura es inferior al 100%, su complemento, es decir, la diferencia entre éste y 100, entrega una medición de la proporción de niños y niñas no matriculados en estas ofertas."],
             "datasourceType": ["Encuestas de hogar de los países"],
             "limitationsAndComments": ["Se presentan en algunos países ciertas dificultades para poder alcanzar buena cobertura en la medición de las ofertas de primera infancia en algunos países, por la diversidad de rectorías que regulan esta oferta y la falta de criterios objetivos traducibles a datos sobre cómo reconocer aquellas específicamente educativas. La participación en programas de aprendizaje y desarrollo en edades tempranas no es, en todos los países, a tiempo completo para todos los niños, de modo que la exposición a los ambientes educativos por fuera del hogar puede variar en intensidad. Es necesario un desarrollo mayor para asegurar que la definición sobre programas educativos sea consistente a lo largo de diversas encuestas y esté definido en una manera que sea fácilmente comprensible por los respondientes, idealmente con información recolectada de manera complementaria en relación a la cantidad de tiempo que los niños pasan en esos programas."]
-          }    
+          }
         },
         "5": {
+          "scale": 20,
           "name": "Número de años de educación preescolar (a) gratuita, (b) obligatoria garantizada en los marcos legales",
             "metadata": {
             "title": "Número de años de educación preescolar (a) gratuita, (b) obligatoria garantizada en los marcos legales",
@@ -125,8 +130,9 @@
             "datasourceType": ["Legislación nacional y normas y estándares de educación formal sobre el acceso a la educación y, en particular, el derecho legal o la obligación de asistir a la escuela; y datos administrativos de los ministerios de educación sobre la estructura del sistema educativo."],
             "limitationsAndComments": ["La existencia de una legislación nacional no garantiza que los países se aseguren de que se aplique de manera efectiva y que los padres de familia se aseguren que sus hijos se beneficien de la oferta disponible."]
             }
-        }, 
+        },
         "6": {
+          "scale": 100,
           "name": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo",
           "metadata": {
             "title": "Proporción de niños, niñas y adolescentes en los grados 2/3; han alcanzado al menos un nivel mínimo de competencia en i) lectura y; ii) matemática, desglosada por sexo",
@@ -150,9 +156,10 @@
             "interpretation": ["Los estudios ERCE definen que los estudiantes de 3er grado que obtienen en Lectura resultados por encima del Nivel I son aquellos que, en narraciones literarias, textos líricos, cartas, afiches noticias y textos instruccionales, muestran evidencia de ser capaces de: Localizar y relacionar información explícita (relaciones causales), repetida literalmente o mediante sinónimos, que se encuentra en el cuerpo de un texto, que debe ser distinguida de otras informaciones cercanas. Inferir información a partir de conexiones sugeridas por el texto (no necesariamente evidentes). Realizar relaciones que demuestran la comprensión del sentido global del texto (por ejemplo, distinguir el tema central), a partir de información explícita reconocida y reiterada en el texto. Reconocer el Descripción corta comunicativo de un texto no literario. Los estudiantes de 3er grado que obtienen resultados por encima del Nivel I en Matemática son aquellos que muestran evidencia de ser capaces de: Leer y escribir números naturales. Interpretar fracciones simples. Identificar unidades de medida o instrumentos más adecuados para medir atributos de un objeto conocido. Identificar posiciones relativas de objetos en mapas. Identificar elementos en figuras geométricas o representaciones planas de cuerpos geométricos. Extraer información entregada en tablas y gráficos"],
             "datasourceType": ["Estudio Regional Comparativo y Explicativo (ERCE). Laboratorio Latinoamericano de Evaluación de la Calidad de la Educación (OREALC/UNESCO)."],
             "limitationsAndComments": ["Siendo que los datos de muchas evaluaciones nacionales se encuentran actualmente disponibles, cada país define sus propios estándares, los que podrían no corresponder con los establecidos en el ERCE. Además, las evaluaciones son típicamente administradas dentro de los sistemas educativos, los indicadores disponibles cubren solamente a quienes están escolarizados y la proporción de la población objetivo podría variar de país en país. Extender las evaluaciones de competencias a niños y jóvenes que están fuera de la escuela requeriría encuestas de hogar."]
-          }    
+          }
         },
         "7": {
+          "scale": 100,
           "name": "Proporción de niños, niñas y adolescentes en los grados que al final de la educación primaria; han alcanzado al menos un nivel mínimo de competencia en i) lectura y ii) matemáticas, desglosada por sexo",
           "metadata": {
             "title": "Proporción de niños, niñas y adolescentes en los grados que al final de la educación primaria; han alcanzado al menos un nivel mínimo de competencia en i) lectura y ii) matemáticas, desglosada por sexo",
@@ -176,9 +183,10 @@
             "interpretation": ["Los estudios ERCE definen que los estudiantes de 6to grado que obtienen en Lectura resultados por encima del Nivel I son aquellos que, en narraciones literarias (predominantemente), cartas, notas, noticias y relatos, muestran evidencia de ser capaces de:","<ul><li>Localizar y relacionar información explícita (relaciones causales y de se­cuencia temporal), repetida literalmente o mediante sinónimos (parafra­seada), que se encuentra predominantemente en el cuerpo del texto y que es necesario distinguir de otras informaciones que compiten con ella.</li><li>Inferir información a partir de conexiones sugeridas por el texto y apoya­das en el conocimiento de mundo.</li><li>Inferir el significado de palabras familiares a partir de las claves que entrega el texto.</li><li>Realizar relaciones que demuestran la comprensión del sentido global del tex­to, como distinguir el tema central, idea principal y las características principales de personajes, a partir de información explícita e implícita de los textos.</li><li>Reconocer funciones de textos discontinuos presentes en diversos textos.</li><li>Reconocer emisor, destinatario y Descripción corta comunicativo en diversos textos.</li><li>Relacionar dos textos, según sus características y la información que am­bos entregan.</li><li>Reemplazar conectores según su sentido en el texto.</li></ul>Los estudiantes de 6to grado que obtienen resultados por encima del Nivel I en Matemática son aquellos que muestran evidencia de ser capaces de:<ul><li>Resolver problemas simples que involucran números naturales, números decimales y fracciones y variaciones proporcionales.</li><li>Relacionar distintas vistas espaciales.</li><li>Determinar términos faltantes o continuar secuencias gráficas o numé­ricas.</li><li>Identificar ángulos agudos, rectos y obtusos, y resolver problemas sim­ples que involucran ángulos.</li><li>Determinar medidas de longitud o masa de objetos, mediante instrumen­tos graduados.</li><li>Calcular perímetros y áreas de polígonos.</li></ul>"],
             "datasourceType": ["Estudio Regional Comparativo y Explicativo (ERCE). Laboratorio Latinoamericano de Evaluación de la Calidad de la Educación (OREALC/UNESCO)."],
             "limitationsAndComments": ["Siendo que los datos de muchas evaluaciones nacionales se encuentran actualmente disponibles, cada país define sus propios estándares, los que podrían no corresponder con los establecidos en el ERCE. Además, las evaluaciones son típicamente administradas dentro de los sistemas educativos, los indicadores disponibles cubren solamente a quienes están escolarizados y la proporción de la población objetivo podría variar de país en país. Extender las evaluaciones de competencias a niños y jóvenes que están fuera de la escuela requeriría encuestas de hogar."]
-          }    
+          }
         },
         "8": {
+          "scale": 100,
           "name": "Tasa neta de ingreso a primaria, secundaria baja y secundaria alta",
           "metadata": {
             "title": "Tasa neta de ingreso a primaria, secundaria baja y secundaria alta",
@@ -202,9 +210,10 @@
             "interpretation": ["Una elevada Tasa Neta de Ingreso denota en forma conjunta un alto grado de cobertura para la población en edad escolar oficial, y particularmente para el nivel secundario, un tránsito oportuno por el nivel educativo previo. El valor máximo teórico es 100%. Se puede considerar que las tendencias crecientes reflejan una mejor cobertura en el nivel de educación especificado. Cuando se compara la Tasa Neta de Ingreso con la Tasa Bruta, la diferencia entre las dos destaca la incidencia de la inscripción de menores de edad y mayores de edad."],
             "datasourceType": ["Datos administrativos de los Ministerios de Educación sobre matrícula por año de edad simple, censos de población y encuestas para estimaciones de población por edad simple (en caso de utilizar datos administrativos sobre matrícula)."],
             "limitationsAndComments": ["La comparación entre países puede verse afectada por variaciones en la duración de los niveles educativos en cantidad de años. Con respecto a la educación primaria y secundaria, pueden surgir dificultades al calcular una Tasa Neta de Ingreso que se aproxime al 100% si: (i) La fecha de referencia para ingresar a cada nivel educativo no coincide con las fechas de nacimiento de toda la cohorte elegible para inscribirse en este nivel de educación; (ii) Una parte significativa de la población comienza el nivel educativo antes de la edad prescrita y, en consecuencia, termina antes. Aunque la Tasa Neta de Ingreso no puede exceder el 100%, se han obtenido valores superiores que reflejan inconsistencias en los datos de inscripción y / o población."]
-          }    
-        },  
+          }
+        },
         "9": {
+          "scale": 100,
           "name": "Tasa bruta de ingreso al último grado (primaria y educación secundaria baja)",
           "metadata": {
             "title": "Tasa bruta de ingreso al último grado (primaria y educación secundaria baja)",
@@ -228,9 +237,10 @@
             "interpretation": ["Valores altos en la tasa indican un alto grado del nivel de finalización de la educación primaria o secundaria básica."],
             "datasourceType": ["Datos administrativos de los Ministerios de Educación sobre matrícula y repetidores o nuevos ingresantes por grado; censos de población y encuestas para estimaciones de población por edad simple (en caso de utilizar datos administrativos sobre matrícula)."],
             "limitationsAndComments": ["La comparación entre países puede verse afectada por variaciones en la duración de los niveles educativos en cantidad de años. Se trata de una medida bruta y por ello puede exceder el 100% si existen grandes cantidades de estudiantes que ingresaron precozmente o de manera tardía y/o han repetido grados previos del nivel primario.Comparado a la tasa de finalización, la tasa bruta de ingreso al último grado no indica cuántos niños completan el grado, sólo cuántos niños ingresan al mismo. Si los estudiantes del último grado dejan la escuela antes de completar el nivel, la tasa bruta de ingreso al último grado sobreestima la finalización de la educación primaria. El hecho de que la tasa bruta de ingreso pueda exceder 100% también dificulta la interpretación respecto de la tasa de conclusión."]
-          }        
+          }
         },
         "10": {
+          "scale": 100,
           "name": "Tasa de finalización (primaria, educación secundaria baja y educación secundaria alta)",
           "metadata": {
             "title": "Tasa de finalización (primaria, educación secundaria baja y educación secundaria alta)",
@@ -254,9 +264,10 @@
             "interpretation": ["Una tasa de finalización cercana al 100% indica que todos o la mayoría de los niños y adolescentes han completado un nivel de educación dado en el momento en que son 3 a 5 años mayores que la edad oficial de ingreso en el último grado de ese nivel de educación.Una tasa de finalización baja indica un ingreso bajo o retrasado en un determinado nivel de educación, alta deserción escolar, alta repetición, finalización tardía o una combinación de estos factores.Para identificar las causas de las bajas tasas de finalización es necesario examinar otros indicadores, por ejemplo, la tasa de niños no escolarizados, la tasa bruta de ingreso al último grado y el porcentaje de niños con sobreedad.Cuando se desagrega por sexo, zona geográfica y otras características, este indicador puede identificar grupos poblacionales específicos que están excluidos de la educación."],
             "datasourceType": ["Los datos pueden obtenerse de censos de población y encuestas de hogares que recopilen datos sobre el nivel más alto de educación completado por los niños y los jóvenes en un hogar, por medio de una autodeclaración o de una declaración de otro miembro del hogar. En el primer caso, cada miembro del hogar por encima de una cierta edad reporta su propio nivel de logro educativo. En el último caso, una persona, habitualmente el jefe del hogar u otra persona de referencia, indica el grado más alto y/o nivel de educación completado de cada miembro del hogar. También se necesitan datos administrativos de los Ministerios de Educación sobre la estructura del sistema educativo (edades de ingreso y duraciones).Los censos de población también pueden ser una fuente de datos de logro educativo, pero se realizan con menos frecuencia que las encuestas de hogares, a menudo sólo una vez por década."],
             "limitationsAndComments": ["Los datos nacionales sobre el nivel de instrucción son habitualmente relevados e informados en referencia al sistema educativo nacional. La correspondencia entre las categorías de niveles educativos y el CINE, necesaria para el cálculo de la tasa de conclusión, no siempre es sencilla de construir, y puede causar discrepancias entre medidas en los datos nacionales e internacionales. El relevamiento de datos y correspondencia con el CINE son más difíciles en el caso de la secundaria alta respecto de la secundaria baja, debido a la variedad de servicios y programas educativos para el nivel de secundaria alta."]
-          }    
+          }
         },
         "11": {
+          "scale": 20,
           "name": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
           "metadata": {
             "title": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
@@ -280,9 +291,10 @@
             "interpretation": ["A mayor número de niños y adolescentes fuera de la escuela, las mayores necesidades de focalizar en la mejora en el acceso a la educación. Algunos niños jamás han asistido o eventualmente se matricularán como ingresantes tardíos. Otros niños pudieron haberse matriculado en un inicio y luego abandonado la escuela antes de alcanzar la edad teórica para completar el nivel dado. Cuando se desagrega por sexo, área, y otras características, este indicador puede identificar a grupos de población excluida."],
             "datasourceType": ["Encuestas de hogar. Datos administrativos de los Ministerios de Educación sobre estructura del sistema educativo."],
             "limitationsAndComments": ["Los datos de encuestas de hogar donde las edades se informan al momento del relevamiento, y que son relevados cuando se encuentra ya avanzado el año escolar, pueden resultar en sobreestimaciones."]
-          }    
+          }
         },
         "12": {
+          "scale": 100,
           "name": "Porcentaje de niños, niñas y adolescentes que superan la edad para el grado (primaria y educación secundaria baja)",
           "metadata": {
             "title": "Porcentaje de niños, niñas y adolescentes que superan la edad para el grado (primaria y educación secundaria baja)",
@@ -316,9 +328,10 @@
             "interpretation": ["Un valor bajo de este indicador mostrará que la mayoría de los estudiantes comienzan la escuela a tiempo y progresan con bajos niveles de repetición de grado. La repetición excesiva y la progresión de estudiantes con más edad que la que requiere el grado deben ser desalentadas ya que ambas se asocian con bajos niveles de logro de aprendizaje de los estudiantes."],
             "datasourceType":["Datos administrativos de las escuelas sobre la inscripción por edad simple y grado; datos administrativos de los ministerios de educación sobre la estructura del sistema educativo."],
             "limitationsAndComments": ["Las inconsistencias entre la fecha de referencia para registro de la edad escolar y para establecer la edad de ingreso al nivel pueden dar lugar a estimaciones inexactas de este indicador."]
-          }    
+          }
         },
         "13": {
+          "scale": 20,
           "name": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
           "metadata": {
             "title": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
@@ -342,9 +355,10 @@
             "interpretation": ["Idealmente, la tasa de abandono escolar debería aproximarse a cero. Una alta tasa de abandono revela problemas de eficiencia interna del sistema educativo, expresado en la proporción de estudiantes que no logran sostener la permanencia durante un ciclo escolar. La comparación de tasas entre los distintos grados permite identificar aquellos que requieren mayor atención en términos de políticas."],
             "datasourceType": ["Registros, encuestas o censos escolares sobre matrícula y sobre condición normativa de finalización del ciclo escolar, por grado."],
             "limitationsAndComments": ["El indicador refleja un tipo particular de abandono, que es el que ocurre en el transcurso de un ciclo escolar, es decir, entre el primer y último día de clases. No considera a los estudiantes que abandonan entre la finalización de un ciclo escolar y el inicio de otro, por lo que su caracterización del problema es parcial. En ocasiones, estudiantes que abandonan durante el año vuelven a inscribirse en el ciclo escolar siguiente, por lo que este abandono puede ser temporal. El desarrollo que se manifiesta en la región en torno a la consolidación de sistemas nominales de registro de estudiantes permitiría construir indicadores más precisos de abandono escolar."]
-          }    
+          }
         },
         "14": {
+          "scale": 20,
           "name": "Porcentaje de niños, niñas y adolescentes que repiten el grado escolar en el nivel primario (CINE 1)",
           "metadata": {
             "title": "Porcentaje de niños, niñas y adolescentes que repiten el grado escolar en el nivel primario (CINE 1)",
@@ -368,9 +382,10 @@
             "interpretation": ["Idealmente, la tasa de repetición debería aproximarse a cero. Las altas tasas de repetición revelan problemas de eficacia interna del sistema educativo y posiblemente reflejen un nivel de instrucción deficiente. La comparación de patrones entre los diversos grados puede identificar aquellos que presentan un mayor nivel de repetición y requieren, por lo tanto, un estudio más riguroso sobre las causas subyacentes y sus posibles soluciones."],
             "datasourceType": ["Registros, encuestas o censos escolares sobre matrícula y repetidores por grado."],
             "limitationsAndComments": ["En algunos casos, las bajas tasas de repetición sólo reflejan la existencia de prácticas o políticas de promoción automática. En ocasiones, las autoridades de educación pueden limitar el nivel y número máximo de repetidores como estrategia para enfrentar problemas asociados con una capacidad limitada de matriculación en ciertos grados y mejorar simultáneamente la eficiencia interna del sistema, así como el flujo de alumnos. Este indicador debe interpretarse con cautela particularmente al momento de establecer comparaciones internacionales entre sistemas educativos."]
-          }    
+          }
         },
         "15": {
+          "scale": 20,
           "name": "Número de años de educación primaria y secundaria (a) gratuita, (b) obligatoria garantizada en los marcos legales",
           "metadata": {
             "title": "Número de años de educación primaria y secundaria (a) gratuita, (b) obligatoria garantizada en los marcos legales",
@@ -390,9 +405,10 @@
             "interpretation": ["La existencia de legislación nacional que garantice el derecho a la educación a determinadas edades y/o grados demuestra que el gobierno está comprometido con asegurar que los niños y jóvenes asistan a la escuela de manera regular. A mayor número de años garantizados, mayores probabilidades de que un niño o joven permanezca en la escuela por un período más extendido y tenga la oportunidad de adquirir las destrezas y competencias necesarias de cada nivel educativo."],
             "datasourceType": ["Legislación nacional, estándares educativos, normas sobre acceso a la escolaridad y, en particular, el derecho legal o la obligación de asistir a la escuela, y datos administrativos de los Ministerios de Educación sobre estructura del sistema educativo."],
             "limitationsAndComments": ["La existencia de legislación nacional no garantiza que los países aseguren que la misma sea efectivamente implementada y que los padres estén realmente asegurando que sus hijos se beneficien de este servicio disponible."]
-          }    
+          }
         },
         "16": {
+          "scale": 20,
           "name": "Tasa de participación de los jóvenes y adultos en la educación y capacitación formal y no formal, desglosada por sexo",
           "metadata": {
             "title": "Tasa de participación de los jóvenes y adultos en la educación y capacitación formal y no formal, desglosada por sexo",
@@ -416,9 +432,10 @@
             "interpretation": ["Un alto valor indica un alto nivel de participación de la población del grupo de edad correspondiente en programas de educación y formación formal y no formal."],
             "datasourceType": ["Datos de encuestas de hogar sobre matrícula en programas de educación y formación formal y no formal, por año de edad simple. Idealmente, podría incluir el detalle del tipo de programa de educación o formación."],
             "limitationsAndComments": ["Los programas de educación y formación formal y no formal pueden ser ofrecidos en una variedad de establecimientos, incluidas las escuelas y universidades, sitios de trabajo y otros, y pueden tener una variedad de duraciones. Las tasas de participación no captan la intensidad o calidad de la provisión ni los resultados de los programas en oferta. La mayoría de los países no cuenta con información suficiente para distinguir educación formal y no formal."]
-          }    
+          }
         },
         "17": {
+          "scale": 100,
           "name": "Tasa bruta de matriculación en la educación terciaria, desglosada por sexo",
           "metadata": {
             "title": "Tasa bruta de matriculación en la educación terciaria, desglosada por sexo",
@@ -440,9 +457,10 @@
             "interpretation": ["Un alto valor del indicador muestra un alto grado de participación en educación terciaria por parte de estudiantes de todas las edades."],
             "datasourceType": ["Datos de encuestas de hogar sobre matrícula y población; datos administrativos de los Ministerios de Educación sobre estructura de la educación secundaria alta."],
             "limitationsAndComments": ["La tasa bruta de matrícula es una medida amplia de la participación en educación terciaria y no toma en cuenta las diferencias de duración de los programas entre países o entre distintos niveles educativos y áreas de estudio. Está hasta cierto punto estandarizada al medirse en relación a un grupo quinquenal de edad en todos los países, pero puede subestimar la participación especialmente en países con provisión de servicios educativos del nivel terciario poco desarrollados, o aquellos donde la provisión está limitada a los primeros programas terciarios (generalmente más cortos que 5 años de duración).","La relación entre la matrícula y la población no es directa, por lo que no debe interpretarse directamente como cobertura. Se identifican en los países desafíos y limitaciones para construir este indicador a partir de registros administrativos, a causa de debilidades de cobertura de algunos sistemas de registro y/o con potencial solapamiento de poblaciones que ocasionaría un doble registro. Para los países cuyas fuentes de datos lo permitan, es posible utilizar registros administrativos para desagregar no universitario /universitario, niveles CINE, campos de educación y capacitación, etc."]
-          }    
+          }
         },
         "18": {
+          "scale": 20,
           "name": "Tasa neta de matriculación en la educación terciaria, desglosada por sexo.",
           "metadata": {
             "title": "Tasa neta de matriculación en la educación terciaria, desglosada por sexo.",
@@ -464,9 +482,10 @@
             "interpretation": ["Un alto valor del indicador muestra un alto grado de participación en educación terciaria en la población con edad inmediatamente superior a la educación secundaria alta."],
             "datasourceType": ["Datos de encuestas de hogar sobre matrícula por edad simple y población; datos administrativos de los Ministerios de Educación sobre estructura de la educación secundaria alta."],
             "limitationsAndComments": ["La tasa neta de matrícula está hasta cierto punto estandarizada al medirse en relación a un grupo quinquenal de edad en todos los países, pero puede subestimar la participación especialmente en países con provisión de servicios educativos del nivel terciario poco desarrollados, o aquellos donde la provisión está limitada a los primeros programas terciarios (generalmente más cortos que 5 años de duración), o para la población que accede a la educación terciaria en edades superiores. Se identifican en los países desafíos y limitaciones para construir este indicador a partir de registros administrativos, a causa de debilidades de cobertura de algunos sistemas de registro y/o con potencial solapamiento de poblaciones que ocasionaría un doble registro. Para los países cuyas fuentes de datos lo permitan, es posible utilizar registros administrativos para desagregar no universitario /universitario, niveles CINE, campos de educación y capacitación, etc."]
-          }    
+          }
         },
         "19": {
+          "scale": 100,
           "name": "Tasa de alfabetización de jóvenes y adultos",
           "metadata": {
             "title": "Tasa de alfabetización de jóvenes y adultos",
@@ -490,9 +509,10 @@
             "interpretation": ["La tasa de alfabetización mide la capacidad de leer y escribir una <em>declaración simple sobre la vida cotidiana</em> y, por lo tanto, es un indicador de la presencia o falta de habilidades mínimas de alfabetización en una población. Las tasas de alfabetización en o cerca del 100% indican que (casi) cada adulto o joven es capaz de leer y escribir, al menos a un nivel básico."],
             "datasourceType": ["Obtenidos principalmente de censos nacionales de población, encuestas de hogares y de la fuerza laboral. Los datos nacionales sobre alfabetización se recopilan en los países de la región a través de una declaración personal o familiar en las encuestas de hogares o en los censos de población que se basan en la pregunta ¿sabe leer y escribir?, aunque las preguntas formuladas en las encuestas pueden variar de un país a otro."],
             "limitationsAndComments": ["La tasa de alfabetización como se define aquí es un indicador binario: las personas son alfabetizadas (lo que significa que tienen al menos un mínimo de habilidades de lectura y escritura) o analfabetas. De hecho, hay un continuo de habilidades de alfabetización que no son capturadas por las tasas de alfabetización basadas en una división de la población en personas alfabetizadas y analfabetas. La tasa de alfabetización binaria tampoco transmite información sobre las habilidades de alfabetización funcional, es decir, la aplicación de la lectura y la escritura en la vida diaria. Por otra parte, los errores contenidos en la autodeclaración de alfabetismo pueden incidir en la confiabilidad de las estadísticas."]
-          }    
+          }
         },
         "20": {
+          "scale": 100,
           "name": "Tasa de logros educativos de jóvenes y adultos por grupo de edad y nivel educativo",
           "metadata": {
             "title": "Tasa de logros educativos de jóvenes y adultos por grupo de edad y nivel educativo",
@@ -516,9 +536,10 @@
             "interpretation": ["Los mayores niveles de logro en la población son asociados con una mayor riqueza y crecimiento económico personal, de los hogares y nacional. A mayor nivel de logro de una persona, mayor será sus potenciales ingresos. También se supone que las personas con mayores logros también están mejor preparadas para tomar decisiones, por ejemplo, en lo relativo a su salud y al medio ambiente. Se asume entonces que altos niveles de logros en la población se correlacionan con el desarrollo sostenible."],
             "datasourceType": ["Censos de población y encuestas de hogar que relevan datos sobre el máximo nivel educativo alcanzado por los miembros del hogar, a partir de declaraciones propias o del referente del hogar. En el primer caso, cada miembro del hogar de más de cierta edad informa su propio logro educativo. En el último caso, una persona, habitualmente el jefe del hogar u otro referente del hogar, indica la máxima cualificación o nivel educativo completado de cada miembro del hogar.Las encuestas de población económicamente activa pueden servir como una fuente de datos en caso de que releven información para los grupos de edad relevantes."],
             "limitationsAndComments": ["Datos nacionales sobre logro educativo son relevados habitualmente y reportados en referencia al sistema educativo nacional. La correspondencia entre las categorías de niveles educativos y el CINE no siempre es sencilla y puede causar discrepancias entre medidas en los datos nacionales e internacionales.Los datos agregados suelen combinar información de diferentes niveles de logro, por ejemplo, unificando el porcentaje de población con educación primaria incompleta y completa en una única cifra en lugar de reportar los datos para cada nivel de logro por separado. Si los datos para los niveles n y n+1 están combinados, entonces es posible calcular el porcentaje de la población que ha completado al menos el nivel n+1, pero no el porcentaje de la población que ha completado el nivel n.Los datos sobre el título más alto obtenido no son muy comunes, debido a que la multitud de títulos que se pueden obtener en un país y en el extranjero hace que el relevamiento de datos sea difícil."]
-          }    
+          }
         },
         "21": {
+          "scale": 100,
           "name": "Índices de paridad (mujeres/hombres, zonas rurales/urbanas, quintil superior/inferior de ingresos, y otras características, como la situación en materia de discapacidad, los pueblos indígenas y los efectos de conflictos, a medida que se disponga de datos) para todos los indicadores de esta lista que puedan desglosarse",
           "metadata": {
             "title": "Índices de paridad (mujeres/hombres, zonas rurales/urbanas, quintil superior/inferior de ingresos, y otras características, como la situación en materia de discapacidad, los pueblos indígenas y los efectos de conflictos, a medida que se disponga de datos) para todos los indicadores de esta lista que puedan desglosarse",
@@ -540,9 +561,10 @@
             "interpretation": ["Cuanto más lejos se encuentre el indicador del valor 1, mayor es la disparidad entre los dos grupos."],
             "datasourceType": ["Las fuentes son las mismas de los indicadores analizados para esta meta."],
             "limitationsAndComments": ["El indicador no es simétrico alrededor de 1 pero una simple transformación puede hacerlo (invirtiendo las tasas brutas que excedan 1 y restándolas de 2). Este cambio facilita la interpretación."]
-          }    
+          }
         },
         "22": {
+          "scale": 7.000,
           "name": "Gasto gubernamental en educación por estudiante y por nivel educativo",
           "metadata": {
             "title": "Gasto gubernamental en educación por estudiante y por nivel educativo",
@@ -570,9 +592,10 @@
             "interpretation": ["Cuando se considera como un porcentaje del PBI per cápita, un mayor valor indicaría una mayor prioridad otorgado por las autoridades a un nivel educativo específico. Cuando se considera en PPP$, el indicador puede mostrar la magnitud real de recursos invertidos en un estudiante. En la medida que el indicador es construido en una escala comparativa (es decir, para un estudiante, y en relación al PBI per cápita o utilizando una divisa común), puede ser comparado con otros niveles educativos, a lo largo del tiempo, o entre países."],
             "datasourceType": ["En el nivel nacional, los Ministerios de Finanzas y/o los sistemas de administración financiera de los Ministerios de Educación son la fuente del gasto educativo del gobierno, a pesar de que la desagregación por nivel muchas veces implique realizar estimaciones utilizando datos sobre estudiantes y/o docentes por nivel. Los datos sobre gasto por los ámbitos menores de gobierno pueden ser centralizados o relevados directamente de parte de las autoridades locales."],
             "limitationsAndComments": ["Cuando se produzca y difunda el indicador, se debe tener cuidado de que la diferencia entre gasto (o financiamiento final) y financiamiento (financiamiento inicial) sea comprendido por los usuarios. Por ejemplo, donde la transferencia de los donantes internacionales financia el presupuesto del Ministerio de Educación, sin que esos fondos se asignen a actividades específicas (por ejemplo, a través del apoyo presupuestario), el gasto lo realiza el Gobierno, pero la financiación proviene de fuentes internacionales."]
-          }    
+          }
         },
         "23": {
+          "scale": 100,
           "name": "Proporción de docentes certificados en la educación: a) preescolar; b) primaria; c) secundaria baja y d) secundaria alta, desglosada por sexo",
           "metadata": {
             "title": "Proporción de docentes certificados en la educación: a) preescolar; b) primaria; c) secundaria baja y d) secundaria alta, desglosada por sexo",
@@ -596,9 +619,10 @@
             "interpretation": ["Un alto valor indica que los estudiantes están siendo instruidos por docentes que están pedagógicamente calificados para enseñar."],
             "datasourceType": ["Datos administrativos de escuelas y otros centros de formación organizada."],
             "limitationsAndComments": ["La definición que considera el UIS para docente certificado considera los requisitos mínimos de formación docente en acuerdo a la política o legislación nacional aplicable. Es importante notar que estos requisitos nacionales mínimos de formación docente pueden variar ampliamente de país en país. Esta variabilidad entre países disminuye el uso del indicador para el monitoreo regional, porque sólo muestra el porcentaje alcanzando los estándares nacionales."]
-          }    
+          }
         },
         "24": {
+          "scale": 100,
           "name": "Salario docente (cargo testigo) en relación con el valor de la línea de pobreza",
           "metadata": {
             "title": "Salario docente (cargo testigo) en relación con el valor de la línea de pobreza",
@@ -622,9 +646,10 @@
             "interpretation": ["Si este indicador se presenta como un cociente o razón, el valor indicaría en qué proporción el salario docente es mayor a la canasta básica de pobreza. Un valor cercano a 1 daría cuenta de condiciones salariales básicas o mínimas.Suponiendo que el salario relativo es un factor motivador importante para reclutar maestros de calidad (y eso es un supuesto justo), un indicador con un valor alto podría considerarse un signo positivo para el reclutamiento de candidatos de calidad."],
             "datasourceType": ["A nivel nacional, las escalas salariales generalmente están disponibles en los ministerios de educación. Las oficinas nacionales de estadística suelen producir información regular sobre la canasta básica de pobreza."],
             "limitationsAndComments": ["La redacción exacta, la definición y el método de cálculo para este indicador deberán considerarse cuidadosamente y garantizar un equilibrio entre la facilidad de recopilación de datos, la comparabilidad y el vínculo lógico con el objetivo. Las Canastas Básicas de Alimentos de los países miembros del SICA, que se utilizan para el cálculo de la línea de pobreza, poseen una amplia heterogeneidad metodológica y procedimental en su construcción, lo que puede introducir sesgos en las comparaciones entre países."]
-          }    
+          }
         },
         "25": {
+          "scale": 100,
           "name": "Grado en que i) la educación cívica mundial y ii) la educación para el desarrollo sostenible, incluida la igualdad entre los géneros y los derechos humanos, se incorporan en todos los niveles en: a) las políticas nacionales de educación, b) los planes de estudio, c) la formación del profesorado y d) la evaluación de los estudiantes",
           "metadata": {
             "title": "Grado en que i) la educación cívica mundial y ii) la educación para el desarrollo sostenible, incluida la igualdad entre los géneros y los derechos humanos, se incorporan en todos los niveles en: a) las políticas nacionales de educación, b) los planes de estudio, c) la formación del profesorado y d) la evaluación de los estudiantes",
@@ -634,9 +659,10 @@
             "interpretation": ["Reconociendo las evidencias acerca de cómo la orientación normativa y la aplicación de la política, los planes de estudio, la formación de los docentes y la evaluación de los estudiantes funciona en realidad y qué impacto pueden tener, el progreso se interpreta en relación con la prioridad comparativa/ipsativa y el énfasis asignado a estas áreas a través del tiempo. Es decir, si (y de qué manera) la existencia, la frecuencia, la prioridad y el alcance de la implementación cambian de un relevamiento al siguiente."],
             "datasourceType": ["En referencia al mandato de la UNESCO sobre el monitoreo de la implementación de la Recomendación de 1974, un cuestionario de encuesta es enviado cada cuatro años a 195 Estados Miembros de la UNESCO. Este es un mecanismo establecido, en el que los países informan sistemáticamente a la UNESCO sobre el estado de la implementación de la Recomendación de 1974. El cuestionario de encuesta cubre los conceptos clave de la GCED y ESD, incluyendo educación sobre cambio climático, en áreas de política, planes de estudio, formación docente y evaluación de estudiantes."],
             "limitationsAndComments": ["El indicador no verifica si las medidas nacionales tomadas conducen a los cambios deseados en los resultados de aprendizaje, y no evalúa los resultados de aprendizaje directamente. Sin embargo, las políticas educativas, planes de estudio, formación docente y evaluación de estudiantes, como se demuestra en el indicador, son resultados intermedio clave sobre el compromiso y el esfuerzo nacional para implementar efectivamente las GCED y ESD y proveer un entorno conductivo para el aprendizaje."]
-          }    
+          }
         },
         "26": {
+          "scale": 100,
           "name": "Proporción de escuelas con acceso a: a) electricidad; b) Internet con fines pedagógicos; c) computadoras con fines pedagógicos; d) suministro básico de agua potable; f) instalaciones de saneamiento básicas segregadas por sexo; y g) instalaciones básicas para lavarse las manos",
           "metadata": {
             "title": "Proporción de escuelas con acceso a: a) electricidad; b) Internet con fines pedagógicos; c) computadoras con fines pedagógicos; d) suministro básico de agua potable; f) instalaciones de saneamiento básicas segregadas por sexo; y g) instalaciones básicas para lavarse las manos",
@@ -660,7 +686,7 @@
             "interpretation": "Un alto valor indica que las escuelas tienen un buen acceso a los servicios correspondientes. Idealmente, todas las escuelas deberían tener acceso a estos servicios.",
             "datasourceType": "Datos administrativos de escuelas y otros proveedores de educación o formación.",
             "limitationsAndComments": "El indicador mide la existencia de determinados servicios en las escuelas, pero no es de su calidad o condición de funcionamiento."
-          }    
+          }
         }
     },
     "variations": {

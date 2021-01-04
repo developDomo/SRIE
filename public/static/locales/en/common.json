@@ -107,7 +107,7 @@
   "goBack": "Back",
   "downloadIndicatorMetadata": "Download metadata for this indicator",
   "dashboard": {
-    "data": "Data"
+    "data": "Data",
+    "download": "Download Dashboard (PDF)"
   }
-
 }
