@@ -20,7 +20,7 @@ const Content = styled.div`
 `;
 
 const WealthQuintileChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations['wealth-quintile'].historical));
@@ -84,7 +84,7 @@ const WealthQuintileChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, domain]} />
           <Tooltip />
           <Legend />
           <Bar isAnimationActive={false} dataKey="Q1" fill={firstQuintille} name={t('Q1')} unit="%" barSize={defaultBarSize} formatter={dataFormatter} />
@@ -119,7 +119,7 @@ const WealthQuintileChart = ({
 };
 
 WealthQuintileChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => (
   {
     t,
@@ -129,6 +129,7 @@ WealthQuintileChart.getInitialProps = ({
     namespacesRequired: ['charts'],
     defaultChartMetrics,
     share,
+    domain,
   }
 );
 
