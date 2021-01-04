@@ -17,13 +17,12 @@ const Content = styled.div`
 `;
 
 const TotalChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.total.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.total.historical));
   const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
   const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
-
   const columns = [
     {
       name: t('year'),
@@ -58,7 +57,7 @@ const TotalChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, domain]} />
           <Tooltip />
           <Legend />
           <Bar
@@ -96,7 +95,7 @@ const TotalChart = ({
 };
 
 TotalChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => ({
   t,
   data,
@@ -105,6 +104,7 @@ TotalChart.getInitialProps = ({
   defaultChartMetrics,
   namespacesRequired: ['charts'],
   share,
+  domain,
 });
 
 export default withTranslation('charts')(TotalChart);

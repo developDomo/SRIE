@@ -31,7 +31,7 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share, domain,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share,
 }) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
@@ -56,7 +56,7 @@ const IndexesChart = ({
       if (isEmpty(data.indexes[indexes]?.historical)) {
         return (
           <div>
-            No hay datos
+            {t('charts:emptyData')}
           </div>
         );
       }
@@ -73,7 +73,7 @@ const IndexesChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, domain]} />
+          <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
           <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
@@ -108,7 +108,7 @@ const IndexesChart = ({
 };
 
 IndexesChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share, domain,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share,
 }) => (
   {
     t,
@@ -118,7 +118,6 @@ IndexesChart.getInitialProps = ({
     namespacesRequired: ['charts'],
     defaultChartMetrics,
     share,
-    domain,
   }
 );
 

@@ -18,7 +18,7 @@ const Content = styled.div`
 `;
 
 const GeoChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => {
   const [latestData, setLatestData] = useState(charDataFormatHelper(data.visualizations.location.latest));
   const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.visualizations.location.historical));
@@ -64,7 +64,7 @@ const GeoChart = ({
         >
           <CartesianGrid strokeDasharray="0 0" />
           <XAxis dataKey="groupBy" />
-          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
+          <YAxis label={{ value: t(`yAxisLabel.${unitMeasure}`), angle: -90, position: 'insideLeft' }} domain={[0, domain]} />
           <Tooltip />
           <Legend />
           <Bar
@@ -112,7 +112,7 @@ const GeoChart = ({
 };
 
 GeoChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share, domain,
 }) => (
   {
     t,
@@ -122,6 +122,7 @@ GeoChart.getInitialProps = ({
     namespacesRequired: ['charts'],
     defaultChartMetrics,
     share,
+    domain,
   }
 );
 
