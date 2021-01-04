@@ -1,8 +1,10 @@
 import { Container, Breadcrumb } from 'react-bootstrap';
 import { withTranslation } from '../../i18n';
 
-const BreadcrumbBar = ({ t, country, navigation }) => (
-  <Container className="p-0 pb-4">
+const BreadcrumbBar = ({
+  t, country, navigation, share,
+}) => (
+  <Container className="p-0 pb-4" hidden={share}>
     <Breadcrumb className="bg-white-ol">
       <Breadcrumb.Item key="home" className="bg-white  breadcrum-item" href="/">
         {t('navigation.pages.home')}

@@ -18,9 +18,11 @@ const NavLabel = styled.p`
   }
 `;
 
-const NavSecondaryCountries = ({ t, countries, countryCode }) => (
+const NavSecondaryCountries = ({
+  t, countries, countryCode, share,
+}) => (
   <>
-    <div className="box_linkC">
+    <div className="box_linkC" hidden={share}>
       <Container>
         <Row>
           <Col xs={12} sm={4} md={5}>
