@@ -40,7 +40,7 @@ const CountryTitle = ({
 }) => (
   <Container className="p-0" fluid={share}>
     <Row className="d-flex justify-content-between m-0 w-100">
-      <div className="col-lg-6 p-0">
+      <div className="col-lg-6 p-0 mb-3 mb-lg-0">
         <TitleContainer>
           <IconContainer>
             <img src={`/img/country/${country.code}-flag-title.svg`} alt="icon" />
@@ -50,14 +50,14 @@ const CountryTitle = ({
       </div>
       {active && (
         <Row className="col-lg-6 d-flex justify-content-end p-0 m-0">
-          <div className="col-lg-3 pr-0">
+          <div className="col-lg-3 p-0 pr-lg-2 pb-2 pb-lg-0">
             <Link href="/[id]" as={`/${country.short_name}`}>
               <ButtonNav color="yellow" active={active === 'country-data'} hidden={share}>
                 {t('navigation.pages.country-data')}
               </ButtonNav>
             </Link>
           </div>
-          <div className="col-lg-5 pr-0 m-0">
+          <div className="col-lg-5 p-0 m-0">
             <Link href="/[id]/indicadores" as={`/${country.short_name}/indicadores`} replace>
               <ButtonNav color="blue" active={active === 'indicators'} hidden={share}>{t('navigation.pages.indicators')}</ButtonNav>
             </Link>

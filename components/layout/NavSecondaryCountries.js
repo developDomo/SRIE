@@ -25,12 +25,12 @@ const NavSecondaryCountries = ({
     <div className="box_linkC" hidden={share}>
       <Container>
         <Row>
-          <Col xs={12} sm={4} md={5}>
+          <Col sm={12} lg={5} className="pb-2 pb-lg-0">
             <NavLabel>
               {t('selectAnotherCountryThatYouWantToConsult')}
             </NavLabel>
           </Col>
-          <Col xs={12} md={7} className="d-sm-flex d-inline-flex">
+          <Col xs={12} lg={7} className="d-sm-flex d-inline-flex">
             <Container fluid>
               <Row>
                 {countries.map((country) => (
