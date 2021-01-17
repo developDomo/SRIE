@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
@@ -6,7 +6,6 @@ import { withTranslation } from '../../../../../i18n';
 import AdminMenu from '../../../../../components/admin/AdminMenu';
 import ManualDataForm from '../../../../../components/admin/data/ManualDataForm';
 import needsAuth from '../../../../../lib/needsAuth';
-import FetchUtils from '../../../../../utils/Fetch.utils';
 import CountryTitle from '../../../../../components/countries/CountryTitle';
 import Title from '../../../../../components/layout/Title';
 import { txt } from '../../../../../theme/colors';
@@ -16,7 +15,7 @@ import { Serialize } from '../../../../../utils/Serializer.utils';
 import BackButton from '../../../../../components/layout/BackButton';
 
 const AdminDataEdit = ({
-  t, id, user, visualizations, indexes, data, variation, year, country, indicatorName, indicatorData,
+  t, id, user, visualizations, indexes, data, variation, country, indicatorName,
 }) => {
   const variationQueryParam = variation ? `variation=${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data/edit`;

@@ -1,15 +1,12 @@
 import _ from 'lodash';
 import { Container, Row } from 'react-bootstrap';
 
-import Link from 'next/link';
 import FetchUtils from '../../../utils/Fetch.utils';
 import Boxes from '../../../components/layout/Boxes';
 
-import { ButtonNavIndicadores } from '../../../components/layout/Button';
 import Title from '../../../components/layout/Title';
 import { BoxIndicador, Box } from '../../../components/layout/Box';
 
-import ButtonWithIcon from '../../../components/layout/ButtonWithIcon';
 import { green } from '../../../styles/colors';
 
 import { withTranslation } from '../../../i18n';
@@ -18,14 +15,6 @@ import LiteracyIcon from '../../../public/img/home/icon_datos_alfabetizacion.svg
 
 import GovernmentExpenditureIcon from '../../../public/img/home/icon_gasto_gubernamental.svg';
 import DataChildIcon from '../../../public/img/home/icono_datos_ninos.svg';
-import ParticipationIcon from '../../../public/img/home/icon_participacion_indicador.svg';
-
-import OfferIcon from '../../../public/img/home/icon_oferta_indicador.svg';
-import LearningIcon from '../../../public/img/home/icon_aprendizaje_indicador.svg';
-import ConclusionIcon from '../../../public/img/home/icon_conclusion_indicador.svg';
-
-import EnvironmentIcon from '../../../public/img/home/icon_entorno_indicador.svg';
-import GoalsIcon from '../../../public/img/home/icon_metas_indicador.svg';
 import CountryHeader from '../../../components/countries/CountryHeader';
 import CountryService from '../../../services/Country.service';
 

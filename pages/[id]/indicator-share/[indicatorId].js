@@ -41,7 +41,7 @@ const TitleComponent = ({ t, indicator, variation }) => {
 };
 
 const IndicatorShare = ({
-  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator, defaultChartMetrics, t,
+  data, indicatorVariation, share, hideSideBar, type, tabNumber, indicatorId, country, indicator, defaultChartMetrics, t,
 }) => (
   <>
     <TitleComponent indicator={indicator} t={t} variation={indicatorVariation} />
@@ -62,7 +62,7 @@ const IndicatorShare = ({
   </>
 );
 
-export const getServerSideProps = async ({ query, res: { t } }) => {
+export const getServerSideProps = async ({ query }) => {
   const countries = await CountryService.findAll();
   const country = _.find(countries, (c) => c.short_name === query.id);
   const indicatorService = await IndicatorService.findFullDetailsById(query.indicatorId);

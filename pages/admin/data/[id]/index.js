@@ -9,8 +9,7 @@ import ManualDataTable from '../../../../components/admin/data/ManualDataTable';
 import needsAuth from '../../../../lib/needsAuth';
 import CountryTitle from '../../../../components/countries/CountryTitle';
 import Title from '../../../../components/layout/Title';
-import FetchUtils from '../../../../utils/Fetch.utils';
-import { Button, ButtonContainer } from '../../../../components/layout/Button';
+import { Button } from '../../../../components/layout/Button';
 import CountryService from '../../../../services/Country.service';
 import ManualDataService from '../../../../services/ManualData.service';
 import { Serialize } from '../../../../utils/Serializer.utils';
@@ -18,7 +17,7 @@ import BackButton from '../../../../components/layout/BackButton';
 
 
 const AdminDataDetails = ({
-  t, user, id, visualizations, indexes, data, addDataUrl, country, indicatorName, indicatorId,
+  t, user, visualizations, indexes, data, addDataUrl, country, indicatorName, indicatorId,
 }) => {
   const router = useRouter();
 

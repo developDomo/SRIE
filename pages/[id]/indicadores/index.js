@@ -13,7 +13,6 @@ import { withTranslation } from '../../../i18n';
 import FilterResult from '../../../components/indicadors/FilterResult';
 import CountryHeader from '../../../components/countries/CountryHeader';
 
-import FetchUtils from '../../../utils/Fetch.utils';
 import {
   gray2,
 } from '../../../styles/colors';

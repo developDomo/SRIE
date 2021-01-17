@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
@@ -8,7 +8,6 @@ import { withTranslation } from '../../../../i18n';
 import needsAuth from '../../../../lib/needsAuth';
 import CountryTitle from '../../../../components/countries/CountryTitle';
 import Title from '../../../../components/layout/Title';
-import FetchUtils from '../../../../utils/Fetch.utils';
 import { txt } from '../../../../theme/colors';
 import CountryService from '../../../../services/Country.service';
 import ManualDataService from '../../../../services/ManualData.service';
@@ -16,7 +15,7 @@ import { Serialize } from '../../../../utils/Serializer.utils';
 import BackButton from '../../../../components/layout/BackButton';
 
 const AdminDataNewForm = ({
-  t, id, user, visualizations, indexes, data, variation, code, country, indicatorName,
+  t, id, user, visualizations, indexes, variation, code, country, indicatorName,
 }) => {
   const postUrl = `/api/indicators/${id}/manual-data`;
   const redirectUrl = `/admin/data/${code}`;

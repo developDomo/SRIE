@@ -86,7 +86,7 @@ const IndicatorAdminList = ({ indicators, t }) => (
   </>
 );
 
-IndicatorAdminList.getInitialProps = ({ t, countryName }) => ({
+IndicatorAdminList.getInitialProps = ({ t }) => ({
   namespacesRequired: ['indicators'],
   t,
 });
