@@ -202,7 +202,7 @@ const Country = ({
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
             <Title color="blue2" type="title">
-              {t('EducationalIndicators')}
+              {t('educationalIndicators')}
             </Title>
           </div>
           <div className="col-lg-12 text-center">
