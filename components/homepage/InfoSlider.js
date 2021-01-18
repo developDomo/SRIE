@@ -8,6 +8,7 @@ const InfoSlider = ({ t }) => (
         <Row className="align-items-center">
           <Col>
             <h3>
+              {/* eslint-disable-next-line react/no-danger */}
               <div dangerouslySetInnerHTML={
                 { __html: t('slide1', { interpolation: { escapeValue: false } }) }
               }
@@ -20,6 +21,7 @@ const InfoSlider = ({ t }) => (
         <Row className="align-items-center">
           <Col>
             <h3>
+              {/* eslint-disable-next-line react/no-danger */}
               <div dangerouslySetInnerHTML={
                 { __html: t('slide2', { interpolation: { escapeValue: false } }) }
               }
@@ -38,16 +40,7 @@ const InfoSlider = ({ t }) => (
     }
     `}
     </style>
-    {/* <style jsx>{`
-      h3 {
-        color: white;
-        text-align: center;
-        font-size: 1.3em;
-      }
-      .carousel-item{
-        height:200px;
-      }
-    `}</style> */}
+
   </>
 );
 

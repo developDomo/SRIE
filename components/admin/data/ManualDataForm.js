@@ -1,17 +1,16 @@
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import {
-  Col, Container, Form, Row,
+  Col, Row,
 } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import {
-  blue, blue1, blue4, borders, gray1, gray2, green, green2, txt, white,
+  blue, blue1, gray1, txt, white,
 } from '../../../theme/colors';
 import { grayBck } from '../../../styles/colors';
 import { Button } from '../../layout/Button';
 import { withTranslation, useTranslation } from '../../../i18n';
 import FormInput from '../../layout/FormInput';
-import FormSelect from '../../layout/FormSelect';
 
 const minYear = 2010;
 const maxYear = new Date().getFullYear();
@@ -180,7 +179,7 @@ const FieldsGroup = ({
 }) => {
   const [fieldsVisible, setFieldsVisible] = useState(expanded);
   const toggleFields = () => setFieldsVisible(!fieldsVisible);
-  const onFieldGroupChecked = () => (e) => {
+  const onFieldGroupChecked = () => () => {
     toggleFields();
   };
   return visible && (
@@ -205,7 +204,7 @@ const FieldsGroup = ({
 };
 
 const IndexInput = React.forwardRef(({
-  name, register,
+  name,
 }, ref) => (
   <FormInput name={name.toLowerCase()} label={name.toUpperCase()} ref={ref} />
 ));

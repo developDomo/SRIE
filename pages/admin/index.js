@@ -1,9 +1,9 @@
 import { Container } from 'react-bootstrap';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { DateTime } from 'luxon';
 import needsAuth from '../../lib/needsAuth';
-import { withTranslation, I18nContext } from '../../i18n';
+import { withTranslation } from '../../i18n';
 import AdminDashboard from '../../components/admin/index/AdminDashboard';
 import CountryAdminDashboard from '../../components/admin/index/CountryAdminDashboard';
 import AdminMenu from '../../components/admin/AdminMenu';
@@ -27,7 +27,7 @@ const AdminHome = (props) => {
       router.events.off('routeChangeStart', startLoading);
       router.events.off('routeChangeComplete', stopLoading);
     };
-  }, []);
+  });
 
   const handlePagination = (page) => {
     const currentPath = router.pathname;

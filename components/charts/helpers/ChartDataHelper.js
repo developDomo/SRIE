@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { object } from 'prop-types';
 
 export const charDataFormatHelper = (data) => {
   const grouped = _.mapValues(_.groupBy(data, 'time_period'));

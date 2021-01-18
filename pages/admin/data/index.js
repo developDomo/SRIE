@@ -5,7 +5,6 @@ import AdminMenu from '../../../components/admin/AdminMenu';
 import needsAuth from '../../../lib/needsAuth';
 import Title from '../../../components/layout/Title';
 import CountryTitle from '../../../components/countries/CountryTitle';
-import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorAdminList from '../../../components/layout/IndicatorAdminList';
 import CountryService from '../../../services/Country.service';
 

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Tabs, Tab, Container, Row, Col, Button, Modal,
 } from 'react-bootstrap';
-import Link from 'next/link';
 import styled from 'styled-components';
-import Latex from 'react-latex';
 import { InlineMath, BlockMath } from 'react-katex';
 import {
   EmailIcon,
@@ -18,9 +16,8 @@ import {
 
 } from 'react-share';
 import { isEmpty } from 'lodash';
-import { instanceOf } from 'prop-types';
 import { withTranslation } from '../../i18n';
-import { DisplayTypes, ChartTypes } from './types/ChartTypes';
+import { DisplayTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
 import SexChart from './SexChart';
 import ChartTypeControls from './controls/ChartTypeControls';
@@ -33,7 +30,6 @@ import { blueButton, blueButtonRoll } from '../../styles/colors';
 const ChartContent = styled.div`
   width: 100%;
   height: auto;
-  // background-color: #EAEEF2;
 `;
 
 const TapTitle = styled.span`
@@ -118,22 +114,9 @@ const ButtonSubmit = styled(Button)`
     background: ${blueButtonRoll};
   }
 `;
-const ShowMoreContainer = styled.div`
-  position:relative;
-  & .show, .hide {
-    position: absolute;
-    bottom: -1em;
-    z-index: 100;
-    text-align: center;
-  }
-  & .hide {display: none;}
-  & .show:target {display: none;}
-  & .show:target ~ .hide {display: block;}
-  & .show:target ~ .panel {
-   max-height: 2000px; 
-  }
-`;
 
+
+// eslint-disable-next-line react/no-danger
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
 
 const explanationInline = (formula, text) => formula.split('\n').map((c, index) => (
@@ -375,17 +358,11 @@ const ShareModal = ({
   </Modal>
 );
 
-const getpdfUrl = (activeTab) => {
-
-
-};
-
 const IndicatorChart = ({
   t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
-  const [showMore, setShowMore] = useState(false);
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
@@ -396,7 +373,7 @@ const IndicatorChart = ({
   const scale = t(`indicators:indicators.${indicator}.scale`);
   useEffect(() => {
     setAbsolutePat(window.location.href);
-  });
+  }, []);
 
   const showTotalTab = () => {
     if (tabsToShow.indexOf('total') !== -1) {
@@ -492,11 +469,6 @@ const IndicatorChart = ({
     }
     return (<></>);
   };
-
-
-  const getRenderedItems = (text) => (showMore ? text : text.slice(0, 3));
-
-  const toggleShowMore = () => setShowMore(!showMore);
 
   return (
     <>

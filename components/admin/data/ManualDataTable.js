@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Table } from 'react-bootstrap';
 import { blue } from '../../../theme/colors';
 import { Edit } from '../../layout/Icons';
-import { withTranslation, useTranslation } from '../../../i18n';
+import { useTranslation } from '../../../i18n';
 
 const TableHeaders = ({ visualizations, indexes }) => {
   const [t] = useTranslation('common');

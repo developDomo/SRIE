@@ -31,11 +31,9 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, unitMeasure, defaultChartMetrics, share,
+  data, t, chartType, defaultChartMetrics, share,
 }) => {
   const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
-  const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexes]?.latest));
-  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
   const columns = [
     {

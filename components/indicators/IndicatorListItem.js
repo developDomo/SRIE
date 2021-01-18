@@ -8,7 +8,6 @@ import {
   gray1,
   grayBck,
   txt,
-  green1,
   blue,
   red,
   bordes,

@@ -1,5 +1,5 @@
 import {
-  Navbar, Nav, NavDropdown,
+  NavDropdown,
 } from 'react-bootstrap';
 import NavbarLink from './NavbarLink';
 import navData from './data/nav-data';
@@ -30,7 +30,7 @@ const LinksMainNav = ({ path }) => {
       alignRight
       key={item.label}
     >
-      {item.items.map((itemNavbar, index) => (
+      {item.items.map((itemNavbar) => (
         <NavbarLink item={itemNavbar} />
       ))}
     </NavDropdown>
