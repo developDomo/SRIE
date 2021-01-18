@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import Link from 'next/link';
 import FetchUtils from '../../utils/Fetch.utils';
@@ -98,7 +98,7 @@ const Country = ({
   ];
 
   return (
-    <Container fluid className="p-0">
+    <Container>
       <CountryHeader
         countries={countries}
         country={country}
@@ -106,87 +106,85 @@ const Country = ({
         active="country-data"
         share={false}
       />
-      <Container className="mt-4">
-        <Row className="mt-4">
-          <div className="col-lg-12 mb-3 text-center">
-            <Title color="yellow" type="title">
-              {t('countryData')}
-            </Title>
-          </div>
-          <div className="col-lg-12 mb-4 p-0 text-center">
-            <Title color="negro" type="subtitle">
-              {t('structureOfTheCountryEducationalSystem')}
-            </Title>
-          </div>
-          <div className="col-lg-12 mb-4 p-0 text-center">
-            <Boxes countryId={country.code} />
-          </div>
-        </Row>
-        <Row className="mt-4 mb-5">
-          <div className="col-lg-4 mb-4">
-            <Box
-              iconImg={EducationIcon}
-              title={t('numberOfYears')}
-              color="blue"
-              containers={educationValues}
-              year={educationYearsYear}
-            />
-          </div>
-          <div className="col-lg-4 mb-4">
-            <Box
-              iconImg={LiteracyIcon}
-              title={t('alphabetizationRate')}
-              subtitle={percentFormat(alphabetizationRateValue)}
-              color="green"
-              year={alphabetizationRateYear}
-            />
-          </div>
+      <Row className="mt-4">
+        <div className="col-lg-12 mb-3 text-center">
+          <Title color="yellow" type="title">
+            {t('countryData')}
+          </Title>
+        </div>
+        <div className="col-lg-12 mb-4 p-0 text-center">
+          <Title color="negro" type="subtitle">
+            {t('structureOfTheCountryEducationalSystem')}
+          </Title>
+        </div>
+        <div className="col-lg-12 mb-4 p-0 text-center">
+          <Boxes countryId={country.code} />
+        </div>
+      </Row>
+      <Row className="mt-4 mb-5">
+        <div className="col-lg-4 mb-4">
+          <Box
+            iconImg={EducationIcon}
+            title={t('numberOfYears')}
+            color="blue"
+            containers={educationValues}
+            year={educationYearsYear}
+          />
+        </div>
+        <div className="col-lg-4 mb-4">
+          <Box
+            iconImg={LiteracyIcon}
+            title={t('alphabetizationRate')}
+            subtitle={percentFormat(alphabetizationRateValue)}
+            color="green"
+            year={alphabetizationRateYear}
+          />
+        </div>
 
-          <div className="col-lg-4 mb-4">
-            <Box
-              iconImg={GovernmentExpenditureIcon}
-              title={t('governmentExpenditurePerStudentPerYear')}
-              color="orange"
-              containers={governmentExpenditureValues}
-              year={governmentExpenditureYear}
-            />
-          </div>
+        <div className="col-lg-4 mb-4">
+          <Box
+            iconImg={GovernmentExpenditureIcon}
+            title={t('governmentExpenditurePerStudentPerYear')}
+            color="orange"
+            containers={governmentExpenditureValues}
+            year={governmentExpenditureYear}
+          />
+        </div>
 
-          <div className="col-lg-4">
-            <BoxIndicador
-              title={t('tuitionFeesByLevel')}
-              containers={tuitionFeeValues}
-              year={tuitionYear}
-            />
-          </div>
+        <div className="col-lg-4">
+          <BoxIndicador
+            title={t('tuitionFeesByLevel')}
+            containers={tuitionFeeValues}
+            year={tuitionYear}
+          />
+        </div>
 
-          <div className="col-lg-4">
-            <BoxIndicador
-              title={t('completionRateByLevel')}
-              containers={completionRateValues}
-              year={completionRateYear}
-            />
-          </div>
-          <div className="col-lg-4">
-            <Box
-              iconImg={DataChildIcon}
-              title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
-              subtitle={percentFormat(girlsBoysAndAdolescentsOutsideOfSchoolValue)}
-              color="light_blue"
-              year={outsideOfSchoolYear}
-            />
-          </div>
-        </Row>
-        <Row className="mb-5">
-          <div className="col-lg-12 d-flex justify-content-end">
-            <ButtonNavIndicadores color="blue">
-              <a href={`/indicators/${country.code}/dashboard/${country.code}.pdf`} download>
-                { t('dashboard.download') }
-              </a>
-            </ButtonNavIndicadores>
-          </div>
-        </Row>
-      </Container>
+        <div className="col-lg-4">
+          <BoxIndicador
+            title={t('completionRateByLevel')}
+            containers={completionRateValues}
+            year={completionRateYear}
+          />
+        </div>
+        <div className="col-lg-4">
+          <Box
+            iconImg={DataChildIcon}
+            title={t('girlsBoysAndAdolescentsOutsideOfSchool')}
+            subtitle={percentFormat(girlsBoysAndAdolescentsOutsideOfSchoolValue)}
+            color="light_blue"
+            year={outsideOfSchoolYear}
+          />
+        </div>
+      </Row>
+      <Row className="mb-5">
+        <div className="col-lg-12 d-flex justify-content-end">
+          <ButtonNavIndicadores color="blue">
+            <a href={`/indicators/${country.code}/dashboard/${country.code}.pdf`} download>
+              { t('dashboard.download') }
+            </a>
+          </ButtonNavIndicadores>
+        </div>
+      </Row>
       {/*
       Descomentar para volver activar el banner
       <Container fluid className="bg-verde-oscuro">
@@ -202,7 +200,7 @@ const Country = ({
         <Row className="mt-5">
           <div className="col-lg-12 text-center">
             <Title color="blue2" type="title">
-              {t('EducationalIndicators')}
+              {t('educationalIndicators')}
             </Title>
           </div>
           <div className="col-lg-12 text-center">

@@ -28,7 +28,6 @@
   "Completion" : "Completion",
   "educationalEnvironment": "Educational environment",
   "CrossCuttingGoals": "Cross-cutting goals",
-  "EducationalIndicators":"Educational Indicators" ,
   "byCategory": "by Category",
   "seeTheIndicators": "See the indicators",
   "countryData": "Country data",
@@ -40,7 +39,7 @@
   "ObligatoryEducation": "Obligatory education",
   "seeTheProgressIn": "See the progress in",
   "complianceWithGoalsCentralAmericanEducationalPolicy": "Compliance with Goals Central American Educational Policy",
-  "selectAnotherCountryThatYouWantToConsult": "Select another country that you want to consult",
+  "selectAnotherCountryThatYouWantToConsult": "Select another country to consult",
   "filter": {
     "filterIndicatorsBy": "Filter indicators by",
     "searchResultsFor": "Search results for",
