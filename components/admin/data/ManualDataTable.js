@@ -60,7 +60,7 @@ const TableRows = (props) => {
   const router = useRouter();
 
   const { id } = router.query;
-  const fix = (i) => i && parseInt(i, 10).toFixed(2);
+  const fix = (i) => i && parseFloat(i, 10).toFixed(2);
   return (
     <tbody>
       {data.map((row) => (
