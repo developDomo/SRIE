@@ -45,7 +45,7 @@ const updateDataEvent = (user, id, year) => {
   const event = {
     country: user.country,
     user_email: user.email,
-    action: `Datos actualizadoss para el indicador ${id}, para el año ${year}`,
+    action: `Datos actualizados para el indicador ${id}, para el año ${year}`,
   };
 
   save(event);
