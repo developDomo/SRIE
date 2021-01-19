@@ -13,7 +13,7 @@ const paginate = async (page, size) => {
     limit: size,
     order: [{
       field: 'timestamp',
-      direction: 'asc',
+      direction: 'desc',
     }],
   };
 
