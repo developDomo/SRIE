@@ -29,6 +29,7 @@ const fields = [
   'obs_status',
   'freq',
   'decimals',
+  'ref_area',
 ];
 
 /**

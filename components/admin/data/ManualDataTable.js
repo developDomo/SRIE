@@ -5,7 +5,7 @@ import { blue } from '../../../theme/colors';
 import { Edit } from '../../layout/Icons';
 import { useTranslation } from '../../../i18n';
 
-const TableHeaders = ({ visualizations, indexes }) => {
+const TableHeaders = ({ visualizations, indexes, editable }) => {
   const [t] = useTranslation('common');
   return (
     <thead>
@@ -38,7 +38,9 @@ const TableHeaders = ({ visualizations, indexes }) => {
             <th key={index}>{index}</th>
           </>
         ))}
+        {editable && (
         <th>{t('actions')}</th>
+        )}
       </tr>
       <style jsx>
         {`
@@ -56,11 +58,13 @@ const TableHeaders = ({ visualizations, indexes }) => {
 };
 
 const TableRows = (props) => {
-  const { visualizations, indexes, data } = props;
+  const {
+    visualizations, indexes, data, editable,
+  } = props;
   const router = useRouter();
 
   const { id } = router.query;
-  const fix = (i) => i && parseInt(i, 10).toFixed(2);
+  const fix = (i) => i && parseFloat(i, 10).toFixed(2);
   return (
     <tbody>
       {data.map((row) => (
@@ -89,8 +93,9 @@ const TableRows = (props) => {
           </>
           )}
           {indexes.map((index) => (
-            <td>{row[index.toLowerCase()]}</td>
+            <td>{fix(row[index.toLowerCase()])}</td>
           ))}
+          {editable && (
           <td>
             <Link href={`/admin/data/${id}/edit/${row.year}`}>
               <a className="btn btn-light">
@@ -98,6 +103,7 @@ const TableRows = (props) => {
               </a>
             </Link>
           </td>
+          )}
         </tr>
       ))}
       <style jsx>
@@ -118,7 +124,7 @@ const ManualDataTable = (props) => {
   const [t] = useTranslation('common');
 
   const {
-    visualizations, indexes, data,
+    visualizations, indexes, data, editable,
   } = props;
 
   const TableBody = () => {
@@ -131,8 +137,8 @@ const ManualDataTable = (props) => {
     }
     return (
       <>
-        <TableHeaders visualizations={visualizations} indexes={indexes} />
-        <TableRows visualizations={visualizations} indexes={indexes} data={data} />
+        <TableHeaders visualizations={visualizations} indexes={indexes} editable={editable} />
+        <TableRows visualizations={visualizations} indexes={indexes} data={data} editable={editable} />
       </>
     );
   };
