@@ -392,7 +392,8 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
-                    {t('babies')}</p>
+                    {t('babies')}
+                  </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
                   color={pink}
@@ -402,7 +403,8 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
-                    {t('maternal')}</p>
+                    {t('maternal')}
+                  </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
                   color={pink2}
