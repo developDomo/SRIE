@@ -113,7 +113,7 @@
           "name": "Número de años de educación preescolar (a) gratuita, (b) obligatoria garantizada en los marcos legales",
             "metadata": {
             "title": "Número de años de educación preescolar (a) gratuita, (b) obligatoria garantizada en los marcos legales",
-            "purpose": ["Medir el compromiso del gobierno para garantizar el derecho a la educación de niños y jóvenes."],
+            "purpose": ["Mide el compromiso del gobierno para garantizar el derecho a la educación de niños y jóvenes."],
             "definition": ["Número de años de educación preprimaria a los que los niños tienen derecho legalmente, para los que no tienen que pagar matrícula, o son obligatorios (o ambos casos. Los países de la región cuentan con legislación que especifica las edades y el nivel de educación (por lo general educación preescolar o primaria) en la que los niños deben comenzar la escuela. Dicha legislación generalmente también especifica el número de años de educación garantizados o la edad a la que los jóvenes pueden dejar sus estudios o, en algunos casos, ambos. El número de años de educación preescolar a los que los niños tienen derecho legalmente debería ser idealmente el número de grados de educación preescolar que se espera que los niños hayan completado antes de ingresar a la educación primaria."],
             "method":["Se registra la cantidad de grados de educación preescolar que son gratuitos y aquellos que son obligatorios. Si se dispone de información de edades en lugar de grados, se resta a la edad de ingreso oficial a la escuela primaria la edad más baja de ingreso a preescolar. Si el resultado es 0 o negativo, no hay años de educación preescolar garantizados."],
             "formula": [],
@@ -271,7 +271,7 @@
           "name": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
           "metadata": {
             "title": "Tasa de niños, niñas y adolescentes fuera de la escuela (primaria, educación secundaria baja y educación secundaria alta)",
-            "purpose": ["Identificar la magnitud de la población del grupo de edades correspondientes al nivel educativo dado que no están matriculados en la escuela, para poder identificarlos y poder implementar políticas apropiadas para asegurarse que tengan acceso a la educación."],
+            "purpose": ["Identifica la magnitud de la población del grupo de edades correspondientes al nivel educativo dado que no están matriculados en la escuela, para poder identificarlos y poder implementar políticas apropiadas para asegurarse que tengan acceso a la educación."],
             "definition": ["Niños y jóvenes del grupo de edades correspondiente al nivel educativo dado que no se encuentran matriculados en primaria, secundaria o niveles educativos superiores. Los niños que se encuentran matriculados en la educación preprimaria son considerados fuera de la escuela.La <em>edad correspondiente</em> a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían estar asistiendo al mismo, de acuerdo con la legislación o la política nacional, considerando (a) <em>la edad oficial de ingreso</em> al nivel, y la duración de cada nivel educativo en años. La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo."],
             "method":["El número de estudiantes con la edad teórica para el nivel educativo dado, matriculados en primaria, secundaria o niveles educativos superiores, se obtiene del total de la población de la misma edad. Para el cálculo de este indicador, se utilizan las estimaciones derivadas de las encuestas de hogar, donde asistencia y población se recogen al mismo tiempo."],
             "formula": ["OSR_{n}=\\frac{OSR_{n}-\\textstyle\\sum_{i=1}^8 E_{i,AGn}}{SAP_{n}}\\times 100"],
@@ -335,7 +335,7 @@
           "name": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
           "metadata": {
             "title": "Tasa de niños, niñas y adolescentes que abandonan el grado escolar: 1° a 6° grado; 7° a 12° grado",
-            "purpose": ["Medir el fenómeno por el que los alumnos abandonan la escuela antes de finalizar el ciclo escolar, y su efecto en la eficiencia interna de los sistemas educativos. También representa uno de los indicadores clave para analizar el flujo de alumnos dentro del ciclo educativo."],
+            "purpose": ["Mide el fenómeno por el que los alumnos abandonan la escuela antes de finalizar el ciclo escolar, y su efecto en la eficiencia interna de los sistemas educativos. También representa uno de los indicadores clave para analizar el flujo de alumnos dentro del ciclo educativo."],
             "definition": ["Estudiantes matriculados en un grado escolar entre 1º a 6º grado o entre 7º a 12º grado en un año escolar dado, que abandonan antes de la finalización del ciclo escolar, expresados como porcentaje sobre el total de matriculados en ese mismo grado en ese año."],
             "method":["La tasa de deserción escolar se calcula restando a 100% la suma del porcentaje de estudiantes promovidos y el porcentaje de estudiantes no promovidos en un año escolar. "],
             "formula": ["ADR_{g}^t=\\frac{E_{g}^t-FE_{g}^t\\times100}{E_{g}^t}"],
@@ -362,7 +362,7 @@
           "name": "Porcentaje de niños, niñas y adolescentes que repiten el grado escolar en el nivel primario (CINE 1)",
           "metadata": {
             "title": "Porcentaje de niños, niñas y adolescentes que repiten el grado escolar en el nivel primario (CINE 1)",
-            "purpose": ["Medir los patrones y la incidencia de la repetición por grado, y dimensionar a través del mismo la eficiencia interna de los sistemas educativos."],
+            "purpose": ["Mide los patrones y la incidencia de la repetición por grado, y dimensionar a través del mismo la eficiencia interna de los sistemas educativos."],
             "definition": ["Proporción de alumnos matriculados en los grados 1º a 6º durante un año escolar que estuvo matriculado en el mismo grado el año escolar anterior."],
             "method":["Dividir el número de alumnos que repiten un grado específico en una escuela determinada por el número de alumnos matriculados en el mismo grado en el mismo año escolar. Este indicador se puede calcular para todo el nivel dividiendo el número total de repetidores de todos los grados de un nivel educativo específico por la matrícula total de ese nivel y multiplicar el resultado por 100."],
             "formula": ["RR_{g}^t=\\frac{RR_{g}^{t+1}\\times100}{E_{g}^t}"],
@@ -389,7 +389,7 @@
           "name": "Número de años de educación primaria y secundaria (a) gratuita, (b) obligatoria garantizada en los marcos legales",
           "metadata": {
             "title": "Número de años de educación primaria y secundaria (a) gratuita, (b) obligatoria garantizada en los marcos legales",
-            "purpose": ["Medir el compromiso de los gobiernos en garantizar el derecho a la educación de los niños y jóvenes."],
+            "purpose": ["Mide el compromiso de los gobiernos en garantizar el derecho a la educación de los niños y jóvenes."],
             "definition": ["Número de años de educación primaria y secundaria a los que los niños y jóvenes tienen legítimo derecho que son gratuitos u obligatorios, o ambos.La mayoría de los países cuenta con legislación que especifica acerca de las edades y el nivel de educación (por lo general educación preescolar o primaria) en la que los niños deben comenzar la escuela. Dicha legislación también especifica ya sea el número de años de educación que están garantizados o la edad en la cual los jóvenes deberían completar su educación o, en algunos casos, ambos.","El <em>número</em> de años de educación primaria y secundaria que los niños legalmente tienen derecho a recibir debería idealmente ser el número de grados de educación primaria y secundaria que se espera que los jóvenes hayan completado antes de alcanzar la edad legal para dejar la escuela. Los años de educación preprimaria cubiertos por el derecho legal deberían ser excluidos de este indicador."],
             "method":["Registrar el número de grados de educación primaria y secundaria que están garantizados. En caso de utilizar edades en lugar de grados, a la edad superior se le debe restar la edad inferior si se trata de una edad en la que el niño debiera estar en la escuela primaria, o bien restar la edad normativa de ingreso a la escuela primaria. Si la edad superior es aquella en la cual se inicia el último año de educación gratuita u obligatoria, será necesario agregar 1 al resultado."],
             "periodicity": "Anual",
@@ -412,7 +412,7 @@
           "name": "Tasa de participación de los jóvenes y adultos en la educación y capacitación formal y no formal, desglosada por sexo",
           "metadata": {
             "title": "Tasa de participación de los jóvenes y adultos en la educación y capacitación formal y no formal, desglosada por sexo",
-            "purpose": ["Mostrar el nivel de la participación de los jóvenes y adultos en programas y formación de todos los tipos."],
+            "purpose": ["Muestra el nivel de la participación de los jóvenes y adultos en programas y formación de todos los tipos."],
             "definition": ["Porcentaje de jóvenes y adultos de un grupo de edad dado (por ejemplo 15 a 24 años de edad, 25-64 años, etc.) participando en programas de educación y formación, formal o no formal, en un momento determinado.La educación y formación formal se define como la educación que imparte el sistema de escuelas, colegios, universidades y otras instituciones de educación formal que usualmente constituyen una “escalera” continua de educación a tiempo completo para niños y jóvenes, por lo general a partir de la edad de 5 a 7 y continua hasta los 20 o 25 años de edad. En algunos países, en las etapas superiores de esta escalera están los programas organizados de empleo a tiempo parcial y la participación en el sistema escolar y universitario regular a tiempo parcial.La educación y la formación no formal se definen como cualquier actividad de aprendizaje organizada y sostenida que no se corresponde exactamente con la definición anterior de educación formal. La educación no formal puede tener lugar tanto dentro como fuera de las instituciones educativas y atender a personas de todas las edades. En función de los contextos nacionales, puede abarcar programas educativos para impartir a los adultos alfabetización, habilidades para la vida, capacitación laboral y cultura general."],
             "method":["El número de personas de grupos de edad seleccionados que asiste a programas de educación y formación, formal o no formal, es expresado como el porcentaje de la población de la misma edad."],
             "formula": ["PR_{AGi}=\\frac{E_{AGi}\\times100}{P_{AGi}}"],
@@ -439,7 +439,7 @@
           "name": "Tasa bruta de matriculación en la educación terciaria, desglosada por sexo",
           "metadata": {
             "title": "Tasa bruta de matriculación en la educación terciaria, desglosada por sexo",
-            "purpose": ["Mostrar el nivel general de participación en determinado nivel educativo."],
+            "purpose": ["Muestra el nivel general de participación en determinado nivel educativo."],
             "definition": ["Matrícula total en educación terciaria, independientemente de su edad, expresada como el porcentaje de población en el grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
             "method":["El número de población que asiste a educación terciaria está expresado como el porcentaje del grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
             "formula": ["GER_{5678}=\\frac{E_{5678}\\times100}{SAP_{5678,a}}"],
@@ -464,7 +464,7 @@
           "name": "Tasa neta de matriculación en la educación terciaria, desglosada por sexo.",
           "metadata": {
             "title": "Tasa neta de matriculación en la educación terciaria, desglosada por sexo.",
-            "purpose": ["Mostrar el alcance de la cobertura del nivel terciario para la población de un determinado grupo de edad: los jóvenes pertenecientes al grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
+            "purpose": ["Muestra el alcance de la cobertura del nivel terciario para la población de un determinado grupo de edad: los jóvenes pertenecientes al grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta."],
             "definition": ["Número total de estudiantes en el grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta, expresado como un porcentaje de la población total en ese grupo de edad."],
             "method":["El número de población del grupo quinquenal de edad inmediatamente mayor a la educación secundaria alta que asiste a la educación terciaria, expresado como el porcentaje de la población de ese mismo grupo de edad."],
             "formula": ["NER_{5678}=\\frac{E_{5678}}{SAP_{5678,a}}"],
@@ -543,7 +543,7 @@
           "name": "Índices de paridad (mujeres/hombres, zonas rurales/urbanas, quintil superior/inferior de ingresos, y otras características, como la situación en materia de discapacidad, los pueblos indígenas y los efectos de conflictos, a medida que se disponga de datos) para todos los indicadores de esta lista que puedan desglosarse",
           "metadata": {
             "title": "Índices de paridad (mujeres/hombres, zonas rurales/urbanas, quintil superior/inferior de ingresos, y otras características, como la situación en materia de discapacidad, los pueblos indígenas y los efectos de conflictos, a medida que se disponga de datos) para todos los indicadores de esta lista que puedan desglosarse",
-            "purpose": ["Para medir el grado de disparidad general entre dos subpoblaciones de interés con respecto a un indicador dado."],
+            "purpose": ["Mide el grado de disparidad general entre dos subpoblaciones de interés con respecto a un indicador dado."],
             "definition": ["Los índices de paridad necesitan de datos de grupos específicos de interés. Representan la relación entre el valor del indicador para dos grupo de población definidos por una característica. Por lo general, el grupo probablemente más desfavorecido es el numerador. El valor 1 indica la paridad entre los dos grupos."],
             "method":["El valor del indicador del grupo probablemente desfavorecido se divide por el valor del indicador de la otra subpoblación de interés."],
             "formula": ["DIP=\\frac{[Ind_{i}]_{d}\\times100}{[Ind_{i}]_{a}}"],

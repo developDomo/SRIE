@@ -63,7 +63,7 @@ const IndicatorShare = ({
   </>
 );
 
-export const getServerSideProps = async ({ query, res: { t } }) => {
+export const getServerSideProps = async ({ query }) => {
   const countries = await CountryService.findAll();
   const country = _.find(countries, (c) => c.short_name === query.id);
   const indicatorService = await IndicatorService.findFullDetailsById(query.indicatorId);

@@ -49,7 +49,7 @@ const AdminMenu = ({ user, t }) => {
                     <a>{t('options.users')}</a>
                   </Link>
                 </li>
-                            )}
+              )}
               {user?.isLoggedIn && (
                 <>
                   <li>

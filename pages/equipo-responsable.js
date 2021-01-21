@@ -1,64 +1,59 @@
 import { Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
+import upperFirst from 'lodash/upperFirst';
 import Title from '../components/layout/Title';
-
 import { withTranslation } from '../i18n';
-import { txt, bordes, blue4 } from '../styles/colors';
+import { blue4, bordes, txt } from '../styles/colors';
 import CountryHeader from '../components/countries/CountryHeader';
 
 import { ContainerPage } from '../components/layout/ContainerPageContent';
 import CountryService from '../services/Country.service';
 
 const DirectoryContainer = styled.div`
-  display: flex;
-  align-items: center;
-  align-content: center;
-  height: 100px;
-  /* &:first-child {
-    padding-top: 10px;
-  }
-  &:last-child {
-    padding-bottom: 10px;
-  } */
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 100px;
 `;
 const TitlePais = styled.div`
-  border-right: 0.5px solid ${txt};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  text-align: center;
-  & h3 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
+    display: flex;
+
+    & h3 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
 `;
 const InfoDirectoryContainer = styled.div`
-  & h3 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    font-size: 1.1em;
-    color: ${txt};
-    margin: 0 0 2px 0;
-  }
-  & p {
-    font-family: 'Raleway', sans-serif;
-    font-style: italic;
-    font-size: 1.1em;
-    color: ${bordes};
-    line-height: 20px;
-  }
-  & a {
-    font-family: 'Raleway', sans-serif;
-    font-style: italic;
-    font-size: 1.1em;
-    color: ${blue4};
-    margin-left: 5px;
-  }
+    & h3 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        font-size: 1.1em;
+        color: ${txt};
+        margin: 0 0 2px 0;
+    }
+
+    & p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.1em;
+        color: ${bordes};
+    }
+
+    & a {
+        font-family: 'Raleway', sans-serif;
+        font-style: italic;
+        font-size: 1.1em;
+        color: ${blue4};
+    }
+
+    & strong {
+        display: block;
+    }
 `;
 
-const ResponsibleTeam = ({ countries, t }) => {
+const ResponsibleTeam = ({
+  t,
+}) => {
   const contributorsCountries = [{
     country: 'Belice',
     title: t('policyAndPlanningUnit'),
@@ -143,27 +138,37 @@ const ResponsibleTeam = ({ countries, t }) => {
                     {t('p4')}
                   </p>
                 </div>
-                <div className="col-sm-8 bg-white mb-4 mt-3 pt-3 pb-3">
-                  {contributorsCountries.map((item) => (
-                    <DirectoryContainer>
-                      <TitlePais className="col-lg-3 ">
-                        <h3>{item.country}</h3>
+                <div className="col-sm-8 mb-4 mt-3 pt-3 pb-3">
+                  {contributorsCountries.map(({
+                    country,
+                    title,
+                    contact,
+                    email,
+                  }) => (
+                    <Row className="mb-2 pt-2 bg-white">
+                      <TitlePais className="col-12">
+                        <h3>{country}</h3>
                       </TitlePais>
-                      <InfoDirectoryContainer className="col-lg-9 ">
-                        <h3>
-                          {item.title}
+                      <InfoDirectoryContainer className="col-12">
+                        <h3 className="mb-3">
+                          {title}
                         </h3>
+                        <p className="">
+                          <strong>
+                            {`${upperFirst(t('contact'))}: `}
+                          </strong>
+                          {contact}
+                        </p>
                         <p>
-                          {`${t('contact')}: `}
-                          {item.contact}
-                          <br />
-                          {`${t('email')}:`}
-                          <a href={`mail:${item.email}`}>
-                            {item.email}
+                          <strong>
+                            {`${upperFirst(t('email'))}:`}
+                          </strong>
+                          <a href={`mail:${email}`}>
+                            {email}
                           </a>
                         </p>
                       </InfoDirectoryContainer>
-                    </DirectoryContainer>
+                    </Row>
                   ))}
                 </div>
                 <div className="col-sm-8">
@@ -175,9 +180,7 @@ const ResponsibleTeam = ({ countries, t }) => {
             </Container>
           </Row>
         </Container>
-
       </ContainerPage>
-
     </>
   );
 };

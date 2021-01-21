@@ -1,10 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { i18n, withTranslation } from '../i18n';
+import { withTranslation } from '../i18n';
 
 import Title from '../components/layout/Title';
 import { theme } from '../styles/theme';
-import { txt } from '../theme/colors';
 
 import CountryHeader from '../components/countries/CountryHeader';
 

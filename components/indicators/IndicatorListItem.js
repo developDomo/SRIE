@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-
+import {
+  Container, Row, Col,
+} from 'react-bootstrap';
 import {
   gray1,
   grayBck,
   txt,
-  green1,
   blue,
   red,
   bordes,
@@ -16,13 +17,10 @@ import arrow from '../../public/img/home/arrow_indicadores.svg';
 import { withTranslation } from '../../i18n';
 import TopicTag from '../layout/TopicTag';
 
-const Container = styled.div`
-  display: flex;
+const ItemContainer = styled(Container)`
   flex-wrap: wrap;
   align-items: center;
   cursor: pointer;
-  width: 100%;
-  height:100%;
   background-color:${(props) => (props.onHover ? grayBck : gray1)}; 
 `;
 const Title = styled.h3`
@@ -40,30 +38,18 @@ const Pec = styled.h4`
   font-family: 'Roboto Slab', sans-serif;
   font-size: 1.6em;
   font-weight: 400;
-  height: 80%;
-  width: 20%;
+  height: 100%;
   color: ${blue};
 `;
-const Ods = styled.h4`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-left: 1px solid ${txt};
-  font-family: 'Roboto Slab', sans-serif;
-  font-size: 1.6em;
-  font-weight: 400;
-  width: 16.5%;
-  height: 80%;
+const Ods = styled(Pec)`
   color: ${red};
 `;
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;  
-  background-color:${(props) => (props.onHover ? blue : undefined)}; 
-  height: ${(props) => (props.onHover ? '100%' : '80%')};
-  padding-left: 20px;
-  padding-right: 20px;
+  background-color:${(props) => (props.onHover ? blue : 'transparent')}; 
+  height: 100%;
   border-left: ${(props) => (props.onHover ? '1px solid transparent' : '1px solid black;')};
 
   & div {
@@ -90,36 +76,46 @@ const IconContainer = styled.div`
 const IndicatorListItem = ({ t, indicator, countryName }) => {
   const [onHover, setOnHover] = useState(false);
 
+  const {
+    id, code, topics, pec_goals, ods4_goals,
+  } = indicator;
+
   const onChangeOnHover = () => {
     setOnHover(!onHover);
   };
 
   return (
-    <Link key={`indicador-${indicator.code}`} href={`/${countryName}/indicadores/${indicator.id}`} as={`/${countryName}/indicadores/${indicator.id}`}>
-      <div className="col-lg-12 mb-3 p-0">
-        <Container
-          className="d-flex  justify-content-end p-0"
-          onMouseOver={onChangeOnHover}
-          onFocus={onChangeOnHover}
-          onMouseOut={onChangeOnHover}
-          onBlur={onChangeOnHover}
-          onHover={onHover}
-        >
-          <div className="col-lg-7 m-0 py-0 pl-4 pr-2">
+    <Link key={`indicador-${code}`} href={`/${countryName}/indicadores/${id}`} as={`/${countryName}/indicadores/${id}`}>
+      <ItemContainer
+        className=" mb-3 p-0"
+        onMouseOver={onChangeOnHover}
+        onFocus={onChangeOnHover}
+        onMouseOut={onChangeOnHover}
+        onBlur={onChangeOnHover}
+        onHover={onHover}
+      >
+        <Row>
+          <Col className="m-0 py-0 pl-4">
             <Title className="pt-2 pb-1">
-              {t(`indicators.${indicator.code}.name`)}
+              {t(`indicators.${code}.name`)}
             </Title>
-            {indicator.topics.map((topic) => (
+            {topics.map((topic) => (
               <TopicTag topicCode={topic.code} />
             ))}
-          </div>
-          <Pec className="m-0">{indicator.pec_goals.map((goal) => goal.code).join('/')}</Pec>
-          <Ods className="m-0">{indicator.ods4_goals.map((goal) => goal.code).join('/')}</Ods>
-          <IconContainer className=" " onHover={onHover}>
-            <div />
-          </IconContainer>
-        </Container>
-      </div>
+          </Col>
+          <Col className="d-none d-sm-block px-0" sm={2}>
+            <Pec>{pec_goals.map((goal) => goal.code).join('/')}</Pec>
+          </Col>
+          <Col className="d-none d-sm-block px-0" sm={2}>
+            <Ods>{ods4_goals.map((goal) => goal.code).join('/')}</Ods>
+          </Col>
+          <Col xs={3} sm={2} lg={1}>
+            <IconContainer onHover={onHover}>
+              <div />
+            </IconContainer>
+          </Col>
+        </Row>
+      </ItemContainer>
     </Link>
   );
 };

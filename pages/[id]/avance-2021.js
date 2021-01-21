@@ -4,7 +4,7 @@ import { withTranslation } from '../../i18n';
 import CountryHeader from '../../components/countries/CountryHeader';
 import FetchUtils from '../../utils/Fetch.utils';
 
-const Progress2021 = ({ t, countries, country }) => {
+const Progress2021 = ({ countries, country }) => {
   const navigation = [
     { key: 'navigation.pages.progress2021' },
   ];

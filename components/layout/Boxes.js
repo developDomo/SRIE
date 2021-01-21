@@ -21,6 +21,7 @@ import {
   white,
   grayBck,
   pink,
+  pink2,
   pinkRosewood,
   pinkRose,
   pinkWatermelon,
@@ -95,6 +96,7 @@ const BoxSectioInfo = styled.div`
       min-width: 99px;
       margin: 0;
       line-height: 14px;
+      padding:0 6px;
       font-size: 0.8rem;
       & span {
         font-size: 1.3em;
@@ -377,7 +379,7 @@ const Boxes = ({ countryId, t }) => {
       <>
         <ContainerData>
           <ContainerBox>
-            <ContainerBoxSection flexbasis="0" flexGrow={1}>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
               <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
                 <p className="text-uppercase">{t('pre_edu_label_header')}</p>
               </BoxSectioInfo>
@@ -390,9 +392,7 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
-                    {t('interactive_group')}
-                    {' '}
-                    <span>1</span>
+                    {t('babies')}
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
@@ -403,9 +403,19 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
+                    {t('maternal')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink2}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
                     {t('interactive_group')}
                     {' '}
-                    <span>2</span>
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
@@ -421,7 +431,7 @@ const Boxes = ({ countryId, t }) => {
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
                   flexbasis="0"
-                  flexGrow={2}
+                  flexGrow={3}
                   flexdirection="column"
                   border={{ side: 'left', color: pinkWatermelon }}
                   borderSm={{ side: 'top', color: pinkWatermelon }}
@@ -439,12 +449,12 @@ const Boxes = ({ countryId, t }) => {
                   borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
-                    {t('pre_edu_label')}
+                    {t('')}
                   </p>
                 </BoxSectioInfo>
               </BoxSectioInfo>
             </ContainerBoxSection>
-            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+            <ContainerBoxSection flexbasis="0" flexGrow={3}>
               <BoxSectioInfo color={greenLight} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
                 <p className="text-uppercase">{t('primary_edu_label_header')}</p>
               </BoxSectioInfo>
@@ -516,7 +526,7 @@ const Boxes = ({ countryId, t }) => {
                 </BoxSectioInfo>
               </BoxSectioInfo>
             </ContainerBoxSection>
-            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+            <ContainerBoxSection flexbasis="0" flexGrow={3}>
               <BoxSectioInfo
                 color={blueLight}
                 flexdirection="column"

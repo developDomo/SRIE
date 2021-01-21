@@ -48,9 +48,7 @@ const dataBarras = [
     Hombres: 3000,
   },
 ];
-export const GraficoBarrasComponent = ({
-  children, onClick, icon, color,
-}) => (
+export const GraficoBarrasComponent = () => (
   <BarChart width={500} height={300} data={dataBarras}>
     <CartesianGrid strokeDasharray="3 3" />
     <XAxis />
@@ -62,12 +60,7 @@ export const GraficoBarrasComponent = ({
   </BarChart>
 );
 const dotStyle = { fill: yellow, stroke: yellow, r: 6 };
-export const GraficoCompuestoComponent = ({
-  children,
-  onClick,
-  icon,
-  color,
-}) => (
+export const GraficoCompuestoComponent = () => (
   <ComposedChart
     width={800}
     height={400}

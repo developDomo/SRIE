@@ -5,15 +5,11 @@ import {
 } from 'react-bootstrap';
 
 import Router, { withRouter } from 'next/router';
-import Link from 'next/link';
 import { theme, getThemeProperty } from '../../styles/theme';
 
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 import LinksMainNav from './LinksMainNav';
-import NavbarLink from './NavbarLink';
-
-import navData from './data/nav-data';
 
 const WhiteLine = styled.hr`
   background-color: white;

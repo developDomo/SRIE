@@ -35,7 +35,7 @@ export const ExclamationTriangle = (props) => (
   </svg>
 );
 
-export const Back = (props) => (
+export const Back = () => (
   <svg
     width="1em"
     height="1em"
