@@ -5,7 +5,6 @@ import AdminMenu from '../../../components/admin/AdminMenu';
 import needsAuth from '../../../lib/needsAuth';
 import Title from '../../../components/layout/Title';
 import CountryTitle from '../../../components/countries/CountryTitle';
-import FetchUtils from '../../../utils/Fetch.utils';
 import IndicatorAdminList from '../../../components/layout/IndicatorAdminList';
 import CountryService from '../../../services/Country.service';
 
@@ -15,7 +14,9 @@ const AdminData = ({
   <Container fluid>
     <AdminMenu user={user} />
     <Container className="pt-4 pb-4">
-      <CountryTitle country={country} />
+      {user?.role !== 'admin' && (
+        <CountryTitle country={country} />
+      )}
       <Row className="mt-4 mb-4">
         <div className="col-lg-12 pr-0 text-center">
           <Title color="blueTitle" type="title">

@@ -27,6 +27,7 @@ const AboutSRIE = ({ t }) => {
         <Container>
           <Row className="d-sm-flex justify-content-center">
             <div className="col-sm-8 py-2 py-sm-5">
+              {/* eslint-disable-next-line react/no-danger */}
               <div dangerouslySetInnerHTML={
               { __html: t('text', { interpolation: { escapeValue: false } }) }
             }

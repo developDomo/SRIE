@@ -39,6 +39,7 @@ const PartnerItem = ({ t }) => {
         </Col>
         <Col sm={8}>
           <h3>{t(`partners.${i}.name`)}</h3>
+          {/* eslint-disable-next-line react/no-danger */}
           <p dangerouslySetInnerHTML={{ __html: t(`partners.${i}.description`, { interpolation: { escapeValue: false } }) }} />
           <SiteUrlLabel>Sitio web: </SiteUrlLabel>
           <LinkUrl href={t(`partners.${i}.site_url`)} target="_blank" rel="noreferrer">{t(`partners.${i}.site_url`)}</LinkUrl>

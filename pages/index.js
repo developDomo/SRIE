@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import InfoSlider from '../components/homepage/InfoSlider';

@@ -51,25 +51,21 @@ const containerWithColor = {
 
 const containerTitleStyles = {
   marginBottom: '3em',
-  paddingLeft: 0,
-  paddingRight: 0,
 };
 
 const Icon = styled.span`
-  display:inline-block;
+  display:block;
     &::before {
       display:block;
       content: url(${(props) => props.iconUrl});
-      display:block;
-      width: 40px;
-      margin: 2px 10px;
-      float: left;
+        width: 90px;
+        padding: 0 20px;
+        text-align: center;
     }
     & p {
       text-align: center;
     }
     &:nth-child(1) {
-      border-right: 1px solid ${txt};
       padding-right: 9px;
     }
     &:nth-child(2) {
@@ -94,9 +90,8 @@ const PecIndicator = styled.p`
   font-family: "Roboto Slab";
 `;
 
-const OdsIndicator = styled.p`
+const OdsIndicator = styled(PecIndicator)`
   color: #C84046;
-  font-family: "Roboto Slab";
 `;
 
 const IndicatorPage = ({
@@ -160,21 +155,21 @@ const IndicatorPage = ({
   );
 
   return (
-    <Container fluid className="p-0">
-      <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
+    <Container className="p-0">
       <Container style={containerTitleStyles}>
+        <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
         <IndicatorTitle>
           <Title>{t('indicators:indicatorTitle')}</Title>
         </IndicatorTitle>
         <IndicatorDescription>
           <Row>
-            <Col xs lg="10">
+            <Col xs={12} lg="8" className="mb-5 mb-lg-0">
               <IndicatorName>{t(`indicators:indicators.${indicator.id}.name`)}</IndicatorName>
               {indicator.topics?.map((topic) => (
                 <TopicTag key={topic.code} topicCode={topic.code} />
               ))}
             </Col>
-            <Col md="auto" lg="2">
+            <Col xs={6} lg="2" className="d-flex text-center justify-content-center align-items-center border-right border-dark">
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverPec}>
                 <Icon iconUrl="/img/home/icon_ods4_indicadores.svg">
                   <PecIndicator>
@@ -182,6 +177,8 @@ const IndicatorPage = ({
                   </PecIndicator>
                 </Icon>
               </OverlayTrigger>
+            </Col>
+            <Col xs={6} lg="2" className="d-flex text-center justify-content-center align-items-center mx-0">
               <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={popoverOds}>
                 <Icon iconUrl="/img/home/icon_ods_table.svg">
                   <OdsIndicator>
@@ -193,7 +190,7 @@ const IndicatorPage = ({
           </Row>
         </IndicatorDescription>
       </Container>
-      <Container fluid style={containerWithColor}>
+      <Container style={containerWithColor}>
         {showIndicators(indicator).map((indicatorSource) => (
           <IndicatorChart
             data={data}

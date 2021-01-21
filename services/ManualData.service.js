@@ -238,6 +238,18 @@ const groupDataByYear = async (indicatorId, indicatorCode, variationCode, data) 
   return _.groupBy(variationData[`${indicatorId}.${variationCode}`], 'time_period');
 };
 
+const groupByCountry = async (data, id, indicator, variationCode) => {
+  const indicatorData = {};
+  const groupedByCountry = _.groupBy(data, 'ref_area');
+  Object.keys(groupedByCountry).forEach(async (country) => {
+    const groupedData = await groupDataByYear(id, indicator.code, variationCode, groupedByCountry[country]);
+
+    indicatorData[country] = buildManualDataByIndicator(indicator, groupedData);
+  });
+
+  return indicatorData;
+};
+
 const findManualDataByIndicatorId = async (id, variationCode, country) => {
   const indicator = await IndicatorService.findById(id);
   if (!indicator) {
@@ -261,8 +273,32 @@ const findManualDataByIndicatorId = async (id, variationCode, country) => {
   return indicator;
 };
 
+const findGroupedDataByIndicatorId = async (id, variationCode) => {
+  const indicator = await IndicatorService.findById(id);
+  if (!indicator) {
+    return indicator;
+  }
+
+  const visualizationsPromise = IndicatorVizualizationService.findByIndicatorId(id);
+  const indexesPromise = IndicatorIndexService.findByIndicatorId(id);
+
+  const [visualizations, indexes] = await Promise.all([visualizationsPromise, indexesPromise]);
+  indicator.visualizations = visualizations.map((v) => v.code);
+  indicator.indexes = indexes.map((i) => i.code);
+
+  const data = await IndicatorDataService.find(
+    db[indicator.uis_dataset.toLowerCase()], indicator.query,
+  );
+
+  indicator.data = await groupByCountry(data, id, indicator, variationCode);
+
+  // return indicator;
+  return indicator;
+};
+
 export default {
   addData,
   editIndicatorData,
   findManualDataByIndicatorId,
+  findGroupedDataByIndicatorId,
 };

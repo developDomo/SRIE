@@ -2,7 +2,6 @@
 import { Col, Row } from 'react-bootstrap';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import _ from 'lodash';
 import { withTranslation } from '../../i18n';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';

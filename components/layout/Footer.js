@@ -1,7 +1,7 @@
 import {
   Container, Row, Col,
 } from 'react-bootstrap';
-import Router, { withRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import { i18n, withTranslation } from '../../i18n';
 
 const Footer = ({ t, router: { query } }) => (

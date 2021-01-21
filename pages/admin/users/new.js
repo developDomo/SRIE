@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from 'react-bootstrap';
 import { withTranslation } from '../../../i18n';
-import FetchUtils from '../../../utils/Fetch.utils';
 import needsAuth from '../../../lib/needsAuth';
 import UserAdminForm from '../../../components/layout/UserAdminForm';
 import AdminMenu from '../../../components/admin/AdminMenu';

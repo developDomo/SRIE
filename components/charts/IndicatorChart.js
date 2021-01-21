@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Tabs, Tab, Container, Row, Col, Button, Modal,
 } from 'react-bootstrap';
-import Link from 'next/link';
 import styled from 'styled-components';
-import Latex from 'react-latex';
 import { InlineMath, BlockMath } from 'react-katex';
 import {
   EmailIcon,
@@ -20,7 +18,7 @@ import {
 import { isEmpty } from 'lodash';
 import { instanceOf } from 'prop-types';
 import { withTranslation } from '../../i18n';
-import { DisplayTypes, ChartTypes } from './types/ChartTypes';
+import { DisplayTypes } from './types/ChartTypes';
 import TotalChart from './TotalChart';
 import SexChart from './SexChart';
 import ChartTypeControls from './controls/ChartTypeControls';
@@ -33,7 +31,6 @@ import { blueButton, blueButtonRoll } from '../../styles/colors';
 const ChartContent = styled.div`
   width: 100%;
   height: auto;
-  // background-color: #EAEEF2;
 `;
 
 const TapTitle = styled.span`
@@ -118,22 +115,9 @@ const ButtonSubmit = styled(Button)`
     background: ${blueButtonRoll};
   }
 `;
-const ShowMoreContainer = styled.div`
-  position:relative;
-  & .show, .hide {
-    position: absolute;
-    bottom: -1em;
-    z-index: 100;
-    text-align: center;
-  }
-  & .hide {display: none;}
-  & .show:target {display: none;}
-  & .show:target ~ .hide {display: block;}
-  & .show:target ~ .panel {
-   max-height: 2000px; 
-  }
-`;
 
+
+// eslint-disable-next-line react/no-danger
 const separateParagraphs = (text) => text.split('\n').map((c, index) => (<div dangerouslySetInnerHTML={{ __html: c }} key={index} />));
 
 const explanationInline = (formula, text) => formula.split('\n').map((c, index) => (
@@ -375,17 +359,14 @@ const ShareModal = ({
   </Modal>
 );
 
-const getpdfUrl = (activeTab) => {
-
-
-};
-
 const IndicatorChart = ({
-  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics,
+  t, data, indicator, indicatorSource, share, hideSideBar, type, tabNumber, country, chart, countryCode, unitMeasure, defaultChartMetrics, indexe,
 }) => {
   const [chartType, setChartType] = useState(DisplayTypes.CHART.description === type ? DisplayTypes.CHART : DisplayTypes.CHART || DisplayTypes.TABLE);
   const [chartData, setChartData] = useState(share ? data[indicatorSource] : data[indicatorSource.code]);
   const [showMore, setShowMore] = useState(false);
+  const [indexes, setIndexes] = useState(false);
+
   const [infoModalShow, setInfoModalShow] = useState(false);
   const [downloadModalShow, setDownloadModalShow] = useState(false);
   const tabsToShow = [...Object.keys(chartData?.visualizations), ...['indexes']];
@@ -396,7 +377,8 @@ const IndicatorChart = ({
   const scale = t(`indicators:indicators.${indicator}.scale`);
   useEffect(() => {
     setAbsolutePat(window.location.href);
-  });
+  }, []);
+
 
   const showTotalTab = () => {
     if (tabsToShow.indexOf('total') !== -1) {
@@ -428,7 +410,7 @@ const IndicatorChart = ({
           disabled={hasSomeData(chartData.visualizations?.sex)}
           title={<TapTitle iconUrl="/img/home/ico-sexo.svg">{t('sex')}</TapTitle>}
         >
-          <SexChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
+          <SexChart data={chartData} chartType={chartType} defaultChartMetrics={defaultChartMetrics} unitMeasure={unitMeasure} share={share} domain={scale} />
         </Tab>
       );
     }
@@ -441,7 +423,7 @@ const IndicatorChart = ({
         && chartData.visualizations.location.latest.length > 0) {
       return (
         <Tab eventKey="geoZone" title={<TapTitle iconUrl="/img/home/ico-zona.svg">{t('geoZone')}</TapTitle>}>
-          <GeoChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
+          <GeoChart data={chartData} chartType={chartType} defaultChartMetrics={defaultChartMetrics} unitMeasure={unitMeasure} share={share} domain={scale} />
         </Tab>
       );
     }
@@ -454,7 +436,14 @@ const IndicatorChart = ({
         && chartData.visualizations['wealth-quintile'].latest.length > 0) {
       return (
         <Tab eventKey="socioeconomicLevel" title={<TapTitle iconUrl="/img/home/icon_total_line.svg">{t('socioeconomicLevel')}</TapTitle>}>
-          <WealthQuintileChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} domain={scale} />
+          <WealthQuintileChart
+            data={chartData}
+            chartType={chartType}
+            defaultChartMetrics={defaultChartMetrics}
+            unitMeasure={unitMeasure}
+            share={share}
+            domain={scale}
+          />
         </Tab>
       );
     }
@@ -464,8 +453,16 @@ const IndicatorChart = ({
   const showIndexesTab = () => {
     if (tabsToShow.indexOf('indexes') !== -1) {
       return (
-        <Tab eventKey="Indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
-          <IndexesChart data={chartData} chartType={chartType} unitMeasure={unitMeasure} share={share} />
+        <Tab eventKey="indexes" disabled={hasSomeData(chartData.indexes)} title={<TapTitle iconUrl="/img/home/ico-indices.svg">{t('indexes')}</TapTitle>}>
+          <IndexesChart
+            data={chartData}
+            chartType={chartType}
+            defaultChartMetrics={defaultChartMetrics}
+            unitMeasure={unitMeasure}
+            share={share}
+            indexe={indexe}
+            getSelectedIndex={setIndexes}
+          />
         </Tab>
       );
     }
@@ -492,11 +489,6 @@ const IndicatorChart = ({
     }
     return (<></>);
   };
-
-
-  const getRenderedItems = (text) => (showMore ? text : text.slice(0, 3));
-
-  const toggleShowMore = () => setShowMore(!showMore);
 
   return (
     <>
@@ -560,8 +552,8 @@ const IndicatorChart = ({
                 <a
                   href={
                     `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
-                      ? indicatorSource.code.replace(`${indicator}.`, '-')
-                      : ''}.pdf`
+                      ? country.code.replace(`${indicator}.`, '-')
+                      : ''}${activeTab === 'indexes' ? `-${indexes}` : ''}.pdf`
                   }
                   target="_blank"
                   rel="noreferrer"
@@ -575,8 +567,8 @@ const IndicatorChart = ({
                 <a
                   href={
                     `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
-                      ? indicatorSource.code.replace(`${indicator}.`, '-')
-                      : ''}.png`
+                      ? country.code.replace(`${indicator}.`, '-')
+                      : ''}${activeTab === 'indexes' ? `-${indexes}` : ''}.png`
                   }
                   target="_blank"
                   rel="noreferrer"
@@ -619,7 +611,7 @@ const IndicatorChart = ({
 };
 
 IndicatorChart.getInitialProps = async ({
-  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, countryCode, chart, unitMeasure, defaultChartMetrics,
+  data, indicatorSource, t, share, hideSideBar, type, tabNumber, country, indicator, countryCode, chart, unitMeasure, defaultChartMetrics, indexe,
 }) => ({
   namespacesRequired: ['charts', 'indicators', 'common'],
   data,
@@ -635,6 +627,7 @@ IndicatorChart.getInitialProps = async ({
   countryCode,
   unitMeasure,
   defaultChartMetrics,
+  indexe,
 });
 
 export default withTranslation('charts', 'indicators', 'common')(IndicatorChart);

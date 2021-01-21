@@ -54,7 +54,7 @@
       "jsx": true
     }
   },
-  "ignorePatterns": [ "db/*" ],
+  "ignorePatterns": [ "db/*", "server.js" ],
   "settings": {
     "react": {
       "version": "detect"

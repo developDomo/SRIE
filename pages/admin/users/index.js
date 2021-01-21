@@ -18,7 +18,9 @@ const AdminUsers = ({
   <Container fluid>
     <AdminMenu user={user} />
     <Container className="pt-4 pb-4">
-      <CountryTitle country={country} />
+      {user?.role !== 'admin' && (
+        <CountryTitle country={country} />
+      )}
       <Row className="mt-4 mb-4">
         <div className="col-lg-12 pr-0 text-center">
           <Title color="blueTitle" type="title">
