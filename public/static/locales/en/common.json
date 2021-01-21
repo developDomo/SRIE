@@ -50,6 +50,7 @@
   "educationalIndicators": "Educational indicators",
   "pec": "PEC",
   "ods4": "ODS 4",
+  "goal": {
     "all": "All",
     "2-2": "2.2 Free, equitable and quality initial primary and secondary education",
     "3-1": "3.1 Complete, free, equitable and quality secondary education",
@@ -61,7 +62,6 @@
     "6-1": "6.1 Educational policies that promote education for sustainable development and lifestyles, human rights, equality, culture of peace, world citizenship and cultural diversity"
   },
   "selectTheCountryYouWantToConsult": "Select the country you want to consult",
-  "goal": {
   "copyLink": "Copy link",
   "shareLink": "Share link",
   "embedCode": "Embed",

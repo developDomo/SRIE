@@ -31,10 +31,14 @@ const ControlContainer = styled.div`
 `;
 
 const IndexesChart = ({
-  data, t, chartType, defaultChartMetrics, share,
+  data, t, chartType, unitMeasure, defaultChartMetrics, share, indexe, getSelectedIndex,
 }) => {
-  const [indexes, setIndexes] = useState(Object.keys(data.indexes)[0]);
+  const [indexes, setIndexes] = useState(indexe || Object.keys(data.indexes)[0]);
+  getSelectedIndex(indexes);
+  const [latestData, setLatestData] = useState(charDataFormatHelper(data.indexes[indexe || indexes]?.latest));
+  const [historicalData, setHistoricalData] = useState(charDataFormatHelper(data.indexes[indexe || indexes]?.historical));
   const [chartMetrics, setChartMetrics] = useState(defaultChartMetrics || ChartMetrics.LAST_YEAR);
+  const datasource = chartMetrics === ChartMetrics.LAST_YEAR ? latestData : historicalData;
   const columns = [
     {
       name: t('year'),
@@ -45,13 +49,13 @@ const IndexesChart = ({
       name: t(indexes),
       selector: indexes,
       sortable: true,
-      format: (row) => `${dataFormatter(row[indexes])}`,
+      format: (row) => `${dataFormatter(row[indexe || indexes])}`,
     },
   ];
 
   const showContent = () => {
     if (chartType === DisplayTypes.CHART) {
-      if (isEmpty(data.indexes[indexes]?.historical)) {
+      if (isEmpty(datasource)) {
         return (
           <div>
             {t('charts:emptyData')}
@@ -61,9 +65,7 @@ const IndexesChart = ({
 
       return (
         <BarChart
-          data={chartMetrics === ChartMetrics.LAST_YEAR
-            ? charDataFormatHelper(data.indexes[indexes]?.latest)
-            : charDataFormatHelper(data.indexes[indexes]?.historical)}
+          data={datasource}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
@@ -74,7 +76,7 @@ const IndexesChart = ({
           <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey={indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar isAnimationActive={false} dataKey={indexe || indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
         </BarChart>
       );
     }
@@ -82,9 +84,7 @@ const IndexesChart = ({
       <DataTable
         title="Total"
         columns={columns}
-        data={chartMetrics === ChartMetrics.LAST_YEAR
-          ? charDataFormatHelper(data.indexes[indexes]?.latest)
-          : charDataFormatHelper(data.indexes[indexes]?.historical)}
+        data={datasource}
         striped
         responsive
         allowOverflow
@@ -106,7 +106,7 @@ const IndexesChart = ({
 };
 
 IndexesChart.getInitialProps = ({
-  t, data, chartType, unitMeasure, defaultChartMetrics, share,
+  t, data, chartType, unitMeasure, defaultChartMetrics, share, indexe, getSelectedIndex,
 }) => (
   {
     t,
@@ -116,6 +116,8 @@ IndexesChart.getInitialProps = ({
     namespacesRequired: ['charts'],
     defaultChartMetrics,
     share,
+    indexe,
+    getSelectedIndex,
   }
 );
 

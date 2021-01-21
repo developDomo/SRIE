@@ -41,7 +41,7 @@ const TitleComponent = ({ t, indicator, variation }) => {
 };
 
 const IndicatorShare = ({
-  data, indicatorVariation, share, hideSideBar, type, tabNumber, indicatorId, country, indicator, defaultChartMetrics, t,
+  data, indicatorVariation, share, hideSideBar, type, tabNumber, period, indicatorId, country, indicator, defaultChartMetrics, t, indexe,
 }) => (
   <>
     <TitleComponent indicator={indicator} t={t} variation={indicatorVariation} />
@@ -54,10 +54,11 @@ const IndicatorShare = ({
       type={type}
       tabNumber={tabNumber}
       indicator={indicatorId}
-      country={country.short_name}
+      country={country}
       chart={indicator}
       countryCode={country.code}
       defaultChartMetrics={defaultChartMetrics === ChartMetrics.LAST_YEAR.description ? ChartMetrics.LAST_YEAR : ChartMetrics.HISTORICAL}
+      indexe={indexe}
     />
   </>
 );
@@ -85,6 +86,7 @@ export const getServerSideProps = async ({ query }) => {
       indicator,
       country,
       defaultChartMetrics: query.defaultChartMetrics,
+      indexe: query.indexe || '',
     },
   };
 };
