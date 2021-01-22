@@ -76,7 +76,14 @@ const IndexesChart = ({
           <YAxis label={{ value: t('yAxisLabel.PP'), angle: -90, position: 'insideLeft' }} domain={[0, 2]} />
           <Tooltip />
           <Legend />
-          <Bar isAnimationActive={false} dataKey={indexe || indexes} fill="#359B8A" barSize={defaultBarSize} formatter={dataFormatter} />
+          <Bar
+            name={t(`indexesLabel.${indexe || indexes}`)}
+            isAnimationActive={false}
+            dataKey={indexe || indexes}
+            fill="#359B8A"
+            barSize={defaultBarSize}
+            formatter={dataFormatter}
+          />
         </BarChart>
       );
     }
