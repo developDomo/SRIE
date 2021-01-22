@@ -551,9 +551,8 @@ const IndicatorChart = ({
               <div>
                 <a
                   href={
-                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
-                      ? country.code.replace(`${indicator}.`, '-')
-                      : ''}${activeTab === 'indexes' ? `-${indexes}` : ''}.pdf`
+                    // eslint-disable-next-line  max-len
+                    `/indicators/${country.code}/${indicator}/${activeTab === 'indexes' ? 'indixes' : activeTab}${activeTab === 'indexes' ? `-${indexes}` : ''}${chart.isVariation ? chart.translation_key.replace(`${indicator}`, '') : ''}.pdf`
                   }
                   target="_blank"
                   rel="noreferrer"
@@ -563,12 +562,10 @@ const IndicatorChart = ({
                 </a>
               </div>
               <div>
-
                 <a
                   href={
-                    `/indicators/${country.code}/${indicator}/${activeTab}${indicatorSource.code !== indicator
-                      ? country.code.replace(`${indicator}.`, '-')
-                      : ''}${activeTab === 'indexes' ? `-${indexes}` : ''}.png`
+                    // eslint-disable-next-line  max-len
+                    `/indicators/${country.code}/${indicator}/${activeTab === 'indexes' ? 'indixes' : activeTab}${activeTab === 'indexes' ? `-${indexes}` : ''}${chart.isVariation ? chart.translation_key.replace(`${indicator}`, '') : ''}.png`
                   }
                   target="_blank"
                   rel="noreferrer"
