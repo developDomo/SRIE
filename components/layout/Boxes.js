@@ -448,7 +448,9 @@ const Boxes = ({ countryId, t }) => {
                   colorTxt={pinkRosewood}
                   borderSm={{ side: 'top', color: pinkRosewood }}
                 >
-                <p></p>
+                  <p>
+                    {t('')}
+                  </p>
                 </BoxSectioInfo>
               </BoxSectioInfo>
             </ContainerBoxSection>
