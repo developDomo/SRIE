@@ -64,7 +64,7 @@ const ResponsibleTeam = ({
     country: 'Costa Rica',
     title: t('institutionalPlanningDirectorateStatisticalAnalysisDepartment'),
     email: 'dixie.brenes.vindas@mep.go.cr',
-    contact: 'Dixie Brenes',
+    contact: 'Dixie Brenes Vindas',
   },
   {
     country: 'El Salvador',

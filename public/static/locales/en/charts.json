@@ -9,7 +9,7 @@
   "sex": "Sex",
   "socioeconomicLevel": "Socioeconomic Level",
   "geoZone": "Geographical Zone",
-  "indexes": "Indexes",
+  "indexes": "Indices",
   "chart": "Chart",
   "table": "Table",
   "sideBar": {
@@ -22,19 +22,19 @@
   },
   "units": {
     "PT": "%",
-    "YR": "Years",
+    "YR": " years",
     "PPP_CONST": " constant $",
     "PP": "Proportion"
   },
   "source": "Source",
   "indexesLabel": {
-    "GPI": "Índice de Paridad de Género",
-    "GPIA": "Índice de Paridad de Género Ajustado",
-    "GLPI": "Índice de Paridad de Ubicación Geográfica",
-    "GLPIA": "Índice de Paridad de Ubicación Geográfica Ajustado",
-    "SESPI": "Índice de Paridad de Nivel Socieconómico",
-    "SESPIA": "Índice de Paridad de Nivel Socieconómico Ajustado",
-    "IPIA": "Índice de Paridad de Genéro Ajustado"
+    "GPI": "Gender Parity Index",
+    "GPIA": "Adjusted Gender Parity Index",
+    "GLPI": "Geographic Location Parity Index",
+    "GLPIA": "Adjusted Geographic Location Parity Index",
+    "SESPI": "Socioeconomic Level Parity Index",
+    "SESPIA": "Adjusted Socioeconomic Level Parity Index",
+    "IPIA": "Adjusted Gender Parity Index"
   },
   "yAxisLabel": {
     "PT": "Percentage",
