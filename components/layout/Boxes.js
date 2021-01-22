@@ -96,7 +96,7 @@ const BoxSectioInfo = styled.div`
       min-width: 99px;
       margin: 0;
       line-height: 14px;
-      padding:0 6px;
+      padding: 0 6px;
       font-size: 0.8rem;
       & span {
         font-size: 1.3em;
@@ -448,9 +448,7 @@ const Boxes = ({ countryId, t }) => {
                   colorTxt={pinkRosewood}
                   borderSm={{ side: 'top', color: pinkRosewood }}
                 >
-                  <p>
-                    {t('')}
-                  </p>
+                  
                 </BoxSectioInfo>
               </BoxSectioInfo>
             </ContainerBoxSection>
