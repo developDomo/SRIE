@@ -51,9 +51,7 @@ const YearSelect = React.forwardRef((props, ref) => {
   const {
     excludeYears, year, label, sm, required,
   } = props;
-  if (year) {
-    return <input ref={ref} name="year" type="hidden" value={year} />;
-  }
+
 
   const options = [];
   for (let i = minYear; i <= maxYear; i++) {
@@ -68,7 +66,7 @@ const YearSelect = React.forwardRef((props, ref) => {
         {required
           && <span className="text-danger"> * </span>}
       </label>
-      <select ref={ref} className="form-control" name="year">
+      <select ref={ref} disabled={year} className="form-control" name="year">
         {options}
       </select>
 
@@ -77,13 +75,16 @@ const YearSelect = React.forwardRef((props, ref) => {
             .form-control {
                 position: relative;
                 box-sizing: border-box;
-                
                 border-color: ${blue1};
                 background-color: ${white};
                 border-radius: 0;
             }
             .form-control:focus {
               z-index: 2;
+            }
+             .form-control:disabled {
+              background-color: ${gray1};
+              cursor: not-allowed;
             }
             .form-label{
                 font-size: 1.2em;
@@ -226,9 +227,9 @@ const FieldGroupIndexes = React.forwardRef(({
 });
 
 const ManualDataForm = ({
-  t, variation, visualizations, indexes, data, onSubmit, onCancel, year,
+  t, variation, visualizations, indexes, data, onSubmit, onCancel, year, edit,
 }) => {
-  const [defaultData] = data ?? [{}];
+  const [defaultData] = edit ? data.filter((row) => row.year === year) : [{}];
   const defaultValues = { ...defaultData, ...year };
 
   const {

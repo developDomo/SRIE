@@ -15,7 +15,7 @@ import { Serialize } from '../../../../utils/Serializer.utils';
 import BackButton from '../../../../components/layout/BackButton';
 
 const AdminDataNewForm = ({
-  t, id, user, visualizations, indexes, variation, code, country, indicatorName,
+  t, id, user, visualizations, indexes, variation, code, country, indicatorName, data,
 }) => {
   const postUrl = `/api/indicators/${id}/manual-data`;
   const redirectUrl = `/admin/data/${code}`;
@@ -69,7 +69,7 @@ const AdminDataNewForm = ({
               variation={variation}
               visualizations={visualizations}
               indexes={indexes}
-              data={[]}
+              data={data}
               onSubmit={handleSubmit}
               onCancel={handleCancel}
             />
