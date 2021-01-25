@@ -15,5 +15,10 @@ module.exports = async () => {
     password: process.env.DB_PASS,
   });
 
+  if(process.env.NODE_ENV ==='development'){
+    const monitor = require('pg-monitor');
+    monitor.attach(db.driverConfig);
+  }
+
   return db;
 };

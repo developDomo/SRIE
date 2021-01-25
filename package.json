@@ -7,8 +7,8 @@
   },
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "debug": "NODE_OPTIONS='--inspect' node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "debug": "NODE_ENV=development NODE_OPTIONS='--inspect' node server.js",
     "build": "db-migrate up && next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
     "lint": "./node_modules/.bin/eslint .",
@@ -75,6 +75,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
+    "pg-monitor": "^1.4.1",
     "url-loader": "^4.1.0"
   },
   "husky": {

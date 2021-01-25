@@ -115,10 +115,23 @@ const addData = async (id, data, user) => {
   EventService.newDataEvent(user, id, data.year);
 };
 
-const updateUisData = (indicator, data, value) => {
-  if (value) {
-    db[indicator.uis_dataset.toLowerCase()].update(data, { obs_value: value });
+function isIterable(obj) {
+  if (obj === undefined || obj === null) {
+    return false;
   }
+  return obj.iterator !== undefined;
+}
+
+async function asyncForEach(array, callback) {
+  await Promise.all(array.map(callback));
+}
+
+const upsertUisData = async (indicator, data, value) => {
+  if (!value) { return false; }
+  const dataset = db[indicator.uis_dataset.toLowerCase()];
+  const updatedData = await dataset.update(data, { obs_value: value });
+  if (updatedData.length) return updatedData;
+  return dataset.insert({ ...data, obs_value: value });
 };
 
 const editIndicatorData = async (id, data, user) => {
@@ -126,27 +139,26 @@ const editIndicatorData = async (id, data, user) => {
   const indexesPromise = IndicatorIndexService.findByIndicatorId(id);
   const [indicator, indexes] = await Promise.all([indicatorPromise, indexesPromise]);
 
-  const baseData = getBaseData(indicator.id, data);
+  const baseData = getBaseData(indicator.id, data, indicator.query);
 
-  updateUisData(indicator, { ...baseData }, data.total);
+  await upsertUisData(indicator, { ...baseData }, data.total);
 
-  updateUisData(indicator, { ...baseData, sex: MALE_VALUE }, data.male);
-  updateUisData(indicator, { ...baseData, sex: FEMALE_VALUE }, data.female);
+  await upsertUisData(indicator, { ...baseData, sex: MALE_VALUE }, data.male);
+  await upsertUisData(indicator, { ...baseData, sex: FEMALE_VALUE }, data.female);
 
-  updateUisData(indicator, { ...baseData, location: RURAL_VALUE }, data.rural);
-  updateUisData(indicator, { ...baseData, location: URBAN_VALUE }, data.urban);
+  await upsertUisData(indicator, { ...baseData, location: RURAL_VALUE }, data.rural);
+  await upsertUisData(indicator, { ...baseData, location: URBAN_VALUE }, data.urban);
 
-  updateUisData(indicator, { ...baseData, wealth_quintile: Q1_VALUE }, data.q1);
-  updateUisData(indicator, { ...baseData, wealth_quintile: Q2_VALUE }, data.q2);
-  updateUisData(indicator, { ...baseData, wealth_quintile: Q3_VALUE }, data.q3);
-  updateUisData(indicator, { ...baseData, wealth_quintile: Q4_VALUE }, data.q4);
-  updateUisData(indicator, { ...baseData, wealth_quintile: Q5_VALUE }, data.q5);
+  await upsertUisData(indicator, { ...baseData, wealth_quintile: Q1_VALUE }, data.q1);
+  await upsertUisData(indicator, { ...baseData, wealth_quintile: Q2_VALUE }, data.q2);
+  await upsertUisData(indicator, { ...baseData, wealth_quintile: Q3_VALUE }, data.q3);
+  await upsertUisData(indicator, { ...baseData, wealth_quintile: Q4_VALUE }, data.q4);
+  await upsertUisData(indicator, { ...baseData, wealth_quintile: Q5_VALUE }, data.q5);
 
-  indexes.forEach((index) => {
+  await asyncForEach(indexes, async (index) => {
     const indexCode = index.code.toLowerCase();
-
     if (data[indexCode]) {
-      updateUisData(indicator, { ...baseData, unit_measure: index.code }, data[indexCode]);
+      await upsertUisData(indicator, { ...baseData, unit_measure: index.code }, data[indexCode]);
     }
   });
 
