@@ -15,7 +15,7 @@ import { Serialize } from '../../../../../utils/Serializer.utils';
 import BackButton from '../../../../../components/layout/BackButton';
 
 const AdminDataEdit = ({
-  t, id, user, visualizations, indexes, data, variation, country, indicatorName,
+  t, id, user, visualizations, indexes, data, year, variation, country, indicatorName,
 }) => {
   const variationQueryParam = variation ? `variation=${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data/edit`;
@@ -71,6 +71,8 @@ const AdminDataEdit = ({
               visualizations={visualizations}
               indexes={indexes}
               data={data}
+              year={year}
+              edit
               onSubmit={handleSubmit}
               onCancel={handleCancel}
             />
@@ -102,7 +104,7 @@ export const getServerSideProps = needsAuth(async ({ user, query }) => {
       user,
       visualizations: serializedIndicator.visualizations,
       indexes: serializedIndicator.indexes,
-      data: serializedIndicator.data.filter((row) => row.year === year),
+      data: serializedIndicator.data,
       variation: variation || null,
       id,
       year,
