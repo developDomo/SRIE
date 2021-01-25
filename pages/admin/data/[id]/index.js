@@ -43,7 +43,7 @@ const AdminData = ({
           }}
           >
             <CountryTitle country={country} />
-            <ManualDataTable responsive className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data[countryCode]} editable={false} />
+            <ManualDataTable responsive className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data[countryCode]} />
           </Col>
         </Row>
       );
@@ -61,11 +61,11 @@ const CountryAdminData = ({
         offset: 1,
       }}
       >
-        <Title type="caption" textCenter className="mb-4">
+        <Title color="black" type="caption" textCenter className="mb-4">
           {t(`indicators:${indicatorName}`)}
         </Title>
 
-        <ManualDataTable responsive className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} editable />
+        <ManualDataTable responsive className="mt-4 mb-4" visualizations={visualizations} indexes={indexes} data={data} editable="true" />
       </Col>
     </Row>
     <Row>
