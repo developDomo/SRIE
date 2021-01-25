@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Table } from 'react-bootstrap';
+import { Fragment } from 'react';
 import { blue } from '../../../theme/colors';
 import { Edit } from '../../layout/Icons';
 import { useTranslation } from '../../../i18n';
@@ -34,9 +35,9 @@ const TableHeaders = ({ visualizations, indexes, editable }) => {
         </>
         )}
         {indexes.map((index) => (
-          <>
+          <Fragment key={index}>
             <th key={index}>{index}</th>
-          </>
+          </Fragment>
         ))}
         {editable && (
         <th>{t('actions')}</th>
@@ -50,7 +51,7 @@ const TableHeaders = ({ visualizations, indexes, editable }) => {
         text-align: center;
         vertical-align: center;
         line-height: 2em;
-      }   
+      }
     `}
       </style>
     </thead>
@@ -93,7 +94,7 @@ const TableRows = (props) => {
           </>
           )}
           {indexes.map((index) => (
-            <td>{fix(row[index.toLowerCase()])}</td>
+            <td key={index}>{fix(row[index.toLowerCase()])}</td>
           ))}
           {editable && (
           <td>
