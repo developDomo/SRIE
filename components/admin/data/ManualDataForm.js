@@ -190,13 +190,13 @@ const FieldsGroup = ({
     {fieldsVisible && children}
     <style>
       {`
-          .field-group{
+        .field-group{
           background-color: ${gray1};
-                    } 
-              .field-group .col:last-child{         
-                     border-left: 1px solid ${txt};
-           }
-        `}
+        } 
+        .field-group .col:last-child{         
+          border-left: 1px solid ${txt};
+        }
+      `}
     </style>
   </Row>
 
