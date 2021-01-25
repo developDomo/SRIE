@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import _ from 'lodash';
 import styled from 'styled-components';
 
+import Select from 'react-select';
 import IndicatorListItem from '../../../components/indicators/IndicatorListItem';
 import Title from '../../../components/layout/Title';
 import PecIcon from '../../../public/img/home/icon_pec_indicadores.svg';
@@ -105,7 +106,30 @@ const IndicatorListPage = ({
       <IndicatorListItem indicator={indicator} countryName={country.short_name} />
     )));
   };
+  const defaultOption = [{ value: 0, label: t('topics.all') }];
 
+  const pecGoalsOptions = pecGoals.map((goal) => (
+    {
+      value: goal.id,
+      label: t(`common:goal.${goal.translation_key}`),
+    }
+  ));
+
+  const topicsOptions = topics.map((topicItem) => (
+    {
+      value: topicItem.id,
+      label: t(`topics.${topicItem.code}`),
+    }
+  ));
+
+  const selectedTopic = topicsOptions.find((topicsOption) => topicsOption.value === queryTopic?.id);
+
+  const educationOptions = educationLevels.map((level) => (
+    {
+      value: level.id,
+      label: t(`education-levels:${level.code}`),
+    }
+  ));
   return (
     <Container>
       <CountryHeader countries={countries} country={country} navigation={navigation} active="indicators" />
@@ -126,47 +150,30 @@ const IndicatorListPage = ({
             <Form.Row>
               <Form.Group as={Col} xs={12} sm={4} controlId="goal">
                 <LabelFilter>{t('common:filter.goalMeta')}</LabelFilter>
-                <Form.Control
-                  as="select"
-                  onChange={(e) => setPec(parseInt(e.target.value, 10))}
-                >
-                  <option key="goal-default" value={0}>{t('common:goal.all')}</option>
-                  {pecGoals.map((goal) => (
-                    <option key={`goal-${goal.id}`} value={goal.id}>
-                      {t(`common:goal.${goal.translation_key}`)}
-                    </option>
-                  ))}
-                </Form.Control>
+                <Select
+                  defaultValue={defaultOption}
+                  onChange={({ value }) => setPec(value)}
+                  options={[...defaultOption, ...pecGoalsOptions]}
+                  isSearchable
+                />
               </Form.Group>
               <Form.Group as={Col} xs={12} sm={4} controlId="topic">
                 <LabelFilter>{t('common:filter.topic')}</LabelFilter>
-                <Form.Control
-                  as="select"
-                  onChange={(e) => setTopic(parseInt(e.target.value, 10))}
-                >
-                  <option key="topic-default" value={0}>{t('topics.all')}</option>
-                  {topics.map((topicItem) => (
-                    <option
-                      key={`topic-${topicItem.id}`}
-                      value={topicItem.id}
-                      selected={queryTopic?.id === topicItem.id}
-                    >
-                      {t(`topics.${topicItem.code}`)}
-                    </option>
-                  ))}
-                </Form.Control>
+                <Select
+                  defaultValue={selectedTopic || defaultOption}
+                  onChange={({ value }) => setTopic(value)}
+                  options={[...defaultOption, ...topicsOptions]}
+                  isSearchable
+                />
               </Form.Group>
               <Form.Group as={Col} xs={12} sm={4} controlId="level">
                 <LabelFilter>{t('common:filter.level')}</LabelFilter>
-                <Form.Control
-                  as="select"
-                  onChange={(e) => setEducationLevel(parseInt(e.target.value, 10))}
-                >
-                  <option key="education-level-default" value={0}>{t('education-levels:all')}</option>
-                  {educationLevels.map((level) => (
-                    <option key={`education-level-${level.id}`} value={level.id}>{t(`education-levels:${level.code}`)}</option>
-                  ))}
-                </Form.Control>
+                <Select
+                  defaultValue={defaultOption}
+                  onChange={({ value }) => setEducationLevel(value)}
+                  options={[...defaultOption, ...educationOptions]}
+                  isSearchable
+                />
               </Form.Group>
             </Form.Row>
           </Form>
