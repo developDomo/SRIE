@@ -36,7 +36,7 @@ const LoginForm = ({ t, errorMessage, onSubmit }) => (
         {errorMessage && <p className="error bg-danger">{errorMessage}</p>}
         <div className="support mt-5">
           <p className="m-0">{ t('problemsLoginIn')}</p>
-          <p className="m-0 changeme"><a href="mailto:suport@changeme.com">{ t('contactAdmin')}</a></p>
+          <p className="m-0"><a href="mailto:rmora@ceccsica.com">{ t('contactAdmin')}</a></p>
         </div>
       </form>
 
