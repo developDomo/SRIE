@@ -38,7 +38,7 @@ const AboutSRIE = ({ t }) => {
           </Row>
           <Row>
             <ButtonNavIndicadores color="blue">
-              <Link href="/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf"} replace>
+              <Link href="/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf" replace>
                 { t('downloadFullMetadata') }
               </Link>
             </ButtonNavIndicadores>
