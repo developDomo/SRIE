@@ -2,7 +2,7 @@ import {
   Container, Row,
 } from 'react-bootstrap';
 import Link from 'next/link';
-import { withTranslation } from '../i18n';
+import { i18n, withTranslation } from '../i18n';
 
 import Title from '../components/layout/Title';
 import { ContainerPage } from '../components/layout/ContainerPageContent';
