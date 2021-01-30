@@ -1,5 +1,5 @@
 import {
-  Container, Row,
+  Container, Row, Col,
 } from 'react-bootstrap';
 import Link from 'next/link';
 import { i18n, withTranslation } from '../i18n';
@@ -36,12 +36,14 @@ const AboutSRIE = ({ t }) => {
               />
             </div>
           </Row>
-          <Row>
-            <ButtonNavIndicadores color="blue">
-              <Link href={`/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf`}>
-                { t('downloadFullMetadata') }
-              </Link>
-            </ButtonNavIndicadores>
+          <Row className="">
+            <Col sm={12} className="d-flex pt-2 pb-5 justify-content-center">
+              <ButtonNavIndicadores color="blue">
+                <Link href={`/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf`}>
+                  { t('downloadFullMetadata') }
+                </Link>
+              </ButtonNavIndicadores>
+            </Col>
           </Row>
         </Container>
       </ContainerPage>
