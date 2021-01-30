@@ -1,11 +1,13 @@
 import {
   Container, Row,
 } from 'react-bootstrap';
-import { withTranslation } from '../i18n';
+import Link from 'next/link';
+import { i18n, withTranslation } from '../i18n';
 
 import Title from '../components/layout/Title';
 import { ContainerPage } from '../components/layout/ContainerPageContent';
 import CountryHeader from '../components/countries/CountryHeader';
+import { ButtonNavIndicadores } from '../components/layout/Button';
 
 
 const AboutSRIE = ({ t }) => {
@@ -33,6 +35,13 @@ const AboutSRIE = ({ t }) => {
             }
               />
             </div>
+          </Row>
+          <Row>
+            <ButtonNavIndicadores color="blue">
+              <Link href={`/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf`}>
+                { t('downloadFullMetadata') }
+              </Link>
+            </ButtonNavIndicadores>
           </Row>
         </Container>
       </ContainerPage>
