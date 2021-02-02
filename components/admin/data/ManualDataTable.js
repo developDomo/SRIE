@@ -68,7 +68,7 @@ const TableRows = (props) => {
   const fix = (i) => i && parseFloat(i, 10).toFixed(2);
   return (
     <tbody>
-      {data.map((row) => (
+      {data.map((row) => row.year !== 'null' && (
         <tr key={row.year}>
           <td>{row.year}</td>
           {visualizations.includes('total') && <td>{fix(row.total)}</td>}

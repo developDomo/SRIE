@@ -64,6 +64,14 @@ const sdgManualBaseData = {
   decimals: 5,
 };
 
+const normalizeValue = (value) => {
+  const localeFormat = Intl.NumberFormat('en-US').format('1.1');
+  const cleanPattern = new RegExp(`[^-+0-9${localeFormat.charAt(1)}]`, 'g');
+  const normalized = value.replace(cleanPattern, '.');
+
+  return parseFloat(normalized);
+};
+
 const getBaseData = (id, data, query) => {
   const contextData = { ref_area: data.country, time_period: data.year, ...query };
 
@@ -80,30 +88,30 @@ const addIndicatorData = async (id, data) => {
   const [indicator, indexes] = await Promise.all([indicatorPromise, indexesPromise]);
 
   const baseData = getBaseData(indicator.id, data, indicator.query);
-  const insertData = [{ ...baseData, obs_value: data.total }];
+  const insertData = [{ ...baseData, obs_value: normalizeValue(data.total) }];
   if (data.male && data.female) {
-    insertData.push({ ...baseData, sex: MALE_VALUE, obs_value: data.male });
-    insertData.push({ ...baseData, sex: FEMALE_VALUE, obs_value: data.female });
+    insertData.push({ ...baseData, sex: MALE_VALUE, obs_value: normalizeValue(data.male) });
+    insertData.push({ ...baseData, sex: FEMALE_VALUE, obs_value: normalizeValue(data.female) });
   }
 
   if (data.rural && data.urban) {
-    insertData.push({ ...baseData, location: RURAL_VALUE, obs_value: data.rural });
-    insertData.push({ ...baseData, location: URBAN_VALUE, obs_value: data.urban });
+    insertData.push({ ...baseData, location: RURAL_VALUE, obs_value: normalizeValue(data.rural) });
+    insertData.push({ ...baseData, location: URBAN_VALUE, obs_value: normalizeValue(data.urban) });
   }
 
   if (data.q1 && data.q2 && data.q3 && data.q4 && data.q5) {
-    insertData.push({ ...baseData, wealth_quintile: Q1_VALUE, obs_value: data.q1 });
-    insertData.push({ ...baseData, wealth_quintile: Q2_VALUE, obs_value: data.q2 });
-    insertData.push({ ...baseData, wealth_quintile: Q3_VALUE, obs_value: data.q3 });
-    insertData.push({ ...baseData, wealth_quintile: Q4_VALUE, obs_value: data.q4 });
-    insertData.push({ ...baseData, wealth_quintile: Q5_VALUE, obs_value: data.q5 });
+    insertData.push({ ...baseData, wealth_quintile: Q1_VALUE, obs_value: normalizeValue(data.q1) });
+    insertData.push({ ...baseData, wealth_quintile: Q2_VALUE, obs_value: normalizeValue(data.q2) });
+    insertData.push({ ...baseData, wealth_quintile: Q3_VALUE, obs_value: normalizeValue(data.q3) });
+    insertData.push({ ...baseData, wealth_quintile: Q4_VALUE, obs_value: normalizeValue(data.q4) });
+    insertData.push({ ...baseData, wealth_quintile: Q5_VALUE, obs_value: normalizeValue(data.q5) });
   }
 
   indexes.forEach((index) => {
     const indexCode = index.code.toLowerCase();
 
     if (data[indexCode]) {
-      insertData.push({ ...baseData, unit_measure: index.code, obs_value: data[indexCode] });
+      insertData.push({ ...baseData, unit_measure: index.code, obs_value: normalizeValue(data[indexCode]) });
     }
   });
 
@@ -122,6 +130,7 @@ function isIterable(obj) {
   return obj.iterator !== undefined;
 }
 
+
 async function asyncForEach(array, callback) {
   await Promise.all(array.map(callback));
 }
@@ -129,9 +138,10 @@ async function asyncForEach(array, callback) {
 const upsertUisData = async (indicator, data, value) => {
   if (!value) { return false; }
   const dataset = db[indicator.uis_dataset.toLowerCase()];
-  const updatedData = await dataset.update(data, { obs_value: value });
+  const obs_value = normalizeValue(value);
+  const updatedData = await dataset.update(data, { obs_value });
   if (updatedData.length) return updatedData;
-  return dataset.insert({ ...data, obs_value: value });
+  return dataset.insert({ ...data, obs_value });
 };
 
 const editIndicatorData = async (id, data, user) => {

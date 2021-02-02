@@ -15,6 +15,14 @@ import FormInput from '../../layout/FormInput';
 const minYear = 2010;
 const maxYear = new Date().getFullYear();
 
+const parseSeparator = (value, locales = navigator.languages) => {
+  const localeFormat = Intl.NumberFormat(locales).format('1.1');
+  const cleanPattern = new RegExp(`[^-+0-9${localeFormat.charAt(1)}]`, 'g');
+  const normalized = value.replace(cleanPattern, '.');
+
+  return parseFloat(normalized);
+};
+
 const calculateIndex = (numeratorInputName, denominatorInputName, resultInputName) => {
   const numerator = document.getElementsByName(numeratorInputName)[0]?.value;
   if (!numerator) {
@@ -31,7 +39,7 @@ const calculateIndex = (numeratorInputName, denominatorInputName, resultInputNam
     return;
   }
 
-  const index = Math.round((numerator / denominator) * 100000) / 100000;
+  const index = Math.round((parseSeparator(numerator) / parseSeparator(denominator)) * 100000) / 100000;
   resultInput.value = index;
 };
 
@@ -66,6 +74,7 @@ const YearSelect = React.forwardRef((props, ref) => {
         {required
           && <span className="text-danger"> * </span>}
       </label>
+
       <select ref={ref} disabled={year} className="form-control" name="year">
         {options}
       </select>
@@ -238,7 +247,6 @@ const ManualDataForm = ({
     defaultValues,
   });
 
-  const parseSeparator = (val) => val.replace(',', '.');
 
   const validateMaxPercentage = (fieldValue) => parseSeparator(fieldValue) <= 100 || t('dataShouldNotSurpass');
   const validateTotal = (value) => parseSeparator(value) <= 100 || t('dataShouldNotBeGreater');
@@ -250,17 +258,30 @@ const ManualDataForm = ({
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
       <input type="hidden" name="variation" value={variation} />
       <Row className="mb-2">
-        <YearSelect
-          sm={4}
-          name="year"
-          label={t('year')}
-          excludeYears={data.map((row) => parseInt(row.year, 10))}
-          year={year}
-          ref={register({
-            required: t('fieldRequiredMessage'),
-          })}
-          required
-        />
+        {year ? (
+          <FormInput
+            sm={4}
+            name="year"
+            label="Year"
+            ref={register}
+            disabled
+            value={year}
+          />
+        ) : (
+
+          <YearSelect
+            sm={4}
+            name="year"
+            label={t('year')}
+            excludeYears={data.map((row) => parseInt(row.year, 10))}
+            year={year}
+            ref={register({
+              required: t('fieldRequiredMessage'),
+            })}
+            required
+          />
+        ) }
+
       </Row>
 
       <Row className=" mt-2 mb-2" hidden={!visualizations.includes('total')}>
@@ -317,7 +338,6 @@ const ManualDataForm = ({
         <FormInput
           name="rural"
           label={t('rural')}
-          disabled
           ref={register({
             validate: validateMaxPercentage,
           })}
@@ -327,7 +347,6 @@ const ManualDataForm = ({
         <FormInput
           name="urban"
           label={t('urban')}
-          disabled
           ref={register({
             validate: validateMaxPercentage,
           })}
@@ -353,7 +372,6 @@ const ManualDataForm = ({
           ref={register({
             validate: validateMaxPercentage,
           })}
-          disabled
           errors={errors}
         />
         <FormInput
@@ -362,7 +380,6 @@ const ManualDataForm = ({
           ref={register({
             validate: validateMaxPercentage,
           })}
-          disabled
           errors={errors}
         />
         <FormInput
@@ -371,7 +388,6 @@ const ManualDataForm = ({
           ref={register({
             validate: validateMaxPercentage,
           })}
-          disabled
           errors={errors}
         />
         <FormInput
@@ -380,13 +396,11 @@ const ManualDataForm = ({
           ref={register({
             validate: validateMaxPercentage,
           })}
-          disabled
           errors={errors}
         />
         <FormInput
           name="q5"
           label="Q5"
-          disabled
           errors={errors}
           ref={register({
             validate: validateMaxPercentage,
