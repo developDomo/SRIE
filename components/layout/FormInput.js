@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import { blue1, white } from '../../theme/colors';
+import { blue1, gray1, white } from '../../theme/colors';
 
 export default React.forwardRef((props, ref) => {
   const {
-    name, label, value, errors, sm, onChange, onBlur, type, required, show = true,
+    name, label, value, errors, sm, onChange, onBlur, type, required, show = true, disabled,
   } = props;
   const errorMessage = errors && errors[name] && errors[name].message;
   const defaultFieldType = 'text';
@@ -23,7 +23,7 @@ export default React.forwardRef((props, ref) => {
       </label>
       <input
         ref={ref}
-        className={`form-control ${errorMessage && 'is-invalid'}`}
+        className={`form-control ${errorMessage && 'is-invalid'} ${disabled && 'disabled'}`}
         type={fieldType}
         name={name}
         value={value}
@@ -52,7 +52,13 @@ export default React.forwardRef((props, ref) => {
                 font-weight: bold;
                 font-family: "Roboto Slab", sans-serif;
             }
-
+            .form-control.disabled{
+              cursor: not-allowed;
+              pointer-events: none;
+              user-select: none;
+              opacity: 0.7;
+              background-color: ${gray1};
+            }
         `}
 
       </style>
