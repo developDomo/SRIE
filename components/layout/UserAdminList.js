@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import { useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
 import { blue } from '../../theme/colors';
-import { Edit, Delete } from './Icons';
+import { Edit, Delete, Key } from './Icons';
 import ConfirmationModal from './ConfimationModal';
 import { withTranslation } from '../../i18n';
 
@@ -52,6 +52,11 @@ const UserAdminList = ({ t, users }) => {
                   <Link href={`/admin/users/${user.id}/edit`}>
                     <a className="btn btn-light">
                       <Edit />
+                    </a>
+                  </Link>
+                  <Link href={`/admin/users/${user.id}/change-password`}>
+                    <a className="btn btn-light">
+                      <Key />
                     </a>
                   </Link>
                   <button type="button" className="btn btn-light text-danger" onClick={() => setUserToDelete(user)}>
