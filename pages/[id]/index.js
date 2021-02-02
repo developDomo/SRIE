@@ -177,7 +177,14 @@ const Country = ({
         </div>
       </Row>
       <Row className="mb-5">
-        <div className="col-lg-12 d-flex justify-content-end">
+        <div className="col-sm-6 d-flex justify-content-start">
+          { country.data_system_link && (
+          <a href={country.data_system_link} target="_blank" rel="noreferrer">
+            { country.data_system_name || country.data_system_link }
+          </a>
+          )}
+        </div>
+        <div className="col-sm-6 d-flex justify-content-end">
           <ButtonNavIndicadores color="blue">
             <a href={`/indicators/${country.code}/dashboard/${country.code}.pdf`} download>
               { t('dashboard.download') }
