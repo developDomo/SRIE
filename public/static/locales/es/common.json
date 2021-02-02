@@ -104,6 +104,7 @@
   "actionsDone": "Acciones realizadas",
   "noData": "No hay datos disponibles",
   "goBack": "Regresar",
+  "changePassword": "Cambiar contraseña",
   "downloadIndicatorMetadata": "Descargar metadatos de este indicador",
   "dashboard": {
     "data": "Dato",
