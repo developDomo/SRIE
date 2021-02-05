@@ -247,7 +247,7 @@
             "purpose": ["La tasa de finalización indica cuántas personas en un determinado grupo de edad han completado la educación primaria, secundaria baja o secundaria alta. Indica cuántos niños y adolescentes ingresan a la escuela a tiempo y progresan a través del sistema educativo sin demoras excesivas."],
             "definition": ["El porcentaje de una cohorte de niños o jóvenes de edades comprendidas entre los 3 y 5 años por encima de la edad prevista para el último grado de cada nivel de educación, que hayan completado ese grado.La edad prevista para el último grado de cada nivel de educación es la edad a la que los alumnos entrarían en el grado si hubieran comenzado la escuela a la edad oficial de ingreso a la primaria, si hubieran estudiado a tiempo completo y si hubieran progresado sin repetir ni saltearse ningún grado."],
             "method":["El número de personas en el grupo de edad pertinente que han completado el último grado de un nivel dado de educación se expresa como un porcentaje de la población total del mismo grupo de edad."],
-            "formula": ["CR_{n}=\\frac{{EAP_{n,AG(a+3t5)}}\\times 100}{{PAG_{n,AG(a+3t5)}}}"],
+            "formula": ["CR_{n}=\\frac{EAP_{n,AG(a+3t5)}\\times 100}{PAG_{n,AG(a+3t5)}}"],
             "periodicity": "Anual",
             "formulaExplanation": [
               "CR_{n}",
