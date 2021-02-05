@@ -5,7 +5,6 @@ import { withTranslation } from '../../../i18n';
 
 const Content = styled.div`
   padding: 1.2em;
-  margin-left: auto;
   & .indicator-indexes-dropdown {
     width: 350px;
     border-radius: 0;
