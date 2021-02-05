@@ -26,6 +26,7 @@ const Content = styled.div`
 
 const ControlContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
 `;
