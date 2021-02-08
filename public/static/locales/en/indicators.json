@@ -418,7 +418,7 @@
           "The number of students with the theoretical oath for the educational level given, matriculated in primary, secondary or higher educational levels, is obtained from the total of the population of the same edema. For the sake of this indicator, the derivative estimates of the wage increases, assistance and population are used at different times."
         ],
         "formula": [
-          "OSR_{n}=\\frac{OSR_{n}-\\textstyle\\sum_{i=1}^8 E_{i,AGn}}{SAP_{n}}\\times 100"
+          "OSR_{n}=\\frac{SAP_{n}-\\textstyle\\sum_{i=1}^8 E_{i,AGn}}{SAP_{n}}\\times 100"
         ],
         "formulaExplanation": [
           "OSR_{n}",
