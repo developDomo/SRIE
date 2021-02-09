@@ -1,5 +1,7 @@
 {
     "administrationPanel": "Panel de Administración",
+    "countryAdminPanel": "Panel de administración para países",
+    "countryIntroDirections": "Para crear o editar los reportes de indicadores educativos, oprima el botón Datos en el menú de la barra azul",
     "options": {
         "dashboard": "Dashboard",
         "users": "Usuarios",
