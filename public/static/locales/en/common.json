@@ -74,7 +74,7 @@
   "login": "Login",
   "indicatorData": "Indicators data",
   "dataShouldNotSurpass": "Data should not surpass 100%",
-  "dataShouldNotBeGreater": "Data should not be greater than 100. Use \"comma\" (,) as separator.",
+  "dataShouldNotBeGreater": "Data should not be greater than 100. Use only numbers, don't use % sign and use \"period\" (.) as decimal separator.",
   "includesex": "Include data by genre",
   "includelocation": "Include data by location",
   "includewealth-quintile": "Include data by socioeconomic status",
