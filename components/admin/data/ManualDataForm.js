@@ -306,7 +306,6 @@ const ManualDataForm = ({
         <FormInput
           name="male"
           label={t('male')}
-          disabled={!year}
           ref={register({
             validate: validateMaxPercentage,
           })}
@@ -316,7 +315,6 @@ const ManualDataForm = ({
         <FormInput
           name="female"
           label={t('female')}
-          disabled={!year}
           ref={register({
             validate: validateMaxPercentage,
           })}
