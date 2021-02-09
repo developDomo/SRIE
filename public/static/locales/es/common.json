@@ -76,7 +76,7 @@
   "indicatorData": "Datos de indicadores",
   "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Use \"coma\" (,) como separador.",
-  "includesex": "Incluir datos por género",
+  "includesex": "Incluir datos por sexo",
   "includelocation": "Incluir datos por zona geográfica",
   "includewealth-quintile": "Incluir datos por nivel socioeconómico",
   "save": "Guardar",
@@ -103,7 +103,7 @@
   "roleCountryAdmin": "Administrador - País",
   "actionsDone": "Acciones realizadas",
   "noData": "No hay datos disponibles",
-  "goBack": "Regresar",
+  "goBack": "Regresar a lista de indicadores",
   "changePassword": "Cambiar contraseña",
   "downloadIndicatorMetadata": "Descargar metadatos de este indicador",
   "dashboard": {
