@@ -39,6 +39,7 @@ const AdminDataEdit = ({
   };
 
   const handleCancel = () => router.back();
+  const goToDataDashboard = () => router.push('/admin/data');
 
   return (
     <Container fluid>
@@ -48,7 +49,7 @@ const AdminDataEdit = ({
 
         <CountryTitle country={country} />
         <Row className="container mt-4">
-          <BackButton onClick={handleCancel} />
+          <BackButton onClick={goToDataDashboard} />
         </Row>
         <Row className="justify-content-center mb-4 mt-4">
           <Title color="blueTitle" type="title">
