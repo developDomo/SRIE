@@ -75,6 +75,7 @@
   "year": "Año",
   "indicatorData": "Datos de indicadores",
   "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
+  "invalidFormat": "Formato inválido, use solamente números y \"punto\" (.) como separador decimal.",
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Incluya solo números, no coloque signo de %. Use \"punto\" (.) como separador decimal",
   "includesex": "Incluir datos por género",
   "includelocation": "Incluir datos por zona geográfica",
