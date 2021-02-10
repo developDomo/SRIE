@@ -1,5 +1,7 @@
 {
     "administrationPanel": "Administration Panel",
+    "countryAdminPanel": "Country Admin Panel",
+    "countryIntroDirections": "To create or edit the indicator reports, click on Data option, visible in the blue bar menu",
     "options": {
         "dashboard": "Dashboard",
         "users": "Users",

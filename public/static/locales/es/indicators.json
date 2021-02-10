@@ -274,7 +274,7 @@
             "purpose": ["Identifica la magnitud de la población del grupo de edades correspondientes al nivel educativo dado que no están matriculados en la escuela, para poder identificarlos y poder implementar políticas apropiadas para asegurarse que tengan acceso a la educación."],
             "definition": ["Niños y jóvenes del grupo de edades correspondiente al nivel educativo dado que no se encuentran matriculados en primaria, secundaria o niveles educativos superiores. Los niños que se encuentran matriculados en la educación preprimaria son considerados fuera de la escuela.La <em>edad correspondiente</em> a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían estar asistiendo al mismo, de acuerdo con la legislación o la política nacional, considerando (a) <em>la edad oficial de ingreso</em> al nivel, y la duración de cada nivel educativo en años. La edad oficial de ingreso a cada nivel educativo es la edad en que los niños, niñas y adolescentes deberían comenzar el mismo."],
             "method":["El número de estudiantes con la edad teórica para el nivel educativo dado, matriculados en primaria, secundaria o niveles educativos superiores, se obtiene del total de la población de la misma edad. Para el cálculo de este indicador, se utilizan las estimaciones derivadas de las encuestas de hogar, donde asistencia y población se recogen al mismo tiempo."],
-            "formula": ["OSR_{n}=\\frac{OSR_{n}-\\textstyle\\sum_{i=1}^8 E_{i,AGn}}{SAP_{n}}\\times 100"],
+            "formula": ["OSR_{n}=\\frac{SAP_{n}-\\textstyle\\sum_{i=1}^8 E_{i,AGn}}{SAP_{n}}\\times 100"],
             "periodicity": "Anual",
             "formulaExplanation": [
               "OSR_{n}",
