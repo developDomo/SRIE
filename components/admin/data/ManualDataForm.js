@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Col, Row,
 } from 'react-bootstrap';
@@ -109,7 +109,7 @@ const YearSelect = React.forwardRef((props, ref) => {
   );
 });
 
-const CustomCheckbox = (props) => {
+const CustomCheckbox = React.forwardRef((props, ref) => {
   const { name } = props;
   const [t] = useTranslation('common');
   return (
@@ -182,24 +182,39 @@ const CustomCheckbox = (props) => {
       </style>
     </>
   );
-};
-
-const FieldsGroup = ({
-  visible, groupName, children, setFormData, formData, expanded,
-}) => {
+});
+const FieldsGroup = React.forwardRef(({
+  visible, groupName, children, expanded, onExpandedChange,
+}, ref) => {
   const [fieldsVisible, setFieldsVisible] = useState(expanded);
   const toggleFields = () => setFieldsVisible(!fieldsVisible);
-  const onFieldGroupChecked = () => () => {
-    toggleFields();
+  const handleExpandChange = (isGroupExpanded) => {
+    onExpandedChange(
+      {
+        [groupName]: Boolean(isGroupExpanded),
+      },
+    );
   };
-  return visible && (
-  <Row className={`field-group ${groupName} mt-2 pt-3 mb-2`}>
-    <Col sm={12}>
-      <CustomCheckbox checked={fieldsVisible} className="mr-2" name={groupName} value={groupName} onChange={onFieldGroupChecked(setFormData, formData)} />
-    </Col>
-    {fieldsVisible && children}
-    <style>
-      {`
+
+  useEffect(() => {
+    handleExpandChange(fieldsVisible);
+  }, [fieldsVisible, expanded]);
+
+  return (
+    <Row hidden={!visible} className={`field-group ${groupName} mt-2 pt-3 mb-2`}>
+      <Col sm={12}>
+        <CustomCheckbox
+          ref={ref}
+          defaultChecked={fieldsVisible}
+          className="mr-2"
+          name={groupName}
+          defaultValue={groupName}
+          onChange={toggleFields}
+        />
+      </Col>
+      {fieldsVisible && children}
+      <style>
+        {`
         .field-group{
           background-color: ${gray1};
         } 
@@ -207,29 +222,47 @@ const FieldsGroup = ({
           border-left: 1px solid ${txt};
         }
       `}
-    </style>
-  </Row>
+      </style>
+    </Row>
 
   );
-};
+});
 
-const IndexInput = React.forwardRef(({
-  name,
-}, ref) => (
-  <FormInput name={name.toLowerCase()} label={name.toUpperCase()} ref={ref} />
-));
+const IndexInput = React.forwardRef((props, ref) => {
+  const {
+    name, errors,
+  } = props;
+  return (
+    <FormInput {...props} name={name.toLowerCase()} label={name.toUpperCase()} ref={ref} errors={errors} />
+  );
+});
 
-const FieldGroupIndexes = React.forwardRef(({
-  index, indexes, errors,
-}, ref) => {
-  const adjusted = `${index}A`;
+const FieldGroupIndexes = React.forwardRef((props, ref) => {
+  const {
+    index, indexes, errors,
+  } = props;
+  const name = index.toLowerCase();
+  const adjustedName = `${name}a`;
+  const errorMessage = errors && errors[name] && errors[name]?.message;
   return (
     <>
       {indexes.includes(index.toUpperCase()) && (
-        <IndexInput name={index.toLowerCase()} ref={ref} errors={errors} />
+        <IndexInput
+          {...props}
+          className={`border-right ${errorMessage && 'is-invalid'}`}
+          name={index.toLowerCase()}
+          ref={ref}
+          errors={errors}
+        />
       )}
-      {indexes.includes(adjusted.toUpperCase()) && (
-        <FormInput className="border-right" name={adjusted.toLowerCase()} ref={ref} errors={errors} />
+      {indexes.includes(adjustedName.toUpperCase()) && (
+        <FormInput
+          {...props}
+          className={`border-right ${errorMessage && 'is-invalid'}`}
+          name={adjustedName}
+          ref={ref}
+          errors={errors}
+        />
       )}
     </>
   );
@@ -241,22 +274,34 @@ const ManualDataForm = ({
   const [defaultData] = edit ? data.filter((row) => row.year === year) : [{}];
   const defaultValues = { ...defaultData, ...year };
 
+  const [expandedGroups, setExpandedGroups] = useState([]);
+
+
   const {
-    handleSubmit, register, errors,
+    handleSubmit, register, formState: { errors },
+    trigger,
   } = useForm({
+    mode: 'onChange',
     defaultValues,
   });
 
+  const handleExpandedGroups = (groups) => {
+    const g = Object.assign(expandedGroups, groups);
+    setExpandedGroups(g);
+  };
 
   const validateMaxPercentage = (fieldValue) => parseSeparator(fieldValue) <= 100 || t('dataShouldNotSurpass');
   const validateTotal = (value) => parseSeparator(value) <= 100 || t('dataShouldNotBeGreater');
-
+  const validatePresence = (field, message) => ({ value: expandedGroups[field], message });
+  const validate = {
+    positiveNumber: (value) => parseSeparator(value) > 0 || t('invalidFormat'),
+  };
   const btnLabelAction = defaultValues.total ? 'edit' : 'add';
   const btnLabel = `${t(btnLabelAction)} ${t('data')}  +`;
 
   return (
     <form method="post" onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" name="variation" value={variation} />
+      <input type="hidden" name="variation" value={variation || ''} />
       <Row className="mb-2">
         {year ? (
           <FormInput
@@ -302,12 +347,15 @@ const ManualDataForm = ({
         visible={visualizations.includes('sex')}
         expanded={defaultValues.female || defaultValues.male}
         groupName="sex"
+        onExpandedChange={(groupStatus) => handleExpandedGroups(groupStatus)}
       >
         <FormInput
           name="male"
           label={t('male')}
           ref={register({
+            required: validatePresence('sex', t('fieldRequiredMessage')),
             validate: validateMaxPercentage,
+
           })}
           errors={errors}
           onBlur={calculateGpi}
@@ -316,7 +364,9 @@ const ManualDataForm = ({
           name="female"
           label={t('female')}
           ref={register({
+            required: validatePresence('sex', t('fieldRequiredMessage')),
             validate: validateMaxPercentage,
+
           })}
           errors={errors}
           onBlur={calculateGpi}
@@ -324,7 +374,11 @@ const ManualDataForm = ({
         <FieldGroupIndexes
           index="GPI"
           indexes={indexes}
-          ref={register}
+          ref={register({
+            required: validatePresence('sex', t('fieldRequiredMessage')),
+            validate,
+          })}
+          errors={errors}
         />
       </FieldsGroup>
 
@@ -332,12 +386,14 @@ const ManualDataForm = ({
         visible={visualizations.includes('location')}
         expanded={defaultValues.urban || defaultValues.rural}
         groupName="location"
+        onExpandedChange={(groupStatus) => handleExpandedGroups(groupStatus)}
       >
         <FormInput
           name="rural"
           label={t('rural')}
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('location', t('fieldRequiredMessage')),
           })}
           errors={errors}
           onBlur={calculateGlpi}
@@ -347,6 +403,7 @@ const ManualDataForm = ({
           label={t('urban')}
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('location', t('fieldRequiredMessage')),
           })}
           errors={errors}
           onBlur={calculateGlpi}
@@ -354,7 +411,12 @@ const ManualDataForm = ({
         <FieldGroupIndexes
           index="GLPI"
           indexes={indexes}
-          ref={register}
+          ref={register({
+            required: validatePresence('location', t('fieldRequiredMessage')),
+            validate,
+          })}
+          errors={errors}
+
         />
       </FieldsGroup>
 
@@ -363,12 +425,14 @@ const ManualDataForm = ({
         expanded={defaultValues.q1 || defaultValues.q2 || defaultValues.q3 || defaultValues.q4 || defaultValues.q5}
         groupName="wealth-quintile"
         onBlur={calculateSespi}
+        onExpandedChange={(groupStatus) => handleExpandedGroups(groupStatus)}
       >
         <FormInput
           name="q1"
           label="Q1"
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
           })}
           errors={errors}
         />
@@ -377,6 +441,7 @@ const ManualDataForm = ({
           label="Q2"
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
           })}
           errors={errors}
         />
@@ -385,6 +450,7 @@ const ManualDataForm = ({
           label="Q3"
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
           })}
           errors={errors}
         />
@@ -393,6 +459,7 @@ const ManualDataForm = ({
           label="Q4"
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
           })}
           errors={errors}
         />
@@ -402,13 +469,18 @@ const ManualDataForm = ({
           errors={errors}
           ref={register({
             validate: validateMaxPercentage,
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
           })}
           onBlur={calculateSespi}
         />
         <FieldGroupIndexes
           index="SESPI"
           indexes={indexes}
-          ref={register}
+          errors={errors}
+          ref={register({
+            required: validatePresence('wealth-quintile', t('fieldRequiredMessage')),
+            validate,
+          })}
         />
       </FieldsGroup>
       <Row className="mt-4">
