@@ -17,9 +17,9 @@ import BackButton from '../../../../../components/layout/BackButton';
 const AdminDataEdit = ({
   t, id, user, visualizations, indexes, data, year, variation, country, indicatorName,
 }) => {
-  const variationQueryParam = variation ? `variation=${variation}` : '';
+  const variationCode = variation ? `-${variation}` : '';
   const postUrl = `/api/indicators/${id}/manual-data/edit`;
-  const redirectUrl = `/admin/data/${id}?${variationQueryParam}`;
+  const redirectUrl = `/admin/data/${id}${variationCode}`;
 
   const router = useRouter();
 
@@ -35,7 +35,7 @@ const AdminDataEdit = ({
       body: JSON.stringify(defaultData),
     });
 
-    if (res.ok) router.push(redirectUrl);
+    if (res.ok) await router.push(redirectUrl);
   };
 
   const handleCancel = () => router.back();
