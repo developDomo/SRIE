@@ -8,6 +8,7 @@ import AdminDashboard from '../../components/admin/index/AdminDashboard';
 import CountryAdminDashboard from '../../components/admin/index/CountryAdminDashboard';
 import AdminMenu from '../../components/admin/AdminMenu';
 import EventService from '../../services/Event.service';
+import CountryService from '../../services/Country.service';
 
 DateTime.local();
 
@@ -41,7 +42,7 @@ const AdminHome = (props) => {
   return (
     <Container fluid>
       <AdminMenu user={user} />
-      {(user.role === 'admin') ? <AdminDashboard {...props} handlePagination={handlePagination} isLoading={isLoading} /> : <CountryAdminDashboard />}
+      {(user.role === 'admin') ? <AdminDashboard {...props} handlePagination={handlePagination} isLoading={isLoading} /> : <CountryAdminDashboard {...props} />}
     </Container>
   );
 };
@@ -52,6 +53,7 @@ export const getServerSideProps = needsAuth(async (context) => {
 
   const events = await EventService.paginate(page, 20);
   events.elements.map((e) => { e.timestamp = e.timestamp.toISOString(); return e; });
+  const country = await CountryService.findByCode(user.country);
 
   return {
     props: {
@@ -61,6 +63,7 @@ export const getServerSideProps = needsAuth(async (context) => {
       totalPages: events.totalPages,
       totalElements: events.totalElements,
       user,
+      country,
     },
   };
 });
