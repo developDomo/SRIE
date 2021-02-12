@@ -23,6 +23,7 @@ import {
   pink,
   pink2,
   pinkRosewood,
+  pinkRosewood2,
   pinkRose,
   pinkWatermelon,
 } from '../../styles/colors';
@@ -624,19 +625,9 @@ const Boxes = ({ countryId, t }) => {
       <>
         <ContainerData>
           <ContainerBox>
-            <ContainerBoxSection flexbasis="0" flexGrow={1}>
-              <BoxSectioInfo
-                color={pinkRose}
-                flexdirection="column"
-                rotateTxt
-                width
-                colorTxt={black}
-                flexdirectionSm="column"
-                heightSm="40px"
-              >
-                <p className="text-uppercase">
-                  {t('pre_edu_label_header')}
-                </p>
+            <ContainerBoxSection flexbasis="0" flexGrow={2}>
+              <BoxSectioInfo color={pinkRose} flexdirection="column" rotateTxt width colorTxt={black} flexdirectionSm="column" heightSm="40px">
+                <p className="text-uppercase">{t('pre_edu_label_header')}</p>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
@@ -647,8 +638,7 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
-                    {t('first_grades')}
-                    {' '}
+                    {t('initialInfants')}
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
@@ -659,8 +649,18 @@ const Boxes = ({ countryId, t }) => {
                   flexdirectionSm="column"
                 >
                   <p>
-                    {t('penultimate_grade')}
-                    {' '}
+                    {t('initialGroups')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  color={pink2}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('fourYears')}
                   </p>
                 </BoxSectioInfo>
                 <BoxSectioInfo
@@ -670,23 +670,45 @@ const Boxes = ({ countryId, t }) => {
                   flexdirection="column"
                   flexdirectionSm="column"
                 >
-                  <p>{t('last_grade')}</p>
+                  <p>
+                    {t('fiveYears')}
+                  </p>
+                </BoxSectioInfo>
+              <BoxSectioInfo
+                  color={pinkRosewood2}
+                  border={{ side: 'right', color: white }}
+                  borderSm={{ side: 'bottom', color: white }}
+                  flexdirection="column"
+                  flexdirectionSm="column"
+                >
+                  <p>
+                    {t('sixYears')}
+                  </p>
                 </BoxSectioInfo>
               </BoxSectioInfo>
               <BoxSectioInfo flexdirection="column">
                 <BoxSectioInfo
                   flexbasis="0"
+                  flexGrow={2}
+                  flexdirection="column"
+                  border={{ side: 'left', color: pinkWatermelon }}
+                  borderSm={{ side: 'top', color: pinkWatermelon }}
+                  colorTxt={pinkWatermelon}
+                >
+                  <p>
+                    {t('initialEducation')}
+                  </p>
+                </BoxSectioInfo>
+                <BoxSectioInfo
+                  flexbasis="0"
+                  flexGrow={3}
                   flexdirection="column"
                   border={{ side: 'left', color: pinkRosewood }}
                   colorTxt={pinkRosewood}
                   borderSm={{ side: 'top', color: pinkRosewood }}
                 >
                   <p>
-                    {t('pre_edu_label')}
-                    {' '}
-                    {t('or')}
-                    {' '}
-                    {t('nursery_school')}
+                    {t('kindergardenEducation')}
                   </p>
                 </BoxSectioInfo>
               </BoxSectioInfo>

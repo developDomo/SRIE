@@ -43,6 +43,7 @@ export const orangeLink = '#fbb03a';
 export const pink = '#FB8080';
 export const pink2 = '#D87171';
 export const pinkRosewood = '#BC6060';
+export const pinkRosewood2 = '#B55858';
 export const pinkRose = '#fdcccc';
 export const pinkWatermelon = '#fc9999';
 export const red = '#BF1922';
