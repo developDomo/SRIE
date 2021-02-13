@@ -77,7 +77,7 @@
   "dataShouldNotSurpass": "Datos no pueden sobrepasar el 100%",
   "invalidFormat": "Formato inválido, use solamente números y \"punto\" (.) como separador decimal.",
   "dataShouldNotBeGreater": "Dato ingresado no puede ser mayor a 100. Incluya solo números, no coloque signo de %. Use \"punto\" (.) como separador decimal",
-  "includesex": "Incluir datos por género",
+  "includesex": "Incluir datos por sexo",
   "includelocation": "Incluir datos por zona geográfica",
   "includewealth-quintile": "Incluir datos por nivel socioeconómico",
   "save": "Guardar",
