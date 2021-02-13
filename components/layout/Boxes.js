@@ -674,7 +674,7 @@ const Boxes = ({ countryId, t }) => {
                     {t('fiveYears')}
                   </p>
                 </BoxSectioInfo>
-              <BoxSectioInfo
+                <BoxSectioInfo
                   color={pinkRosewood2}
                   border={{ side: 'right', color: white }}
                   borderSm={{ side: 'bottom', color: white }}
