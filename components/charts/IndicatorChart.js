@@ -34,14 +34,26 @@ const ChartContent = styled.div`
 `;
 
 const TapTitle = styled.span`
-  &::before {
-    content: url(${(props) => props.iconUrl});
-    display:block;
-    width: 20px;
-    margin: 0 10px;
-    float: left;
+
+  @media (min-width: 900px) {
+    &::before {
+      content: url(${(props) => props.iconUrl});
+      display:block;
+      width: 20px;
+      margin: 0 10px;
+      float: left;
+    }
   }
- 
+
+  @media (min-width: 576px) {
+    &::before {
+      display:block;
+      width: 20px;
+      margin: 0 10px;
+      float: left;
+      font-size: 0.8em;
+    }
+  }
 `;
 
 const SidebarIcon = styled.span`
