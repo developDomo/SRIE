@@ -377,7 +377,7 @@
           "The number of people in the relevant age group who have completed the last grade of a given level of education is expressed as a percentage of the total population of the same age group."
         ],
         "formula": [
-          "CR_{n}=\\frac{{EAP_{n,AG(a+3t5)}}\\times 100}{{PAG_{n,AG(a+3t5)}}}"
+          "CR_{n}=\\frac{EAP_{n,AG(a+3t5)}\\times 100}{PAG_{n,AG(a+3t5)}}"
         ],
         "formulaExplanation": [
           "CR_{n}",
