@@ -238,7 +238,7 @@ const buildManualDataByIndicator = (indicator, tempData) => {
     data.push(yearData);
   });
 
-  return data;
+  return _.reverse(_.sortBy(data, 'time_period'));
 };
 
 const groupDataByYear = async (indicatorId, indicatorCode, variationCode, data) => {
