@@ -50,3 +50,5 @@ export const red = '#BF1922';
 export const gray2 = '#333';
 export const blueButton = '#0B89CE';
 export const blueButtonRoll = '#166A99';
+export const orangeInfo = '#EF522E';
+export const orangeInfoPress = '#D6432B';
