@@ -10,12 +10,13 @@ import Title from '../../components/layout/Title';
 import { BoxIndicador, Box } from '../../components/layout/Box';
 
 import ButtonWithIcon from '../../components/layout/ButtonWithIcon';
+import ButtonInformation from '../../components/layout/ButtonInformation';
 import { green } from '../../styles/colors';
 
 import { withTranslation } from '../../i18n';
 import EducationIcon from '../../public/img/home/icon_datos_educ.svg';
 import LiteracyIcon from '../../public/img/home/icon_datos_alfabetizacion.svg';
-
+import InformationIcon from '../../public/img/country/ico-informacion.svg';
 import GovernmentExpenditureIcon from '../../public/img/home/icon_gasto_gubernamental.svg';
 import DataChildIcon from '../../public/img/home/icono_datos_ninos.svg';
 import ParticipationIcon from '../../public/img/home/icon_participacion_indicador.svg';
@@ -176,15 +177,15 @@ const Country = ({
           />
         </div>
       </Row>
-      <Row className="mb-5">
-        <div className="col-sm-6 d-flex justify-content-start">
+      <Row className="mb-12">
+        <div className="col-sm-8 d-flex justify-content-start">
           { country.data_system_link && (
-          <a href={country.data_system_link} target="_blank" rel="noreferrer">
-            { country.data_system_name || country.data_system_link }
-          </a>
+            <ButtonInformation path={country.data_system_link} icon={InformationIcon} color="orange">
+              { `${t('moreInformation')}: ${country.data_system_name || country.data_system_link}` }
+            </ButtonInformation>
           )}
         </div>
-        <div className="col-sm-6 d-flex justify-content-end">
+        <div className="col-sm-4 d-flex justify-content-end">
           <ButtonNavIndicadores color="blue">
             <a href={`/indicators/${country.code}/dashboard/${country.code}.pdf`} download>
               { t('dashboard.download') }

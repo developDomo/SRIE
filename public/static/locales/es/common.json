@@ -110,5 +110,6 @@
   "dashboard": {
     "data": "Dato",
     "download": "Descargar Dashboard (PDF)"
-  }
+  },
+  "moreInformation":"Más información"
 }
