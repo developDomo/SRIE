@@ -17,6 +17,8 @@ import {
   pink,
   pink2,
   blue52,
+  orangeInfo,
+  orangeInfoPress,
 } from '../../styles/colors';
 import arrow from '../../public/img/home/arrow-more-rollover.svg';
 import { white } from '../../theme/colors';
@@ -30,11 +32,13 @@ const colors = {
   orange,
   pink,
   white,
+  orangeInfo,
 };
 const colorActive = {
   blue: blueRoll,
   green: greenRoll,
   yellow: yellowRoll,
+  orangeInfo: orangeInfoPress,
 };
 
 const ButtonContainerColors = {
@@ -45,6 +49,7 @@ const ButtonContainerColors = {
   brown: brown2,
   orange: orange2,
   pink: pink2,
+  orangeInfo,
 };
 
 export const ButtonNav = styled.button`
