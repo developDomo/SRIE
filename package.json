@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
     "debug": "NODE_ENV=development NODE_OPTIONS='--inspect' node server.js",
-    "build": "db-migrate up && next build",
+    "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js -p $PORT",
     "lint": "./node_modules/.bin/eslint .",
     "storybook": "start-storybook -p 6006",
