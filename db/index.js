@@ -13,6 +13,7 @@ module.exports = async () => {
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
+    ssl: (process.env.NODE_ENV !='development'),
   });
 
   if(process.env.NODE_ENV ==='development'){
