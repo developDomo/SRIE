@@ -7,6 +7,19 @@
     "password": { "ENV": "DB_PASS" },
     "port": { "ENV": "DB_PORT" }
   },
+  "test": {
+    "overwrite": {
+      "driver": "pg",
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    },
+    "user": { "ENV": "DB_USER" },
+    "host": { "ENV": "DB_HOST" },
+    "database": { "ENV": "DB_NAME" },
+    "password": { "ENV": "DB_PASS" },
+    "port": { "ENV": "DB_PORT" }
+  },
   "staging": {
     "overwrite": {
       "driver": "pg",
