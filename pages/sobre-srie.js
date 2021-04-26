@@ -39,9 +39,9 @@ const AboutSRIE = ({ t }) => {
           <Row className="">
             <Col sm={12} className="d-flex pt-2 pb-5 justify-content-center">
               <ButtonNavIndicadores color="blue">
-                <Link href={`/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf`}>
+                <a href={`/static/metadata-pdf/${i18n.language}/full-metadata-SRIE.pdf`} target="_blank" rel="noreferrer" download>
                   { t('downloadFullMetadata') }
-                </Link>
+                </a>
               </ButtonNavIndicadores>
             </Col>
           </Row>

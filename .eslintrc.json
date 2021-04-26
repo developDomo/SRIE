@@ -27,6 +27,7 @@
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["hrefLeft", "hrefRight"], "aspects": ["invalidHref", "preferButton"] }],
     "import/prefer-default-export": 0,
+    "jsx-a11y/media-has-caption": 0,
     "jsx-a11y/label-has-associated-control": [
       "error",
       {

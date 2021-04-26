@@ -30,10 +30,11 @@ const HowToUsePage = ({ t }) => {
       <div className="bg-light">
         <Container>
           <Row className="d-sm-flex justify-content-center">
-            <div className="col-sm-8 py-2 py-sm-5">
-              <Text>
-                {t('content')}
-              </Text>
+            <div className="col-sm-10 py-2 py-sm-5">
+              <video width="100%" controls>
+                <source src="/img/SRIE.m4v" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </Row>
         </Container>

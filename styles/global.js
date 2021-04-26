@@ -24,6 +24,11 @@ export default css.global`
     color: white;
   }
 
+  .nav-link {
+    display: block;
+    padding: .5rem 0.8rem
+  }
+
   .indicatorChartTabs .navbar-default .navbar-nav > .active > a:focus {
     color: #000;
     background: green;
